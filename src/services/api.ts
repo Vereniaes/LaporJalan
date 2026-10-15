@@ -41,3 +41,17 @@ export async function submitReportToBackend(report: DamageReport): Promise<boole
   }
 }
 // end of helper ------------------------------------------------------------------
+
+// helper cari alamat autocomplete via google places / nominatim --------------------------------------------------------------------------
+export async function searchPlacesApi(input: string): Promise<any[]> {
+  if (!input || input.trim().length < 2) return [];
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/places/autocomplete?input=${encodeURIComponent(input.trim())}`);
+    if (!res.ok) return [];
+    const json = await res.json();
+    return json.predictions || [];
+  } catch {
+    return [];
+  }
+}
+// end of helper ------------------------------------------------------------------

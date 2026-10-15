@@ -18,6 +18,7 @@ interface Map3DProps {
   cctvList: CctvCamera[];
   trafficSegments: TrafficSegment[];
   selectedReport: DamageReport | null;
+  targetFlyLocation?: { lng: number; lat: number } | null;
   onSelectReport: (report: DamageReport) => void;
   onSelectCctv: (cctv: CctvCamera) => void;
 }
@@ -70,6 +71,7 @@ export const Map3D: React.FC<Map3DProps> = ({
   cctvList,
   trafficSegments,
   selectedReport,
+  targetFlyLocation,
   onSelectReport,
   onSelectCctv,
 }) => {
@@ -366,6 +368,19 @@ export const Map3D: React.FC<Map3DProps> = ({
       speed: 1.2
     });
   }, [selectedReport]);
+
+  // efek zoom ke lokasi pencarian alamat
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !targetFlyLocation) return;
+
+    map.flyTo({
+      center: [targetFlyLocation.lng, targetFlyLocation.lat],
+      zoom: 16.5,
+      pitch: 58,
+      speed: 1.2
+    });
+  }, [targetFlyLocation]);
 
   const handleResetCamera = () => {
     mapRef.current?.flyTo({

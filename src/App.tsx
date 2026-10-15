@@ -31,7 +31,7 @@ import {
   Share2
 } from 'lucide-react';
 
-import { fetchReports, submitReportToBackend } from './services/api.js';
+import { fetchReports, submitReportToBackend, searchPlacesApi } from './services/api.js';
 
 export const App: React.FC = () => {
   const [reports, setReports] = useState<DamageReport[]>(INITIAL_REPORTS);
@@ -48,6 +48,25 @@ export const App: React.FC = () => {
   const [isCompareOpen, setIsCompareOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState<'all' | 'pothole' | 'trench' | 'crack'>('all');
+
+  const [placeSuggestions, setPlaceSuggestions] = useState<any[]>([]);
+  const [targetFlyLocation, setTargetFlyLocation] = useState<{ lng: number; lat: number } | null>(null);
+  const [isSearchingPlaces, setIsSearchingPlaces] = useState(false);
+
+  // debounce pencarian alamat places
+  useEffect(() => {
+    if (!searchQuery || searchQuery.trim().length < 2) {
+      setPlaceSuggestions([]);
+      return;
+    }
+    const timer = setTimeout(async () => {
+      setIsSearchingPlaces(true);
+      const results = await searchPlacesApi(searchQuery);
+      setPlaceSuggestions(results);
+      setIsSearchingPlaces(false);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   // sinkronisasi laporan dari backend jika aktif
   useEffect(() => {
@@ -150,18 +169,40 @@ export const App: React.FC = () => {
           </button>
         </div>
 
-        {/* kotak pencarian jalan / lubang */}
-        <div className="px-4 md:px-5 py-2 shrink-0 bg-white">
+        {/* kotak pencarian jalan / lubang dengan autocomplete places */}
+        <div className="relative px-4 md:px-5 py-2 shrink-0 bg-white">
           <div className="relative">
             <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Cari jalan, lubang, galian, atau CCTV..."
+              placeholder="Cari jalan seluruh Indonesia (Google Places)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200/80 rounded-2xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all"
             />
           </div>
+
+          {/* dropdown hasil autocomplete places */}
+          {placeSuggestions.length > 0 && (
+            <div className="absolute left-4 md:left-5 right-4 md:right-5 top-full mt-1 bg-white rounded-2xl shadow-floating border border-slate-200/80 z-50 overflow-hidden divide-y divide-slate-100 max-h-56 overflow-y-auto">
+              {placeSuggestions.map((p) => (
+                <div
+                  key={p.id}
+                  onClick={() => {
+                    setSearchQuery(p.name);
+                    if (p.lng && p.lat) {
+                      setTargetFlyLocation({ lng: p.lng, lat: p.lat });
+                    }
+                    setPlaceSuggestions([]);
+                  }}
+                  className="p-3 hover:bg-slate-50 cursor-pointer transition-colors"
+                >
+                  <span className="text-xs font-bold text-slate-800 block truncate">{p.name}</span>
+                  <span className="text-[11px] text-slate-500 block truncate mt-0.5">{p.address}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* kontainer scrollable panel */}
@@ -335,6 +376,7 @@ export const App: React.FC = () => {
           cctvList={cctvList}
           trafficSegments={trafficSegments}
           selectedReport={selectedReport}
+          targetFlyLocation={targetFlyLocation}
           onSelectReport={(rep) => {
             setSelectedReport(rep);
             setActiveTab('peta');
