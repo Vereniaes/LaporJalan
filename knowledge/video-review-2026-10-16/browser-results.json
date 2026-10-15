@@ -1,0 +1,160 @@
+{
+  "initial": {
+    "pitch": 58.00000000000001,
+    "zoom": 16.5,
+    "loaded": true,
+    "layers": [
+      {
+        "id": "3d-buildings-extrusion",
+        "type": "fill-extrusion",
+        "source": "buildings-3d"
+      },
+      {
+        "id": "road-damage-decals-fill",
+        "type": "fill",
+        "source": "road-damage-decals"
+      },
+      {
+        "id": "road-damage-decals-line",
+        "type": "line",
+        "source": "road-damage-decals"
+      }
+    ],
+    "toggle": "true",
+    "mapRect": {
+      "x": 460,
+      "width": 1452,
+      "height": 908
+    }
+  },
+  "street": {
+    "pitch": 74,
+    "zoom": 19.2,
+    "loaded": true,
+    "layers": [
+      {
+        "id": "3d-buildings-extrusion",
+        "type": "fill-extrusion",
+        "source": "buildings-3d"
+      },
+      {
+        "id": "road-damage-decals-fill",
+        "type": "fill",
+        "source": "road-damage-decals"
+      },
+      {
+        "id": "road-damage-decals-line",
+        "type": "line",
+        "source": "road-damage-decals"
+      }
+    ],
+    "toggle": "true",
+    "mapRect": {
+      "x": 460,
+      "width": 1452,
+      "height": 908
+    }
+  },
+  "depth": {
+    "pitch": 58.00000000000001,
+    "zoom": 16.5,
+    "loaded": true,
+    "layers": [
+      {
+        "id": "3d-buildings-extrusion",
+        "type": "fill-extrusion",
+        "source": "buildings-3d"
+      },
+      {
+        "id": "road-damage-decals-fill",
+        "type": "fill",
+        "source": "road-damage-decals"
+      },
+      {
+        "id": "road-damage-decals-line",
+        "type": "line",
+        "source": "road-damage-decals"
+      }
+    ],
+    "toggle": "true",
+    "mapRect": {
+      "x": 460,
+      "width": 1452,
+      "height": 908
+    }
+  },
+  "depth_text": "🚧\nLaporJalan\n3D Live\n\nSistem Deteksi Citra & Pantau Galian\n\nLapor\nPeta 3D\nDaftar (4)\nCCTV (4)\n🐱\nMiko Pantau Jalan\nReal-Time\n\nAda 1 Lubang Kritis & 2 Galian Utilitas di koridor Sudirman. Kurangi kecepatan motor saat hujan!\n\nGalian Pipa/Kabel\nPantau jalan dibongkar\nMiko CCTV\n4 Kamera aktif\n🌊\nMiko Pantau Genangan\nSiaga 3\n\nTinggi Air ~20 cm di Jl. Thamrin Barat\n\nWaspada Lubang Tak Kasat Mata: Genangan air hujan menutupi lubang sedalam 7.5 cm. Bahaya fatal bagi ban motor!\nJalan Nasional (BBPJN PUPR)\nBAHAYA KRITIS\nLubang Kritis Lajur Kanan Jalur Cepat\nJl. M.H. Thamrin No. 28, Menteng (Arah Bundaran HI)\nKedalaman\n~7.5 cm\nEstimasi Lebar\n~52 cm\nBina Marga UP\n8.5\nInspeksi Potongan Melintang 3D (Putar 360°)\nLihat Lapangan 3D\nSebelum vs Sesudah\nDicocokkan dengan kamera\nAktif\nLIVE\n09:42:55 WIB\n\nBundaran HI • Sisi Hotel Indonesia • Simpang C09\n\nKetuk untuk intip kamera →\nCatatan Lapangan:\nLubang aspal tembus lapisan agregat dasar. Sudah membuat 2 pengendara motor oleng saat jam pulang kantor.\n1 • CCTV Bundaran HI\n6B • CCTV Tosari Dukuh Atas\n4C • CCTV Simpang Semanggi\n9D • CCTV Rasuna Said Kuningan\nKedalaman:\n7.5 cm\nLebar:\n52 cm\nLebar jalan:\n7 m\nLUBANG\n7.5cm\nGALIAN\n4.8cm\nRETAK\n1.8cm\nAMBLES\n9cm\nMapLibre | OpenFreeMap © OpenMapTiles Data from OpenStreetMap\n3D\nLubang Kritis\nGalian Utilitas\nKerucut CCTV\nMacet\nInspeksi Volumetrik 3D: Lubang Kritis Lajur Kanan Jalur Cepat\nWireframe Mesh\n\nProfil Potongan Melintang Kerusakan Perkerasan Jalan\n\nKontur 1 cm\nKontur 3 cm\nKedalaman Maks: 7.5 cm\nSentuh & putar orbit 360°\nTingkat: BERAT\nKedalaman Terukur\n7.5 cm\nLebar Lubang\n52 cm\nEstimasi Volume\n0.008 m³\nRekomendasi Penanganan: Penambalan cepat darurat (<24 Jam) karena kedalaman kritis membahayakan velg dan roda dua.\nTutup Inspeksi 3D",
+  "before_select_2d": {
+    "pitch": 0,
+    "zoom": 16.5,
+    "loaded": true,
+    "layers": [
+      {
+        "id": "3d-buildings-extrusion",
+        "type": "fill-extrusion",
+        "source": "buildings-3d"
+      },
+      {
+        "id": "road-damage-decals-fill",
+        "type": "fill",
+        "source": "road-damage-decals"
+      },
+      {
+        "id": "road-damage-decals-line",
+        "type": "line",
+        "source": "road-damage-decals"
+      }
+    ],
+    "toggle": "false",
+    "mapRect": {
+      "x": 460,
+      "width": 1452,
+      "height": 908
+    }
+  },
+  "after-select-2d": {
+    "pitch": 58.00000000000001,
+    "zoom": 16.5,
+    "loaded": false,
+    "layers": [
+      {
+        "id": "3d-buildings-extrusion",
+        "type": "fill-extrusion",
+        "source": "buildings-3d"
+      },
+      {
+        "id": "road-damage-decals-fill",
+        "type": "fill",
+        "source": "road-damage-decals"
+      },
+      {
+        "id": "road-damage-decals-line",
+        "type": "line",
+        "source": "road-damage-decals"
+      }
+    ],
+    "toggle": "false",
+    "mapRect": {
+      "x": 460,
+      "width": 1452,
+      "height": 908
+    }
+  },
+  "cctv_dom": {
+    "videoCount": 0,
+    "imageCount": 1,
+    "text": "1 • CCTV Bundaran HI\n\nBundaran HI • Sisi Hotel Indonesia • Simpang C09 • Jasa Marga\n\nLIVE\nSudut 35° • 280m\nUpdate: 09:42:55 WIB\nBagikan",
+    "fullscreen": 0
+  },
+  "filter": {
+    "markers": [
+      "\n        \n          \n          1 • CCTV Bundaran HI\n        \n      ",
+      "\n        \n          \n          6B • CCTV Tosari Dukuh Atas\n        \n      ",
+      "\n        \n          \n          4C • CCTV Simpang Semanggi\n        \n      ",
+      "\n        \n          \n          9D • CCTV Rasuna Said Kuningan\n        \n      ",
+      "\n        \n          \n          \n            RETAK\n            1.8cm\n          \n          \n        \n      "
+    ],
+    "list": "🚧\nLaporJalan\n3D Live\n\nSistem Deteksi Citra & Pantau Galian\n\nLapor\nPeta 3D\nDaftar (4)\nCCTV (4)\nSemua\nLubang\nGalian Utilitas\nRetak\nRetak Kulit Buaya Luas Jalur Lambat\n\nJl. H.R. Rasuna Said, Karet Kuningan\n\nKedalaman: ~1.8cm\n•\nJalan\n1 • CCTV Bundaran HI\n6B • CCTV Tosari Dukuh Atas\n4C • CCTV Simpang Semanggi\n9D • CCTV Rasuna Said Kuningan\nRETAK\n1.8cm\nMapLibre | OpenFreeMap © OpenMapTiles Data from OpenStreetMap\n3D\nLubang Kritis\nGalian Utilitas\nKerucut CCTV\nMacet"
+  },
+  "errors_final_check": []
+}
