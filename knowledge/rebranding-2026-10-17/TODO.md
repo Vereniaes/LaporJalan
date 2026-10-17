@@ -148,3 +148,13 @@ Paket ini tidak memperbaiki atau menyatakan lulus temuan kamera lama. Saat imple
 - [ ] Fase D5: kontribusi, lampiran, pembaruan dan CCTV setelah kontraknya ditetapkan.
 
 Bukti: [hasil pemeriksaan](IMPLEMENTATION-RESULTS.md), [panduan deploy](DEPLOYMENT.md). Kegagalan run inspeksi lama tetap belum diselesaikan dan tidak dihitung sebagai kelulusan UI publik.
+
+## Pembersihan artefak setelah push
+
+- [x] Pengguna memilih pembersihan tracking tanpa penulisan ulang riwayat.
+- [x] Tambahkan ignore hasil pengujian dan keluarkan 1.372 artefak dari index.
+- [x] Simpan seluruh berkas lokal; pertahankan screenshot terpilih dan perbarui tautan laporan.
+- [x] Periksa hash artefak/kode, index dan aturan ignore.
+- [ ] Pemilik meninjau staged diff lalu melakukan commit/push bila sesuai.
+
+Rincian: [pembersihan tracking](GIT-ARTIFACT-CLEANUP.md). Pekerjaan ini tidak mengubah peta 2D/3D atau geometri inspeksi.

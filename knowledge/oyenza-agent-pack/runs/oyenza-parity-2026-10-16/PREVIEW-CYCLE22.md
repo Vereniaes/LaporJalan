@@ -6,16 +6,16 @@ Use [the review](harness/CYCLE22-REVIEW.md), [current handoff](HANDOFF.md) and [
 
 ## City desktop
 
-![City desktop](harness/cycle22-full/artifacts/layout.browser-U02-panel-and-map-use-one-responsive-boundary-desktop/responsive-map.png)
+![City desktop](selected-evidence/cycle22-responsive-map-desktop.png)
 
 ## Inspection desktop
 
-![Inspection desktop](harness/cycle22-full/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-desktop/mapped-road-0.png)
+![Inspection desktop](selected-evidence/cycle22-mapped-road-desktop.png)
 
 ## City mobile
 
-![City mobile](harness/cycle22-full/artifacts/layout.browser-U02-panel-and-map-use-one-responsive-boundary-mobile/responsive-map.png)
+![City mobile](selected-evidence/cycle22-responsive-map-mobile.png)
 
 ## Inspection mobile
 
-![Inspection mobile](harness/cycle22-full/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-mobile/mapped-road-0.png)
+![Inspection mobile](selected-evidence/cycle22-mapped-road-mobile.png)

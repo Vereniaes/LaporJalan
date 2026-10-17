@@ -15,6 +15,11 @@ dist-ssr
 .env.*
 !.env.example
 
+# Generated test evidence stays local; selected evidence and summaries remain tracked.
+knowledge/**/runs/**/artifacts/
+/test-results/
+/playwright-report/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-17 Asia/Jakarta",
+  "headUnchanged": true,
+  "head": "2c08ad7000d22fbe56f2d41954a0cec5387a26be",
+  "removedFromIndex": 1372,
+  "untrackedArtifactBytes": 1760189418,
+  "localArtifactsVerifiedSha256": 1372,
+  "localMismatches": [],
+  "unexpectedProtectedChanges": [],
+  "expectedDocumentationChanges": [
+    ".gitignore",
+    "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/PREVIEW-CYCLE22.md",
+    "knowledge/rebranding-2026-10-17/TODO.md"
+  ],
+  "allCandidatesIgnored": true,
+  "selectedScreenshotsVerified": 4,
+  "futureIgnoreProbes": [
+    "test-results/example/trace.zip",
+    "playwright-report/index.html",
+    "knowledge/example/runs/new/artifacts/sample.png"
+  ],
+  "retainedFileProbes": [
+    "src/components/Map3D.tsx",
+    "src/map/DamageLayer.ts",
+    "tests/geometry.unit.spec.ts",
+    "knowledge/rebranding-2026-10-17/runs/map-list-2026-10-17/desktop-3d.png",
+    "knowledge/rebranding-2026-10-17/runs/map-list-2026-10-17/checks/results.json"
+  ],
+  "historyRewritten": false,
+  "commitPerformed": false,
+  "pushPerformed": false,
+  "applicationTests": "not_run - no runtime changes",
+  "stagedChanges": {
+    "M": 3,
+    "D": 1372,
+    "A": 7
+  },
+  "stagedPathsVerified": true,
+  "stagedWhitespaceCheck": "passed",
+  "changedDocumentLinks": "passed",
+  "trackedFilesAfter": 585,
+  "trackedBytesAfter": 60088781,
+  "trackedRunZipFilesAfter": 0,
+  "runtimeDiff": "empty"
+}
