@@ -1,0 +1,80 @@
+[
+  {
+    "url": "https://crm.jakarta.go.id/crm-peta",
+    "status": 200,
+    "bytes": 35744,
+    "sha256": "45fcc48511ecbb178479594dd47d1e9e8b8e32bc6a97158b72ac27b94b413e07",
+    "temp_id": "538f28d93b",
+    "scripts": [
+      "https://crm.jakarta.go.id/js/jquery-3.2.1.min.js",
+      "https://crm.jakarta.go.id/vendor/slick/slick.js",
+      "https://crm.jakarta.go.id/vendor/flowbite/flowbite.js",
+      "https://crm.jakarta.go.id/js/script.js",
+      "https://crm.jakarta.go.id/js/disabilitas-script.js",
+      "https://www.googletagmanager.com/gtag/js?id=G-9YKV7QCNHX"
+    ],
+    "iframes": [
+      "https://crm.jakarta.go.id/peta/"
+    ]
+  },
+  {
+    "url": "https://laporjalan.com/peta/data/rusakberat_2025.js",
+    "status": 200,
+    "bytes": 1429921,
+    "sha256": "60e73879836689c2058f715f83067fc67bfbfa5cab7d466b08c946a9aaf2cc12",
+    "temp_id": "102978ae6c",
+    "features": 2777,
+    "geometry_types": [
+      "MultiLineString"
+    ],
+    "property_keys": [
+      "oid_1",
+      "LinkId",
+      "PavementTy",
+      "PavementWi",
+      "TTI",
+      "GFPB",
+      "LinkName",
+      "Status",
+      "Function",
+      "Lebar_m"
+    ],
+    "sample_road": {}
+  },
+  {
+    "url": "https://api.github.com/repos/lakuapik/cctv-jakarta",
+    "status": 200,
+    "bytes": 5362,
+    "sha256": "cdccd8b1c62fbe56a3f4e893af02e1ae7f5bd3690fdbd72bf9899476d40a77d9",
+    "temp_id": "9f411c93b2",
+    "total_count": null,
+    "repos": [],
+    "archived": true,
+    "license": "GPL-3.0",
+    "pushed_at": "2020-09-26T13:52:19Z"
+  },
+  {
+    "url": "https://api.github.com/search/repositories?q=%22laporjalan.com%22+in:readme",
+    "status": 200,
+    "bytes": 55,
+    "sha256": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+    "temp_id": "e213b44a68",
+    "total_count": 0,
+    "repos": [],
+    "archived": null,
+    "license": null,
+    "pushed_at": null
+  },
+  {
+    "url": "https://api.github.com/search/repositories?q=%22jalankita.binamarga.pu.go.id%22+in:readme",
+    "status": 200,
+    "bytes": 55,
+    "sha256": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+    "temp_id": "a75bd535da",
+    "total_count": 0,
+    "repos": [],
+    "archived": null,
+    "license": null,
+    "pushed_at": null
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "hash": "dac75d76",
+  "configHash": "fe7a54b6",
+  "lockfileHash": "32821aa2",
+  "browserHash": "1032d67d",
+  "optimized": {
+    "react": {
+      "src": "../../../../../../../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "96eb0d87",
+      "needsInterop": true
+    },
+    "react-dom": {
+      "src": "../../../../../../../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "50a11932",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../../../../../../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "ea008eef",
+      "needsInterop": true
+    },
+    "react/jsx-runtime": {
+      "src": "../../../../../../../../node_modules/react/jsx-runtime.js",
+      "file": "react_jsx-runtime.js",
+      "fileHash": "d20bebcf",
+      "needsInterop": true
+    },
+    "lucide-react": {
+      "src": "../../../../../../../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "45a4bbf7",
+      "needsInterop": false
+    },
+    "maplibre-gl": {
+      "src": "../../../../../../../../node_modules/maplibre-gl/dist/maplibre-gl.js",
+      "file": "maplibre-gl.js",
+      "fileHash": "6dde641e",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../../../../../../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "f41fc02b",
+      "needsInterop": true
+    },
+    "three": {
+      "src": "../../../../../../../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "87dac1c5",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-MFWRVXG7": {
+      "file": "chunk-MFWRVXG7.js"
+    },
+    "chunk-SSZYDFNW": {
+      "file": "chunk-SSZYDFNW.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
+}

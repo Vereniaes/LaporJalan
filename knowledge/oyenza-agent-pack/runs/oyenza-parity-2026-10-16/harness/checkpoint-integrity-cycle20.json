@@ -1,0 +1,107 @@
+{
+  "at": "2026-10-16T13:49:41.905811+00:00",
+  "status": "passed",
+  "checks": [
+    {
+      "path": "src/main.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/App.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/types.ts",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/index.css",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/services/api.ts",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/services/imageDetection.ts",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/services/mockData.ts",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/DamageReportCard.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/Map3D.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/CctvModal.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/FloodMonitorCard.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/StreetSimulation3D.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/DepthInspector3D.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/MascotBanner.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/CameraReportModal.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/CctvPopover.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "src/components/CompareModal.tsx",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "tsconfig.json",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "vite.config.ts",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "tailwind.config.js",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "tsconfig.node.json",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "postcss.config.js",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "package-lock.json",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "package.json",
+      "snapshot_hash_matches": true
+    },
+    {
+      "path": "index.html",
+      "snapshot_hash_matches": true
+    }
+  ],
+  "scope": "Saved before-source hashes match original run baseline; this does not certify final app acceptance."
+}

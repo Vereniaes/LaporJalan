@@ -9,7 +9,8 @@ Todo:
 -> simpan laporan baru ke state
 */
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useModalDialog } from './useModalDialog';
 import { DamageReport, JurisdictionType } from '../types';
 import { detectRoadDamage, DetectionResult } from '../services/imageDetection';
 import { Camera, Upload, X, CheckCircle2, Sparkles, AlertTriangle, MapPin } from 'lucide-react';
@@ -20,10 +21,15 @@ interface CameraReportModalProps {
 }
 
 export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, onSubmitReport }) => {
+  const dialogRef = useModalDialog();
+  const requestRef = useRef(0);
+  const readerRef = useRef<FileReader | null>(null);
+  const [analysisError, setAnalysisError] = useState('');
+  useEffect(() => () => { requestRef.current++; readerRef.current?.abort(); }, []);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [detection, setDetection] = useState<DetectionResult | null>(null);
-  const [address, setAddress] = useState('Jl. Jend. Sudirman KM 3.2, Jakarta');
+  const [address, setAddress] = useState('Lokasi contoh - Jakarta');
   const [notes, setNotes] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -43,26 +49,36 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
     }
   ];
 
-  const handleProcessImage = async (imgUrl: string) => {
+  const handleProcessImage = async (imgUrl: string, request = ++requestRef.current) => {
+    if (request !== requestRef.current) return;
+    readerRef.current?.abort();
+    setAnalysisError('');
+    setDetection(null);
     setSelectedImage(imgUrl);
     setIsAnalyzing(true);
     try {
       const result = await detectRoadDamage(imgUrl);
-      setDetection(result);
+      if (request === requestRef.current) setDetection(result);
+    } catch {
+      if (request === requestRef.current) setAnalysisError('Gambar tidak dapat dianalisis. Pilih gambar lain.');
     } finally {
-      setIsAnalyzing(false);
+      if (request === requestRef.current) setIsAnalyzing(false);
     }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      const request = ++requestRef.current;
+      readerRef.current?.abort();
       const reader = new FileReader();
+      readerRef.current = reader;
       reader.onload = (event) => {
-        if (event.target?.result) {
-          handleProcessImage(event.target.result as string);
+        if (request === requestRef.current && event.target?.result) {
+          handleProcessImage(event.target.result as string, request);
         }
       };
+      reader.onerror = () => { if (request === requestRef.current) setAnalysisError('Gambar tidak dapat dibaca.'); };
       reader.readAsDataURL(file);
     }
   };
@@ -70,7 +86,7 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
   const handleSubmit = () => {
     if (!detection || !selectedImage) return;
 
-    // auto-routing kewenangan berbasis koordinat
+    // Demonstration routing; no verified jurisdiction lookup is available.
     const jurisdiction: JurisdictionType =
       detection.type === 'pothole' && detection.depthCm > 5
         ? 'Jalan Nasional (BBPJN PUPR)'
@@ -79,12 +95,12 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
     const newReport: DamageReport = {
       id: `rep-${Date.now()}`,
       type: detection.type,
-      title: `${detection.typeName} Terdeteksi AI`,
+      title: `${detection.typeName} - estimasi contoh`,
       severity: detection.severity,
       depthCm: detection.depthCm,
       widthCm: detection.widthCm,
-      lat: -6.1985 + (Math.random() - 0.5) * 0.008,
-      lng: 106.8235 + (Math.random() - 0.5) * 0.008,
+      lat: -6.1985,
+      lng: 106.8235,
       address,
       jurisdiction,
       status: 'review',
@@ -92,7 +108,7 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
       createdAt: 'Baru saja',
       upScore: detection.severity === 'berat' ? 8.8 : detection.severity === 'sedang' ? 6.5 : 4.0,
       trafficImpact: detection.depthCm > 5 ? 'padat' : 'lancar',
-      description: notes.trim() || 'Laporan instan masyarakat via kamera deteksi tekstur AI.'
+      description: `Lokasi contoh, bukan GPS. Dimensi dan kategori berasal dari heuristik gambar, belum diverifikasi. ${notes.trim()}`
     };
 
     onSubmitReport(newReport);
@@ -100,7 +116,7 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in overflow-y-auto">
+    <dialog ref={dialogRef} aria-labelledby="report-dialog-title" onCancel={event => { event.preventDefault(); onClose(); }} className="m-auto w-[calc(100vw-24px)] max-w-lg max-h-[calc(100dvh-24px)] overflow-y-auto border-0 rounded-3xl bg-transparent p-0 backdrop:bg-slate-900/60">
       <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-floating border border-slate-100 overflow-hidden flex flex-col my-auto max-h-[90vh]">
         {/* header */}
         <div className="flex items-center justify-between p-4 px-5 border-b border-slate-100 bg-white sticky top-0 z-10">
@@ -109,15 +125,16 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
               <Camera className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-slate-800 text-sm leading-tight">
+              <h3 id="report-dialog-title" className="font-bold text-slate-800 text-sm leading-tight">
                 Lapor Kerusakan Jalan Instan
               </h3>
               <p className="text-xs text-slate-500">
-                1-Snap AI: Deteksi Otomatis Tekstur, Pola & Kedalaman
+                Demo analisis gambar - hasil belum diverifikasi
               </p>
             </div>
           </div>
           <button
+            aria-label="Tutup laporan"
             onClick={onClose}
             className="p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
           >
@@ -136,10 +153,11 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
             className="hidden"
           />
 
+          {analysisError && <p role="status" className="rounded-xl bg-amber-50 p-3 text-xs text-amber-800">{analysisError}</p>}
           {!selectedImage ? (
             <div className="space-y-4">
               {/* upload placeholder */}
-              <div
+              <button
                 onClick={() => fileInputRef.current?.click()}
                 className="w-full h-48 border-2 border-dashed border-amber-300 rounded-3xl bg-amber-50/40 hover:bg-amber-50/80 transition-colors flex flex-col items-center justify-center cursor-pointer p-4 text-center group"
               >
@@ -150,9 +168,9 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
                   Ambil Foto Jalan atau Pilih dari Galeri
                 </span>
                 <span className="text-[11px] text-slate-500 mt-0.5">
-                  Kamera akan mengukur kedalaman lubang dan pola retakan
+                  Estimasi heuristik, bukan pengukuran kedalaman dari foto
                 </span>
-              </div>
+              </button>
 
               {/* opsi foto sampel */}
               <div>
@@ -211,13 +229,17 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
                     }}
                   >
                     <span className="absolute -top-6 left-0 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm">
-                      {detection.typeName} ({detection.confidence}%)
+                      {detection.typeName} - contoh
                     </span>
                   </div>
                 )}
 
                 <button
                   onClick={() => {
+                    requestRef.current++;
+                    readerRef.current?.abort();
+                    setAnalysisError('');
+                    setIsAnalyzing(false);
                     setSelectedImage(null);
                     setDetection(null);
                   }}
@@ -236,7 +258,7 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
                       <span>Hasil Analisis Citra Otomatis</span>
                     </span>
                     <span className="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                      Akurasi {detection.confidence}%
+                      Skor heuristik {detection.confidence}
                     </span>
                   </div>
 
@@ -263,7 +285,7 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
 
                   {/* auto routing dinas */}
                   <div className="p-2.5 bg-blue-50/80 rounded-xl border border-blue-200/60 flex items-center justify-between text-xs text-blue-900">
-                    <span className="font-semibold">Otomatis Ditujukan Ke:</span>
+                    <span className="font-semibold">Contoh tujuan:</span>
                     <span className="font-bold">
                       {detection.depthCm > 5
                         ? 'Balai Besar PUPR (Jalan Nasional)'
@@ -278,7 +300,7 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
                 <div>
                   <label className="text-xs font-bold text-slate-700 block mb-1 flex items-center space-x-1">
                     <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                    <span>Lokasi Terdeteksi GPS:</span>
+                    <span>Alamat contoh - koordinat demo, bukan GPS:</span>
                   </label>
                   <input
                     type="text"
@@ -309,12 +331,12 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
                 className="w-full py-3 bg-slate-900 text-white rounded-2xl font-bold text-xs hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md flex items-center justify-center space-x-2"
               >
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Kirim Laporan Kerusakan ke Dinas Terkait</span>
+                <span>Simpan Laporan Contoh</span>
               </button>
             </div>
           )}
         </div>
       </div>
-    </div>
+    </dialog>
   );
 };

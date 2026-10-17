@@ -1,0 +1,423 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "geometry",
+      "--project=unit",
+      "--project=desktop",
+      "--project=mobile"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "geometry.unit.spec.ts",
+      "file": "geometry.unit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G01 physical cavity joins the road with the declared diameter and depth",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "unit",
+              "projectName": "unit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 789,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:07:25.991Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts/geometry.unit-G01-physical-35680-declared-diameter-and-depth-unit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4575dfc31a5d80692312-98a1a263516f0d33def1",
+          "file": "geometry.unit.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "G01 contour vertices use the same surface profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "unit",
+              "projectName": "unit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 104,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:07:26.820Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts/geometry.unit-G01-contour--d99ca-se-the-same-surface-profile-unit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4575dfc31a5d80692312-0914429f6dcb69689c1d",
+          "file": "geometry.unit.spec.ts",
+          "line": 19,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "geometry.browser.spec.ts",
+      "file": "geometry.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G03 G04 G05 prototype renders at physical scale through four bearings",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2861,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:07:27.221Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "state-0",
+                      "contentType": "application/json",
+                      "body": "eyJhbmNob3IiOlsxMDYuODIzMiwtNi4xOTY1XSwid2lkdGhNIjowLjUyLCJkZXB0aE0iOjAuMDc1LCJnZW9tZXRyeSI6eyJ2ZXJ0ZXhDb3VudCI6MTI4MSwibWluWiI6LTAuMDc1MDAwMDAyOTgwMjMyMjQsIm1heFoiOjAsInN1cHBvcnREaWFtZXRlck0iOjAuNTE5OTk5OTgwOTI2NTEzN30sInJlbmRlckNvdW50IjoxMiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9"
+                    },
+                    {
+                      "name": "state-90",
+                      "contentType": "application/json",
+                      "body": "eyJhbmNob3IiOlsxMDYuODIzMiwtNi4xOTY1XSwid2lkdGhNIjowLjUyLCJkZXB0aE0iOjAuMDc1LCJnZW9tZXRyeSI6eyJ2ZXJ0ZXhDb3VudCI6MTI4MSwibWluWiI6LTAuMDc1MDAwMDAyOTgwMjMyMjQsIm1heFoiOjAsInN1cHBvcnREaWFtZXRlck0iOjAuNTE5OTk5OTgwOTI2NTEzN30sInJlbmRlckNvdW50IjoxMywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9"
+                    },
+                    {
+                      "name": "state-180",
+                      "contentType": "application/json",
+                      "body": "eyJhbmNob3IiOlsxMDYuODIzMiwtNi4xOTY1XSwid2lkdGhNIjowLjUyLCJkZXB0aE0iOjAuMDc1LCJnZW9tZXRyeSI6eyJ2ZXJ0ZXhDb3VudCI6MTI4MSwibWluWiI6LTAuMDc1MDAwMDAyOTgwMjMyMjQsIm1heFoiOjAsInN1cHBvcnREaWFtZXRlck0iOjAuNTE5OTk5OTgwOTI2NTEzN30sInJlbmRlckNvdW50IjoxNSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9"
+                    },
+                    {
+                      "name": "state-270",
+                      "contentType": "application/json",
+                      "body": "eyJhbmNob3IiOlsxMDYuODIzMiwtNi4xOTY1XSwid2lkdGhNIjowLjUyLCJkZXB0aE0iOjAuMDc1LCJnZW9tZXRyeSI6eyJ2ZXJ0ZXhDb3VudCI6MTI4MSwibWluWiI6LTAuMDc1MDAwMDAyOTgwMjMyMjQsIm1heFoiOjAsInN1cHBvcnREaWFtZXRlck0iOjAuNTE5OTk5OTgwOTI2NTEzN30sInJlbmRlckNvdW50IjoxOCwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts/geometry.browser-G03-G04-G-46aea-scale-through-four-bearings-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601eec6a4298447dfb9-27e27a532dccf6a79329",
+          "file": "geometry.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "L01 L03 prototype releases its resources over 20 cycles",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:07:30.221Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cycles",
+                      "contentType": "application/json",
+                      "body": "W3siYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9XQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts/geometry.browser-L01-L03-p-69656-ts-resources-over-20-cycles-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601eec6a4298447dfb9-44dec1a62a4f282cc1a5",
+          "file": "geometry.browser.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "G03 G04 G05 prototype renders at physical scale through four bearings",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1699,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:07:39.287Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "state-0",
+                      "contentType": "application/json",
+                      "body": "eyJhbmNob3IiOlsxMDYuODIzMiwtNi4xOTY1XSwid2lkdGhNIjowLjUyLCJkZXB0aE0iOjAuMDc1LCJnZW9tZXRyeSI6eyJ2ZXJ0ZXhDb3VudCI6MTI4MSwibWluWiI6LTAuMDc1MDAwMDAyOTgwMjMyMjQsIm1heFoiOjAsInN1cHBvcnREaWFtZXRlck0iOjAuNTE5OTk5OTgwOTI2NTEzN30sInJlbmRlckNvdW50IjoxMywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9"
+                    },
+                    {
+                      "name": "state-90",
+                      "contentType": "application/json",
+                      "body": "eyJhbmNob3IiOlsxMDYuODIzMiwtNi4xOTY1XSwid2lkdGhNIjowLjUyLCJkZXB0aE0iOjAuMDc1LCJnZW9tZXRyeSI6eyJ2ZXJ0ZXhDb3VudCI6MTI4MSwibWluWiI6LTAuMDc1MDAwMDAyOTgwMjMyMjQsIm1heFoiOjAsInN1cHBvcnREaWFtZXRlck0iOjAuNTE5OTk5OTgwOTI2NTEzN30sInJlbmRlckNvdW50IjoxNywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9"
+                    },
+                    {
+                      "name": "state-180",
+                      "contentType": "application/json",
+                      "body": "eyJhbmNob3IiOlsxMDYuODIzMiwtNi4xOTY1XSwid2lkdGhNIjowLjUyLCJkZXB0aE0iOjAuMDc1LCJnZW9tZXRyeSI6eyJ2ZXJ0ZXhDb3VudCI6MTI4MSwibWluWiI6LTAuMDc1MDAwMDAyOTgwMjMyMjQsIm1heFoiOjAsInN1cHBvcnREaWFtZXRlck0iOjAuNTE5OTk5OTgwOTI2NTEzN30sInJlbmRlckNvdW50IjoyNSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9"
+                    },
+                    {
+                      "name": "state-270",
+                      "contentType": "application/json",
+                      "body": "eyJhbmNob3IiOlsxMDYuODIzMiwtNi4xOTY1XSwid2lkdGhNIjowLjUyLCJkZXB0aE0iOjAuMDc1LCJnZW9tZXRyeSI6eyJ2ZXJ0ZXhDb3VudCI6MTI4MSwibWluWiI6LTAuMDc1MDAwMDAyOTgwMjMyMjQsIm1heFoiOjAsInN1cHBvcnREaWFtZXRlck0iOjAuNTE5OTk5OTgwOTI2NTEzN30sInJlbmRlckNvdW50IjozNCwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts/geometry.browser-G03-G04-G-46aea-scale-through-four-bearings-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601eec6a4298447dfb9-c959b922327eaf57deaa",
+          "file": "geometry.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "L01 L03 prototype releases its resources over 20 cycles",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5075,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:07:41.104Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cycles",
+                      "contentType": "application/json",
+                      "body": "W3siYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NCwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NCwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MTEsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjYsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjUsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjUsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjYsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjIsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjYsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjksInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjYsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjcsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjQsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjMsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfV0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-verified/artifacts/geometry.browser-L01-L03-p-69656-ts-resources-over-20-cycles-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601eec6a4298447dfb9-f422288423d21ea88a5f",
+          "file": "geometry.browser.spec.ts",
+          "line": 42,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T05:07:25.541Z",
+    "duration": 20815.965,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

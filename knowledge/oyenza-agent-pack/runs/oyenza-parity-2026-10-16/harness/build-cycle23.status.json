@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/npm",
+    "run",
+    "build"
+  ],
+  "started_at": "2026-10-17T04:34:51.986108+00:00",
+  "exit_code": 0,
+  "scope": "TypeScript and production build; overlap with functional suite only, no benchmark overlap",
+  "finished_at": "2026-10-17T04:35:05.960163+00:00"
+}

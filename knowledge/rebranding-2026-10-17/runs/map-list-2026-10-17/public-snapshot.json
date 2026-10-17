@@ -1,0 +1,471 @@
+{
+  "reports": [
+    {
+      "id": "ce12b3c7-e467-4d81-9d80-509961bda728",
+      "code": "JK2610170481",
+      "lat": -6.1888371,
+      "lng": 106.8779188,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T10:03:50.222Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "ee259eda-4636-4a2f-bccc-4ba4c958b09b",
+      "code": "JK2610170478",
+      "lat": -6.1889177,
+      "lng": 106.8779893,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:59:25.491Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "2baabddc-c1ce-4016-bbc3-d191cc9dfdac",
+      "code": "JK2610170473",
+      "lat": -6.1891197,
+      "lng": 106.8779461,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:55:05.532Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "5184689c-46b5-48fe-9a22-4c2002252779",
+      "code": "JK2610170471",
+      "lat": -6.1892923,
+      "lng": 106.8780229,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:52:53.296Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "0f519d71-1e34-4bc0-9ac6-678e7222e79d",
+      "code": "JK2610170469",
+      "lat": -6.208425175587877,
+      "lng": 106.78937269915843,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:52:22.836Z",
+      "sourceStatus": "Menunggu Persetujuan"
+    },
+    {
+      "id": "4e562d1b-7c0d-4393-b2e7-27f8671eb6da",
+      "code": "JK2610170467",
+      "lat": -6.1892977,
+      "lng": 106.877971,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:50:44.419Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "e5837f00-edee-4c53-888d-668e703748c3",
+      "code": "JK2610170464",
+      "lat": -6.1893364,
+      "lng": 106.8779327,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:48:15.350Z",
+      "sourceStatus": "Menunggu"
+    },
+    {
+      "id": "ce04104b-c40f-4a58-9e86-e1b773ab1b14",
+      "code": "JK2610170461",
+      "lat": -6.1892775,
+      "lng": 106.8779593,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:46:08.803Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "bfc6f8ac-5e63-46e1-94c0-c36b34eb2a56",
+      "code": "JK2610170459",
+      "lat": -6.1892562,
+      "lng": 106.8779781,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:43:53.689Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "a498448a-8228-4a6f-8a34-a1076f02a8a7",
+      "code": "JK2610170458",
+      "lat": -6.1892016,
+      "lng": 106.8779546,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:41:37.135Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "2af2c88c-a547-46fa-a763-1934b5aeda5d",
+      "code": "JK2610170456",
+      "lat": -6.1890372,
+      "lng": 106.8785403,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:39:29.222Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "d6a9d9e6-94e4-45a4-8dc2-6bbade330b82",
+      "code": "JK2610170454",
+      "lat": -6.1890597,
+      "lng": 106.8785296,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:37:08.143Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "1d260f1a-112d-4fbd-b521-e7e966180c33",
+      "code": "JK2610170453",
+      "lat": -6.1891008,
+      "lng": 106.8785575,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:35:03.748Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "9061ad1e-21b6-4d5d-9a12-08fa52f047b6",
+      "code": "JK2610170449",
+      "lat": -6.189258,
+      "lng": 106.8784778,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:31:25.473Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "1c76003d-5d02-4809-bd47-8ac7637c788e",
+      "code": "JK2610170442",
+      "lat": -6.1887686,
+      "lng": 106.8787626,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T09:24:02.363Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "8cb4ec61-462e-4802-8a8f-4246183605fb",
+      "code": "JK2610170378",
+      "lat": -6.1833132,
+      "lng": 106.8347224,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T07:38:00.760Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "bd9aeaa7-8dd0-4623-9367-ce829bf999ee",
+      "code": "JK2610170371",
+      "lat": -6.1593897,
+      "lng": 106.8368644,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T07:24:48.692Z",
+      "sourceStatus": "Menunggu"
+    },
+    {
+      "id": "9be7aa13-ded7-48ab-9e02-3a184ebddabe",
+      "code": "JK2610170358",
+      "lat": -6.1619618,
+      "lng": 106.8267841,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T07:13:49.437Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "76b1af6f-2ff9-4601-944e-b747c638ca5e",
+      "code": "JK2610170354",
+      "lat": -6.1597237,
+      "lng": 106.8206969,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T07:09:22.351Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "7d42dba2-99d0-41ae-939c-30248657c434",
+      "code": "JK2610170353",
+      "lat": -6.248871666666667,
+      "lng": 106.84674166666667,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T07:08:23.710Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "a41989f3-110d-4c07-8115-45966bb33513",
+      "code": "JK2610170289",
+      "lat": -6.2875143,
+      "lng": 106.842598,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T05:24:25.491Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "87db795a-0992-4d39-af65-5b60446d056b",
+      "code": "JK2610170176",
+      "lat": -6.22958,
+      "lng": 106.8979383,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-17T02:55:19.833Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "cc19d232-d8de-4e46-baf3-c36f30a5ab65",
+      "code": "JK2610160851",
+      "lat": -6.198596666666667,
+      "lng": 106.89790333333333,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T15:05:33.543Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "ff7d923b-6db0-4adf-9b66-d5566f2bdc74",
+      "code": "JK2610160844",
+      "lat": -6.2396197,
+      "lng": 106.7565613,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T14:55:27.716Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "f1899dc5-be41-4d58-b700-b17b1c08621c",
+      "code": "JK2610160828",
+      "lat": -6.1500445,
+      "lng": 106.9517049,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T14:16:38.234Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "b2964367-67a7-4937-88eb-3033eb5ee028",
+      "code": "JK2610160777",
+      "lat": -6.185875,
+      "lng": 106.73642,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T12:55:30.426Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "371a0c71-afd1-4522-adbb-6168fc6b9106",
+      "code": "JK2610160765",
+      "lat": -6.1498914,
+      "lng": 106.8818289,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T12:42:23.307Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "e547e517-95e7-456d-8109-52006ff2bba9",
+      "code": "JK2610160723",
+      "lat": -6.1704786,
+      "lng": 106.8647928,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T11:49:52.644Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "366153ac-d8c9-46d0-85f0-27bb5a641945",
+      "code": "JK2610160722",
+      "lat": -6.174661074718824,
+      "lng": 106.8927085618793,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T11:49:48.063Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "3d37efa1-1cd0-4a96-a742-175caaef9d9c",
+      "code": "JK2610160716",
+      "lat": -6.1849118,
+      "lng": 106.8440972,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T11:42:08.789Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "55b254dc-56df-4a86-bab6-0f64f6d243b0",
+      "code": "JK2610160675",
+      "lat": -6.253613333333333,
+      "lng": 106.841295,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T10:58:06.177Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "150332cf-0634-40ed-9901-98ae0a1ac30b",
+      "code": "JK2610160669",
+      "lat": -6.2393601,
+      "lng": 106.8870261,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T10:53:08.032Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "faee4429-344a-4d16-b4af-420b5396afdd",
+      "code": "JK2610160665",
+      "lat": -6.1161805,
+      "lng": 106.78211166666667,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T10:49:00.648Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "4429da94-c9cf-4c02-80ae-e0b7c05f621d",
+      "code": "JK2610160655",
+      "lat": -6.335548199722222,
+      "lng": 106.80367459972221,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T10:39:05.079Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "6642026d-fb01-400e-ba87-cfd86aebd9cc",
+      "code": "JK2610160643",
+      "lat": -6.219497,
+      "lng": 106.9236909,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T10:26:41.988Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "2b2ca070-da06-46c2-9640-8b57bbe5ee84",
+      "code": "JK2610160606",
+      "lat": -6.1745383,
+      "lng": 106.717593,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T10:03:21.435Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "83150ec0-351a-469d-974c-9d341d1ff421",
+      "code": "JK2610160574",
+      "lat": -6.1623026,
+      "lng": 106.8474245,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T09:33:32.938Z",
+      "sourceStatus": "Koordinasi"
+    },
+    {
+      "id": "6a1d7aa8-c00b-40d3-8ab6-9785d28aa846",
+      "code": "JK2610160514",
+      "lat": -6.224995,
+      "lng": 106.83959166666666,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T08:12:21.439Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "609e7b92-439e-4c9a-9985-cc8542d6b28d",
+      "code": "JK2610160495",
+      "lat": -6.223525027777778,
+      "lng": 106.83318327777778,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T07:38:07.522Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "d0afd1e7-b3d0-4731-8caf-664f7c834cb1",
+      "code": "JK2610160434",
+      "lat": -6.368478333333333,
+      "lng": 106.8938,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T06:26:00.951Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "95ae016c-4a2e-4107-a25c-a8ecb8e76479",
+      "code": "JK2610160407",
+      "lat": -6.2767102014282035,
+      "lng": 106.86141758118973,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T05:37:21.708Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "684393e3-83bb-4cea-97da-d667cfc72eaa",
+      "code": "JK2610160386",
+      "lat": -6.2840715,
+      "lng": 106.8383028,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T05:12:37.314Z",
+      "sourceStatus": "Disposisi Unit"
+    },
+    {
+      "id": "21af92cc-eab8-4c1f-a648-355ee79464c2",
+      "code": "JK2610160352",
+      "lat": -6.2854562,
+      "lng": 106.7628315,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T04:19:06.037Z",
+      "sourceStatus": "Menunggu Validasi"
+    },
+    {
+      "id": "bd2f358e-042a-4424-a0d0-4b556c215188",
+      "code": "JK2610160165",
+      "lat": -6.2790684,
+      "lng": 106.8295239,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T01:15:33.789Z",
+      "sourceStatus": "Disposisi"
+    },
+    {
+      "id": "12a0a128-91c2-41b4-9d53-8de7893adf1b",
+      "code": "JK2610160134",
+      "lat": -6.2066038,
+      "lng": 106.8890038,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T00:49:39.674Z",
+      "sourceStatus": "Selesai"
+    },
+    {
+      "id": "e84edc09-9076-41e3-83d9-6b831a2361fe",
+      "code": "JK2610160091",
+      "lat": -6.197783,
+      "lng": 106.9295539,
+      "category": "road",
+      "sourceCategory": "Jalan",
+      "createdAt": "2026-10-16T00:11:53.507Z",
+      "sourceStatus": "EWS"
+    }
+  ],
+  "source": {
+    "name": "CRM Jakarta \u00b7 JAKI",
+    "url": "https://crm.jakarta.go.id/peta/",
+    "dateStart": "2026-10-16",
+    "dateEnd": "2026-10-17",
+    "retrievedAt": "2026-10-17T10:12:41.915Z"
+  }
+}

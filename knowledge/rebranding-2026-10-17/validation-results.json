@@ -1,0 +1,33 @@
+{
+  "checked_at": "2026-10-17T04:57:46.067974+00:00",
+  "baseline_files_checked": 42,
+  "changed_application_files": [],
+  "relative_markdown_links_checked": 80,
+  "missing_links": [],
+  "json_files_parsed": 12,
+  "invalid_json": [],
+  "text_contrast": [
+    {
+      "foreground": "#142B3A",
+      "background": "#FFFFFF",
+      "ratio": 14.62
+    },
+    {
+      "foreground": "#0B5B70",
+      "background": "#FFFFFF",
+      "ratio": 7.65
+    },
+    {
+      "foreground": "#55646D",
+      "background": "#FFFFFF",
+      "ratio": 6.12
+    },
+    {
+      "foreground": "#55646D",
+      "background": "#F5F6F4",
+      "ratio": 5.65
+    }
+  ],
+  "application_tests": "not_run",
+  "reason": "Documentation and isolated design board only; application source preserved."
+}

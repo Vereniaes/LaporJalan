@@ -1,0 +1,26 @@
+[
+  {
+    "id": "brussels-map-links",
+    "links": [
+      {
+        "text": "All incidents Go to the incident list page",
+        "href": "https://fixmystreet.brussels/list"
+      },
+      {
+        "text": "Consult the map",
+        "href": "https://fixmystreet.brussels/list"
+      }
+    ]
+  },
+  {
+    "id": "brussels-incidents",
+    "url": "https://fixmystreet.brussels/list",
+    "status": 200,
+    "screenshot": "brussels-incidents-desktop.png"
+  },
+  {
+    "id": "helsinki-map-section",
+    "url": "https://palautteet.hel.fi/en/palautteet-kartalla#/app/mapsearch",
+    "screenshot": "helsinki-map-section.png"
+  }
+]

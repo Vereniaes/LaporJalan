@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (3964266 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="449551306" visible="true" version="26" changeset="183473295" timestamp="2026-06-01T01:22:59Z" user="FajrAl" uid="2649988">
+  <nd ref="8487621943"/>
+  <nd ref="4466350567"/>
+  <nd ref="8509853591"/>
+  <nd ref="8487621942"/>
+  <nd ref="8509853592"/>
+  <nd ref="8509853593"/>
+  <nd ref="8487621941"/>
+  <nd ref="186797066"/>
+  <nd ref="309666349"/>
+  <nd ref="5307668386"/>
+  <tag k="bicycle" v="use_sidepath"/>
+  <tag k="bus:lanes" v="yes|yes|yes|designated"/>
+  <tag k="cycleway:left" v="separate"/>
+  <tag k="cycleway:right" v="no"/>
+  <tag k="highway" v="primary"/>
+  <tag k="lanes" v="4"/>
+  <tag k="motorcycle" v="yes"/>
+  <tag k="name" v="Jalan Jenderal Sudirman"/>
+  <tag k="name:etymology:wikidata" v="Q2367329"/>
+  <tag k="name:etymology:wikipedia" v="id:Soedirman"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="sidewalk:left" v="separate"/>
+  <tag k="smoothness" v="good"/>
+  <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  <tag k="surface" v="asphalt"/>
+  <tag k="width" v="5"/>
+ </way>
+</osm>

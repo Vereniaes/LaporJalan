@@ -1,0 +1,92 @@
+[
+  {
+    "function": "getParameter",
+    "url": "",
+    "line": 0,
+    "samples": 3364
+  },
+  {
+    "function": "(idle)",
+    "url": "",
+    "line": 0,
+    "samples": 401
+  },
+  {
+    "function": "(program)",
+    "url": "",
+    "line": 0,
+    "samples": 125
+  },
+  {
+    "function": "render",
+    "url": "http://127.0.0.1:3002/src/map/DamageLayer.ts?t=1792127244825",
+    "line": 87,
+    "samples": 22
+  },
+  {
+    "function": "coveringTiles",
+    "url": "http://127.0.0.1:3002/node_modules/.vite/deps/maplibre-gl.js?v=f9908193",
+    "line": 14361,
+    "samples": 13
+  },
+  {
+    "function": "intersects",
+    "url": "http://127.0.0.1:3002/node_modules/.vite/deps/maplibre-gl.js?v=f9908193",
+    "line": 14194,
+    "samples": 12
+  },
+  {
+    "function": "(garbage collector)",
+    "url": "",
+    "line": 0,
+    "samples": 11
+  },
+  {
+    "function": "gl.getParameter",
+    "url": "",
+    "line": 6,
+    "samples": 10
+  },
+  {
+    "function": "_updateLoadedParentTileCache",
+    "url": "http://127.0.0.1:3002/node_modules/.vite/deps/maplibre-gl.js?v=f9908193",
+    "line": 11105,
+    "samples": 8
+  },
+  {
+    "function": "coveringTiles",
+    "url": "http://127.0.0.1:3002/node_modules/.vite/deps/maplibre-gl.js?v=f9908193",
+    "line": 14361,
+    "samples": 7
+  },
+  {
+    "function": "easeTo",
+    "url": "http://127.0.0.1:3002/node_modules/.vite/deps/maplibre-gl.js?v=f9908193",
+    "line": 15805,
+    "samples": 7
+  },
+  {
+    "function": "uniformMatrix4fv",
+    "url": "",
+    "line": 0,
+    "samples": 7
+  },
+  {
+    "function": "calculatePosMatrix",
+    "url": "http://127.0.0.1:3002/node_modules/.vite/deps/maplibre-gl.js?v=f9908193",
+    "line": 14474,
+    "samples": 7
+  },
+  {
+    "function": "renderLayer",
+    "url": "http://127.0.0.1:3002/node_modules/.vite/deps/maplibre-gl.js?v=f9908193",
+    "line": 13904,
+    "samples": 6
+  },
+  {
+    "function": "calculatePosMatrix",
+    "url": "http://127.0.0.1:3002/node_modules/.vite/deps/maplibre-gl.js?v=f9908193",
+    "line": 14474,
+    "samples": 5
+  }
+]

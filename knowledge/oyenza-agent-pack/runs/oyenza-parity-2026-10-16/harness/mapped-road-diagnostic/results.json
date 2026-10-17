@@ -1,0 +1,292 @@
+{
+  "config": {
+    "argv": [
+      "/usr/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/mapped-road.browser.spec.ts",
+      "--project=desktop",
+      "--project=mobile"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "mapped-road.browser.spec.ts",
+      "file": "mapped-road.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G03 G04 mapped road integration keeps synthetic damage at the verified map anchor",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 26459,
+                  "error": {
+                    "message": "Error: Bearing 0 must reach its pose and render a newer cavity frame\n\nBearing 0 must reach its pose and render a newer cavity frame\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                    "stack": "Error: Bearing 0 must reach its pose and render a newer cavity frame\n\nBearing 0 must reach its pose and render a newer cavity frame\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts:30:113",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts",
+                      "column": 113,
+                      "line": 30
+                    },
+                    "snippet": "  28 |         const difference = Math.abs(((current!.bearing - bearing + 540) % 360) - 180);\n  29 |         return difference < 0.001 && (current?.inspection?.renderCount ?? 0) > before!.inspection!.renderCount;\n> 30 |       }, { timeout: 10000, message: `Bearing ${bearing} must reach its pose and render a newer cavity frame` }).toBe(true);\n     |                                                                                                                 ^\n  31 |     } finally {\n  32 |       await info.attach(`after-bearing-${bearing}`, { body: JSON.stringify({\n  33 |         state: await mapState(page),"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts",
+                        "column": 113,
+                        "line": 30
+                      },
+                      "message": "Error: Bearing 0 must reach its pose and render a newer cavity frame\n\nBearing 0 must reach its pose and render a newer cavity frame\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  28 |         const difference = Math.abs(((current!.bearing - bearing + 540) % 360) - 180);\n  29 |         return difference < 0.001 && (current?.inspection?.renderCount ?? 0) > before!.inspection!.renderCount;\n> 30 |       }, { timeout: 10000, message: `Bearing ${bearing} must reach its pose and render a newer cavity frame` }).toBe(true);\n     |                                                                                                                 ^\n  31 |     } finally {\n  32 |       await info.attach(`after-bearing-${bearing}`, { body: JSON.stringify({\n  33 |         state: await mapState(page),\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts:30:113"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:37:24.746Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "before-bearing-0",
+                      "contentType": "application/json",
+                      "body": "ewogICJwaXRjaCI6IDYwLAogICJiZWFyaW5nIjogLTE3LjAwMDAwMDAwMDAwMDAwNCwKICAiem9vbSI6IDI1LjUsCiAgImluc3BlY3Rpb24iOiB7CiAgICAiYW5jaG9yIjogWwogICAgICAxMDYuODIzMjA5NSwKICAgICAgLTYuMTk2NTYyCiAgICBdLAogICAgIndpZHRoTSI6IDAuNTIsCiAgICAiZGVwdGhNIjogMC4wNzUsCiAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICJ2ZXJ0ZXhDb3VudCI6IDEyODEsCiAgICAgICJtaW5aIjogLTAuMDc1MDAwMDAyOTgwMjMyMjQsCiAgICAgICJtYXhaIjogMCwKICAgICAgInN1cHBvcnREaWFtZXRlck0iOiAwLjUxOTk5OTk4MDkyNjUxMzcKICAgIH0sCiAgICAicmVuZGVyQ291bnQiOiA5LAogICAgInJlc291cmNlcyI6IHsKICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAibWF0ZXJpYWxzIjogNiwKICAgICAgInRleHR1cmVzIjogMCwKICAgICAgInByb2dyYW1zIjogNAogICAgfSwKICAgICJkZXB0aFJhbmdlQmVmb3JlIjogWwogICAgICAwLAogICAgICAwLjk4NTkwMDg3ODkwNjI1CiAgICBdLAogICAgImRlcHRoUmFuZ2VBZnRlciI6IFsKICAgICAgMCwKICAgICAgMC45ODU5MDA4Nzg5MDYyNQogICAgXSwKICAgICJwcm9qZWN0ZWRBbmNob3JDc3MiOiBbCiAgICAgIDUyMC4wMDAwMDMyMjE1MDkxLAogICAgICA1MjQuOTk5OTkxNzUyNjI2OQogICAgXSwKICAgICJkaXNwb3NlZCI6IGZhbHNlLAogICAgImNhbnZhc1NoYXJlZCI6IHRydWUsCiAgICAid2ViZ2wyIjogdHJ1ZQogIH0sCiAgIm1vdmluZyI6IGZhbHNlLAogICJzdHlsZVJlYWR5IjogdHJ1ZSwKICAiY2VudGVyIjogWwogICAgMTA2LjgyMzIwODkwNzIxODcxLAogICAgLTYuMTk2NTYwMDcyNDI3OTI4CiAgXSwKICAibGF5ZXJzIjogWwogICAgewogICAgICAiaWQiOiAiYmFja2dyb3VuZCIsCiAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicGFyayIsCiAgICAgICJ0eXBlIjogImZpbGwiCiAgICB9LAogICAgewogICAgICAiaWQiOiAid2F0ZXIiLAogICAgICAidHlwZSI6ICJmaWxsIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImxhbmRjb3Zlcl9pY2Vfc2hlbGYiLAogICAgICAidHlwZSI6ICJmaWxsIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImxhbmRjb3Zlcl9nbGFjaWVyIiwKICAgICAgInR5cGUiOiAiZmlsbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYW5kdXNlX3Jlc2lkZW50aWFsIiwKICAgICAgInR5cGUiOiAiZmlsbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYW5kY292ZXJfd29vZCIsCiAgICAgICJ0eXBlIjogImZpbGwiCiAgICB9LAogICAgewogICAgICAiaWQiOiAid2F0ZXJ3YXkiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJ1aWxkaW5nIiwKICAgICAgInR5cGUiOiAiZmlsbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJ0dW5uZWxfbW90b3J3YXlfY2FzaW5nIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJ0dW5uZWxfbW90b3J3YXlfaW5uZXIiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImFlcm93YXktdGF4aXdheSIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYWVyb3dheS1ydW53YXktY2FzaW5nIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJhZXJvd2F5LWFyZWEiLAogICAgICAidHlwZSI6ICJmaWxsIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImFlcm93YXktcnVud2F5IiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyb2FkX2FyZWFfcGllciIsCiAgICAgICJ0eXBlIjogImZpbGwiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicm9hZF9waWVyIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5X3BhdGgiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXlfbWlub3IiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXlfbWFqb3JfY2FzaW5nIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX2lubmVyIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX3N1YnRsZSIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9jYXNpbmciLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfaW5uZXIiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfc3VidGxlIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyYWlsd2F5X3RyYW5zaXQiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJhaWx3YXlfdHJhbnNpdF9kYXNobGluZSIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicmFpbHdheV9zZXJ2aWNlIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyYWlsd2F5X3NlcnZpY2VfZGFzaGxpbmUiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJhaWx3YXkiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJhaWx3YXlfZGFzaGxpbmUiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfYnJpZGdlX2Nhc2luZyIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9icmlkZ2VfaW5uZXIiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvdW5kYXJ5XzMiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvdW5kYXJ5XzIiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvdW5kYXJ5X2Rpc3B1dGVkIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJ3YXRlcndheV9saW5lX2xhYmVsIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIndhdGVyX25hbWVfcG9pbnRfbGFiZWwiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAid2F0ZXJfbmFtZV9saW5lX2xhYmVsIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXktbmFtZS1wYXRoIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXktbmFtZS1taW5vciIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWFqb3IiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiaGlnaHdheS1zaGllbGQtbm9uLXVzIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXktc2hpZWxkLXVzLWludGVyc3RhdGUiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicm9hZF9zaGllbGRfdXMiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYWlycG9ydCIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYWJlbF9vdGhlciIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYWJlbF92aWxsYWdlIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImxhYmVsX3Rvd24iLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFiZWxfc3RhdGUiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFiZWxfY2l0eSIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYWJlbF9jaXR5X2NhcGl0YWwiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFiZWxfY291bnRyeV8zIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMiIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYWJlbF9jb3VudHJ5XzEiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgInR5cGUiOiAiZmlsbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICJ0eXBlIjogImZpbGwiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfQogIF0KfQ=="
+                    },
+                    {
+                      "name": "after-bearing-0",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0ZSI6IHsKICAgICJwaXRjaCI6IDYwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAyNS41LAogICAgImluc3BlY3Rpb24iOiB7CiAgICAgICJhbmNob3IiOiBbCiAgICAgICAgMTA2LjgyMzIwOTUsCiAgICAgICAgLTYuMTk2NTYyCiAgICAgIF0sCiAgICAgICJ3aWR0aE0iOiAwLjUyLAogICAgICAiZGVwdGhNIjogMC4wNzUsCiAgICAgICJnZW9tZXRyeSI6IHsKICAgICAgICAidmVydGV4Q291bnQiOiAxMjgxLAogICAgICAgICJtaW5aIjogLTAuMDc1MDAwMDAyOTgwMjMyMjQsCiAgICAgICAgIm1heFoiOiAwLAogICAgICAgICJzdXBwb3J0RGlhbWV0ZXJNIjogMC41MTk5OTk5ODA5MjY1MTM3CiAgICAgIH0sCiAgICAgICJyZW5kZXJDb3VudCI6IDksCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAiZGVwdGhSYW5nZUJlZm9yZSI6IFsKICAgICAgICAwLAogICAgICAgIDAuOTg1OTAwODc4OTA2MjUKICAgICAgXSwKICAgICAgImRlcHRoUmFuZ2VBZnRlciI6IFsKICAgICAgICAwLAogICAgICAgIDAuOTg1OTAwODc4OTA2MjUKICAgICAgXSwKICAgICAgInByb2plY3RlZEFuY2hvckNzcyI6IFsKICAgICAgICA1MjAuMDAwMDAzMjIxNTA5MSwKICAgICAgICA1MjQuOTk5OTkxNzUyNjI2OQogICAgICBdLAogICAgICAiZGlzcG9zZWQiOiBmYWxzZSwKICAgICAgImNhbnZhc1NoYXJlZCI6IHRydWUsCiAgICAgICJ3ZWJnbDIiOiB0cnVlCiAgICB9LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwODkwNzIxODcxLAogICAgICAtNi4xOTY1NjAwNzI0Mjc5MjgKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicGFyayIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlciIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kY292ZXJfaWNlX3NoZWxmIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlcl9nbGFjaWVyIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmR1c2VfcmVzaWRlbnRpYWwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyX3dvb2QiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJ3YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnVpbGRpbmciLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsX21vdG9yd2F5X2Nhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0dW5uZWxfbW90b3J3YXlfaW5uZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS10YXhpd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktcnVud2F5LWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LWFyZWEiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS1ydW53YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9hcmVhX3BpZXIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9waWVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfcGF0aCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21pbm9yIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbWFqb3JfY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbWFqb3JfaW5uZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tYWpvcl9zdWJ0bGUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9pbm5lciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X3N1YnRsZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5X3RyYW5zaXQiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV90cmFuc2l0X2Rhc2hsaW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXlfc2VydmljZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5X3NlcnZpY2VfZGFzaGxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5X2Rhc2hsaW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfYnJpZGdlX2Nhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X2JyaWRnZV9pbm5lciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJib3VuZGFyeV8zIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJvdW5kYXJ5XzIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYm91bmRhcnlfZGlzcHV0ZWQiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJ3YXlfbGluZV9sYWJlbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyX25hbWVfcG9pbnRfbGFiZWwiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcl9uYW1lX2xpbmVfbGFiZWwiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtcGF0aCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbmFtZS1taW5vciIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbmFtZS1tYWpvciIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktc2hpZWxkLW5vbi11cyIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktc2hpZWxkLXVzLWludGVyc3RhdGUiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkX3NoaWVsZF91cyIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFpcnBvcnQiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9vdGhlciIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX3ZpbGxhZ2UiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF90b3duIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfc3RhdGUiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jaXR5IiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfY2l0eV9jYXBpdGFsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfY291bnRyeV8zIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfY291bnRyeV8yIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfY291bnRyeV8xIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfQogICAgXQogIH0sCiAgInJlbmRlcmVyIjogewogICAgInJlbW92ZWQiOiBmYWxzZSwKICAgICJmcmFtZVBlbmRpbmciOiBmYWxzZSwKICAgICJjb250ZXh0TG9zdCI6IGZhbHNlLAogICAgImNhbnZhcyI6IFsKICAgICAgMTA0MCwKICAgICAgOTAwCiAgICBdCiAgfQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts",
+                    "column": 113,
+                    "line": 30
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4d790c48ace58a4e9239-40f4f341f66ba83b473d",
+          "file": "mapped-road.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "G03 G04 mapped road integration keeps synthetic damage at the verified map anchor",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16036,
+                  "error": {
+                    "message": "Error: Bearing 0 must reach its pose and render a newer cavity frame\n\nBearing 0 must reach its pose and render a newer cavity frame\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                    "stack": "Error: Bearing 0 must reach its pose and render a newer cavity frame\n\nBearing 0 must reach its pose and render a newer cavity frame\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts:30:113",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts",
+                      "column": 113,
+                      "line": 30
+                    },
+                    "snippet": "  28 |         const difference = Math.abs(((current!.bearing - bearing + 540) % 360) - 180);\n  29 |         return difference < 0.001 && (current?.inspection?.renderCount ?? 0) > before!.inspection!.renderCount;\n> 30 |       }, { timeout: 10000, message: `Bearing ${bearing} must reach its pose and render a newer cavity frame` }).toBe(true);\n     |                                                                                                                 ^\n  31 |     } finally {\n  32 |       await info.attach(`after-bearing-${bearing}`, { body: JSON.stringify({\n  33 |         state: await mapState(page),"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts",
+                        "column": 113,
+                        "line": 30
+                      },
+                      "message": "Error: Bearing 0 must reach its pose and render a newer cavity frame\n\nBearing 0 must reach its pose and render a newer cavity frame\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  28 |         const difference = Math.abs(((current!.bearing - bearing + 540) % 360) - 180);\n  29 |         return difference < 0.001 && (current?.inspection?.renderCount ?? 0) > before!.inspection!.renderCount;\n> 30 |       }, { timeout: 10000, message: `Bearing ${bearing} must reach its pose and render a newer cavity frame` }).toBe(true);\n     |                                                                                                                 ^\n  31 |     } finally {\n  32 |       await info.attach(`after-bearing-${bearing}`, { body: JSON.stringify({\n  33 |         state: await mapState(page),\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts:30:113"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:37:53.098Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "before-bearing-0",
+                      "contentType": "application/json",
+                      "body": "ewogICJwaXRjaCI6IDYwLAogICJiZWFyaW5nIjogLTE3LjAwMDAwMDAwMDAwMDAwNCwKICAiem9vbSI6IDI0Ljk5OTk5OTgzMDUwMDg4LAogICJpbnNwZWN0aW9uIjogewogICAgImFuY2hvciI6IFsKICAgICAgMTA2LjgyMzIwOTUsCiAgICAgIC02LjE5NjU2MgogICAgXSwKICAgICJ3aWR0aE0iOiAwLjUyLAogICAgImRlcHRoTSI6IDAuMDc1LAogICAgImdlb21ldHJ5IjogewogICAgICAidmVydGV4Q291bnQiOiAxMjgxLAogICAgICAibWluWiI6IC0wLjA3NTAwMDAwMjk4MDIzMjI0LAogICAgICAibWF4WiI6IDAsCiAgICAgICJzdXBwb3J0RGlhbWV0ZXJNIjogMC41MTk5OTk5ODA5MjY1MTM3CiAgICB9LAogICAgInJlbmRlckNvdW50IjogMTUsCiAgICAicmVzb3VyY2VzIjogewogICAgICAiZ2VvbWV0cmllcyI6IDUsCiAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAidGV4dHVyZXMiOiAwLAogICAgICAicHJvZ3JhbXMiOiA0CiAgICB9LAogICAgImRlcHRoUmFuZ2VCZWZvcmUiOiBbCiAgICAgIDAsCiAgICAgIDAuOTg1OTAwODc4OTA2MjUKICAgIF0sCiAgICAiZGVwdGhSYW5nZUFmdGVyIjogWwogICAgICAwLAogICAgICAwLjk4NTkwMDg3ODkwNjI1CiAgICBdLAogICAgInByb2plY3RlZEFuY2hvckNzcyI6IFsKICAgICAgMTk1LjAwMDAxNDI1Mjk3MjQ4LAogICAgICAzMDcuMDk5OTg4Njg1MDAwMzcKICAgIF0sCiAgICAiZGlzcG9zZWQiOiBmYWxzZSwKICAgICJjYW52YXNTaGFyZWQiOiB0cnVlLAogICAgIndlYmdsMiI6IHRydWUKICB9LAogICJtb3ZpbmciOiBmYWxzZSwKICAic3R5bGVSZWFkeSI6IHRydWUsCiAgImNlbnRlciI6IFsKICAgIDEwNi44MjMyMDg2NjY1MzQ1OCwKICAgIC02LjE5NjU1OTI4OTc4NjAwOQogIF0sCiAgImxheWVycyI6IFsKICAgIHsKICAgICAgImlkIjogImJhY2tncm91bmQiLAogICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInBhcmsiLAogICAgICAidHlwZSI6ICJmaWxsIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIndhdGVyIiwKICAgICAgInR5cGUiOiAiZmlsbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYW5kY292ZXJfaWNlX3NoZWxmIiwKICAgICAgInR5cGUiOiAiZmlsbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYW5kY292ZXJfZ2xhY2llciIsCiAgICAgICJ0eXBlIjogImZpbGwiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFuZHVzZV9yZXNpZGVudGlhbCIsCiAgICAgICJ0eXBlIjogImZpbGwiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFuZGNvdmVyX3dvb2QiLAogICAgICAidHlwZSI6ICJmaWxsIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIndhdGVyd2F5IiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJidWlsZGluZyIsCiAgICAgICJ0eXBlIjogImZpbGwiCiAgICB9LAogICAgewogICAgICAiaWQiOiAidHVubmVsX21vdG9yd2F5X2Nhc2luZyIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAidHVubmVsX21vdG9yd2F5X2lubmVyIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJhZXJvd2F5LXRheGl3YXkiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImFlcm93YXktcnVud2F5LWNhc2luZyIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYWVyb3dheS1hcmVhIiwKICAgICAgInR5cGUiOiAiZmlsbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJhZXJvd2F5LXJ1bndheSIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicm9hZF9hcmVhX3BpZXIiLAogICAgICAidHlwZSI6ICJmaWxsIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJvYWRfcGllciIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiaGlnaHdheV9wYXRoIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5X21pbm9yIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX2Nhc2luZyIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiaGlnaHdheV9tYWpvcl9pbm5lciIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiaGlnaHdheV9tYWpvcl9zdWJ0bGUiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfY2FzaW5nIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X2lubmVyIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X3N1YnRsZSIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicmFpbHdheV90cmFuc2l0IiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyYWlsd2F5X3RyYW5zaXRfZGFzaGxpbmUiLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJhaWx3YXlfc2VydmljZSIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicmFpbHdheV9zZXJ2aWNlX2Rhc2hsaW5lIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyYWlsd2F5IiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyYWlsd2F5X2Rhc2hsaW5lIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X2JyaWRnZV9jYXNpbmciLAogICAgICAidHlwZSI6ICJsaW5lIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfYnJpZGdlX2lubmVyIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJib3VuZGFyeV8zIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJib3VuZGFyeV8yIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJib3VuZGFyeV9kaXNwdXRlZCIsCiAgICAgICJ0eXBlIjogImxpbmUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAid2F0ZXJ3YXlfbGluZV9sYWJlbCIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJ3YXRlcl9uYW1lX3BvaW50X2xhYmVsIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIndhdGVyX25hbWVfbGluZV9sYWJlbCIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtcGF0aCIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWlub3IiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLW1ham9yIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImhpZ2h3YXktc2hpZWxkLW5vbi11cyIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC11cy1pbnRlcnN0YXRlIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJvYWRfc2hpZWxkX3VzIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImFpcnBvcnQiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFiZWxfb3RoZXIiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFiZWxfdmlsbGFnZSIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYWJlbF90b3duIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImxhYmVsX3N0YXRlIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImxhYmVsX2NpdHkiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFiZWxfY2l0eV9jYXBpdGFsIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMyIsCiAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJsYWJlbF9jb3VudHJ5XzIiLAogICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICB9LAogICAgewogICAgICAiaWQiOiAibGFiZWxfY291bnRyeV8xIiwKICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICJ0eXBlIjogImZpbGwiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICB9LAogICAgewogICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAidHlwZSI6ICJmaWxsIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgInR5cGUiOiAibGluZSIKICAgIH0KICBdCn0="
+                    },
+                    {
+                      "name": "after-bearing-0",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0ZSI6IHsKICAgICJwaXRjaCI6IDYwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAyNC45OTk5OTk4MzA1MDA4OCwKICAgICJpbnNwZWN0aW9uIjogewogICAgICAiYW5jaG9yIjogWwogICAgICAgIDEwNi44MjMyMDk1LAogICAgICAgIC02LjE5NjU2MgogICAgICBdLAogICAgICAid2lkdGhNIjogMC41MiwKICAgICAgImRlcHRoTSI6IDAuMDc1LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgInZlcnRleENvdW50IjogMTI4MSwKICAgICAgICAibWluWiI6IC0wLjA3NTAwMDAwMjk4MDIzMjI0LAogICAgICAgICJtYXhaIjogMCwKICAgICAgICAic3VwcG9ydERpYW1ldGVyTSI6IDAuNTE5OTk5OTgwOTI2NTEzNwogICAgICB9LAogICAgICAicmVuZGVyQ291bnQiOiAxNSwKICAgICAgInJlc291cmNlcyI6IHsKICAgICAgICAiZ2VvbWV0cmllcyI6IDUsCiAgICAgICAgIm1hdGVyaWFscyI6IDYsCiAgICAgICAgInRleHR1cmVzIjogMCwKICAgICAgICAicHJvZ3JhbXMiOiA0CiAgICAgIH0sCiAgICAgICJkZXB0aFJhbmdlQmVmb3JlIjogWwogICAgICAgIDAsCiAgICAgICAgMC45ODU5MDA4Nzg5MDYyNQogICAgICBdLAogICAgICAiZGVwdGhSYW5nZUFmdGVyIjogWwogICAgICAgIDAsCiAgICAgICAgMC45ODU5MDA4Nzg5MDYyNQogICAgICBdLAogICAgICAicHJvamVjdGVkQW5jaG9yQ3NzIjogWwogICAgICAgIDE5NS4wMDAwMTQyNTI5NzI0OCwKICAgICAgICAzMDcuMDk5OTg4Njg1MDAwMzcKICAgICAgXSwKICAgICAgImRpc3Bvc2VkIjogZmFsc2UsCiAgICAgICJjYW52YXNTaGFyZWQiOiB0cnVlLAogICAgICAid2ViZ2wyIjogdHJ1ZQogICAgfSwKICAgICJtb3ZpbmciOiBmYWxzZSwKICAgICJzdHlsZVJlYWR5IjogdHJ1ZSwKICAgICJjZW50ZXIiOiBbCiAgICAgIDEwNi44MjMyMDg2NjY1MzQ1OCwKICAgICAgLTYuMTk2NTU5Mjg5Nzg2MDA5CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJiYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInBhcmsiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyX2ljZV9zaGVsZiIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kY292ZXJfZ2xhY2llciIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kdXNlX3Jlc2lkZW50aWFsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlcl93b29kIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJ1aWxkaW5nIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbF9tb3RvcndheV9jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsX21vdG9yd2F5X2lubmVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktdGF4aXdheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LXJ1bndheS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS1hcmVhIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktcnVud2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfYXJlYV9waWVyIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfcGllciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X3BhdGgiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9taW5vciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX2Nhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX2lubmVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbWFqb3Jfc3VidGxlIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfaW5uZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9zdWJ0bGUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV90cmFuc2l0IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXlfdHJhbnNpdF9kYXNobGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5X3NlcnZpY2UiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV9zZXJ2aWNlX2Rhc2hsaW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV9kYXNobGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X2JyaWRnZV9jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9icmlkZ2VfaW5uZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYm91bmRhcnlfMyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJib3VuZGFyeV8yIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJvdW5kYXJ5X2Rpc3B1dGVkIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5X2xpbmVfbGFiZWwiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcl9uYW1lX3BvaW50X2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJfbmFtZV9saW5lX2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLXBhdGgiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWlub3IiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWFqb3IiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC1ub24tdXMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC11cy1pbnRlcnN0YXRlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9zaGllbGRfdXMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhaXJwb3J0IiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfb3RoZXIiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF92aWxsYWdlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfdG93biIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX3N0YXRlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfY2l0eSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NpdHlfY2FwaXRhbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMyIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMiIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJyZW5kZXJlciI6IHsKICAgICJyZW1vdmVkIjogZmFsc2UsCiAgICAiZnJhbWVQZW5kaW5nIjogZmFsc2UsCiAgICAiY29udGV4dExvc3QiOiBmYWxzZSwKICAgICJjYW52YXMiOiBbCiAgICAgIDM5MCwKICAgICAgODQ0CiAgICBdCiAgfQp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/mapped-road-diagnostic/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/mapped-road.browser.spec.ts",
+                    "column": 113,
+                    "line": 30
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4d790c48ace58a4e9239-46449ef519b46393be24",
+          "file": "mapped-road.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T11:37:24.159Z",
+    "duration": 44141.174,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

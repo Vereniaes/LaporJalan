@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-10-16T21:57:58.064969+00:00",
+  "finished_at": "2026-10-16T22:22:55.163450+00:00",
+  "exit_code": 0,
+  "command": [
+    "node",
+    "tests/performance.mjs",
+    "--run"
+  ]
+}

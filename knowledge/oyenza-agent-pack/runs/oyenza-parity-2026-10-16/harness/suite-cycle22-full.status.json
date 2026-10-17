@@ -1,0 +1,12 @@
+{
+  "started_at": "2026-10-16T21:47:53.164425+00:00",
+  "finished_at": "2026-10-16T21:54:14.606482+00:00",
+  "command": [
+    "node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--grep-invert",
+    "U03"
+  ],
+  "exit_code": 0
+}

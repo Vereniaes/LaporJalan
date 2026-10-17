@@ -1,0 +1,1122 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--project=unit",
+      "--project=desktop",
+      "--project=mobile",
+      "--grep-invert",
+      "M01"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "dimensions.unit.spec.ts",
+      "file": "dimensions.unit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "D01 centimeter values retain physical scale",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "unit",
+              "projectName": "unit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:15.630Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/dimensions.unit-D01-centimeter-values-retain-physical-scale-unit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7c8bab0a632dddd6ae17-fb100797483e8dac6d0a",
+          "file": "dimensions.unit.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "D02 missing, negative and nonfinite values never become invented dimensions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "unit",
+              "projectName": "unit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:15.696Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/dimensions.unit-D02-missin-5008b--become-invented-dimensions-unit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7c8bab0a632dddd6ae17-a6a3dacf0bf78e0519df",
+          "file": "dimensions.unit.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "D02 zero depth is preserved and zero width is unsupported",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "unit",
+              "projectName": "unit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:15.746Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/dimensions.unit-D02-zero-d-910d7-d-zero-width-is-unsupported-unit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7c8bab0a632dddd6ae17-a7ac5eafb1fff57e9d6a",
+          "file": "dimensions.unit.spec.ts",
+          "line": 21,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fixture.unit.spec.ts",
+      "file": "fixture.unit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "B01 fixed fixture keeps missing dimensions unknown",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "unit",
+              "projectName": "unit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:15.764Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/fixture.unit-B01-fixed-fix-46e8a--missing-dimensions-unknown-unit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5b906db200fdb51e76eb-608ddddc8fbe2eb3ffb3",
+          "file": "fixture.unit.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "parity.browser.spec.ts",
+      "file": "parity.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "B03 deterministic baseline screenshot",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3391,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:16.095Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "baseline-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA1NiwKICAgICJiZWFyaW5nIjogLTEyLAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMDA0LAogICAgICAtNi4xOTY1MDAwMDAwMDAwMTQ2CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJmaXh0dXJlLWJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfQogICAgXQogIH0sCiAgInRvZ2dsZSI6ICJ0cnVlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-B03-deterministic-baseline-screenshot-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-ad93e9e181e35a68d0b0",
+          "file": "parity.browser.spec.ts",
+          "line": 23,
+          "column": 1
+        },
+        {
+          "title": "C01 report selection preserves manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4575,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:19.654Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "before-selection-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMjc3LAogICAgICAtNi4xOTY0OTk5OTk5OTk3MwogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAiZmFsc2UiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "after-selection-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyNDAwMDAwMDAwMDA3LAogICAgICAtNi4xOTY1MDAwMDAwMDAwMTQ2CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJmaXh0dXJlLWJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfQogICAgXQogIH0sCiAgInRvZ2dsZSI6ICJmYWxzZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C01-report-selection-preserves-manual-2D-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-115ef9551d10e89c72d1",
+          "file": "parity.browser.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "C01 search preserves manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4159,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:24.539Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-search-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMjc3LAogICAgICAtNi4xOTY0OTk5OTk5OTk3MwogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAiZmFsc2UiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C01-search-preserves-manual-2D-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-ca32a99a0a4bc5f38d5d",
+          "file": "parity.browser.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "B03 live-integration map screenshot",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4214,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:28.969Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-map-baseline-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA1NiwKICAgICJiZWFyaW5nIjogLTEyLAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMDA0LAogICAgICAtNi4xOTY1MDAwMDAwMDAwMTQ2CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJiYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlci1nbGFjaWVyIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmR1c2UtcmVzaWRlbnRpYWwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZHVzZS1zdWJ1cmIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZHVzZS1jb21tZXJjaWFsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmR1c2UtaW5kdXN0cmlhbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kdXNlLWNlbWV0ZXJ5IiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmR1c2UtaG9zcGl0YWwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZHVzZS1zY2hvb2wiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZHVzZS1yYWlsd2F5IiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInBhcmsiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyLXdvb2QiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyLWdyYXNzIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlci1ncmFzcy1wYXJrIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5X3R1bm5lbCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcndheS1vdGhlciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcndheS1vdGhlci1pbnRlcm1pdHRlbnQiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJ3YXktc3RyZWFtLWNhbmFsIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5LXN0cmVhbS1jYW5hbC1pbnRlcm1pdHRlbnQiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJ3YXktcml2ZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJ3YXktcml2ZXItaW50ZXJtaXR0ZW50IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyLWludGVybWl0dGVudCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kY292ZXItaWNlLXNoZWxmIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlci1zYW5kIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJ1aWxkaW5nIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJ1aWxkaW5nLXRvcCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0dW5uZWwtc2VydmljZS10cmFjay1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLW1vdG9yd2F5LWxpbmstY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1taW5vci1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLWxpbmstY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1zZWNvbmRhcnktdGVydGlhcnktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC10cnVuay1wcmltYXJ5LWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0dW5uZWwtbW90b3J3YXktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1wYXRoIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1tb3RvcndheS1saW5rIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1zZXJ2aWNlLXRyYWNrIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1saW5rIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1taW5vciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0dW5uZWwtc2Vjb25kYXJ5LXRlcnRpYXJ5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC10cnVuay1wcmltYXJ5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1tb3RvcndheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0dW5uZWwtcmFpbHdheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJmZXJyeSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LXRheGl3YXktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktcnVud2F5LWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LWFyZWEiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS10YXhpd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktcnVud2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfYXJlYV9waWVyIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfcGllciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LWFyZWEiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1tb3RvcndheS1saW5rLWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LWxpbmstY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbWlub3ItY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktc2Vjb25kYXJ5LXRlcnRpYXJ5LWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXByaW1hcnktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktdHJ1bmstY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbW90b3J3YXktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktcGF0aCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW1vdG9yd2F5LWxpbmsiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1saW5rIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbWlub3IiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1zZWNvbmRhcnktdGVydGlhcnkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1wcmltYXJ5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktdHJ1bmsiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1tb3RvcndheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5LXRyYW5zaXQiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheS10cmFuc2l0LWhhdGNoaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXktc2VydmljZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5LXNlcnZpY2UtaGF0Y2hpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5LWhhdGNoaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJyaWRnZS1tb3RvcndheS1saW5rLWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtbGluay1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLXNlY29uZGFyeS10ZXJ0aWFyeS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLXRydW5rLXByaW1hcnktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJyaWRnZS1tb3RvcndheS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLW1pbm9yLWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtcGF0aC1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLXBhdGgiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLW1vdG9yd2F5LWxpbmsiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLWxpbmsiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLW1pbm9yIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJyaWRnZS1zZWNvbmRhcnktdGVydGlhcnkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLXRydW5rLXByaW1hcnkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLW1vdG9yd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJyaWRnZS1yYWlsd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJyaWRnZS1yYWlsd2F5LWhhdGNoaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNhYmxlY2FyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNhYmxlY2FyLWRhc2giLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYm91bmRhcnlfMyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJib3VuZGFyeV8yIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJvdW5kYXJ5X2Rpc3B1dGVkIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfb25ld2F5IiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9vbmV3YXlfb3Bwb3NpdGUiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcndheV9saW5lX2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJfbmFtZV9wb2ludF9sYWJlbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyX25hbWVfbGluZV9sYWJlbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInBvaV9yMjAiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJwb2lfcjciLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJwb2lfcjEiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJwb2lfdHJhbnNpdCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbmFtZS1wYXRoIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLW1pbm9yIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLW1ham9yIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1zaGllbGQtbm9uLXVzIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1zaGllbGQtdXMtaW50ZXJzdGF0ZSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfc2hpZWxkX3VzIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWlycG9ydCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX290aGVyIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfdmlsbGFnZSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX3Rvd24iLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9zdGF0ZSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NpdHkiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jaXR5X2NhcGl0YWwiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jb3VudHJ5XzMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jb3VudHJ5XzIiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jb3VudHJ5XzEiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogInRydWUiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-B03-live-integration-map-screenshot-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-aac416c61b2a32700018",
+          "file": "parity.browser.spec.ts",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "C02 reset preserves manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4279,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:33.465Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reset-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxNS4yLAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMDA0LAogICAgICAtNi4xOTY1MDAwMDAwMDAwMTQ2CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJmaXh0dXJlLWJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfQogICAgXQogIH0sCiAgInRvZ2dsZSI6ICJmYWxzZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C02-reset-preserves-manual-2D-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-d901040ed5e9206b2b92",
+          "file": "parity.browser.spec.ts",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "C03 explicit inspection exits to previous 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5313,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:38.024Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "exit-inspection-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxOS4yLAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzE5OTk5OTk5OTM2LAogICAgICAtNi4xOTY0OTk5OTk5OTk2MTcKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogImZhbHNlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C03-explicit-inspection-exits-to-previous-2D-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-dda674adfede5ff1aa63",
+          "file": "parity.browser.spec.ts",
+          "line": 83,
+          "column": 1
+        },
+        {
+          "title": "C04 selecting 2D cancels inspection and orbit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4669,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:46.478Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "orbit-cancelled-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxOS4yLAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMzIzLAogICAgICAtNi4xOTY1MDAwMDAwMDE3NjI1CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJmaXh0dXJlLWJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfQogICAgXQogIH0sCiAgInRvZ2dsZSI6ICJmYWxzZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C04-selecting-2D-cancels-inspection-and-orbit-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-ba0a64fafc52a0e688a2",
+          "file": "parity.browser.spec.ts",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "C06 filtering selected report clears its map detail",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4212,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:51.373Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "filtered-selection-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA1Ny4xNTgzMDg1Mjg0ODY3ODUsCiAgICAiYmVhcmluZyI6IC0xMiwKICAgICJ6b29tIjogMTkuMiwKICAgICJtb3ZpbmciOiB0cnVlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMDYxLAogICAgICAtNi4xOTY1MDAwMDAwMDAxCiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJmaXh0dXJlLWJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfQogICAgXQogIH0sCiAgInRvZ2dsZSI6ICJ0cnVlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C06-filteri-041e8-eport-clears-its-map-detail-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-0ccbaa5e6e5ea17936df",
+          "file": "parity.browser.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "C01 CCTV selection preserves manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4738,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:39:55.868Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cctv-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMjk5OTk5OTk5OTk4LAogICAgICAtNi4xOTUwMDAwMDAwMDAwMjIKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogImZhbHNlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C01-CCTV-selection-preserves-manual-2D-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-2d752d5b487191cdc8e5",
+          "file": "parity.browser.spec.ts",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "B03 deterministic baseline screenshot",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2534,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:01.298Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "baseline-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDU2LAogICAgImJlYXJpbmciOiAtMTIsCiAgICAiem9vbSI6IDE2LjUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDAwMDAwMDQsCiAgICAgIC02LjE5NjUwMDAwMDAwMDAxNDYKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogInRydWUiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-B03-deterministic-baseline-screenshot-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-40827eebefbc9f1a7927",
+          "file": "parity.browser.spec.ts",
+          "line": 23,
+          "column": 1
+        },
+        {
+          "title": "C01 report selection preserves manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3880,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:03.968Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "before-selection-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE2LjUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDAwMDAwMDQsCiAgICAgIC02LjE5NjUwMDAwMDAwMjA3NQogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAiZmFsc2UiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "after-selection-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE2LjUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODI0MDAwMDAwMDAwMDcsCiAgICAgIC02LjE5NjUwMDAwMDAwMDAxNDYKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogImZhbHNlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C01-report-selection-preserves-manual-2D-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-01e838472fb2f0bb9269",
+          "file": "parity.browser.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "C01 search preserves manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3662,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:08.105Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "after-search-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE2LjUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDAwMDAwMDQsCiAgICAgIC02LjE5NjUwMDAwMDAwMjA3NQogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAiZmFsc2UiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C01-search-preserves-manual-2D-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-5211495911c420bb7cbf",
+          "file": "parity.browser.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "B03 live-integration map screenshot",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2727,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:11.987Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-map-baseline-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDU2LAogICAgImJlYXJpbmciOiAtMTIsCiAgICAiem9vbSI6IDE2LjUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDAwMDAwMDQsCiAgICAgIC02LjE5NjUwMDAwMDAwMDAxNDYKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyLWdsYWNpZXIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZHVzZS1yZXNpZGVudGlhbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kdXNlLXN1YnVyYiIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kdXNlLWNvbW1lcmNpYWwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZHVzZS1pbmR1c3RyaWFsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmR1c2UtY2VtZXRlcnkiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZHVzZS1ob3NwaXRhbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kdXNlLXNjaG9vbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kdXNlLXJhaWx3YXkiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicGFyayIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kY292ZXItd29vZCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kY292ZXItZ3Jhc3MiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyLWdyYXNzLXBhcmsiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJ3YXlfdHVubmVsIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5LW90aGVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5LW90aGVyLWludGVybWl0dGVudCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcndheS1zdHJlYW0tY2FuYWwiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJ3YXktc3RyZWFtLWNhbmFsLWludGVybWl0dGVudCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcndheS1yaXZlciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcndheS1yaXZlci1pbnRlcm1pdHRlbnQiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXItaW50ZXJtaXR0ZW50IiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlci1pY2Utc2hlbGYiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyLXNhbmQiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnVpbGRpbmciLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnVpbGRpbmctdG9wIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1zZXJ2aWNlLXRyYWNrLWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0dW5uZWwtbW90b3J3YXktbGluay1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLW1pbm9yLWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0dW5uZWwtbGluay1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLXNlY29uZGFyeS10ZXJ0aWFyeS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLXRydW5rLXByaW1hcnktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1tb3RvcndheS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLXBhdGgiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLW1vdG9yd2F5LWxpbmsiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLXNlcnZpY2UtdHJhY2siLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLWxpbmsiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLW1pbm9yIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1zZWNvbmRhcnktdGVydGlhcnkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLXRydW5rLXByaW1hcnkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsLW1vdG9yd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbC1yYWlsd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImZlcnJ5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktdGF4aXdheS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS1ydW53YXktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktYXJlYSIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LXRheGl3YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS1ydW53YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9hcmVhX3BpZXIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9waWVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktYXJlYSIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW1vdG9yd2F5LWxpbmstY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbGluay1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1taW5vci1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1zZWNvbmRhcnktdGVydGlhcnktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktcHJpbWFyeS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS10cnVuay1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1tb3RvcndheS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1wYXRoIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbW90b3J3YXktbGluayIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LWxpbmsiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1taW5vciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNlY29uZGFyeS10ZXJ0aWFyeSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXByaW1hcnkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS10cnVuayIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW1vdG9yd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXktdHJhbnNpdCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5LXRyYW5zaXQtaGF0Y2hpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheS1zZXJ2aWNlIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXktc2VydmljZS1oYXRjaGluZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXktaGF0Y2hpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLW1vdG9yd2F5LWxpbmstY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJyaWRnZS1saW5rLWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2Utc2Vjb25kYXJ5LXRlcnRpYXJ5LWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtdHJ1bmstcHJpbWFyeS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLW1vdG9yd2F5LWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtbWlub3ItY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJyaWRnZS1wYXRoLWNhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtcGF0aCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtbW90b3J3YXktbGluayIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtbGluayIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtbWlub3IiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLXNlY29uZGFyeS10ZXJ0aWFyeSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtdHJ1bmstcHJpbWFyeSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJicmlkZ2UtbW90b3J3YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLXJhaWx3YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYnJpZGdlLXJhaWx3YXktaGF0Y2hpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2FibGVjYXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2FibGVjYXItZGFzaCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJib3VuZGFyeV8zIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJvdW5kYXJ5XzIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYm91bmRhcnlfZGlzcHV0ZWQiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9vbmV3YXkiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkX29uZXdheV9vcHBvc2l0ZSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5X2xpbmVfbGFiZWwiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcl9uYW1lX3BvaW50X2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJfbmFtZV9saW5lX2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicG9pX3IyMCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInBvaV9yNyIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInBvaV9yMSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInBvaV90cmFuc2l0IiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLXBhdGgiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWlub3IiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWFqb3IiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC1ub24tdXMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC11cy1pbnRlcnN0YXRlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9zaGllbGRfdXMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhaXJwb3J0IiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfb3RoZXIiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF92aWxsYWdlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfdG93biIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX3N0YXRlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfY2l0eSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NpdHlfY2FwaXRhbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMyIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMiIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-B03-live-integration-map-screenshot-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-f2cfda09d37a2518bb88",
+          "file": "parity.browser.spec.ts",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "C02 reset preserves manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3832,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:14.900Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reset-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE1LjIsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDAwMDAwMDQsCiAgICAgIC02LjE5NjUwMDAwMDAwMDAxNDYKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogImZhbHNlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C02-reset-preserves-manual-2D-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-fac7d3bb2d97f6bbf377",
+          "file": "parity.browser.spec.ts",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "C03 explicit inspection exits to previous 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:21.820Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "exit-inspection-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE5LjIsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDAwMDAwODQsCiAgICAgIC02LjE5NjQ5OTk5OTk5OTkyOQogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAiZmFsc2UiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C03-explicit-inspection-exits-to-previous-2D-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-9f84cd25806b30b47b8a",
+          "file": "parity.browser.spec.ts",
+          "line": 83,
+          "column": 1
+        },
+        {
+          "title": "C04 selecting 2D cancels inspection and orbit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:26.931Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "orbit-cancelled-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE5LjIsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDAwMDAyMiwKICAgICAgLTYuMTk2NTAwMDAwMDAxNTkyCiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJmaXh0dXJlLWJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfQogICAgXQogIH0sCiAgInRvZ2dsZSI6ICJmYWxzZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C04-selecting-2D-cancels-inspection-and-orbit-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-76d55aa1f8605c2a95cd",
+          "file": "parity.browser.spec.ts",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "C06 filtering selected report clears its map detail",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3336,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:31.167Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "filtered-selection-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDY5LjM0ODUwMTQxNjg0OTMsCiAgICAiYmVhcmluZyI6IC0xMiwKICAgICJ6b29tIjogMTkuMiwKICAgICJtb3ZpbmciOiB0cnVlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMDg0LAogICAgICAtNi4xOTY0OTk5OTk5OTc1NTYKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogInRydWUiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C06-filteri-041e8-eport-clears-its-map-detail-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-1ea41b5d4095365da535",
+          "file": "parity.browser.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "C01 CCTV selection preserves manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3917,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:40:34.737Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cctv-2d-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE2LjUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIyOTk5OTk5OTk5OTgsCiAgICAgIC02LjE5NTAwMDAwMDAwMDAyMgogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAiZmFsc2UiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/after-p1/artifacts/parity.browser-C01-CCTV-selection-preserves-manual-2D-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c38b1d2ba9960b77b660-536ce1a35f7cad2c0deb",
+          "file": "parity.browser.spec.ts",
+          "line": 124,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-15T21:39:15.194Z",
+    "duration": 78156.783,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

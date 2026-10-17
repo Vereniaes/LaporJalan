@@ -1,0 +1,214 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "races.browser",
+      "--project=desktop",
+      "--project=mobile"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/race-verified/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/race-verified/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/race-verified/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/race-verified/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "races.browser.spec.ts",
+      "file": "races.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "C05 late initial reports do not replace a newer selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7088,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:05:49.711Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "latest-selection-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA1NiwKICAgICJiZWFyaW5nIjogLTEyLAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzM5OTk5OTk5OTk5LAogICAgICAtNi4yMDE5OTk5OTk5OTk5OTgKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogInRydWUiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/race-verified/artifacts/races.browser-C05-late-ini-d7cfe-t-replace-a-newer-selection-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c92106289c4a2300590-40042454ab53a4e91eda",
+          "file": "races.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "C05 late initial reports do not replace a newer selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4178,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:06:01.374Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "latest-selection-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDU2LAogICAgImJlYXJpbmciOiAtMTIsCiAgICAiem9vbSI6IDE2LjUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMzk5OTk5OTk5OTksCiAgICAgIC02LjIwMTk5OTk5OTk5OTk5OAogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/race-verified/artifacts/races.browser-C05-late-ini-d7cfe-t-replace-a-newer-selection-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6c92106289c4a2300590-04bcd88a735bd78889c2",
+          "file": "races.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T05:05:49.035Z",
+    "duration": 13076.346,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

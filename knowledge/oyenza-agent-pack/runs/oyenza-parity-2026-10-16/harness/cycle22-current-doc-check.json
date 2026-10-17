@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-16T22:01:19.233833+00:00",
+  "scope": "Bounded current-document links, current source identity and existing budget count only. Not the planned complete ledger validator.",
+  "links_checked": 21,
+  "missing": [],
+  "source_unchanged": true,
+  "cycles_used": 22,
+  "cycle_cap": 23,
+  "status": "passed"
+}

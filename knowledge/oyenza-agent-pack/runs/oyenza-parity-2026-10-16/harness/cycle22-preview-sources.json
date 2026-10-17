@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-10-16T21:58:32.501738+00:00",
+  "source_manifest": "candidate-cycle22.json",
+  "images": {
+    "City desktop": {
+      "path": "harness/cycle22-full/artifacts/layout.browser-U02-panel-and-map-use-one-responsive-boundary-desktop/responsive-map.png",
+      "sha256": "18d1e20a4247a662fd3cc09490c03e1593479cd3c6b3b4f5bc146641f623044b"
+    },
+    "Inspection desktop": {
+      "path": "harness/cycle22-full/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-desktop/mapped-road-0.png",
+      "sha256": "e7b7ed8b7a2d9bb1e0822b5816c6f1fa8ebbd2e5a70c67129a5cd248916027ba"
+    },
+    "City mobile": {
+      "path": "harness/cycle22-full/artifacts/layout.browser-U02-panel-and-map-use-one-responsive-boundary-mobile/responsive-map.png",
+      "sha256": "9c4385dd0814f9d62a1abfd21fd2791e68d2105493708e14cf4be0227c1e7a83"
+    },
+    "Inspection mobile": {
+      "path": "harness/cycle22-full/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-mobile/mapped-road-0.png",
+      "sha256": "8f8d281c2859e7e39cd94d23f04cea83b796b47b82475f86b3ba6edadc6d8998"
+    }
+  },
+  "scope": "Actual captured pixels; no full acceptance claim."
+}

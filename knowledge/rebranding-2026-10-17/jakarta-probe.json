@@ -1,0 +1,57 @@
+[
+  {
+    "url": "https://jakcctv.jakarta.go.id/publik/data?q=&page=1",
+    "status": 200,
+    "bytes": 5277,
+    "sha256": "0693c9ac770b9941003f9831ff70c84ac4594200fe4dda5aa97813a927f3d2a5",
+    "temp_id": "f06b8136dc",
+    "keys": [
+      "cards",
+      "pagination",
+      "count",
+      "total"
+    ],
+    "count": "52 CCTV \u2022 Hal. 1/7",
+    "total": 52,
+    "iframes": [
+      "https://dki-jkt.balitower.co.id:7028/502045_JKP_POLDA_JPO-JL.-GATOT-SUBROTO-7_CCTV-01/embed.html",
+      "https://dki-jkt.balitower.co.id:7028/502045_JKP_POLDA_JPO-JL.-GATOT-SUBROTO-7_CCTV-02/embed.html",
+      "https://dki-jkt.balitower.co.id:7028/502155_JKP_POLDA_JL.-GERBANG-PEMUDA-C02_CCTV-01/embed.html"
+    ],
+    "coordinate_fields": false,
+    "location_headings": []
+  },
+  {
+    "url": "https://crm.jakarta.go.id/peta/",
+    "status": 200,
+    "bytes": 51216,
+    "sha256": "6146c11a899f9ca5b2fdbb15f8ffadb483ca75dc4a408496b92bffe5c79eb869",
+    "temp_id": "6037491069",
+    "scripts": [
+      "https://crm.jakarta.go.id/peta/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
+      "https://crm.jakarta.go.id/peta/_next/static/chunks/webpack-772014051cf39461.js",
+      "https://crm.jakarta.go.id/peta/_next/static/chunks/framework-3b5a00d5d7e8d93b.js",
+      "https://crm.jakarta.go.id/peta/_next/static/chunks/main-84ce5c30d39d9e08.js",
+      "https://crm.jakarta.go.id/peta/_next/static/chunks/pages/_app-df511a3677d160f6.js",
+      "https://crm.jakarta.go.id/peta/_next/static/chunks/205-d228c5a7a2055eaa.js",
+      "https://crm.jakarta.go.id/peta/_next/static/chunks/864-f310aba39e18f9f0.js",
+      "https://crm.jakarta.go.id/peta/_next/static/chunks/pages/index-f75dfda2ac445b48.js",
+      "https://crm.jakarta.go.id/peta/_next/static/tL7UH--rK_VBvUIoNvspj/_buildManifest.js",
+      "https://crm.jakarta.go.id/peta/_next/static/tL7UH--rK_VBvUIoNvspj/_ssgManifest.js"
+    ],
+    "urls": [
+      "https://fonts.googleapis.com",
+      "https://fonts.googleapis.com/css2",
+      "https://fonts.gstatic.com",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiAyp8kv8JHgFVrJJLmE0tCMPKhSkFE.woff2",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiAyp8kv8JHgFVrJJLmE0tMMPKhSkFEkm8.woff2",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiAyp8kv8JHgFVrJJLmE3tG.woff",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiByp8kv8JHgFVrLBT5V1g.woff",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiByp8kv8JHgFVrLBT5Z1JlFd2JQEl8qw.woff2",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiByp8kv8JHgFVrLBT5Z1xlFd2JQEk.woff2",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiByp8kv8JHgFVrLCz7V1g.woff",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiByp8kv8JHgFVrLCz7Z1JlFd2JQEl8qw.woff2",
+      "https://fonts.gstatic.com/s/poppins/v22/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2"
+    ]
+  }
+]

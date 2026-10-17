@@ -1,0 +1,85 @@
+{
+  "diagnosticOnly": true,
+  "bias": {
+    "target": "solid bowl material",
+    "polygonOffset": true,
+    "factor": 1,
+    "units": 1
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "setup": {
+    "variant": "aa-off-full",
+    "contextAttributes": {
+      "alpha": true,
+      "antialias": false,
+      "depth": true,
+      "desynchronized": false,
+      "failIfMajorPerformanceCaveat": false,
+      "powerPreference": "default",
+      "premultipliedAlpha": true,
+      "preserveDrawingBuffer": false,
+      "stencil": true,
+      "xrCompatible": false
+    },
+    "samples": 0,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "canvas": [
+      1040,
+      900
+    ],
+    "anchor": [
+      106.8232,
+      -6.1965
+    ],
+    "widthM": 0.52,
+    "depthM": 0.075
+  },
+  "state": {
+    "zoom": 25.5,
+    "pitch": 60,
+    "center": [
+      106.82319940721914,
+      -6.196498072427715
+    ],
+    "inspection": {
+      "anchor": [
+        106.8232,
+        -6.1965
+      ],
+      "widthM": 0.52,
+      "depthM": 0.075,
+      "geometry": {
+        "vertexCount": 1281,
+        "minZ": -0.07500000298023224,
+        "maxZ": 0,
+        "supportDiameterM": 0.5199999809265137
+      },
+      "renderCount": 45,
+      "resources": {
+        "geometries": 5,
+        "materials": 6,
+        "textures": 0,
+        "programs": 4
+      },
+      "depthRangeBefore": [
+        0,
+        0.9974365234375
+      ],
+      "depthRangeAfter": [
+        0,
+        0.9974365234375
+      ],
+      "projectedAnchorCss": [
+        519.9999645634,
+        524.9999855961372
+      ],
+      "disposed": false,
+      "canvasShared": true,
+      "webgl2": true
+    }
+  },
+  "errors": []
+}

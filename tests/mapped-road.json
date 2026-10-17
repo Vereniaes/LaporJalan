@@ -1,0 +1,25 @@
+{
+  "id": "mapped-road-osm-4466350567-v1",
+  "anchor": [
+    106.8232095,
+    -6.196562
+  ],
+  "road": "Jalan Jenderal Sudirman",
+  "classification": "primary",
+  "node": {
+    "id": "4466350567",
+    "version": "7",
+    "timestamp": "2019-03-14T02:56:11Z"
+  },
+  "way": {
+    "id": "449551306",
+    "version": "26",
+    "timestamp": "2026-06-01T01:22:59Z"
+  },
+  "provenance": "Mapped OSM road centerline membership verified from public XML. Damage dimensions remain synthetic. No surveyed lane position, physical road width, real damage or GPS accuracy asserted.",
+  "sources": [
+    "https://api.openstreetmap.org/api/0.6/node/4466350567",
+    "https://api.openstreetmap.org/api/0.6/way/449551306"
+  ],
+  "checked_at": "2026-10-16"
+}

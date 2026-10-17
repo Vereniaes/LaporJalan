@@ -1,0 +1,24 @@
+[
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "status": 403,
+    "url": "https://transit.oyenza.com/",
+    "body": "403 Forbidden\nnginx",
+    "canvasCount": 0,
+    "note": "ordinary navigation; remote tiles not verified"
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "status": 403,
+    "url": "https://transit.oyenza.com/",
+    "body": "403 Forbidden\nnginx",
+    "canvasCount": 0,
+    "note": "ordinary navigation; remote tiles not verified"
+  }
+]

@@ -1,0 +1,31 @@
+--- frozen-e8bd2c5
++++ selector-corrected-015a932
+@@ -28,7 +28,7 @@
+   await page.getByText('Fixture second report', { exact: true }).click();
+   expect((await mapState(page))!.moving).toBe(true);
+   // Dispatch the second marker action before flight completion, regardless of visual overlap.
+-  await page.locator(`.map-report-marker[aria-label="${fixture.report.title}"]`).dispatchEvent('click');
++  await page.locator(`.map-report-marker[title="${fixture.report.title}"]`).dispatchEvent('click');
+   await page.locator('#b-3d').click();
+   await assert2D(page);
+   await expect(page.getByRole('heading', { name: fixture.report.title })).toBeVisible();
+@@ -122,8 +122,8 @@
+   await failed;
+   await ready(page);
+   await expect(page.locator('.cctv-oyenza-popup')).toHaveCount(1);
+-  await expect(popup.getByRole('img')).toHaveAttribute('src', b.snapshotUrl);
+-  await expect(popup.getByRole('img')).toHaveJSProperty('naturalWidth', 640);
++  await expect(popup.getByRole('img', { name: `Gambar contoh untuk ${b.name}`, exact: true })).toHaveAttribute('src', b.snapshotUrl);
++  await expect(popup.getByRole('img', { name: `Gambar contoh untuk ${b.name}`, exact: true })).toHaveJSProperty('naturalWidth', 640);
+   await expect(popup.getByRole('status')).toHaveCount(0);
+   const map = await mapHandle(page);
+   const error = await map.evaluate((map, camera) => {
+@@ -138,7 +138,7 @@
+   await popup.getByRole('button', { name: 'Layar Penuh' }).click();
+   const dialog = page.getByRole('dialog');
+   await expect(dialog.getByRole('heading')).toHaveText(b.name);
+-  await expect(dialog.getByRole('img')).toHaveAttribute('src', b.snapshotUrl);
++  await expect(dialog.getByRole('img', { name: `Gambar contoh untuk ${b.name}`, exact: true })).toHaveAttribute('src', b.snapshotUrl);
+   await expect(dialog).toContainText('Gambar contoh - media statis');
+   await page.keyboard.press('Escape');
+   await expect(popup.getByRole('button', { name: 'Layar Penuh' })).toBeFocused();

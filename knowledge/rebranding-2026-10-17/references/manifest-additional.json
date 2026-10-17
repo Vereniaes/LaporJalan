@@ -1,0 +1,190 @@
+[
+  {
+    "id": "brussels-map",
+    "url": "https://fixmystreet.brussels/",
+    "checked_at": "2026-10-17T04:47:32.520Z",
+    "status": 200,
+    "title": "Home page – Fix My Street",
+    "final_url": "https://fixmystreet.brussels/",
+    "screenshot": "brussels-map.png",
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "English (map in french)"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "English (map in dutch)"
+      },
+      {
+        "tag": "INPUT",
+        "text": "Street, number, post code, commune"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Report"
+      },
+      {
+        "tag": "INPUT",
+        "text": "Incident Nr"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "GO"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "More criteria"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Privacy settings"
+      }
+    ],
+    "mobile_screenshot": "brussels-mobile.png"
+  },
+  {
+    "id": "singapore-onemap",
+    "url": "https://www.onemap.gov.sg/",
+    "checked_at": "2026-10-17T04:47:51.396Z",
+    "status": 200,
+    "title": "OneMap - Authoritative National Map of Singapore",
+    "final_url": "https://www.onemap.gov.sg/",
+    "screenshot": "singapore-onemap.png",
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "Close"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "32°C"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Public Announcement"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "School Query"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Bus Explorer"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Map layers"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Measure distance"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Measure area"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Notification"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Show your location"
+      },
+      {
+        "tag": "INPUT",
+        "text": "Search OneMap"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Open routing"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Open menu"
+      }
+    ]
+  },
+  {
+    "id": "oxfordshire-home",
+    "url": "https://fixmystreet.oxfordshire.gov.uk/",
+    "checked_at": "2026-10-17T04:47:54.971Z",
+    "status": 503,
+    "title": "FixMyStreet – Down for maintenance",
+    "final_url": "https://fixmystreet.oxfordshire.gov.uk/",
+    "screenshot": "oxfordshire-home.png",
+    "controls": []
+  },
+  {
+    "id": "helsinki-map-fresh-mobile",
+    "url": "https://palautteet.hel.fi/en/palautteet-kartalla",
+    "checked_at": "2026-10-17T04:48:00.332Z",
+    "status": 200,
+    "title": "Feedback on the map",
+    "final_url": "https://palautteet.hel.fi/en/palautteet-kartalla#/app/mapsearch",
+    "screenshot": "helsinki-map-fresh-mobile.png",
+    "controls": [
+      {
+        "tag": "BUTTON",
+        "text": "Menu"
+      },
+      {
+        "tag": "INPUT",
+        "text": "Search with a keyword, e.g. pothole"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Select date rangeBack"
+      },
+      {
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "tag": "INPUT",
+        "text": ""
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Select"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Select"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Search"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Find my location"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Aerial photo"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "High-contrast map"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Map serie"
+      }
+    ],
+    "width": {
+      "inner": 489,
+      "scroll": 489
+    }
+  }
+]

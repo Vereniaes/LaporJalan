@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-17T10:30:02.473Z",
+  "results": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reports": 53,
+      "errors": [],
+      "frames": {
+        "samples": 178,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 16.799999999999272
+      },
+      "buildings": {
+        "pitch": 56,
+        "visibility": "visible",
+        "rendered": 51,
+        "source": "openmaptiles"
+      },
+      "pitch": 0,
+      "browser": "149.0.7827.55",
+      "renderer": "Chromium headless with SwiftShader",
+      "passed": true
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "reports": 53,
+      "errors": [],
+      "frames": {
+        "samples": 180,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 16.799999999999272
+      },
+      "buildings": {
+        "pitch": 56,
+        "visibility": "visible",
+        "rendered": 3,
+        "source": "openmaptiles"
+      },
+      "pitch": 0,
+      "browser": "149.0.7827.55",
+      "renderer": "Chromium headless with SwiftShader",
+      "passed": true
+    },
+    {
+      "name": "narrow",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "reports": 53,
+      "errors": [],
+      "frames": null,
+      "buildings": {
+        "pitch": 56,
+        "visibility": "visible",
+        "rendered": 20,
+        "source": "openmaptiles"
+      },
+      "pitch": 0,
+      "browser": "149.0.7827.55",
+      "renderer": "Chromium headless with SwiftShader",
+      "passed": true
+    }
+  ]
+}

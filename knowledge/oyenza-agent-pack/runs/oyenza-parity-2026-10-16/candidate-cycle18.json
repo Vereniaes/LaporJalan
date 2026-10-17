@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-10-16T13:40:20.097466+00:00",
+  "repair_cycles": 18,
+  "files": {
+    "src/App.tsx": "27e727bf0e5709514a6510a0b642cd4f3c7cb36f1bba79304036d7b4b44547d4",
+    "src/components/CameraReportModal.tsx": "6e4cb1e8643d5b735d4dcba33d7cfc99c0b3d01ddbb6c754071f20400378aa0b",
+    "src/components/CctvModal.tsx": "444270e5aad57fcb28841c605630e8a4f62a8a4189570b99bf3f177dc5c262e6",
+    "src/components/CctvPopover.tsx": "3763ad8780ccf757f46c0ebfa21974ce1b1f3c070fb1164dc0c1a46331d5a6e9",
+    "src/components/CompareModal.tsx": "fa2e7eac969026cb43f61228cec936348e8e11cf660ca0028c5e9609b2c75d79",
+    "src/components/DamageReportCard.tsx": "49e7b67072ac09d1b03bc88d6ac729503fa843de5b0209957abdcaa85fe162c7",
+    "src/components/DepthInspector3D.tsx": "3b7ce5d3637f9cf21c22db117bd29a010111919e972961568437567411714d3d",
+    "src/components/FloodMonitorCard.tsx": "76a73de0a9613427d251fbbae07128c97db3ff679a211ffa06862c895c5f4ab8",
+    "src/components/Map3D.tsx": "a333e7545fd1a31e8088c7ef3ebb0a36defbd5959c9b1d29a1d90d6d6f1ac22b",
+    "src/components/MascotBanner.tsx": "28f94c19aa10081d1fea5fbe10e17a1f135b5e39925fac58d0794b30358ecc01",
+    "src/components/StreetSimulation3D.tsx": "73e742b369dbe8486ead12ee566bcd32db317bdf98e37333e5b229d4a2a677bd",
+    "src/components/useModalDialog.ts": "1455cde303b2e53237be9674f4887ddc8089ac8ab74d651eda2de2bee178c596",
+    "src/index.css": "e5a2c6bf420aff785ff4907471ed56502dfd220340e4f617d64efff52cb47d48",
+    "src/main.tsx": "9addf1ccee5145a7d41d8989594a783f1cc7344abfce17fbf082946dc90d6c88",
+    "src/map/DamageLayer.ts": "461212825adf7de2c19b422228a48a81abfdbe8910aeffa78d2738661a8cf79f",
+    "src/map/camera.ts": "ce3abc659e563bf6b8347de7f865a72290eb18ef42a208b7b5a29e72fae9550b",
+    "src/map/closeZoomLabels.ts": "67e035aa5be6e68cdcdf2fdb5b4789456280b5c19d6782d6d2aa947bb7e5955a",
+    "src/map/coordinates.ts": "0428420ec2098a881c2c6aaf709aa153794f728099f83baacb9bfc0da02d41aa",
+    "src/map/damageGeometry.ts": "eaf07f8df2b9412dab0d24dab511319222a423ef9dec7a58211f3b1b2a0dff02",
+    "src/map/dimensions.ts": "42118f40644b4a12bfbabeb22fc1dedc542d5d4accdb260c333f0f7111f6f225",
+    "src/services/api.ts": "a92ae9820ed8cc20cebc669e5d24403c82a9a84d70f698db6daa942d3f449e79",
+    "src/services/imageDetection.ts": "93a4a1abbbbb43eb31cb163fc478923115808a79ef9c61793ba94f1089effaf5",
+    "src/services/mockData.ts": "e7c605f1a445dfaf0b31b477aa53b68864980e7d3d688e8c17d6ee8b23530e7f",
+    "src/types.ts": "8b2ee8d9cb3618067bb9c511c846876a62d8ee8e9170cda699d724479302ef0e"
+  }
+}

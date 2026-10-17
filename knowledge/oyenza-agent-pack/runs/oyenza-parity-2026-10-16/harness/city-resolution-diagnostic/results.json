@@ -1,0 +1,502 @@
+{
+  "startedAt": "2026-10-17T04:13:18.511Z",
+  "node": "v22.23.3",
+  "sourceHashes": {
+    "src/App.tsx": "8f1dfaa973be4db7d933c9a652abcd748f67d372a7be45c37625ff2d5d752f6c",
+    "src/components/Map3D.tsx": "f8d8ce1ba079f8809b81defbc45aa1ad9882da409a09694499c2cb36a766df65",
+    "src/map/DamageLayer.ts": "4d6819b78a8c6d4de55400965025ae089c9d57f5abae170292f64e8f0c6c4bde",
+    "src/map/damageMaterial.ts": "31c01a729cab566508883550f7df1ecd2bc3c89230fbef4730b1d7bd5a699fbb",
+    "src/index.css": "e59de44bfe5ac427a5369fd7382bd5e576ae19709fc9e40b2af38cf7f9c1753a",
+    "tests/fixtures.ts": "de2b92da244274ce2c8522c1d8f77b8b4241c2badae9f4b6a57149b714d912b7",
+    "tests/helpers/map.ts": "a667343b184064b9739e9d9e0dd6a065b0b626fbcad919c404a6c09f1eb37751"
+  },
+  "reuse": "Fixture report/snapshot from tests/fixtures.ts; read-only React map-handle discovery adapted from tests/helpers/map.ts; launch flags match existing harness. No oracle changed.",
+  "server": "Own Vite on 127.0.0.1:3006; user server3000 untouched",
+  "trace": false,
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "variant": {
+        "id": "aa-on-native",
+        "aa": true,
+        "ratio": 1
+      },
+      "errors": [],
+      "networkFailures": [
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "state": {
+        "center": [
+          106.8232,
+          -6.1965
+        ],
+        "zoom": 16.5,
+        "pitch": 56,
+        "bearing": -17.000000000000004,
+        "padding": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "pixelRatio": 1,
+        "attributes": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 4,
+        "drawingBuffer": [
+          1040,
+          900
+        ],
+        "cssSize": [
+          1040,
+          900
+        ],
+        "sourceIds": [
+          "ne2_shaded",
+          "openmaptiles",
+          "cctv-cones",
+          "traffic-flow",
+          "cctv-sightline",
+          "road-damage-decals"
+        ],
+        "buildingFeatures": 145
+      },
+      "image": "aa-on-native-1440.png"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "variant": {
+        "id": "aa-off-native",
+        "aa": false,
+        "ratio": 1
+      },
+      "errors": [],
+      "networkFailures": [
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "state": {
+        "center": [
+          106.8232,
+          -6.1965
+        ],
+        "zoom": 16.5,
+        "pitch": 56,
+        "bearing": -17.000000000000004,
+        "padding": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "pixelRatio": 1,
+        "attributes": {
+          "alpha": true,
+          "antialias": false,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 0,
+        "drawingBuffer": [
+          1040,
+          900
+        ],
+        "cssSize": [
+          1040,
+          900
+        ],
+        "sourceIds": [
+          "ne2_shaded",
+          "openmaptiles",
+          "cctv-cones",
+          "traffic-flow",
+          "cctv-sightline",
+          "road-damage-decals"
+        ],
+        "buildingFeatures": 145
+      },
+      "image": "aa-off-native-1440.png"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "variant": {
+        "id": "aa-off-ratio15",
+        "aa": false,
+        "ratio": 1.5
+      },
+      "errors": [],
+      "networkFailures": [
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "state": {
+        "center": [
+          106.8232,
+          -6.1965
+        ],
+        "zoom": 16.5,
+        "pitch": 56,
+        "bearing": -17.000000000000004,
+        "padding": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "pixelRatio": 1.5,
+        "attributes": {
+          "alpha": true,
+          "antialias": false,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 0,
+        "drawingBuffer": [
+          1560,
+          1350
+        ],
+        "cssSize": [
+          1040,
+          900
+        ],
+        "sourceIds": [
+          "ne2_shaded",
+          "openmaptiles",
+          "cctv-cones",
+          "traffic-flow",
+          "cctv-sightline",
+          "road-damage-decals"
+        ],
+        "buildingFeatures": 145
+      },
+      "image": "aa-off-ratio15-1440.png"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "variant": {
+        "id": "aa-on-native",
+        "aa": true,
+        "ratio": 1
+      },
+      "errors": [],
+      "networkFailures": [
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "state": {
+        "center": [
+          106.8232,
+          -6.1965
+        ],
+        "zoom": 16.5,
+        "pitch": 56,
+        "bearing": -17.000000000000004,
+        "padding": {
+          "top": 0,
+          "bottom": 379.8,
+          "left": 0,
+          "right": 0
+        },
+        "pixelRatio": 1,
+        "attributes": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 4,
+        "drawingBuffer": [
+          390,
+          844
+        ],
+        "cssSize": [
+          390,
+          844
+        ],
+        "sourceIds": [
+          "ne2_shaded",
+          "openmaptiles",
+          "cctv-cones",
+          "traffic-flow",
+          "cctv-sightline",
+          "road-damage-decals"
+        ],
+        "buildingFeatures": 83
+      },
+      "image": "aa-on-native-390.png"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "variant": {
+        "id": "aa-off-native",
+        "aa": false,
+        "ratio": 1
+      },
+      "errors": [],
+      "networkFailures": [
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "state": {
+        "center": [
+          106.8232,
+          -6.1965
+        ],
+        "zoom": 16.5,
+        "pitch": 56,
+        "bearing": -17.000000000000004,
+        "padding": {
+          "top": 0,
+          "bottom": 379.8,
+          "left": 0,
+          "right": 0
+        },
+        "pixelRatio": 1,
+        "attributes": {
+          "alpha": true,
+          "antialias": false,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 0,
+        "drawingBuffer": [
+          390,
+          844
+        ],
+        "cssSize": [
+          390,
+          844
+        ],
+        "sourceIds": [
+          "ne2_shaded",
+          "openmaptiles",
+          "cctv-cones",
+          "traffic-flow",
+          "cctv-sightline",
+          "road-damage-decals"
+        ],
+        "buildingFeatures": 83
+      },
+      "image": "aa-off-native-390.png"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "variant": {
+        "id": "aa-off-ratio15",
+        "aa": false,
+        "ratio": 1.5
+      },
+      "errors": [],
+      "networkFailures": [
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "origin": "https://tiles.openfreemap.org",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "state": {
+        "center": [
+          106.8232,
+          -6.1965
+        ],
+        "zoom": 16.5,
+        "pitch": 56,
+        "bearing": -17.000000000000004,
+        "padding": {
+          "top": 0,
+          "bottom": 379.8,
+          "left": 0,
+          "right": 0
+        },
+        "pixelRatio": 1.5,
+        "attributes": {
+          "alpha": true,
+          "antialias": false,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 0,
+        "drawingBuffer": [
+          585,
+          1266
+        ],
+        "cssSize": [
+          390,
+          844
+        ],
+        "sourceIds": [
+          "ne2_shaded",
+          "openmaptiles",
+          "cctv-cones",
+          "traffic-flow",
+          "cctv-sightline",
+          "road-damage-decals"
+        ],
+        "buildingFeatures": 83
+      },
+      "image": "aa-off-ratio15-390.png"
+    }
+  ],
+  "browser": "149.0.7827.55",
+  "cleanup": {
+    "ownServerExitCode": 0,
+    "ownServerSignal": null,
+    "browserClosed": true,
+    "userServerUntouched": true
+  },
+  "finishedAt": "2026-10-17T04:13:44.356Z",
+  "sourceHashesAfter": {
+    "src/App.tsx": "8f1dfaa973be4db7d933c9a652abcd748f67d372a7be45c37625ff2d5d752f6c",
+    "src/components/Map3D.tsx": "f8d8ce1ba079f8809b81defbc45aa1ad9882da409a09694499c2cb36a766df65",
+    "src/map/DamageLayer.ts": "4d6819b78a8c6d4de55400965025ae089c9d57f5abae170292f64e8f0c6c4bde",
+    "src/map/damageMaterial.ts": "31c01a729cab566508883550f7df1ecd2bc3c89230fbef4730b1d7bd5a699fbb",
+    "src/index.css": "e59de44bfe5ac427a5369fd7382bd5e576ae19709fc9e40b2af38cf7f9c1753a",
+    "tests/fixtures.ts": "de2b92da244274ce2c8522c1d8f77b8b4241c2badae9f4b6a57149b714d912b7",
+    "tests/helpers/map.ts": "a667343b184064b9739e9d9e0dd6a065b0b626fbcad919c404a6c09f1eb37751"
+  },
+  "sourceUnchanged": true
+}

@@ -1,0 +1,239 @@
+// Check remaining race, static media and offline behavior with fixed inputs.
+import { test, expect, type Page } from '@playwright/test';
+import { fixture, style } from './fixtures';
+import { INITIAL_CCTV_CAMERAS, INITIAL_REPORTS } from '../src/services/mockData';
+import { prepare, ready, mapState, mapHandle, evidence } from './helpers/map';
+
+function gate() {
+  let release!: () => void;
+  const promise = new Promise<void>(resolve => { release = resolve; });
+  return { promise, release };
+}
+
+async function assert2D(page: Page) {
+  await ready(page);
+  expect((await mapState(page))!.pitch).toBe(0);
+  expect((await mapState(page))!.inspection).toBeUndefined();
+  await expect(page.locator('#b-3d')).toHaveAttribute('aria-pressed', 'false');
+}
+
+async function openCamera(page: Page, name: string) {
+  await page.getByRole('button', { name: /^CCTV \(/ }).click();
+  await page.getByText(name, { exact: true }).first().click();
+}
+
+test('C05 rapid report B then A during flight preserves latest report and manual 2D', async ({ page }, info) => {
+  await prepare(page);
+  await page.getByRole('button', { name: /Daftar/ }).click();
+  await page.getByText('Fixture second report', { exact: true }).click();
+  expect((await mapState(page))!.moving).toBe(true);
+  // Dispatch the second marker action before flight completion, regardless of visual overlap.
+  await page.locator(`.map-report-marker[aria-label="${fixture.report.title}"]`).dispatchEvent('click');
+  await page.locator('#b-3d').click();
+  await assert2D(page);
+  await expect(page.getByRole('heading', { name: fixture.report.title })).toBeVisible();
+  const center = (await mapState(page))!.center;
+  expect(center[0]).toBeCloseTo(fixture.report.lng, 6);
+  expect(center[1]).toBeCloseTo(fixture.report.lat, 6);
+  await evidence(page, info, 'rapid-reports-2d');
+});
+
+for (const target of ['search', 'cctv'] as const) {
+  test(`C05 pending report refresh cannot replace latest ${target} target or manual 2D`, async ({ page }, info) => {
+    await prepare(page);
+    const pending = gate();
+    await page.route('**/api/reports', async route => {
+      await pending.promise;
+      await route.fulfill({ json: { data: [{ ...INITIAL_REPORTS[0], lng: 106.84, lat: -6.21 }] } });
+    });
+    await page.reload();
+    await ready(page);
+    if (target === 'search') {
+      await page.getByPlaceholder(/Cari jalan/).fill('Fixture');
+      await page.getByRole('button', { name: /Fixture place/ }).click();
+    } else {
+      await openCamera(page, INITIAL_CCTV_CAMERAS[1].name);
+    }
+    await page.locator('#b-3d').click();
+    await assert2D(page);
+    const before = (await mapState(page))!.center;
+    const response = page.waitForResponse(r => r.url().endsWith('/api/reports'));
+    pending.release();
+    await (await response).finished();
+    await expect(page.getByRole('button', { name: 'Daftar (1)' })).toBeVisible();
+    await assert2D(page);
+    const after = (await mapState(page))!.center;
+    expect(after[0]).toBeCloseTo(before[0], 6);
+    expect(after[1]).toBeCloseTo(before[1], 6);
+    if (target === 'search') {
+      expect(after[0]).toBeCloseTo(106.824, 6);
+      expect(after[1]).toBeCloseTo(-6.197, 6);
+    } else {
+      await expect(page.getByRole('region', { name: 'Pratinjau CCTV' })).toContainText(INITIAL_CCTV_CAMERAS[1].name);
+    }
+    await evidence(page, info, `late-refresh-${target}`);
+  });
+}
+
+test('G06 reports received before delayed style are present when map becomes ready', async ({ page }, info) => {
+  await prepare(page);
+  const pending = gate();
+  const requested = gate();
+  await page.route('**/tiles.openfreemap.org/styles/**', async route => {
+    requested.release();
+    await pending.promise;
+    await route.fulfill({ json: style });
+  });
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await requested.promise;
+  await expect(page.getByRole('button', { name: 'Daftar (2)' })).toBeVisible();
+  expect((await mapState(page))!.styleReady).toBe(false);
+  pending.release();
+  await ready(page);
+  await expect(page.locator('.map-report-marker')).toHaveCount(2);
+  const map = await mapHandle(page);
+  const ids = await map.evaluate(map => (map.getStyle().sources['road-damage-decals'] as any).data.features.map((f: any) => f.properties.id).sort());
+  expect(ids).toEqual([fixture.report.id, 'fixture-second'].sort());
+  await map.dispose();
+  await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();
+  await ready(page);
+  await expect.poll(async () => (await mapState(page))?.inspection?.renderCount ?? 0).toBeGreaterThan(0);
+  await evidence(page, info, 'reports-before-style');
+});
+
+test('M03 camera B remains current after camera A late image error', async ({ page }, info) => {
+  await prepare(page);
+  const [a, b] = INITIAL_CCTV_CAMERAS;
+  const pending = gate();
+  const requested = gate();
+  await page.route(a.snapshotUrl, async route => {
+    requested.release();
+    await pending.promise;
+    await route.abort('failed');
+  });
+  // Routing disables cache so the list and popup request the delayed source again.
+  await openCamera(page, a.name);
+  await requested.promise;
+  await page.getByText(b.name, { exact: true }).first().click();
+  const popup = page.getByRole('region', { name: 'Pratinjau CCTV' });
+  await expect(popup).toContainText(b.name);
+  const failed = page.waitForEvent('requestfailed', { predicate: request => request.url() === a.snapshotUrl });
+  pending.release();
+  await failed;
+  await ready(page);
+  await expect(page.locator('.cctv-oyenza-popup')).toHaveCount(1);
+  await expect(popup.getByRole('img')).toHaveAttribute('src', b.snapshotUrl);
+  await expect(popup.getByRole('img')).toHaveJSProperty('naturalWidth', 640);
+  await expect(popup.getByRole('status')).toHaveCount(0);
+  const map = await mapHandle(page);
+  const error = await map.evaluate((map, camera) => {
+    const tip = document.querySelector('.cctv-oyenza-popup')!.getBoundingClientRect();
+    const origin = map.getContainer().getBoundingClientRect();
+    const anchor = map.project([camera.lng, camera.lat]);
+    return Math.hypot((tip.left + tip.right) / 2 - origin.left - anchor.x,
+      tip.bottom - origin.top - (anchor.y - 28));
+  }, b);
+  expect(error).toBeLessThanOrEqual(2);
+  await map.dispose();
+  await popup.getByRole('button', { name: 'Layar Penuh' }).click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.getByRole('heading')).toHaveText(b.name);
+  await expect(dialog.getByRole('img')).toHaveAttribute('src', b.snapshotUrl);
+  await expect(dialog).toContainText('Gambar contoh - media statis');
+  await page.keyboard.press('Escape');
+  await expect(popup.getByRole('button', { name: 'Layar Penuh' })).toBeFocused();
+  await evidence(page, info, 'camera-b-after-a-error');
+});
+
+test('M01 unavailable static image stays honestly labelled and closes with Escape', async ({ page }) => {
+  await prepare(page);
+  await page.route(INITIAL_CCTV_CAMERAS[0].snapshotUrl, route => route.abort('failed'));
+  await openCamera(page, INITIAL_CCTV_CAMERAS[0].name);
+  const popup = page.getByRole('region', { name: 'Pratinjau CCTV' });
+  await expect(popup.getByRole('status')).toHaveText('Gambar tidak tersedia.');
+  await expect(popup).toContainText('Media statis - sumber dan waktu belum diverifikasi.');
+  await expect(popup.getByText(/LIVE/i)).toHaveCount(0);
+  await popup.getByRole('button', { name: 'Layar Penuh' }).click();
+  await expect(page.getByRole('dialog').getByRole('status')).toHaveText('Gambar tidak tersedia.');
+  await page.keyboard.press('Escape');
+  await page.keyboard.press('Escape');
+  await expect(popup).toHaveCount(0);
+});
+
+test('R02 traffic geometry status and colors survive report filter and style replacement', async ({ page }) => {
+  await prepare(page);
+  const map = await mapHandle(page);
+  const traffic = () => map.evaluate(map => ({
+    features: (map.getStyle().sources['traffic-flow'] as any).data.features.map((f: any) => ({ id: f.properties.id, status: f.properties.status, color: f.properties.color, geometry: f.geometry })),
+    color: map.getPaintProperty('traffic-lines', 'line-color'),
+    count: map.getStyle().layers.filter((l: any) => l.id === 'traffic-lines').length,
+  }));
+  const expected = {
+    features: [
+      { id: 'tr-01', status: 'macet', color: '#ef4444', geometry: { type: 'LineString', coordinates: [[106.8228, -6.192], [106.8231, -6.1955], [106.8233, -6.197]] } },
+      { id: 'tr-02', status: 'padat', color: '#f59e0b', geometry: { type: 'LineString', coordinates: [[106.8233, -6.197], [106.8235, -6.2025], [106.822, -6.21]] } },
+      { id: 'tr-03', status: 'lancar', color: '#10b981', geometry: { type: 'LineString', coordinates: [[106.829, -6.215], [106.8305, -6.223], [106.832, -6.23]] } },
+    ], color: ['get', 'color'], count: 1,
+  };
+  expect(await traffic()).toEqual(expected);
+  await page.getByRole('button', { name: /Daftar/ }).click();
+  await page.getByRole('button', { name: 'Retak', exact: true }).click();
+  await expect(page.locator('.map-report-marker')).toHaveCount(0);
+  expect(await traffic()).toEqual(expected);
+  await map.evaluate((map, next) => map.setStyle(next, { diff: false }), style);
+  await ready(page);
+  expect(await traffic()).toEqual(expected);
+  await map.dispose();
+});
+
+for (const failure of ['abort', '503', 'malformed'] as const) {
+  test(`R02 reports GET ${failure} retains usable demo fallback`, async ({ page }) => {
+    await prepare(page);
+    await page.route('**/api/reports', route => failure === 'abort' ? route.abort('failed') :
+      route.fulfill(failure === '503' ? { status: 503, body: 'Unavailable' } : { contentType: 'application/json', body: '{broken' }));
+    await page.reload();
+    await ready(page);
+    await expect(page.getByText('Demo', { exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: `Daftar (${INITIAL_REPORTS.length})` })).toBeVisible();
+    await expect(page.getByRole('heading', { name: INITIAL_REPORTS[0].title })).toBeVisible();
+    await page.locator('#b-3d').click();
+    await assert2D(page);
+  });
+}
+
+test('R02 failed geocoder clears old suggestions and leaves the map usable', async ({ page }) => {
+  await prepare(page);
+  await page.getByPlaceholder(/Cari jalan/).fill('Fixture');
+  await expect(page.getByRole('button', { name: /Fixture place/ })).toBeVisible();
+  await page.route('**/api/places/**', route => route.abort('failed'));
+  const failed = page.waitForEvent('requestfailed', { predicate: request => request.url().includes('/api/places/') });
+  await page.getByPlaceholder(/Cari jalan/).fill('Unavailable');
+  await failed;
+  await expect(page.getByRole('button', { name: /Fixture place/ })).toHaveCount(0);
+  await page.getByPlaceholder(/Cari jalan/).clear();
+  await page.locator('#b-3d').click();
+  await assert2D(page);
+});
+
+for (const failure of ['405', 'abort'] as const) {
+  test(`R02 rejected report POST ${failure} keeps local example visibly labelled`, async ({ page }) => {
+    await prepare(page);
+    await page.route('**/api/reports', route => route.request().method() === 'POST' ?
+      (failure === 'abort' ? route.abort('failed') : route.fulfill({ status: 405, body: 'No writes allowed' })) : route.fallback());
+    await page.getByRole('button', { name: 'Lapor', exact: true }).click();
+    const dialog = page.getByRole('dialog');
+    await dialog.getByRole('button', { name: 'Lubang Aspal' }).click();
+    const save = dialog.getByRole('button', { name: 'Simpan Laporan Contoh' });
+    await expect(save).toBeEnabled({ timeout: 15000 });
+    const completed = failure === 'abort' ? page.waitForEvent('requestfailed', { predicate: request => request.method() === 'POST' }) :
+      page.waitForResponse(response => response.request().method() === 'POST' && response.status() === 405);
+    await save.click();
+    await completed;
+    await expect(dialog).toHaveCount(0);
+    await expect(page.getByRole('heading', { name: /estimasi contoh/ })).toBeVisible();
+    await expect(page.getByText('Demo', { exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Daftar (3)' })).toBeVisible();
+  });
+}
+
+

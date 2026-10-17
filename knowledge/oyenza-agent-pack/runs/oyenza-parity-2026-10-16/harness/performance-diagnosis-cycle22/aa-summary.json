@@ -1,0 +1,387 @@
+{
+  "diagnosticOnly": true,
+  "environment": {
+    "node": "v22.23.3",
+    "cpu": "11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz",
+    "os": "6.18.33.2-microsoft-standard-WSL2",
+    "browser": "149.0.7827.55"
+  },
+  "results": [
+    {
+      "variant": "aa-off-full",
+      "sample": 1,
+      "profile": false,
+      "setup": {
+        "variant": "aa-off-full",
+        "contextAttributes": {
+          "alpha": true,
+          "antialias": false,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "canvas": [
+          1040,
+          900
+        ],
+        "anchor": [
+          106.8232,
+          -6.1965
+        ],
+        "widthM": 0.52,
+        "depthM": 0.075
+      },
+      "before": {
+        "bearing": 53.89649999999915,
+        "zoom": 19.2,
+        "renderCount": 141
+      },
+      "after": {
+        "bearing": -95.06190000000232,
+        "zoom": 19.2,
+        "renderCount": 476
+      },
+      "frames": {
+        "count": 328,
+        "mean": 30.48658536585366,
+        "median": 16.700000000000728,
+        "p95": 66.70000000000073,
+        "total": 9999.6
+      },
+      "latency": {
+        "count": 10,
+        "mean": 27.669999998807906,
+        "median": 5.9000000059604645,
+        "p95": 82.80000001192093,
+        "total": 276.69999998807907
+      },
+      "stages": {
+        "customRender": {
+          "count": 329,
+          "mean": 18.94103343427,
+          "median": 9.199999988079071,
+          "p95": 54.10000002384186,
+          "total": 6231.59999987483
+        },
+        "depthQueries": {
+          "count": 658,
+          "mean": 9.020212766156734,
+          "median": 2.9000000059604645,
+          "p95": 30.19999998807907,
+          "total": 5935.30000013113
+        },
+        "resetState": {
+          "count": 329,
+          "mean": 0.09574468021697187,
+          "median": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "total": 31.499999791383743
+        },
+        "threeRender": {
+          "count": 329,
+          "mean": 0.32158054760161864,
+          "median": 0.20000001788139343,
+          "p95": 0.9000000059604645,
+          "total": 105.80000016093254
+        },
+        "easeTo": {
+          "count": 329,
+          "mean": 0.44528875361822295,
+          "median": 0.30000001192092896,
+          "p95": 1,
+          "total": 146.49999994039536
+        }
+      },
+      "errors": []
+    },
+    {
+      "variant": "aa-off-full",
+      "sample": 2,
+      "profile": false,
+      "setup": {
+        "variant": "aa-off-full",
+        "contextAttributes": {
+          "alpha": true,
+          "antialias": false,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "canvas": [
+          1040,
+          900
+        ],
+        "anchor": [
+          106.8232,
+          -6.1965
+        ],
+        "widthM": 0.52,
+        "depthM": 0.075
+      },
+      "before": {
+        "bearing": 53.89649999999983,
+        "zoom": 19.2,
+        "renderCount": 110
+      },
+      "after": {
+        "bearing": -90.16260000000183,
+        "zoom": 19.2,
+        "renderCount": 505
+      },
+      "frames": {
+        "count": 378,
+        "mean": 26.453968253968263,
+        "median": 16.700000000000728,
+        "p95": 66.69999999999891,
+        "total": 9999.600000000004
+      },
+      "latency": {
+        "count": 10,
+        "mean": 25.710000002384184,
+        "median": 5.5,
+        "p95": 69.69999998807907,
+        "total": 257.10000002384186
+      },
+      "stages": {
+        "customRender": {
+          "count": 381,
+          "mean": 14.848293963066862,
+          "median": 4.800000011920929,
+          "p95": 50.19999998807907,
+          "total": 5657.199999928474
+        },
+        "depthQueries": {
+          "count": 762,
+          "mean": 6.969816273356986,
+          "median": 1.800000011920929,
+          "p95": 25.900000005960464,
+          "total": 5311.000000298023
+        },
+        "resetState": {
+          "count": 381,
+          "mean": 0.12440944875632058,
+          "median": 0.09999999403953552,
+          "p95": 0.29999998211860657,
+          "total": 47.39999997615814
+        },
+        "threeRender": {
+          "count": 381,
+          "mean": 0.35196850376492095,
+          "median": 0.29999998211860657,
+          "p95": 0.7999999821186066,
+          "total": 134.0999999344349
+        },
+        "easeTo": {
+          "count": 381,
+          "mean": 0.4711286083763353,
+          "median": 0.4000000059604645,
+          "p95": 0.9000000059604645,
+          "total": 179.49999979138374
+        }
+      },
+      "errors": []
+    },
+    {
+      "variant": "aa-off-cached",
+      "sample": 1,
+      "profile": false,
+      "setup": {
+        "variant": "aa-off-cached",
+        "contextAttributes": {
+          "alpha": true,
+          "antialias": false,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "canvas": [
+          1040,
+          900
+        ],
+        "anchor": [
+          106.8232,
+          -6.1965
+        ],
+        "widthM": 0.52,
+        "depthM": 0.075
+      },
+      "before": {
+        "bearing": 53.54999999999916,
+        "zoom": 19.2,
+        "renderCount": 132
+      },
+      "after": {
+        "bearing": -90.85980000000258,
+        "zoom": 19.2,
+        "renderCount": 493
+      },
+      "frames": {
+        "count": 353,
+        "mean": 28.327478753541076,
+        "median": 33.29999999999927,
+        "p95": 50,
+        "total": 9999.6
+      },
+      "latency": {
+        "count": 10,
+        "mean": 4.990000000596046,
+        "median": 3.699999988079071,
+        "p95": 8.700000017881393,
+        "total": 49.900000005960464
+      },
+      "stages": {
+        "customRender": {
+          "count": 354,
+          "mean": 0.8449152541362633,
+          "median": 0.6000000238418579,
+          "p95": 2,
+          "total": 299.0999999642372
+        },
+        "depthQueries": {
+          "count": 708,
+          "mean": 0.0015536722237780942,
+          "median": 0,
+          "p95": 0,
+          "total": 1.0999999344348907
+        },
+        "resetState": {
+          "count": 354,
+          "mean": 0.10423728891011685,
+          "median": 0.09999999403953552,
+          "p95": 0.20000001788139343,
+          "total": 36.900000274181366
+        },
+        "threeRender": {
+          "count": 354,
+          "mean": 0.33870056414671534,
+          "median": 0.20000001788139343,
+          "p95": 0.7999999821186066,
+          "total": 119.89999970793724
+        },
+        "easeTo": {
+          "count": 354,
+          "mean": 0.5093220338477926,
+          "median": 0.4000000059604645,
+          "p95": 1.0999999940395355,
+          "total": 180.2999999821186
+        }
+      },
+      "errors": []
+    },
+    {
+      "variant": "aa-off-cached",
+      "sample": 2,
+      "profile": false,
+      "setup": {
+        "variant": "aa-off-cached",
+        "contextAttributes": {
+          "alpha": true,
+          "antialias": false,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "samples": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "canvas": [
+          1040,
+          900
+        ],
+        "anchor": [
+          106.8232,
+          -6.1965
+        ],
+        "widthM": 0.52,
+        "depthM": 0.075
+      },
+      "before": {
+        "bearing": 52.848600000000026,
+        "zoom": 19.2,
+        "renderCount": 113
+      },
+      "after": {
+        "bearing": -92.2605000000014,
+        "zoom": 19.2,
+        "renderCount": 504
+      },
+      "frames": {
+        "count": 381,
+        "mean": 26.201837270341215,
+        "median": 16.700000000000728,
+        "p95": 50,
+        "total": 9982.900000000003
+      },
+      "latency": {
+        "count": 10,
+        "mean": 4.909999996423721,
+        "median": 4.5,
+        "p95": 11.300000011920929,
+        "total": 49.09999996423721
+      },
+      "stages": {
+        "customRender": {
+          "count": 382,
+          "mean": 0.5534031415328929,
+          "median": 0.4000000059604645,
+          "p95": 1.199999988079071,
+          "total": 211.4000000655651
+        },
+        "depthQueries": {
+          "count": 764,
+          "mean": 0.0011780104399975683,
+          "median": 0,
+          "p95": 0,
+          "total": 0.8999999761581421
+        },
+        "resetState": {
+          "count": 382,
+          "mean": 0.05392670077491181,
+          "median": 0,
+          "p95": 0.19999998807907104,
+          "total": 20.59999969601631
+        },
+        "threeRender": {
+          "count": 382,
+          "mean": 0.22460732971810546,
+          "median": 0.19999998807907104,
+          "p95": 0.5,
+          "total": 85.79999995231628
+        },
+        "easeTo": {
+          "count": 382,
+          "mean": 0.4390052349467552,
+          "median": 0.30000001192092896,
+          "p95": 1.199999988079071,
+          "total": 167.6999997496605
+        }
+      },
+      "errors": []
+    }
+  ]
+}

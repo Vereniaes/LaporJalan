@@ -1,0 +1,108 @@
+[
+  {
+    "name": "desktop",
+    "state": {
+      "width": 1440,
+      "scroll": 1440,
+      "rows": 25,
+      "markers": 25,
+      "message": null
+    },
+    "errors": [],
+    "requestFailures": [
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/11/1631/1059.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/11/1632/1059.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/11/1631/1060.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/11/1632/1060.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/12/3263/2119.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/12/3264/2119.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/12/3263/2118.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/12/3264/2118.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/13/6529/4238.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/13/6529/4237.pbf",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  {
+    "name": "mobile",
+    "state": {
+      "width": 390,
+      "scroll": 390,
+      "rows": 25,
+      "markers": 25,
+      "message": null
+    },
+    "errors": [],
+    "requestFailures": [
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/11/1631/1059.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/11/1632/1059.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/12/3264/2119.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/12/3263/2119.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/12/3264/2118.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/12/3263/2118.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/13/6528/4238.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/13/6528/4237.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13056/8475.pbf",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13057/8475.pbf",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "markdown_files_checked": 25,
+  "broken_links": [],
+  "repair_cycles": 21,
+  "authorized_cap": 21,
+  "repair_within_cap": true,
+  "unique_cycle_numbers": true,
+  "delegation_records_match": true,
+  "at": "2026-10-16T16:59:25.292023+00:00",
+  "scope": "Bounded manual consistency checks, not the complete proposed runtime validator",
+  "limitations": [
+    "Historical dispatch timestamps and actual-model/token telemetry unavailable",
+    "No complete executable ledger invariant validator is present",
+    "Full acceptance still depends on performance and remaining audit limits"
+  ]
+}

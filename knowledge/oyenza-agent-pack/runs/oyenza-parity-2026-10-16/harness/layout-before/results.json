@@ -1,0 +1,399 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/layout.browser.spec.ts"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "layout.browser.spec.ts",
+      "file": "layout.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "U02 panel and map use one responsive boundary",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3480,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m460\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m460\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts:9:25",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                      "column": 25,
+                      "line": 9
+                    },
+                    "snippet": "   7 |   const map = (await page.locator('.map-region').boundingBox())!;\n   8 |   if (page.viewportSize()!.width >= 900) {\n>  9 |     expect(panel.width).toBe(400);\n     |                         ^\n  10 |     expect(map.x).toBe(panel.width);\n  11 |   } else {\n  12 |     expect(panel.width).toBe(page.viewportSize()!.width);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                        "column": 25,
+                        "line": 9
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m460\u001b[39m\n\n   7 |   const map = (await page.locator('.map-region').boundingBox())!;\n   8 |   if (page.viewportSize()!.width >= 900) {\n>  9 |     expect(panel.width).toBe(400);\n     |                         ^\n  10 |     expect(map.x).toBe(panel.width);\n  11 |   } else {\n  12 |     expect(panel.width).toBe(page.viewportSize()!.width);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts:9:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:26:35.759Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-U02-panel-and-map-use-one-responsive-boundary-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-U02-panel-and-map-use-one-responsive-boundary-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-U02-panel-and-map-use-one-responsive-boundary-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                    "column": 25,
+                    "line": 9
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b34e0751b7c234a25257-92a9cfd593a4d0b9d8d0",
+          "file": "layout.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "M02 U02 CCTV is visible after flight and fullscreen restores focus",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9804,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('button', { name: 'Layar Penuh' })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('button', { name: 'Layar Penuh' })\u001b[22m\n\u001b[2m    14 × locator resolved to <button class=\"flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1.5 text-[10px] font-semibold\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('button', { name: 'Layar Penuh' })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('button', { name: 'Layar Penuh' })\u001b[22m\n\u001b[2m    14 × locator resolved to <button class=\"flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1.5 text-[10px] font-semibold\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts:39:24",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                      "column": 24,
+                      "line": 39
+                    },
+                    "snippet": "  37 |   await page.keyboard.press('Escape');\n  38 |   await expect(page.getByRole('dialog')).toHaveCount(0);\n> 39 |   await expect(expand).toBeFocused();\n     |                        ^\n  40 |   await page.keyboard.press('Escape');\n  41 |   await expect(popup).toHaveCount(0);\n  42 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                        "column": 24,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('button', { name: 'Layar Penuh' })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('button', { name: 'Layar Penuh' })\u001b[22m\n\u001b[2m    14 × locator resolved to <button class=\"flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1.5 text-[10px] font-semibold\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  37 |   await page.keyboard.press('Escape');\n  38 |   await expect(page.getByRole('dialog')).toHaveCount(0);\n> 39 |   await expect(expand).toBeFocused();\n     |                        ^\n  40 |   await page.keyboard.press('Escape');\n  41 |   await expect(popup).toHaveCount(0);\n  42 | });\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts:39:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:26:39.895Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "settled-cctv-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA1NiwKICAgICJiZWFyaW5nIjogLTE3LjAwMDAwMDAwMDAwMDAwNCwKICAgICJ6b29tIjogMTYuNSwKICAgICJtb3ZpbmciOiBmYWxzZSwKICAgICJzdHlsZVJlYWR5IjogdHJ1ZSwKICAgICJjZW50ZXIiOiBbCiAgICAgIDEwNi44MjI2NzUxMjE5NDQyNiwKICAgICAgLTYuMTkzOTQzNTc2MDQyNQogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-M02-U02-CCT-f29e0-d-fullscreen-restores-focus-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-M02-U02-CCT-f29e0-d-fullscreen-restores-focus-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-M02-U02-CCT-f29e0-d-fullscreen-restores-focus-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                    "column": 24,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b34e0751b7c234a25257-4c1308626dc7e0ab3ead",
+          "file": "layout.browser.spec.ts",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "U02 panel and map use one responsive boundary",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3532,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:26:50.274Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "responsive-map-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDU2LAogICAgImJlYXJpbmciOiAtMTcuMDAwMDAwMDAwMDAwMDA0LAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMDA0LAogICAgICAtNi4xOTY1MDAwMDAwMDAwMTQ2CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJiYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInBhcmsiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyX2ljZV9zaGVsZiIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kY292ZXJfZ2xhY2llciIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kdXNlX3Jlc2lkZW50aWFsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlcl93b29kIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJ1aWxkaW5nIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbF9tb3RvcndheV9jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsX21vdG9yd2F5X2lubmVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktdGF4aXdheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LXJ1bndheS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS1hcmVhIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktcnVud2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfYXJlYV9waWVyIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfcGllciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X3BhdGgiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9taW5vciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX2Nhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX2lubmVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbWFqb3Jfc3VidGxlIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfaW5uZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9zdWJ0bGUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV90cmFuc2l0IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXlfdHJhbnNpdF9kYXNobGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5X3NlcnZpY2UiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV9zZXJ2aWNlX2Rhc2hsaW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV9kYXNobGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X2JyaWRnZV9jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9icmlkZ2VfaW5uZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYm91bmRhcnlfMyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJib3VuZGFyeV8yIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJvdW5kYXJ5X2Rpc3B1dGVkIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5X2xpbmVfbGFiZWwiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcl9uYW1lX3BvaW50X2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJfbmFtZV9saW5lX2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLXBhdGgiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWlub3IiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWFqb3IiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC1ub24tdXMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC11cy1pbnRlcnN0YXRlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9zaGllbGRfdXMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhaXJwb3J0IiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfb3RoZXIiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF92aWxsYWdlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfdG93biIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX3N0YXRlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfY2l0eSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NpdHlfY2FwaXRhbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMyIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMiIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-U02-panel-and-map-use-one-responsive-boundary-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b34e0751b7c234a25257-c0d123051a78babfae2e",
+          "file": "layout.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "M02 U02 CCTV is visible after flight and fullscreen restores focus",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3082,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m0\u001b[39m\nReceived:    \u001b[31m-38.875\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m0\u001b[39m\nReceived:    \u001b[31m-38.875\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts:29:18",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                      "column": 18,
+                      "line": 29
+                    },
+                    "snippet": "  27 |   const viewport = page.viewportSize()!;\n  28 |   await evidence(page, info, 'settled-cctv');\n> 29 |   expect(rect.y).toBeGreaterThanOrEqual(0);\n     |                  ^\n  30 |   expect(rect.x).toBeGreaterThanOrEqual(viewport.width < 900 ? 0 : 400);\n  31 |   expect(rect.x + rect.width).toBeLessThanOrEqual(viewport.width);\n  32 |   expect(rect.y + rect.height).toBeLessThanOrEqual(viewport.height < 900 ? viewport.height * 0.55 : viewport.height);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                        "column": 18,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m0\u001b[39m\nReceived:    \u001b[31m-38.875\u001b[39m\n\n  27 |   const viewport = page.viewportSize()!;\n  28 |   await evidence(page, info, 'settled-cctv');\n> 29 |   expect(rect.y).toBeGreaterThanOrEqual(0);\n     |                  ^\n  30 |   expect(rect.x).toBeGreaterThanOrEqual(viewport.width < 900 ? 0 : 400);\n  31 |   expect(rect.x + rect.width).toBeLessThanOrEqual(viewport.width);\n  32 |   expect(rect.y + rect.height).toBeLessThanOrEqual(viewport.height < 900 ? viewport.height * 0.55 : viewport.height);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts:29:18"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:26:53.972Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "settled-cctv-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDU2LAogICAgImJlYXJpbmciOiAtMTcuMDAwMDAwMDAwMDAwMDA0LAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMjY3NzA0OTMzMzYsCiAgICAgIC02LjE5Mzk0OTg0MzQ1MDMyNgogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-M02-U02-CCT-f29e0-d-fullscreen-restores-focus-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-M02-U02-CCT-f29e0-d-fullscreen-restores-focus-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/layout-before/artifacts/layout.browser-M02-U02-CCT-f29e0-d-fullscreen-restores-focus-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/layout.browser.spec.ts",
+                    "column": 18,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b34e0751b7c234a25257-6bc8f0cddb7974e45e57",
+          "file": "layout.browser.spec.ts",
+          "line": 19,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T05:26:35.314Z",
+    "duration": 21905.595,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

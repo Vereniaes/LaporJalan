@@ -1,0 +1,609 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/close-labels.browser.spec.ts",
+      "tests/interaction.browser.spec.ts"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "close-labels.browser.spec.ts",
+      "file": "close-labels.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G06 close labels restore original visibility after zoom, exit and style replacement",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6890,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    null,\u001b[22m\n\u001b[2m    \"visible\",\u001b[22m\n\u001b[2m    \"none\",\u001b[22m\n\u001b[32m-   null,\u001b[39m\n\u001b[31m+   \"none\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    null,\u001b[22m\n\u001b[2m    \"visible\",\u001b[22m\n\u001b[2m    \"none\",\u001b[22m\n\u001b[32m-   null,\u001b[39m\n\u001b[31m+   \"none\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts:25:33",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts",
+                      "column": 33,
+                      "line": 25
+                    },
+                    "snippet": "  23 |   await map.evaluate((map, style) => map.setStyle(style, { diff: false }), labels);\n  24 |   await ready(page);\n> 25 |   await expect.poll(visibility).toEqual(ordinary);\n     |                                 ^\n  26 |   await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();\n  27 |   await ready(page);\n  28 |   await expect.poll(visibility).toEqual(close);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts",
+                        "column": 33,
+                        "line": 25
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    null,\u001b[22m\n\u001b[2m    \"visible\",\u001b[22m\n\u001b[2m    \"none\",\u001b[22m\n\u001b[32m-   null,\u001b[39m\n\u001b[31m+   \"none\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  23 |   await map.evaluate((map, style) => map.setStyle(style, { diff: false }), labels);\n  24 |   await ready(page);\n> 25 |   await expect.poll(visibility).toEqual(ordinary);\n     |                                 ^\n  26 |   await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();\n  27 |   await ready(page);\n  28 |   await expect.poll(visibility).toEqual(close);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts:25:33"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:20.489Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/close-labels.browser-G06-c-6e88a--exit-and-style-replacement-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/close-labels.browser-G06-c-6e88a--exit-and-style-replacement-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/close-labels.browser-G06-c-6e88a--exit-and-style-replacement-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts",
+                    "column": 33,
+                    "line": 25
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0ebe9dde4a00467d7b91-1c3ea4f4d83a4a53a17b",
+          "file": "close-labels.browser.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "G06 close labels restore original visibility after zoom, exit and style replacement",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6658,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    null,\u001b[22m\n\u001b[2m    \"visible\",\u001b[22m\n\u001b[2m    \"none\",\u001b[22m\n\u001b[32m-   null,\u001b[39m\n\u001b[31m+   \"none\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    null,\u001b[22m\n\u001b[2m    \"visible\",\u001b[22m\n\u001b[2m    \"none\",\u001b[22m\n\u001b[32m-   null,\u001b[39m\n\u001b[31m+   \"none\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts:25:33",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts",
+                      "column": 33,
+                      "line": 25
+                    },
+                    "snippet": "  23 |   await map.evaluate((map, style) => map.setStyle(style, { diff: false }), labels);\n  24 |   await ready(page);\n> 25 |   await expect.poll(visibility).toEqual(ordinary);\n     |                                 ^\n  26 |   await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();\n  27 |   await ready(page);\n  28 |   await expect.poll(visibility).toEqual(close);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts",
+                        "column": 33,
+                        "line": 25
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    null,\u001b[22m\n\u001b[2m    \"visible\",\u001b[22m\n\u001b[2m    \"none\",\u001b[22m\n\u001b[32m-   null,\u001b[39m\n\u001b[31m+   \"none\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  23 |   await map.evaluate((map, style) => map.setStyle(style, { diff: false }), labels);\n  24 |   await ready(page);\n> 25 |   await expect.poll(visibility).toEqual(ordinary);\n     |                                 ^\n  26 |   await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();\n  27 |   await ready(page);\n  28 |   await expect.poll(visibility).toEqual(close);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts:25:33"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:43.349Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/close-labels.browser-G06-c-6e88a--exit-and-style-replacement-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/close-labels.browser-G06-c-6e88a--exit-and-style-replacement-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/close-labels.browser-G06-c-6e88a--exit-and-style-replacement-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/close-labels.browser.spec.ts",
+                    "column": 33,
+                    "line": 25
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0ebe9dde4a00467d7b91-f826e25a5220df9661e4",
+          "file": "close-labels.browser.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "interaction.browser.spec.ts",
+      "file": "interaction.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "C05 an older geocoder response cannot replace a newer query",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:29.353Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/interaction.browser-C05-an-54519-annot-replace-a-newer-query-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-403aca61028d588681a6",
+          "file": "interaction.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "C02 late flight and zoom callbacks cannot override manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:33.302Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/interaction.browser-C02-la-4c69b-s-cannot-override-manual-2D-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-27800cb3bcf40721abfd",
+          "file": "interaction.browser.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "M02 device fullscreen rejection retains an accessible preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3448,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:37.919Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/interaction.browser-M02-de-5ca52-tains-an-accessible-preview-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-41a5e47a212ec84bd001",
+          "file": "interaction.browser.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "M03 popup anchor tracks pan zoom and resize within two CSS pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1508,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:41.457Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "popup-projections",
+                      "contentType": "application/json",
+                      "body": "W3sic3RlcCI6ImluaXRpYWwiLCJwb2ludCI6WzUyMC4wMDAwMDAwMTcyMjMsNTExLjk5OTk5OTk2NTU3ODM1XSwiYWN0dWFsIjpbNTIwLDUxMl0sIm9mZnNldCI6WzAsLTI4XSwiYW5jaG9yIjoiYm90dG9tIn0seyJzdGVwIjoicGFuIiwicG9pbnQiOls0ODcuMTA2Mjg1NjA3MTY2Nyw0ODcuOTAzNDM3NDk0NTk1Ml0sImFjdHVhbCI6WzQ4Nyw0ODhdLCJvZmZzZXQiOlswLC0yOF0sImFuY2hvciI6ImJvdHRvbSJ9LHsic3RlcCI6Inpvb20iLCJwb2ludCI6WzQ4MS44MDM5Nzk0MDUyOTg2LDQ5OC41MjY3NTE1NDMxMDE1N10sImFjdHVhbCI6WzQ4Miw0OTldLCJvZmZzZXQiOlswLC0yOF0sImFuY2hvciI6ImJvdHRvbSJ9LHsic3RlcCI6InJlc2l6ZSIsInBvaW50IjpbNDg2LjgwMzk3OTQxNTM1NTYsNDk4LjUyNjc1MTU0MzEwMTU3XSwiYWN0dWFsIjpbNDg3LDQ5OV0sIm9mZnNldCI6WzAsLTI4XSwiYW5jaG9yIjoiYm90dG9tIn1d"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/interaction.browser-M03-po-6244f-esize-within-two-CSS-pixels-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-f2c01cd3b38487653fbd",
+          "file": "interaction.browser.spec.ts",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "C05 an older geocoder response cannot replace a newer query",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3254,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:50.453Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/interaction.browser-C05-an-54519-annot-replace-a-newer-query-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-57a2a81c52c191dfcddd",
+          "file": "interaction.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "C02 late flight and zoom callbacks cannot override manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4237,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:53.852Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/interaction.browser-C02-la-4c69b-s-cannot-override-manual-2D-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-23560777e0eccff8338f",
+          "file": "interaction.browser.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "M02 device fullscreen rejection retains an accessible preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3110,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:35:59.613Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/interaction.browser-M02-de-5ca52-tains-an-accessible-preview-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-99bc01b5de7971cdc77c",
+          "file": "interaction.browser.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "M03 popup anchor tracks pan zoom and resize within two CSS pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1317,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:36:02.816Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "popup-projections",
+                      "contentType": "application/json",
+                      "body": "W3sic3RlcCI6ImluaXRpYWwiLCJwb2ludCI6WzE2NC45OTk5OTk4OTUzMDY5OCwzMzQuMTAwMDAwMDAwNTU0XSwiYWN0dWFsIjpbMTY1LDMzNF0sIm9mZnNldCI6WzAsLTI4XSwiYW5jaG9yIjoiYm90dG9tIn0seyJzdGVwIjoicGFuIiwicG9pbnQiOlsxMzEuMzYyNDA5NzQzMjAzOCwzMDcuNjQxMzA2NTQ0NTE0NzVdLCJhY3R1YWwiOlsxMzEsMzA4XSwib2Zmc2V0IjpbMCwtMjhdLCJhbmNob3IiOiJib3R0b20ifSx7InN0ZXAiOiJ6b29tIiwicG9pbnQiOlsxMjAuNTU3Mzk1MzQxNzY4OTEsMzI1LjIyMTU2NDg4MjIxOTldLCJhY3R1YWwiOlsxMjEsMzI1XSwib2Zmc2V0IjpbMCwtMjhdLCJhbmNob3IiOiJib3R0b20ifSx7InN0ZXAiOiJyZXNpemUiLCJwb2ludCI6WzEyNS41NTczOTUzNDY1NDAwMiwzMjUuMjIxNTY0ODgyMjE5OV0sImFjdHVhbCI6WzEyNiwzMjVdLCJvZmZzZXQiOlswLC0yOF0sImFuY2hvciI6ImJvdHRvbSJ9XQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-interactions/artifacts/interaction.browser-M03-po-6244f-esize-within-two-CSS-pixels-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-a6ce4742d763d26f6824",
+          "file": "interaction.browser.spec.ts",
+          "line": 52,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T13:35:20.050Z",
+    "duration": 41271.213,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

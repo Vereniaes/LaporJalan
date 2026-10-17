@@ -7,6 +7,7 @@ Todo:
 */
 
 import React, { useState } from 'react';
+import { useModalDialog } from './useModalDialog';
 import { X, CheckCircle2, AlertTriangle, ArrowLeftRight, Clock, ShieldCheck, HardHat } from 'lucide-react';
 
 interface CompareItem {
@@ -60,6 +61,7 @@ interface CompareModalProps {
 }
 
 export const CompareModal: React.FC<CompareModalProps> = ({ onClose }) => {
+  const dialogRef = useModalDialog();
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [sliderPos, setSliderPos] = useState(50); // persentase pembagian 0 - 100
   const item = SAMPLE_COMPARE_DATA[selectedIdx];
@@ -72,7 +74,7 @@ export const CompareModal: React.FC<CompareModalProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in overflow-y-auto">
+    <dialog ref={dialogRef} aria-labelledby="compare-dialog-title" onCancel={event => { event.preventDefault(); onClose(); }} className="m-auto w-[calc(100vw-24px)] max-w-xl max-h-[calc(100dvh-24px)] overflow-y-auto border-0 rounded-3xl bg-transparent p-0 backdrop:bg-slate-900/60">
       <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-floating border border-slate-100 overflow-hidden flex flex-col my-auto max-h-[90vh]">
         {/* header */}
         <div className="flex items-center justify-between p-4 px-5 border-b border-slate-100 bg-white sticky top-0 z-10">
@@ -82,19 +84,20 @@ export const CompareModal: React.FC<CompareModalProps> = ({ onClose }) => {
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <h3 className="font-bold text-slate-800 text-sm leading-tight">
-                  Komparasi Akuntabilitas Jalan
+                <h3 id="compare-dialog-title" className="font-bold text-slate-800 text-sm leading-tight">
+                  Contoh perbandingan jalan
                 </h3>
                 <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">
                   Sebelum vs Sesudah
                 </span>
               </div>
               <p className="text-xs text-slate-500">
-                Audit visual hasil penanganan dinas terkait
+                Data dan gambar ilustratif - bukan bukti perbaikan
               </p>
             </div>
           </div>
           <button
+            aria-label="Tutup perbandingan"
             onClick={onClose}
             className="p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
           >
@@ -131,6 +134,13 @@ export const CompareModal: React.FC<CompareModalProps> = ({ onClose }) => {
           {/* interactive split view slider */}
           <div
             className="relative w-full h-64 rounded-3xl overflow-hidden cursor-ew-resize select-none border border-slate-200 shadow-inner group"
+            role="slider" tabIndex={0} aria-label="Batas perbandingan" aria-valuemin={5} aria-valuemax={95} aria-valuenow={sliderPos}
+            onKeyDown={event => {
+              if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                event.preventDefault();
+                setSliderPos(value => Math.max(5, Math.min(95, value + (event.key === 'ArrowRight' ? 5 : -5))));
+              }
+            }}
             onMouseMove={(e) => e.buttons === 1 && handleSliderMove(e)}
             onClick={handleSliderMove}
             onTouchMove={handleSliderMove}
@@ -146,16 +156,15 @@ export const CompareModal: React.FC<CompareModalProps> = ({ onClose }) => {
               <span>SESUDAH DITAMBAL</span>
             </div>
 
-            {/* gambar sebelum (layer atas yang terpotong sesuai posisi slider) */}
+            {/* gambar sebelum (layer atas dengan clip-path presisi tanpa distorsi) */}
             <div
-              className="absolute inset-0 overflow-hidden pointer-events-none"
-              style={{ width: `${sliderPos}%` }}
+              className="absolute inset-0 pointer-events-none"
+              style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
             >
               <img
                 src={item.beforeImg}
                 alt="Kondisi Rusak"
-                className="absolute inset-0 w-full h-full object-cover max-w-none"
-                style={{ width: '100%', minWidth: '100%' }}
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute top-3 left-3 bg-red-600/90 text-white px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center space-x-1 shadow-sm">
                 <AlertTriangle className="w-3.5 h-3.5" />
@@ -219,6 +228,6 @@ export const CompareModal: React.FC<CompareModalProps> = ({ onClose }) => {
           </button>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 };

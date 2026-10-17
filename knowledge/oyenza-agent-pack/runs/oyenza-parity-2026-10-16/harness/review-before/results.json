@@ -1,0 +1,493 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/review.browser.spec.ts",
+      "--project=mobile"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "review.browser.spec.ts",
+      "file": "review.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "C06 empty report response clears prior selection and inspection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7794,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Daftar (0)' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Daftar (0)' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Daftar (0)' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Daftar (0)' })\u001b[22m\n\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:16:66",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                      "column": 66,
+                      "line": 16
+                    },
+                    "snippet": "  14 |   await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();\n  15 |   release();\n> 16 |   await expect(page.getByRole('button', { name: 'Daftar (0)' })).toBeVisible();\n     |                                                                  ^\n  17 |   await expect(page.getByText('Inspeksi Lapangan 3D', { exact: true })).toHaveCount(0);\n  18 |   await expect(page.locator('.map-report-marker')).toHaveCount(0);\n  19 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                        "column": 66,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Daftar (0)' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Daftar (0)' })\u001b[22m\n\n\n  14 |   await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();\n  15 |   release();\n> 16 |   await expect(page.getByRole('button', { name: 'Daftar (0)' })).toBeVisible();\n     |                                                                  ^\n  17 |   await expect(page.getByText('Inspeksi Lapangan 3D', { exact: true })).toHaveCount(0);\n  18 |   await expect(page.locator('.map-report-marker')).toHaveCount(0);\n  19 | });\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:16:66"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:36:54.273Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C06-empty-r-39b54-or-selection-and-inspection-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C06-empty-r-39b54-or-selection-and-inspection-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C06-empty-r-39b54-or-selection-and-inspection-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                    "column": 66,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e10e872c60b65f0ce12d-882313fc79beb4c70b16",
+          "file": "review.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "C05 invalid search coordinates do not crash or move the map",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 32235,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 30000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 30000ms exceeded while waiting on the predicate\n    at ready (/home/vereniaes/project/hackathon/LaporJalan/tests/helpers/map.ts:29:89)\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:29:9",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/helpers/map.ts",
+                      "column": 89,
+                      "line": 29
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers/map.ts:29\n\n  27 | }\n  28 | export async function ready(page: Page) {\n> 29 |   await expect.poll(async () => (await mapState(page))?.styleReady, { timeout: 30000 }).toBe(true);\n     |                                                                                         ^\n  30 |   await expect.poll(async () => (await mapState(page))?.moving, { timeout: 15000 }).toBe(false);\n  31 | }\n  32 | export async function evidence(page: Page, info: TestInfo, name: string) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/helpers/map.ts",
+                        "column": 89,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 30000ms exceeded while waiting on the predicate\n\n   at helpers/map.ts:29\n\n  27 | }\n  28 | export async function ready(page: Page) {\n> 29 |   await expect.poll(async () => (await mapState(page))?.styleReady, { timeout: 30000 }).toBe(true);\n     |                                                                                         ^\n  30 |   await expect.poll(async () => (await mapState(page))?.moving, { timeout: 15000 }).toBe(false);\n  31 | }\n  32 | export async function evidence(page: Page, info: TestInfo, name: string) {\n    at ready (/home/vereniaes/project/hackathon/LaporJalan/tests/helpers/map.ts:29:89)\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:29:9"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:37:02.598Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C05-invalid-86b73-o-not-crash-or-move-the-map-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C05-invalid-86b73-o-not-crash-or-move-the-map-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C05-invalid-86b73-o-not-crash-or-move-the-map-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/helpers/map.ts",
+                    "column": 89,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e10e872c60b65f0ce12d-ac36165c594dea35ad6b",
+          "file": "review.browser.spec.ts",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "C05 refreshed coordinates follow the active report with the same id",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7830,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.825\u001b[39m\nReceived: \u001b[31m106.8232\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0018000000000029104\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.825\u001b[39m\nReceived: \u001b[31m106.8232\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0018000000000029104\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:45:68",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                      "column": 68,
+                      "line": 45
+                    },
+                    "snippet": "  43 | test('C05 invalid search coordinates do not crash or move the map', async ({ page }) => {\n  44 |   await prepare(page);\n> 45 |   const errors: string[] = [];\n     |                               ^\n  46 |   page.on('pageerror', error => errors.push(error.message));\n  47 |   await page.route('**/api/places/**', route => route.fulfill({ json: { predictions: [{ id: 'bad', name: 'Invalid place', address: 'Invalid fixture', lng: 106, lat: 95 }] } }));\n  48 |   const before = (await mapState(page))!.center;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                        "column": 68,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.825\u001b[39m\nReceived: \u001b[31m106.8232\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0018000000000029104\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  43 | test('C05 invalid search coordinates do not crash or move the map', async ({ page }) => {\n  44 |   await prepare(page);\n> 45 |   const errors: string[] = [];\n     |                               ^\n  46 |   page.on('pageerror', error => errors.push(error.message));\n  47 |   await page.route('**/api/places/**', route => route.fulfill({ json: { predictions: [{ id: 'bad', name: 'Invalid place', address: 'Invalid fixture', lng: 106, lat: 95 }] } }));\n  48 |   const before = (await mapState(page))!.center;\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:45:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:37:35.404Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C05-refresh-146f8-ive-report-with-the-same-id-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C05-refresh-146f8-ive-report-with-the-same-id-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-C05-refresh-146f8-ive-report-with-the-same-id-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                    "column": 68,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e10e872c60b65f0ce12d-dc8cd03e5149bbea21f7",
+          "file": "review.browser.spec.ts",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "U02 inspection frames a larger physical cavity without scaling the model",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3090,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m12\u001b[39m\nReceived:   \u001b[31m-136.4816531415169\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m12\u001b[39m\nReceived:   \u001b[31m-136.4816531415169\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:69:23",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                      "column": 23,
+                      "line": 69
+                    },
+                    "snippet": "  67 |   await expect.poll(async () => (await mapState(page))!.center[0]).toBeCloseTo(refreshed.lng, 6);\n  68 |   expect((await mapState(page))!.center[1]).toBeCloseTo(refreshed.lat, 6);\n> 69 | });\n     |    ^\n  70 |\n  71 | test('U02 inspection frames a larger physical cavity without scaling the model', async ({ page }) => {\n  72 |   await page.emulateMedia({ reducedMotion: 'reduce' });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                        "column": 23,
+                        "line": 69
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m12\u001b[39m\nReceived:   \u001b[31m-136.4816531415169\u001b[39m\n\n  67 |   await expect.poll(async () => (await mapState(page))!.center[0]).toBeCloseTo(refreshed.lng, 6);\n  68 |   expect((await mapState(page))!.center[1]).toBeCloseTo(refreshed.lat, 6);\n> 69 | });\n     |    ^\n  70 |\n  71 | test('U02 inspection frames a larger physical cavity without scaling the model', async ({ page }) => {\n  72 |   await page.emulateMedia({ reducedMotion: 'reduce' });\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:69:23"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:37:43.767Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-U02-inspect-c069a-y-without-scaling-the-model-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-U02-inspect-c069a-y-without-scaling-the-model-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-U02-inspect-c069a-y-without-scaling-the-model-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                    "column": 23,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e10e872c60b65f0ce12d-eae42e68b07e5834b595",
+          "file": "review.browser.spec.ts",
+          "line": 49,
+          "column": 1
+        },
+        {
+          "title": "D04 unavailable image does not fabricate analysis",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7868,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('status')\nExpected substring: \u001b[32m\"Gambar tidak dapat dianalisis\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('status')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('status')\nExpected substring: \u001b[32m\"Gambar tidak dapat dianalisis\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('status')\u001b[22m\n\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:79:42",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                      "column": 42,
+                      "line": 79
+                    },
+                    "snippet": "  77 |   await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();\n  78 |   await ready(page);\n> 79 |   const map = await mapHandle(page);\n     |                                     ^\n  80 |   const bounds = await map.evaluate(map => {\n  81 |     const layer = map.getLayer('inspection-damage').implementation;\n  82 |     const { anchor, widthM } = layer.options;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                        "column": 42,
+                        "line": 79
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('status')\nExpected substring: \u001b[32m\"Gambar tidak dapat dianalisis\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('status')\u001b[22m\n\n\n  77 |   await page.getByRole('button', { name: 'Lihat Lapangan 3D' }).click();\n  78 |   await ready(page);\n> 79 |   const map = await mapHandle(page);\n     |                                     ^\n  80 |   const bounds = await map.evaluate(map => {\n  81 |     const layer = map.getLayer('inspection-damage').implementation;\n  82 |     const { anchor, widthM } = layer.options;\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts:79:42"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:37:47.563Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-D04-unavail-66aaf-does-not-fabricate-analysis-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-D04-unavail-66aaf-does-not-fabricate-analysis-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/review-before/artifacts/review.browser-D04-unavail-66aaf-does-not-fabricate-analysis-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/review.browser.spec.ts",
+                    "column": 42,
+                    "line": 79
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e10e872c60b65f0ce12d-fa97a72aeeaa2017934b",
+          "file": "review.browser.spec.ts",
+          "line": 74,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T05:36:53.843Z",
+    "duration": 61782.129,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

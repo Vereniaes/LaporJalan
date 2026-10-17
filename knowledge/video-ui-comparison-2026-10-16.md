@@ -2,6 +2,8 @@
 
 Tanggal pemeriksaan: 16 Oktober 2026, WIB.
 
+Pembaruan dokumentasi pada tanggal yang sama: [agent pack](oyenza-agent-pack/README.md) memuat analisis bundle Oyenza yang kemudian berhasil diambil melalui HTTP publik, koreksi klaim, dan rencana implementasi. Catatan kegagalan akses di laporan ini berlaku untuk metode pemeriksaan terdahulu. Bukti browser/video di bawah tetap merupakan hasil pemeriksaan terdahulu, bukan pengujian ulang fitur baru.
+
 Kesimpulan: proyek sudah memiliki navigasi peta, inspeksi lapangan, jaring permukaan, dan kartu CCTV tertambat. Kebutuhan inti berupa kerusakan tiga dimensi yang menyatu dengan jalan pada peta belum terpenuhi. Catatan penyelesaian fase sebelumnya belum dapat dianggap sebagai bukti kesetaraan visual.
 
 ## Cakupan dan metode

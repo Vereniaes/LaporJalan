@@ -1,0 +1,197 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/empty-mode.browser.spec.ts",
+      "--project=mobile"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/empty-mode-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/empty-mode-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/empty-mode-before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/empty-mode-before/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "empty-mode.browser.spec.ts",
+      "file": "empty-mode.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "C06 removed selected report restores the mode before inspection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11300,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#b-3d')\nExpected: \u001b[32m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#b-3d')\u001b[22m\n\u001b[2m    14 × locator resolved to <button id=\"b-3d\" aria-pressed=\"true\" title=\"Perspektif 3D / 2D\" class=\"px-3.5 py-2.5 rounded-2xl shadow-floating font-black text-xs transition-all border flex items-center justify-center space-x-1 active:scale-95 bg-white text-slate-900 border-slate-200\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"true\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#b-3d')\nExpected: \u001b[32m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#b-3d')\u001b[22m\n\u001b[2m    14 × locator resolved to <button id=\"b-3d\" aria-pressed=\"true\" title=\"Perspektif 3D / 2D\" class=\"px-3.5 py-2.5 rounded-2xl shadow-floating font-black text-xs transition-all border flex items-center justify-center space-x-1 active:scale-95 bg-white text-slate-900 border-slate-200\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"true\"\u001b[22m\n\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/empty-mode.browser.spec.ts:17:39",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/empty-mode.browser.spec.ts",
+                      "column": 39,
+                      "line": 17
+                    },
+                    "snippet": "  15 |   release();\n  16 |   await expect(page.getByRole('button', { name: 'Daftar (0)' })).toBeVisible();\n> 17 |   await expect(page.locator('#b-3d')).toHaveAttribute('aria-pressed', 'false');\n     |                                       ^\n  18 |   await expect.poll(async () => (await mapState(page))!.pitch).toBe(0);\n  19 |   await expect(page.getByText('Inspeksi Lapangan 3D', { exact: true })).toHaveCount(0);\n  20 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/empty-mode.browser.spec.ts",
+                        "column": 39,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#b-3d')\nExpected: \u001b[32m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#b-3d')\u001b[22m\n\u001b[2m    14 × locator resolved to <button id=\"b-3d\" aria-pressed=\"true\" title=\"Perspektif 3D / 2D\" class=\"px-3.5 py-2.5 rounded-2xl shadow-floating font-black text-xs transition-all border flex items-center justify-center space-x-1 active:scale-95 bg-white text-slate-900 border-slate-200\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"true\"\u001b[22m\n\n\n  15 |   release();\n  16 |   await expect(page.getByRole('button', { name: 'Daftar (0)' })).toBeVisible();\n> 17 |   await expect(page.locator('#b-3d')).toHaveAttribute('aria-pressed', 'false');\n     |                                       ^\n  18 |   await expect.poll(async () => (await mapState(page))!.pitch).toBe(0);\n  19 |   await expect(page.getByText('Inspeksi Lapangan 3D', { exact: true })).toHaveCount(0);\n  20 | });\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/empty-mode.browser.spec.ts:17:39"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:35:51.636Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/empty-mode-before/artifacts/empty-mode.browser-C06-rem-d05cd--the-mode-before-inspection-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/empty-mode-before/artifacts/empty-mode.browser-C06-rem-d05cd--the-mode-before-inspection-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/empty-mode-before/artifacts/empty-mode.browser-C06-rem-d05cd--the-mode-before-inspection-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/empty-mode.browser.spec.ts",
+                    "column": 39,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2a64c091c4b130d2c573-423dfbb68763d33aed38",
+          "file": "empty-mode.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T11:35:50.012Z",
+    "duration": 14165.876,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

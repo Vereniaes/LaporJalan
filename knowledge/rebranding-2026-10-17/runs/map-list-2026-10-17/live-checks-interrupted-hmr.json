@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-17T10:28:41.477Z",
+  "results": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "reports": 53,
+      "errors": [],
+      "frames": {
+        "samples": 171,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 16.800000000000182
+      },
+      "buildings": {
+        "pitch": 56,
+        "visibility": "visible",
+        "rendered": 51,
+        "source": "openmaptiles"
+      },
+      "pitch": 0,
+      "browser": "149.0.7827.55",
+      "renderer": "Chromium headless with SwiftShader",
+      "passed": true
+    }
+  ]
+}

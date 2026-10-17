@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-16T16:53:21.197227+00:00",
+  "scope": "Additional observational test before first execution",
+  "files": {
+    "tests/performance-real-map.browser.spec.ts": "2607dd20600ef9590cc9a2a21fc8b376b27f14301dee8f4dcecbbbfbd21a0601",
+    "tests/helpers/map.ts": "a667343b184064b9739e9d9e0dd6a065b0b626fbcad919c404a6c09f1eb37751",
+    "tests/fixtures.ts": "de2b92da244274ce2c8522c1d8f77b8b4241c2badae9f4b6a57149b714d912b7",
+    "tests/mapped-road.json": "9b1ccb2c11dc5d357a2827c625760efef23b8bd8e9e04e07381cb34342198e72",
+    "playwright.config.ts": "3b0fb523a5ceccbfe2864a65eabd224030773a2ef939317e8c6df1b447abe103"
+  }
+}

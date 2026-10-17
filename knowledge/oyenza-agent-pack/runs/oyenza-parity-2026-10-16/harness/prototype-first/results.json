@@ -1,0 +1,464 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "geometry",
+      "--project=unit",
+      "--project=desktop",
+      "--project=mobile"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "geometry.unit.spec.ts",
+      "file": "geometry.unit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G01 physical cavity joins the road with the declared diameter and depth",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "unit",
+              "projectName": "unit",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 895,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m-0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m-0\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/geometry.unit.spec.ts:15:103",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/geometry.unit.spec.ts",
+                      "column": 103,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     expect(Math.hypot(x, y)).toBeLessThanOrEqual(0.260001);\n  14 |   }\n> 15 |   for (const [x, y] of [[0.26, 0], [0, -0.26], [1, 1]]) expect(sampleDamageHeight(x, y, 0.52, 0.075)).toBe(0);\n     |                                                                                                       ^\n  16 |   geometry.dispose();\n  17 | });\n  18 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/geometry.unit.spec.ts",
+                        "column": 103,
+                        "line": 15
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m-0\u001b[39m\n\n  13 |     expect(Math.hypot(x, y)).toBeLessThanOrEqual(0.260001);\n  14 |   }\n> 15 |   for (const [x, y] of [[0.26, 0], [0, -0.26], [1, 1]]) expect(sampleDamageHeight(x, y, 0.52, 0.075)).toBe(0);\n     |                                                                                                       ^\n  16 |   geometry.dispose();\n  17 | });\n  18 |\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/geometry.unit.spec.ts:15:103"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:04:57.825Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.unit-G01-physical-35680-declared-diameter-and-depth-unit/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.unit-G01-physical-35680-declared-diameter-and-depth-unit/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/geometry.unit.spec.ts",
+                    "column": 103,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4575dfc31a5d80692312-98a1a263516f0d33def1",
+          "file": "geometry.unit.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "G01 contour vertices use the same surface profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "unit",
+              "projectName": "unit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 132,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:04:59.112Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.unit-G01-contour--d99ca-se-the-same-surface-profile-unit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4575dfc31a5d80692312-0914429f6dcb69689c1d",
+          "file": "geometry.unit.spec.ts",
+          "line": 19,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "geometry.browser.spec.ts",
+      "file": "geometry.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G03 G04 G05 prototype renders at physical scale through four bearings",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 45129,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/geometry.browser.spec.ts",
+                        "column": 16,
+                        "line": 11
+                      },
+                      "message": "Error: page.evaluate: Test timeout of 45000ms exceeded.\n\n   9 |   for (const bearing of [0, 90, 180, 270]) {\n  10 |     await page.evaluate(bearing => (window as any).prototypeMap.jumpTo({ bearing, pitch: 60 }), bearing);\n> 11 |     await page.evaluate(() => new Promise(resolve => (window as any).prototypeMap.once('idle', resolve)));\n     |                ^\n  12 |     const actual = await state(page);\n  13 |     expect(actual.canvasShared).toBe(true);\n  14 |     expect(actual.webgl2).toBe(true);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/geometry.browser.spec.ts:11:16"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:04:59.577Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.browser-G03-G04-G-46aea-scale-through-four-bearings-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.browser-G03-G04-G-46aea-scale-through-four-bearings-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.browser-G03-G04-G-46aea-scale-through-four-bearings-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c601eec6a4298447dfb9-27e27a532dccf6a79329",
+          "file": "geometry.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "L01 L03 prototype releases its resources over 20 cycles",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11373,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:05:48.712Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cycles",
+                      "contentType": "application/json",
+                      "body": "W3siYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6OCwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbNzIwLDQ1MF0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9XQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.browser-L01-L03-p-69656-ts-resources-over-20-cycles-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601eec6a4298447dfb9-44dec1a62a4f282cc1a5",
+          "file": "geometry.browser.spec.ts",
+          "line": 36,
+          "column": 1
+        },
+        {
+          "title": "G03 G04 G05 prototype renders at physical scale through four bearings",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 45081,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/geometry.browser.spec.ts",
+                        "column": 16,
+                        "line": 11
+                      },
+                      "message": "Error: page.evaluate: Test timeout of 45000ms exceeded.\n\n   9 |   for (const bearing of [0, 90, 180, 270]) {\n  10 |     await page.evaluate(bearing => (window as any).prototypeMap.jumpTo({ bearing, pitch: 60 }), bearing);\n> 11 |     await page.evaluate(() => new Promise(resolve => (window as any).prototypeMap.once('idle', resolve)));\n     |                ^\n  12 |     const actual = await state(page);\n  13 |     expect(actual.canvasShared).toBe(true);\n  14 |     expect(actual.webgl2).toBe(true);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/geometry.browser.spec.ts:11:16"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:06:04.339Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.browser-G03-G04-G-46aea-scale-through-four-bearings-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.browser-G03-G04-G-46aea-scale-through-four-bearings-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.browser-G03-G04-G-46aea-scale-through-four-bearings-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c601eec6a4298447dfb9-c959b922327eaf57deaa",
+          "file": "geometry.browser.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "L01 L03 prototype releases its resources over 20 cycles",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5189,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:06:53.487Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cycles",
+                      "contentType": "application/json",
+                      "body": "W3siYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MywicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6OSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NiwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6NSwicmVzb3VyY2VzIjp7Imdlb21ldHJpZXMiOjUsIm1hdGVyaWFscyI6NiwidGV4dHVyZXMiOjAsInByb2dyYW1zIjo0fSwiZGVwdGhSYW5nZUJlZm9yZSI6WzAsMC45OTg5MzE4ODQ3NjU2MjVdLCJkZXB0aFJhbmdlQWZ0ZXIiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwicHJvamVjdGVkQW5jaG9yQ3NzIjpbMTk1LDQyMl0sImRpc3Bvc2VkIjpmYWxzZSwiY2FudmFzU2hhcmVkIjp0cnVlLCJ3ZWJnbDIiOnRydWV9LHsiYW5jaG9yIjpbMTA2LjgyMzIsLTYuMTk2NV0sIndpZHRoTSI6MC41MiwiZGVwdGhNIjowLjA3NSwiZ2VvbWV0cnkiOnsidmVydGV4Q291bnQiOjEyODEsIm1pbloiOi0wLjA3NTAwMDAwMjk4MDIzMjI0LCJtYXhaIjowLCJzdXBwb3J0RGlhbWV0ZXJNIjowLjUxOTk5OTk4MDkyNjUxMzd9LCJyZW5kZXJDb3VudCI6MTEsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjUsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjQsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjYsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjUsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjYsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjYsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjgsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjcsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjIsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjIsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjIsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfSx7ImFuY2hvciI6WzEwNi44MjMyLC02LjE5NjVdLCJ3aWR0aE0iOjAuNTIsImRlcHRoTSI6MC4wNzUsImdlb21ldHJ5Ijp7InZlcnRleENvdW50IjoxMjgxLCJtaW5aIjotMC4wNzUwMDAwMDI5ODAyMzIyNCwibWF4WiI6MCwic3VwcG9ydERpYW1ldGVyTSI6MC41MTk5OTk5ODA5MjY1MTM3fSwicmVuZGVyQ291bnQiOjYsInJlc291cmNlcyI6eyJnZW9tZXRyaWVzIjo1LCJtYXRlcmlhbHMiOjYsInRleHR1cmVzIjowLCJwcm9ncmFtcyI6NH0sImRlcHRoUmFuZ2VCZWZvcmUiOlswLDAuOTk4OTMxODg0NzY1NjI1XSwiZGVwdGhSYW5nZUFmdGVyIjpbMCwwLjk5ODkzMTg4NDc2NTYyNV0sInByb2plY3RlZEFuY2hvckNzcyI6WzE5NSw0MjJdLCJkaXNwb3NlZCI6ZmFsc2UsImNhbnZhc1NoYXJlZCI6dHJ1ZSwid2ViZ2wyIjp0cnVlfV0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/prototype-first/artifacts/geometry.browser-L01-L03-p-69656-ts-resources-over-20-cycles-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601eec6a4298447dfb9-f422288423d21ea88a5f",
+          "file": "geometry.browser.spec.ts",
+          "line": 36,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T05:04:57.327Z",
+    "duration": 110846.048,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

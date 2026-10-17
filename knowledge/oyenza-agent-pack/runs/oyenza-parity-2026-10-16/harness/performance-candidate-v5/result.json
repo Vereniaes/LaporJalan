@@ -1,0 +1,1858 @@
+{
+  "status": "failed",
+  "finishedAt": "2026-10-16T17:06:47.578Z",
+  "environment": {
+    "node": "v22.23.3",
+    "os": "6.18.33.2-microsoft-standard-WSL2",
+    "cpu": "11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz",
+    "browser": "149.0.7827.55"
+  },
+  "settings": {
+    "samples": 3,
+    "sampleMs": 30000,
+    "warmupMs": 5000,
+    "dpr": 1,
+    "threshold": 1.2,
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "scenarios": [
+      "idle",
+      "inspection-orbit",
+      "pan-in-inspection"
+    ],
+    "pose": {
+      "center": [
+        106.8232,
+        -6.1965
+      ],
+      "zoom": 19.2,
+      "pitch": 60,
+      "bearing": 0
+    },
+    "note": "Same synthetic inputs and calibrated equal camera pose. Baseline has decorative buildings; candidate uses new cavity. Real tiles, mapped-road workloads, production build and device FPS are not measured.",
+    "latency": "Trusted pointer events to first subsequent browser RAF callback; idle/orbit hover by 2px each second, inspection-pan drags by 40px each second. This is browser event-to-frame scheduling, not display presentation latency."
+  },
+  "comparisons": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "idle",
+      "baselineMedianSampleP95": 16.700000000004366,
+      "candidateMedianSampleP95": 16.700000000004366,
+      "ratio": 1,
+      "status": "passed"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "inspection-orbit",
+      "baselineMedianSampleP95": 50,
+      "candidateMedianSampleP95": 83.39999999999964,
+      "ratio": 1.6679999999999928,
+      "status": "failed"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "pan-in-inspection",
+      "baselineMedianSampleP95": 16.799999999999272,
+      "candidateMedianSampleP95": 83.30000000000109,
+      "ratio": 4.958333333333613,
+      "status": "failed"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "idle",
+      "baselineMedianSampleP95": 16.700000000004366,
+      "candidateMedianSampleP95": 16.700000000004366,
+      "ratio": 1,
+      "status": "passed"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "inspection-orbit",
+      "baselineMedianSampleP95": 16.700000000004366,
+      "candidateMedianSampleP95": 33.400000000001455,
+      "ratio": 1.9999999999995643,
+      "status": "failed"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pan-in-inspection",
+      "baselineMedianSampleP95": 16.799999999999272,
+      "candidateMedianSampleP95": 16.700000000004366,
+      "ratio": 0.9940476190479219,
+      "status": "passed"
+    }
+  ],
+  "results": [
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "idle",
+      "sample": 1,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:43:17.751Z",
+      "elapsedMs": 30005.6,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.5999999940395355,
+        "p95": 1.5999999940395355
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "idle",
+      "sample": 1,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:43:56.393Z",
+      "elapsedMs": 30007.5,
+      "frames": {
+        "count": 1801,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.4000000059604645,
+        "p95": 0.7000000178813934
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "idle",
+      "sample": 2,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:44:34.659Z",
+      "elapsedMs": 30003.100000023842,
+      "frames": {
+        "count": 1801,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.4000000059604645,
+        "p95": 0.7999999821186066
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "idle",
+      "sample": 2,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:45:12.507Z",
+      "elapsedMs": 30008.200000005963,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.5,
+        "p95": 1.4000000059604645
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "idle",
+      "sample": 3,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:45:51.866Z",
+      "elapsedMs": 30008.9,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.5,
+        "p95": 0.9000000059604645
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "idle",
+      "sample": 3,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:46:30.230Z",
+      "elapsedMs": 30009.90000001788,
+      "frames": {
+        "count": 1801,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.5,
+        "p95": 0.7000000178813934
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "inspection-orbit",
+      "sample": 1,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:47:09.611Z",
+      "elapsedMs": 30003.499999982116,
+      "frames": {
+        "count": 1290,
+        "median": 16.700000000000728,
+        "p95": 33.5
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 2.199999988079071,
+        "p95": 4.9000000059604645
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "inspection-orbit",
+      "sample": 1,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:47:50.496Z",
+      "elapsedMs": 30025.4,
+      "frames": {
+        "count": 672,
+        "median": 49.900000000001455,
+        "p95": 83.29999999999927
+      },
+      "inputLatency": {
+        "count": 29,
+        "median": 43,
+        "p95": 70.40000000596046
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "inspection-orbit",
+      "sample": 2,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:48:31.491Z",
+      "elapsedMs": 30036.700000011922,
+      "frames": {
+        "count": 633,
+        "median": 50,
+        "p95": 83.39999999999964
+      },
+      "inputLatency": {
+        "count": 29,
+        "median": 44.80000001192093,
+        "p95": 88.89999997615814
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "inspection-orbit",
+      "sample": 2,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:49:11.517Z",
+      "elapsedMs": 30015.600000011924,
+      "frames": {
+        "count": 1176,
+        "median": 16.700000000000728,
+        "p95": 50
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 2.4000000059604645,
+        "p95": 4.300000011920929
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "inspection-orbit",
+      "sample": 3,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:49:52.162Z",
+      "elapsedMs": 30014.600000005958,
+      "frames": {
+        "count": 1157,
+        "median": 16.700000000000728,
+        "p95": 50
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 2.5,
+        "p95": 5
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "inspection-orbit",
+      "sample": 3,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:50:33.156Z",
+      "elapsedMs": 30016.600000017883,
+      "frames": {
+        "count": 641,
+        "median": 50,
+        "p95": 83.39999999999964
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 44.400000005960464,
+        "p95": 77.19999998807907
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 1,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1008,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1088,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:51:15.804Z",
+      "elapsedMs": 30006.199999999997,
+      "frames": {
+        "count": 1751,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.5,
+        "p95": 15.5
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 1,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 984,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1064,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:51:58.913Z",
+      "elapsedMs": 30005.999999982116,
+      "frames": {
+        "count": 1312,
+        "median": 16.69999999999891,
+        "p95": 66.70000000000073
+      },
+      "inputLatency": {
+        "count": 189,
+        "median": 0.4000000059604645,
+        "p95": 14.5
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 2,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 984,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1064,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:52:43.517Z",
+      "elapsedMs": 30006.200000011922,
+      "frames": {
+        "count": 1227,
+        "median": 16.700000000000728,
+        "p95": 83.30000000000109
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.4000000059604645,
+        "p95": 14.5
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 2,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1008,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1088,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:53:26.017Z",
+      "elapsedMs": 30002.799999994037,
+      "frames": {
+        "count": 1748,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.4000000059604645,
+        "p95": 15.200000017881393
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 3,
+      "box": {
+        "x": 460,
+        "y": 0,
+        "width": 980,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1048,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1050,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1008,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1088,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:54:08.410Z",
+      "elapsedMs": 30006.199999999997,
+      "frames": {
+        "count": 1735,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.4000000059604645,
+        "p95": 15.400000005960464
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 3,
+      "box": {
+        "x": 400,
+        "y": 0,
+        "width": 1040,
+        "height": 900
+      },
+      "input": [
+        {
+          "x": 1024,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1026,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 984,
+          "y": 585,
+          "onCanvas": true
+        },
+        {
+          "x": 1064,
+          "y": 585,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:54:52.387Z",
+      "elapsedMs": 30023.899999994042,
+      "frames": {
+        "count": 1161,
+        "median": 16.700000000000728,
+        "p95": 83.40000000000146
+      },
+      "inputLatency": {
+        "count": 189,
+        "median": 0.4000000059604645,
+        "p95": 14.599999994039536
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "idle",
+      "sample": 1,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:55:30.528Z",
+      "elapsedMs": 30003.399999982117,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.799999999995634
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.5,
+        "p95": 0.699999988079071
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "idle",
+      "sample": 1,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:56:08.826Z",
+      "elapsedMs": 30009.700000011922,
+      "frames": {
+        "count": 1801,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.4000000059604645,
+        "p95": 0.7000000178813934
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "idle",
+      "sample": 2,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:56:46.480Z",
+      "elapsedMs": 30009.59999998212,
+      "frames": {
+        "count": 1801,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.4000000059604645,
+        "p95": 0.800000011920929
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "idle",
+      "sample": 2,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:57:25.177Z",
+      "elapsedMs": 30008,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.5,
+        "p95": 0.7000000178813934
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "idle",
+      "sample": 3,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:58:02.720Z",
+      "elapsedMs": 30010.800000005962,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.5,
+        "p95": 0.8999999761581421
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "idle",
+      "sample": 3,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:58:40.555Z",
+      "elapsedMs": 30009.800000005962,
+      "frames": {
+        "count": 1801,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 0.4000000059604645,
+        "p95": 0.800000011920929
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "inspection-orbit",
+      "sample": 1,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:59:19.330Z",
+      "elapsedMs": 30002.199999994038,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.799999999995634
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 1.5,
+        "p95": 3.0999999940395355
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "inspection-orbit",
+      "sample": 1,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T16:59:58.278Z",
+      "elapsedMs": 30000.5,
+      "frames": {
+        "count": 1551,
+        "median": 16.699999999999818,
+        "p95": 33.400000000001455
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 3.9000000059604645,
+        "p95": 38.70000001788139
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "inspection-orbit",
+      "sample": 2,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:00:37.705Z",
+      "elapsedMs": 30014.19999998212,
+      "frames": {
+        "count": 1435,
+        "median": 16.700000000000728,
+        "p95": 50
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 6.799999982118607,
+        "p95": 56.099999994039536
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "inspection-orbit",
+      "sample": 2,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:01:16.947Z",
+      "elapsedMs": 30002.59999999404,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999709,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 1.5999999940395355,
+        "p95": 3.4000000059604645
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "inspection-orbit",
+      "sample": 3,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:01:56.986Z",
+      "elapsedMs": 30002.09999998212,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 1.800000011920929,
+        "p95": 2.9000000059604645
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "inspection-orbit",
+      "sample": 3,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:02:36.005Z",
+      "elapsedMs": 30006.800000000003,
+      "frames": {
+        "count": 1488,
+        "median": 16.700000000000728,
+        "p95": 33.400000000001455
+      },
+      "inputLatency": {
+        "count": 30,
+        "median": 5.299999982118607,
+        "p95": 48.70000001788139
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 1,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 194,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 274,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:03:17.764Z",
+      "elapsedMs": 30007.500000011918,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.4000000059604645,
+        "p95": 15.300000011920929
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 1,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 194,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 274,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:03:59.452Z",
+      "elapsedMs": 30002.699999999997,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.4000000059604645,
+        "p95": 15.5
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 2,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 194,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 274,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:04:42.345Z",
+      "elapsedMs": 30006.69999998808,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.3999999761581421,
+        "p95": 15.599999994039536
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 2,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 194,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 274,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:05:23.859Z",
+      "elapsedMs": 30004.90000001192,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.4000000059604645,
+        "p95": 15.099999994039536
+      },
+      "errors": []
+    },
+    {
+      "name": "baseline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 3,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 439
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 194,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 274,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:06:05.662Z",
+      "elapsedMs": 30003.99999999404,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.799999999999272
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.4000000059604645,
+        "p95": 15.199999988079071
+      },
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pan-in-inspection",
+      "sample": 3,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "input": [
+        {
+          "x": 234,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 236,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 194,
+          "y": 350,
+          "onCanvas": true
+        },
+        {
+          "x": 274,
+          "y": 350,
+          "onCanvas": true
+        }
+      ],
+      "environment": {
+        "webgl2": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "dpr": 1
+      },
+      "at": "2026-10-16T17:06:47.569Z",
+      "elapsedMs": 30007.40000000596,
+      "frames": {
+        "count": 1800,
+        "median": 16.69999999999891,
+        "p95": 16.700000000004366
+      },
+      "inputLatency": {
+        "count": 196,
+        "median": 0.4000000059604645,
+        "p95": 15.599999994039536
+      },
+      "errors": []
+    }
+  ],
+  "limitations": [
+    "SwiftShader synthetic fixture only",
+    "Real map tiles and mapped-road performance unmeasured",
+    "RAF scheduling is not presentation FPS or total GPU/heap memory"
+  ]
+}

@@ -1,0 +1,489 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/orbit-framing.browser.spec.ts",
+      "tests/webgl-fallback.browser.spec.ts"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "orbit-framing.browser.spec.ts",
+      "file": "orbit-framing.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "U02 explicit orbit keeps the cavity inside the unobstructed map",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8622,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:44:05.053Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "orbit-rim-bounds",
+                      "contentType": "application/json",
+                      "body": "eyJsZWZ0Ijo4NzYuMTk4NDU2NjE3MzE0NCwicmlnaHQiOjExODAuMzU2NTg1OTYxODgzLCJ0b3AiOjM0Ny40MTQxMDYwMTkxMDA2LCJib3R0b20iOjQ5Mi42MTY0MTA3MTE4NDkzNywibWFwTGVmdCI6NDAwLCJtYXBSaWdodCI6MTQ0MCwiYmVhcmluZyI6MTA3LjYxNDAwMDAwMDAwMDE1fQ=="
+                    },
+                    {
+                      "name": "orbit-framing-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA2MCwKICAgICJiZWFyaW5nIjogMTA3LjYxNDAwMDAwMDAwMDE1LAogICAgInpvb20iOiAyNS41LAogICAgImluc3BlY3Rpb24iOiB7CiAgICAgICJhbmNob3IiOiBbCiAgICAgICAgMTA2LjgyMzIsCiAgICAgICAgLTYuMTk2NQogICAgICBdLAogICAgICAid2lkdGhNIjogMC41MiwKICAgICAgImRlcHRoTSI6IDAuMDc1LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgInZlcnRleENvdW50IjogMTI4MSwKICAgICAgICAibWluWiI6IC0wLjA3NTAwMDAwMjk4MDIzMjI0LAogICAgICAgICJtYXhaIjogMCwKICAgICAgICAic3VwcG9ydERpYW1ldGVyTSI6IDAuNTE5OTk5OTgwOTI2NTEzNwogICAgICB9LAogICAgICAicmVuZGVyQ291bnQiOiAxMDQsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAiZGVwdGhSYW5nZUJlZm9yZSI6IFsKICAgICAgICAwLAogICAgICAgIDAuOTk3NDM2NTIzNDM3NQogICAgICBdLAogICAgICAiZGVwdGhSYW5nZUFmdGVyIjogWwogICAgICAgIDAsCiAgICAgICAgMC45OTc0MzY1MjM0Mzc1CiAgICAgIF0sCiAgICAgICJwcm9qZWN0ZWRBbmNob3JDc3MiOiBbCiAgICAgICAgNjI3LjI2NDk4NDAwNDg3MjgsCiAgICAgICAgNDEyLjk4MjA4NTkxMDE5MjQKICAgICAgXSwKICAgICAgImRpc3Bvc2VkIjogZmFsc2UsCiAgICAgICJjYW52YXNTaGFyZWQiOiB0cnVlLAogICAgICAid2ViZ2wyIjogdHJ1ZQogICAgfSwKICAgICJtb3ZpbmciOiBmYWxzZSwKICAgICJzdHlsZVJlYWR5IjogdHJ1ZSwKICAgICJjZW50ZXIiOiBbCiAgICAgIDEwNi44MjMxOTk0MDcyMTg2OCwKICAgICAgLTYuMTk2NDk4MDcyNDI2OTM0CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJmaXh0dXJlLWJhY2tncm91bmQiLAogICAgICAgICJ0eXBlIjogImJhY2tncm91bmQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0cmFmZmljLWxpbmVzIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWdsb3ciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICIzZC1idWlsZGluZ3MtZXh0cnVzaW9uIiwKICAgICAgICAidHlwZSI6ICJmaWxsLWV4dHJ1c2lvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkLWRhbWFnZS1kZWNhbHMtbGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfQogICAgXQogIH0sCiAgInRvZ2dsZSI6ICJ0cnVlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/orbit-framing.browser-U02--7e752-inside-the-unobstructed-map-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72cdf1c433136495c86b-72320114abbbaf2c6ae6",
+          "file": "orbit-framing.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "U02 map attribution links remain unobstructed by app overlays",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2914,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 34\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"MapLibre\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1052.625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"OpenFreeMap\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1126.125,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"© OpenMapTiles\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1213.0390625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"OpenStreetMap\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1359.640625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 34\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"MapLibre\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1052.625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"OpenFreeMap\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1126.125,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"© OpenMapTiles\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1213.0390625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"OpenStreetMap\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1359.640625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts:46:68",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts",
+                      "column": 68,
+                      "line": 46
+                    },
+                    "snippet": "  44 |   await evidence(page, info, 'attribution-overlays');\n  45 |   expect(links.some(link => link.visible)).toBe(true);\n> 46 |   expect(links.filter(link => link.visible && !link.unobstructed)).toEqual([]);\n     |                                                                    ^\n  47 | });\n  48 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts",
+                        "column": 68,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 34\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"MapLibre\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1052.625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"OpenFreeMap\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1126.125,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"© OpenMapTiles\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1213.0390625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"coveredBy\": \"absolute bottom-5 right-5 z-20 hidden md:flex items-center space-x-3 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-soft text-xs text-slate-600\",\u001b[39m\n\u001b[31m+     \"text\": \"OpenStreetMap\",\u001b[39m\n\u001b[31m+     \"unobstructed\": false,\u001b[39m\n\u001b[31m+     \"visible\": true,\u001b[39m\n\u001b[31m+     \"x\": 1359.640625,\u001b[39m\n\u001b[31m+     \"y\": 878,\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  44 |   await evidence(page, info, 'attribution-overlays');\n  45 |   expect(links.some(link => link.visible)).toBe(true);\n> 46 |   expect(links.filter(link => link.visible && !link.unobstructed)).toEqual([]);\n     |                                                                    ^\n  47 | });\n  48 |\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts:46:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:44:13.884Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "attribution-hit-test",
+                      "contentType": "application/json",
+                      "body": "W3sidGV4dCI6Ik1hcExpYnJlIiwidmlzaWJsZSI6dHJ1ZSwidW5vYnN0cnVjdGVkIjpmYWxzZSwiY292ZXJlZEJ5IjoiYWJzb2x1dGUgYm90dG9tLTUgcmlnaHQtNSB6LTIwIGhpZGRlbiBtZDpmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTMgcHgtNCBweS0yIGJnLXdoaXRlLzkwIGJhY2tkcm9wLWJsdXItbWQgcm91bmRlZC0yeGwgYm9yZGVyIGJvcmRlci1zbGF0ZS0yMDAvNjAgc2hhZG93LXNvZnQgdGV4dC14cyB0ZXh0LXNsYXRlLTYwMCIsIngiOjEwNTIuNjI1LCJ5Ijo4Nzh9LHsidGV4dCI6Ik9wZW5GcmVlTWFwIiwidmlzaWJsZSI6dHJ1ZSwidW5vYnN0cnVjdGVkIjpmYWxzZSwiY292ZXJlZEJ5IjoiYWJzb2x1dGUgYm90dG9tLTUgcmlnaHQtNSB6LTIwIGhpZGRlbiBtZDpmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTMgcHgtNCBweS0yIGJnLXdoaXRlLzkwIGJhY2tkcm9wLWJsdXItbWQgcm91bmRlZC0yeGwgYm9yZGVyIGJvcmRlci1zbGF0ZS0yMDAvNjAgc2hhZG93LXNvZnQgdGV4dC14cyB0ZXh0LXNsYXRlLTYwMCIsIngiOjExMjYuMTI1LCJ5Ijo4Nzh9LHsidGV4dCI6IsKpIE9wZW5NYXBUaWxlcyIsInZpc2libGUiOnRydWUsInVub2JzdHJ1Y3RlZCI6ZmFsc2UsImNvdmVyZWRCeSI6ImFic29sdXRlIGJvdHRvbS01IHJpZ2h0LTUgei0yMCBoaWRkZW4gbWQ6ZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0zIHB4LTQgcHktMiBiZy13aGl0ZS85MCBiYWNrZHJvcC1ibHVyLW1kIHJvdW5kZWQtMnhsIGJvcmRlciBib3JkZXItc2xhdGUtMjAwLzYwIHNoYWRvdy1zb2Z0IHRleHQteHMgdGV4dC1zbGF0ZS02MDAiLCJ4IjoxMjEzLjAzOTA2MjUsInkiOjg3OH0seyJ0ZXh0IjoiT3BlblN0cmVldE1hcCIsInZpc2libGUiOnRydWUsInVub2JzdHJ1Y3RlZCI6ZmFsc2UsImNvdmVyZWRCeSI6ImFic29sdXRlIGJvdHRvbS01IHJpZ2h0LTUgei0yMCBoaWRkZW4gbWQ6ZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0zIHB4LTQgcHktMiBiZy13aGl0ZS85MCBiYWNrZHJvcC1ibHVyLW1kIHJvdW5kZWQtMnhsIGJvcmRlciBib3JkZXItc2xhdGUtMjAwLzYwIHNoYWRvdy1zb2Z0IHRleHQteHMgdGV4dC1zbGF0ZS02MDAiLCJ4IjoxMzU5LjY0MDYyNSwieSI6ODc4fV0="
+                    },
+                    {
+                      "name": "attribution-overlays-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA1NiwKICAgICJiZWFyaW5nIjogLTE3LjAwMDAwMDAwMDAwMDAwNCwKICAgICJ6b29tIjogMTYuNSwKICAgICJtb3ZpbmciOiBmYWxzZSwKICAgICJzdHlsZVJlYWR5IjogdHJ1ZSwKICAgICJjZW50ZXIiOiBbCiAgICAgIDEwNi44MjMyMDAwMDAwMDAwNCwKICAgICAgLTYuMTk2NTAwMDAwMDAwMDE0NgogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJwYXJrIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlcl9pY2Vfc2hlbGYiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyX2dsYWNpZXIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZHVzZV9yZXNpZGVudGlhbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kY292ZXJfd29vZCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcndheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJidWlsZGluZyIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ0dW5uZWxfbW90b3J3YXlfY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbF9tb3RvcndheV9pbm5lciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LXRheGl3YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS1ydW53YXktY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktYXJlYSIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LXJ1bndheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkX2FyZWFfcGllciIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyb2FkX3BpZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9wYXRoIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbWlub3IiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tYWpvcl9jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tYWpvcl9pbm5lciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX3N1YnRsZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X2Nhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X2lubmVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfc3VidGxlIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXlfdHJhbnNpdCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5X3RyYW5zaXRfZGFzaGxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV9zZXJ2aWNlIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXlfc2VydmljZV9kYXNobGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXlfZGFzaGxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9icmlkZ2VfY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfYnJpZGdlX2lubmVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJvdW5kYXJ5XzMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYm91bmRhcnlfMiIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJib3VuZGFyeV9kaXNwdXRlZCIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcndheV9saW5lX2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJfbmFtZV9wb2ludF9sYWJlbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyX25hbWVfbGluZV9sYWJlbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXktbmFtZS1wYXRoIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLW1pbm9yIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLW1ham9yIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1zaGllbGQtbm9uLXVzIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1zaGllbGQtdXMtaW50ZXJzdGF0ZSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfc2hpZWxkX3VzIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWlycG9ydCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX290aGVyIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfdmlsbGFnZSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX3Rvd24iLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9zdGF0ZSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NpdHkiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jaXR5X2NhcGl0YWwiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jb3VudHJ5XzMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jb3VudHJ5XzIiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF9jb3VudHJ5XzEiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogInRydWUiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/orbit-framing.browser-U02--a883c-nobstructed-by-app-overlays-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/orbit-framing.browser-U02--a883c-nobstructed-by-app-overlays-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/orbit-framing.browser-U02--a883c-nobstructed-by-app-overlays-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts",
+                    "column": 68,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "72cdf1c433136495c86b-56e5285ca0f98e516375",
+          "file": "orbit-framing.browser.spec.ts",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "U02 explicit orbit keeps the cavity inside the unobstructed map",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8505,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m390\u001b[39m\nReceived:    \u001b[31m409.78498324515226\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m390\u001b[39m\nReceived:    \u001b[31m409.78498324515226\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts:30:24",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts",
+                      "column": 24,
+                      "line": 30
+                    },
+                    "snippet": "  28 |   await evidence(page, info, 'orbit-framing');\n  29 |   expect(bounds.left).toBeGreaterThanOrEqual(bounds.mapLeft);\n> 30 |   expect(bounds.right).toBeLessThanOrEqual(bounds.mapRight);\n     |                        ^\n  31 |   await map.dispose();\n  32 | });\n  33 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts",
+                        "column": 24,
+                        "line": 30
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m390\u001b[39m\nReceived:    \u001b[31m409.78498324515226\u001b[39m\n\n  28 |   await evidence(page, info, 'orbit-framing');\n  29 |   expect(bounds.left).toBeGreaterThanOrEqual(bounds.mapLeft);\n> 30 |   expect(bounds.right).toBeLessThanOrEqual(bounds.mapRight);\n     |                        ^\n  31 |   await map.dispose();\n  32 | });\n  33 |\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts:30:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:44:24.402Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "orbit-rim-bounds",
+                      "contentType": "application/json",
+                      "body": "eyJsZWZ0IjoxOTUuNjI4OTAzMDg2NjExNCwicmlnaHQiOjQwOS43ODQ5ODMyNDUxNTIyNiwidG9wIjoxNDguNzMzNjI2MTA4Njg5NDQsImJvdHRvbSI6MjUwLjU3MTIyNDIzMDQzMywibWFwTGVmdCI6MCwibWFwUmlnaHQiOjM5MCwiYmVhcmluZyI6MTA3LjAwNTAwMDAwMDAwMDU4fQ=="
+                    },
+                    {
+                      "name": "orbit-framing-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDYwLAogICAgImJlYXJpbmciOiAxMDcuMDA1MDAwMDAwMDAwNTgsCiAgICAiem9vbSI6IDI1LAogICAgImluc3BlY3Rpb24iOiB7CiAgICAgICJhbmNob3IiOiBbCiAgICAgICAgMTA2LjgyMzIsCiAgICAgICAgLTYuMTk2NQogICAgICBdLAogICAgICAid2lkdGhNIjogMC41MiwKICAgICAgImRlcHRoTSI6IDAuMDc1LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgInZlcnRleENvdW50IjogMTI4MSwKICAgICAgICAibWluWiI6IC0wLjA3NTAwMDAwMjk4MDIzMjI0LAogICAgICAgICJtYXhaIjogMCwKICAgICAgICAic3VwcG9ydERpYW1ldGVyTSI6IDAuNTE5OTk5OTgwOTI2NTEzNwogICAgICB9LAogICAgICAicmVuZGVyQ291bnQiOiAxMDcsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAiZGVwdGhSYW5nZUJlZm9yZSI6IFsKICAgICAgICAwLAogICAgICAgIDAuOTk3NDM2NTIzNDM3NQogICAgICBdLAogICAgICAiZGVwdGhSYW5nZUFmdGVyIjogWwogICAgICAgIDAsCiAgICAgICAgMC45OTc0MzY1MjM0Mzc1CiAgICAgIF0sCiAgICAgICJwcm9qZWN0ZWRBbmNob3JDc3MiOiBbCiAgICAgICAgMzAyLjE5NzIzMDk2NDUxNDcsCiAgICAgICAgMTk1Ljk0MDQ2MzA5MTQ3NDA0CiAgICAgIF0sCiAgICAgICJkaXNwb3NlZCI6IGZhbHNlLAogICAgICAiY2FudmFzU2hhcmVkIjogdHJ1ZSwKICAgICAgIndlYmdsMiI6IHRydWUKICAgIH0sCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMTk5MTY2NTM0MzIsCiAgICAgIC02LjE5NjQ5NzI4OTc4NTI1NgogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/orbit-framing.browser-U02--7e752-inside-the-unobstructed-map-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/orbit-framing.browser-U02--7e752-inside-the-unobstructed-map-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/orbit-framing.browser-U02--7e752-inside-the-unobstructed-map-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/orbit-framing.browser.spec.ts",
+                    "column": 24,
+                    "line": 30
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "72cdf1c433136495c86b-82745e5140c55a660248",
+          "file": "orbit-framing.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "U02 map attribution links remain unobstructed by app overlays",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3788,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:44:35.091Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "attribution-hit-test",
+                      "contentType": "application/json",
+                      "body": "W3sidGV4dCI6Ik1hcExpYnJlIiwidmlzaWJsZSI6dHJ1ZSwidW5vYnN0cnVjdGVkIjp0cnVlLCJjb3ZlcmVkQnkiOiIiLCJ4Ijo0My4wMTU2MjUsInkiOjQxOC4yMDMxMjV9LHsidGV4dCI6Ik9wZW5GcmVlTWFwIiwidmlzaWJsZSI6dHJ1ZSwidW5vYnN0cnVjdGVkIjp0cnVlLCJjb3ZlcmVkQnkiOiIiLCJ4IjoxMTYuNTE1NjI1LCJ5Ijo0MTguMjAzMTI1fSx7InRleHQiOiLCqSBPcGVuTWFwVGlsZXMiLCJ2aXNpYmxlIjp0cnVlLCJ1bm9ic3RydWN0ZWQiOnRydWUsImNvdmVyZWRCeSI6IiIsIngiOjIwMy40Mjk2ODc1LCJ5Ijo0MTguMjAzMTI1fSx7InRleHQiOiJPcGVuU3RyZWV0TWFwIiwidmlzaWJsZSI6dHJ1ZSwidW5vYnN0cnVjdGVkIjp0cnVlLCJjb3ZlcmVkQnkiOiIiLCJ4Ijo2MC4zNTkzNzUsInkiOjQzOC4yMDMxMjV9XQ=="
+                    },
+                    {
+                      "name": "attribution-overlays-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDU2LAogICAgImJlYXJpbmciOiAtMTcuMDAwMDAwMDAwMDAwMDA0LAogICAgInpvb20iOiAxNi41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzIwMDAwMDAwMDA0LAogICAgICAtNi4xOTY1MDAwMDAwMDAwMTQ2CiAgICBdLAogICAgImxheWVycyI6IFsKICAgICAgewogICAgICAgICJpZCI6ICJiYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInBhcmsiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXIiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFuZGNvdmVyX2ljZV9zaGVsZiIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kY292ZXJfZ2xhY2llciIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYW5kdXNlX3Jlc2lkZW50aWFsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhbmRjb3Zlcl93b29kIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJ1aWxkaW5nIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInR1bm5lbF9tb3RvcndheV9jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHVubmVsX21vdG9yd2F5X2lubmVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktdGF4aXdheSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhZXJvd2F5LXJ1bndheS1jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYWVyb3dheS1hcmVhIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImFlcm93YXktcnVud2F5IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfYXJlYV9waWVyIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWRfcGllciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X3BhdGgiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9taW5vciIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX2Nhc2luZyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21ham9yX2lubmVyIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbWFqb3Jfc3VidGxlIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfY2FzaW5nIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImhpZ2h3YXlfbW90b3J3YXlfaW5uZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9zdWJ0bGUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV90cmFuc2l0IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXlfdHJhbnNpdF9kYXNobGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJyYWlsd2F5X3NlcnZpY2UiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV9zZXJ2aWNlX2Rhc2hsaW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJhaWx3YXkiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicmFpbHdheV9kYXNobGluZSIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5X21vdG9yd2F5X2JyaWRnZV9jYXNpbmciLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheV9tb3RvcndheV9icmlkZ2VfaW5uZXIiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiYm91bmRhcnlfMyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJib3VuZGFyeV8yIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImJvdW5kYXJ5X2Rpc3B1dGVkIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIndhdGVyd2F5X2xpbmVfbGFiZWwiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJ3YXRlcl9uYW1lX3BvaW50X2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAid2F0ZXJfbmFtZV9saW5lX2xhYmVsIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiaGlnaHdheS1uYW1lLXBhdGgiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWlub3IiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LW5hbWUtbWFqb3IiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC1ub24tdXMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJoaWdod2F5LXNoaWVsZC11cy1pbnRlcnN0YXRlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZF9zaGllbGRfdXMiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJhaXJwb3J0IiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfb3RoZXIiLAogICAgICAgICJ0eXBlIjogInN5bWJvbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJsYWJlbF92aWxsYWdlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfdG93biIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX3N0YXRlIiwKICAgICAgICAidHlwZSI6ICJzeW1ib2wiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAibGFiZWxfY2l0eSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NpdHlfY2FwaXRhbCIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMyIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMiIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImxhYmVsX2NvdW50cnlfMSIsCiAgICAgICAgInR5cGUiOiAic3ltYm9sIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/orbit-framing.browser-U02--a883c-nobstructed-by-app-overlays-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72cdf1c433136495c86b-8765037713516224f253",
+          "file": "orbit-framing.browser.spec.ts",
+          "line": 34,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "webgl-fallback.browser.spec.ts",
+      "file": "webgl-fallback.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G02 unavailable WebGL2 preserves a usable 2D map",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6530,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:44:17.335Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "webgl1-fallback-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxNy41LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzE5OTQwNzIxNDU5LAogICAgICAtNi4xOTY0OTgwNzI0Mjk4MzMKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogImZhbHNlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/webgl-fallback.browser-G02-dc1c6-2-preserves-a-usable-2D-map-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1fc5129e94bc28bc347-dde2dfa485dda7cf490f",
+          "file": "webgl-fallback.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "G02 unavailable WebGL2 preserves a usable 2D map",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4868,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:44:39.029Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "webgl1-fallback-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE3LjUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMTk5MTY2NTM2MDMsCiAgICAgIC02LjE5NjQ5NzI4OTc4NDkxNQogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAiZmFsc2UiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle18-visual-probes/artifacts/webgl-fallback.browser-G02-dc1c6-2-preserves-a-usable-2D-map-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1fc5129e94bc28bc347-5602201c37a1b3661c97",
+          "file": "webgl-fallback.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T13:44:04.613Z",
+    "duration": 37912.514,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

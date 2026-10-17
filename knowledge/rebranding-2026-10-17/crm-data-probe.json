@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-10-17T04:46:06.435254+00:00",
+  "url": "https://crm.jakarta.go.id/api/public/dashboard/distribution-map?dateStart=2026-10-16&dateEnd=2026-10-17&isPrivacy=0",
+  "status": 200,
+  "bytes": 257994,
+  "sha256": "fc50eebb4dcd113f838e4b6c5b1b6bad4ecb524b36040ba7538b6c45bfa0e8f8",
+  "json_type": "list",
+  "count": 271,
+  "first_item_keys": [
+    "id",
+    "code",
+    "lat",
+    "lng",
+    "status",
+    "content",
+    "createdAt",
+    "isPrivacy",
+    "tstatus",
+    "zone",
+    "complaintCategory"
+  ],
+  "first_item_types": {
+    "id": "str",
+    "code": "str",
+    "lat": "float",
+    "lng": "float",
+    "status": "str",
+    "content": "str",
+    "createdAt": "str",
+    "isPrivacy": "bool",
+    "tstatus": "dict",
+    "zone": "dict",
+    "complaintCategory": "dict"
+  },
+  "note": "Only unauthenticated public data. No identities, text, coordinates, media, or tokens retained in this summary; availability is not a reuse license."
+}

@@ -1,0 +1,10 @@
+{
+  "src/components/Map3D.tsx": true,
+  "src/map/damageMaterial.ts": true,
+  "src/map/closeZoomLabels.ts": true,
+  "src/map/DamageLayer.ts": true,
+  "src/map/dimensions.ts": true,
+  "src/map/coordinates.ts": true,
+  "src/map/damageGeometry.ts": true,
+  "src/map/camera.ts": true
+}

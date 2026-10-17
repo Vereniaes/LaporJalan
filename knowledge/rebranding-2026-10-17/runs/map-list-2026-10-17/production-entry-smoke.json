@@ -1,0 +1,21 @@
+{
+  "health": {
+    "status": "ok",
+    "service": "laporjalan-be",
+    "uptime": 0.307716865,
+    "timestamp": "2026-10-17T10:20:06.914Z",
+    "mode": "public-reports",
+    "database": "not-used"
+  },
+  "cors": "https://frontend.example",
+  "reports": 49,
+  "source": {
+    "name": "CRM Jakarta \u00b7 JAKI",
+    "url": "https://crm.jakarta.go.id/peta/",
+    "dateStart": "2026-10-16",
+    "dateEnd": "2026-10-17",
+    "retrievedAt": "2026-10-17T10:20:07.484Z"
+  },
+  "status": 200,
+  "at": "2026-10-17T10:20:07.485393+00:00"
+}

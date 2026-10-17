@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "task_id": null,
+  "run_id": null,
+  "owner": null,
+  "status": "not_run",
+  "baseline_id": null,
+  "acceptance_scope": null,
+  "runtime": {
+    "model_requested": null,
+    "model_actual": null,
+    "reasoning_requested": null,
+    "reasoning_actual": null,
+    "verification_note": null
+  },
+  "timing": { "started_at": null, "finished_at": null, "elapsed_seconds": null },
+  "usage": { "input_tokens": null, "output_tokens": null, "cached_input_tokens": null, "unavailable_reason": null },
+  "delegation_count": 0,
+  "repair": { "cycle": null, "defect_id": null, "attempt": null, "session_cycles_used": null, "defect_attempts_used": null },
+  "changed_paths": [],
+  "commands": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "status": "not_run",
+      "exit_code": null,
+      "evidence_ids": []
+    },
+    {
+      "command": "npm run build",
+      "status": "not_run",
+      "exit_code": null,
+      "evidence_ids": []
+    }
+  ],
+  "gates": {
+    "automated": { "status": "not_run", "reviewer": null, "evidence_ids": [] },
+    "visual": { "status": "not_run", "reviewer": null, "evidence_ids": [] },
+    "review": { "status": "not_run", "reviewer": null, "evidence_ids": [] }
+  },
+  "cases": [],
+  "evidence": [],
+  "defects": [],
+  "limitations": []
+}

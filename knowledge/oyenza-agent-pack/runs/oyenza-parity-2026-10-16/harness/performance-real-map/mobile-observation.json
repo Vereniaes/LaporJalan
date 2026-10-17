@@ -1,0 +1,156 @@
+{
+  "scope": "Observed timing only - no performance threshold verdict",
+  "provenance": {
+    "id": "mapped-road-osm-4466350567-v1",
+    "anchor": [
+      106.8232095,
+      -6.196562
+    ],
+    "road": "Jalan Jenderal Sudirman",
+    "classification": "primary",
+    "node": {
+      "id": "4466350567",
+      "version": "7",
+      "timestamp": "2019-03-14T02:56:11Z"
+    },
+    "way": {
+      "id": "449551306",
+      "version": "26",
+      "timestamp": "2026-06-01T01:22:59Z"
+    },
+    "provenance": "Mapped OSM road centerline membership verified from public XML. Damage dimensions remain synthetic. No surveyed lane position, physical road width, real damage or GPS accuracy asserted.",
+    "sources": [
+      "https://api.openstreetmap.org/api/0.6/node/4466350567",
+      "https://api.openstreetmap.org/api/0.6/way/449551306"
+    ],
+    "checked_at": "2026-10-16"
+  },
+  "dimensions": "synthetic 0.52m / 0.075m",
+  "browser": "149.0.7827.55",
+  "node": "v22.23.3",
+  "cpu": "11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz",
+  "os": "6.18.33.2-microsoft-standard-WSL2",
+  "environment": {
+    "dpr": 1,
+    "webgl2": true,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "styleSources": [
+      "ne2_shaded",
+      "openmaptiles",
+      "cctv-cones",
+      "traffic-flow",
+      "cctv-sightline",
+      "road-damage-decals"
+    ],
+    "canvas": [
+      390,
+      844
+    ]
+  },
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "box": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 844
+  },
+  "input": {
+    "x": 234,
+    "y": 350
+  },
+  "clock": "prepare fixes Date only; performance.now and RAF remain real",
+  "warmupMs": 5000,
+  "sampleMs": 30000,
+  "scenario": "Actual application Orbit action at normal inspection zoom; trusted pointer hover by 2 CSS px each second",
+  "samples": [
+    {
+      "sample": 1,
+      "raf": {
+        "count": 298,
+        "median": 99,
+        "p95": 148
+      },
+      "inputLatency": {
+        "count": 27,
+        "median": 13,
+        "p95": 19
+      },
+      "rendererFrames": 331
+    },
+    {
+      "sample": 2,
+      "raf": {
+        "count": 302,
+        "median": 96,
+        "p95": 163
+      },
+      "inputLatency": {
+        "count": 28,
+        "median": 13,
+        "p95": 91
+      },
+      "rendererFrames": 332
+    },
+    {
+      "sample": 3,
+      "raf": {
+        "count": 283,
+        "median": 104,
+        "p95": 164
+      },
+      "inputLatency": {
+        "count": 28,
+        "median": 12,
+        "p95": 137
+      },
+      "rendererFrames": 314
+    }
+  ],
+  "networkFailures": [
+    {
+      "url": "https://tiles.openfreemap.org/styles/positron",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/styles/positron",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8475.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8475.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "limitations": [
+    "SwiftShader",
+    "No paired baseline",
+    "RAF is not display FPS",
+    "Pointer-to-RAF is not presentation latency"
+  ]
+}

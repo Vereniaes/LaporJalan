@@ -1,0 +1,113 @@
+{
+  "id": "oyenza-parity-2026-10-16",
+  "captured_at": "2026-10-15T21:31:24.735477+00:00",
+  "git_head": "42f720ed46e0f2f32e29537ed35c045aaf922648",
+  "git_status": " M knowledge/video-ui-comparison-2026-10-16.md\n M src/App.tsx\n M src/components/CctvModal.tsx\n M src/components/CompareModal.tsx\n M src/components/DamageReportCard.tsx\n M src/components/DepthInspector3D.tsx\n M src/components/Map3D.tsx\n M src/components/StreetSimulation3D.tsx\n M src/index.css\n M src/services/mockData.ts\n M tailwind.config.js\n?? knowledge/oyenza-agent-pack/\n?? src/components/CctvPopover.tsx\n",
+  "files": [
+    {
+      "path": "src/main.tsx",
+      "sha256": "9addf1ccee5145a7d41d8989594a783f1cc7344abfce17fbf082946dc90d6c88"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "64b74dffc29b0991362b378015a96479dfba79cb437893cbbbebf1b1caaa4a14"
+    },
+    {
+      "path": "src/types.ts",
+      "sha256": "8b2ee8d9cb3618067bb9c511c846876a62d8ee8e9170cda699d724479302ef0e"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "73e7d7cce2bf63dc0f1ec1b5a5317b4e8535ae98c5957f8cc9f606c132e74c6e"
+    },
+    {
+      "path": "src/services/api.ts",
+      "sha256": "3260e49137405d0161e5a2afb7e29fa894a61106bee8715c02d051cb9e4df84c"
+    },
+    {
+      "path": "src/services/imageDetection.ts",
+      "sha256": "4614b95358d4fb7c6ec5dfaae8ab351000c00f5e17391d86da4f6eaca0ad9308"
+    },
+    {
+      "path": "src/services/mockData.ts",
+      "sha256": "e7c605f1a445dfaf0b31b477aa53b68864980e7d3d688e8c17d6ee8b23530e7f"
+    },
+    {
+      "path": "src/components/DamageReportCard.tsx",
+      "sha256": "3b6b29ad225a08635ecedc8f05b85a98b2f7be14c902b396e879effe94831442"
+    },
+    {
+      "path": "src/components/Map3D.tsx",
+      "sha256": "e25d2fd9b0510bfa4883129114ed2b18e67eff8d5c36df5756769d6c52361e24"
+    },
+    {
+      "path": "src/components/CctvModal.tsx",
+      "sha256": "7f873f8f0ad28eba67e8125fb4797c29282f188959489f104baa404875d75cf4"
+    },
+    {
+      "path": "src/components/FloodMonitorCard.tsx",
+      "sha256": "44f5be63a511aa20797daaccbe02b8de887b82983ef27bee6fedc088201bbd09"
+    },
+    {
+      "path": "src/components/StreetSimulation3D.tsx",
+      "sha256": "73e742b369dbe8486ead12ee566bcd32db317bdf98e37333e5b229d4a2a677bd"
+    },
+    {
+      "path": "src/components/DepthInspector3D.tsx",
+      "sha256": "f8a66ffcc253bb90dfc30d2a08ef4d2703d2c4b0fed0bff989127acdae01ea4f"
+    },
+    {
+      "path": "src/components/MascotBanner.tsx",
+      "sha256": "dac7ae9ff3373bce5a763020887ba0215bc33af2f55e9d1bab5b0ab7a0a86a74"
+    },
+    {
+      "path": "src/components/CameraReportModal.tsx",
+      "sha256": "94cdf2f627f0c8ccf51988173a1ce80e7367fc2611700b4b1424fd90e2f65532"
+    },
+    {
+      "path": "src/components/CctvPopover.tsx",
+      "sha256": "ae9aef4d9f1961edac4bbd95b26f68fc973b6a807bcb8a749b1cc5bbc7255dfb"
+    },
+    {
+      "path": "src/components/CompareModal.tsx",
+      "sha256": "7fa951375969c73dcab92f77a21b1a0b09079106a4c9dbd2e39e6661aa942f93"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "24dd02d49c24ee7f9b640029bae95c5fd695a1eb58b40d1b343e7567afa211c6"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "18b6b566448938d9f6b7f19628f0cc459a7fbeca4dabcb09ab69c6e36e027515"
+    },
+    {
+      "path": "tailwind.config.js",
+      "sha256": "081a7017c153e3ffb87f0210b91c3f14459f3899c0c0618345e4cde64966e782"
+    },
+    {
+      "path": "tsconfig.node.json",
+      "sha256": "9e2abb169ea87b7190613a1d4da57ca608463a453bd4231fa3aeee5e308370dd"
+    },
+    {
+      "path": "postcss.config.js",
+      "sha256": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "32821aa2ce2fb925d03f2eb87cd3c7ce04e8646e2228ea9891dd39929424b1b5"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a6ba3548d02145fdb0b6fb40216545ec91094a516c503102c61e00acdf93ac9d"
+    },
+    {
+      "path": "index.html",
+      "sha256": "c53e09081115e2f65c4e4c3aab0580ad0956a9d7b2e6b6490bf27ed6239362d6"
+    }
+  ],
+  "environment": {
+    "node": "v20.18.0",
+    "npm": "10.8.2"
+  },
+  "protected_dirty_changes": true
+}

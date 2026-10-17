@@ -18,7 +18,7 @@ export async function fetchReports(): Promise<DamageReport[]> {
     const res = await fetch(`${API_BASE_URL}/api/reports`, { method: 'GET' });
     if (!res.ok) throw new Error('Network error');
     const json = await res.json();
-    return json.data || INITIAL_REPORTS;
+    return Array.isArray(json.data) ? json.data : INITIAL_REPORTS;
   } catch (err) {
     console.log('[API Client] Server backend tidak terjangkau, menggunakan data lokal.');
     return INITIAL_REPORTS;

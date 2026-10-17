@@ -1,0 +1,26 @@
+{
+  "image": "laporjalan-public:local-review-20261017",
+  "buildExitCode": 0,
+  "startedAt": "2026-10-17T10:24:04.440037+00:00",
+  "health": {
+    "status": "ok",
+    "service": "laporjalan-be",
+    "uptime": 0.519156164,
+    "timestamp": "2026-10-17T10:24:04.954Z",
+    "mode": "public-reports",
+    "database": "not-used"
+  },
+  "sourceStatus": 200,
+  "reports": 51,
+  "source": {
+    "name": "CRM Jakarta \u00b7 JAKI",
+    "url": "https://crm.jakarta.go.id/peta/",
+    "dateStart": "2026-10-16",
+    "dateEnd": "2026-10-17",
+    "retrievedAt": "2026-10-17T10:24:05.367Z"
+  },
+  "legacyRouteStatus": 404,
+  "envFileIncluded": false,
+  "passed": true,
+  "logs": "[LaporJalan Backend] Berjalan aktif di http://0.0.0.0:8080\n[LaporJalan Backend] Endpoint Health: http://localhost:8080/health\n[LaporJalan Backend] Endpoint Laporan: http://localhost:8080/api/public-reports\n"
+}

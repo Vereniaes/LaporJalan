@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthetic cavity fixture</title>
+<link rel="stylesheet" href="/node_modules/maplibre-gl/dist/maplibre-gl.css">
+<style>body{margin:0;font:14px system-ui}#map{position:fixed;inset:0}p{position:fixed;top:12px;left:12px;background:white;padding:12px;z-index:1}</style></head>
+<body><div id="map"></div><p>Synthetic fixture: 0.52 m wide / 0.075 m deep / scale 1:1</p>
+<script type="module">
+import maplibregl from 'maplibre-gl';
+import { DamageLayer } from '/src/map/DamageLayer.ts';
+const anchor = [106.8232, -6.1965];
+const options = { anchor, widthM: 0.52, depthM: 0.075, verifyDepth: true };
+const coordinates = (x, y) => [anchor[0] + x / (111319.49 * Math.cos(anchor[1] * Math.PI / 180)), anchor[1] + y / 111319.49];
+const style = { version: 8, sources: {}, layers: [{ id: 'ground', type: 'background', paint: { 'background-color': '#ededf0' } }] };
+const map = new maplibregl.Map({ container: 'map', style, center: anchor, zoom: 25, maxZoom: 26, pitch: 60, bearing: 0, antialias: true, attributionControl: false });
+const install = () => {
+  map.addSource('blocker', { type: 'geojson', data: { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [[[-.12,-.2],[.12,-.2],[.12,-.12],[-.12,-.12],[-.12,-.2]].map(([x,y]) => coordinates(x,y))] } } });
+  map.addLayer({ id: 'fixture-blocker', type: 'fill-extrusion', source: 'blocker', layout: { visibility: 'none' }, paint: { 'fill-extrusion-height': 0.2, 'fill-extrusion-color': '#b9b9c0', 'fill-extrusion-opacity': 1 } });
+  window.setPrototypeLayer(true);
+};
+window.prototypeMap = map;
+window.setPrototypeLayer = enabled => {
+  if (map.getLayer('inspection-damage')) map.removeLayer('inspection-damage');
+  if (enabled) {
+    window.prototypeLayer = new DamageLayer(options);
+    map.addLayer(window.prototypeLayer, 'fixture-blocker');
+  }
+};
+window.reloadPrototypeStyle = () => map.setStyle(style, { diff: false });
+map.on('style.load', install);
+</script></body></html>

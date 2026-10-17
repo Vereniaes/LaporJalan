@@ -1,0 +1,323 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/lifecycle.browser.spec.ts"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "lifecycle.browser.spec.ts",
+      "file": "lifecycle.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G05 G06 style reload and context recovery preserve inspection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3833,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:32:39.222Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "context-restored-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA2MCwKICAgICJiZWFyaW5nIjogMTgwLAogICAgInpvb20iOiAyNSwKICAgICJpbnNwZWN0aW9uIjogewogICAgICAiYW5jaG9yIjogWwogICAgICAgIDEwNi44MjMyLAogICAgICAgIC02LjE5NjUKICAgICAgXSwKICAgICAgIndpZHRoTSI6IDAuNTIsCiAgICAgICJkZXB0aE0iOiAwLjA3NSwKICAgICAgImdlb21ldHJ5IjogewogICAgICAgICJ2ZXJ0ZXhDb3VudCI6IDEyODEsCiAgICAgICAgIm1pbloiOiAtMC4wNzUwMDAwMDI5ODAyMzIyNCwKICAgICAgICAibWF4WiI6IDAsCiAgICAgICAgInN1cHBvcnREaWFtZXRlck0iOiAwLjUxOTk5OTk4MDkyNjUxMzcKICAgICAgfSwKICAgICAgInJlbmRlckNvdW50IjogMTQsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAiZGVwdGhSYW5nZUJlZm9yZSI6IFsKICAgICAgICAwLAogICAgICAgIDAuOTk3NDM2NTIzNDM3NQogICAgICBdLAogICAgICAiZGVwdGhSYW5nZUFmdGVyIjogWwogICAgICAgIDAsCiAgICAgICAgMC45OTc0MzY1MjM0Mzc1CiAgICAgIF0sCiAgICAgICJwcm9qZWN0ZWRBbmNob3JDc3MiOiBbCiAgICAgICAgNTIyLjQyOTAxMDYxMjkyNCwKICAgICAgICA0NzAuOTc0ODM4OTMxNjc5CiAgICAgIF0sCiAgICAgICJkaXNwb3NlZCI6IGZhbHNlLAogICAgICAiY2FudmFzU2hhcmVkIjogdHJ1ZSwKICAgICAgIndlYmdsMiI6IHRydWUKICAgIH0sCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDQ5NTY1NDYsCiAgICAgIC02LjE5NjUwMDg1MTAwODMzOAogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts/lifecycle.browser-G05-G06--5bfb0-ecovery-preserve-inspection-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb9ad9f599d9b550af8d-046aa2217a58125c93d4",
+          "file": "lifecycle.browser.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "L01 L02 L03 application resources plateau over twenty complete cycles",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 39268,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:32:43.204Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "complete-cycles",
+                      "contentType": "application/json",
+                      "body": "ewogICJjeWNsZXMiOiBbCiAgICB7CiAgICAgICJjeWNsZSI6IDEsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDIsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDMsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDQsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDUsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDYsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDcsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDgsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDksCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDEwLAogICAgICAicmVzb3VyY2VzIjogewogICAgICAgICJnZW9tZXRyaWVzIjogNSwKICAgICAgICAibWF0ZXJpYWxzIjogNiwKICAgICAgICAidGV4dHVyZXMiOiAwLAogICAgICAgICJwcm9ncmFtcyI6IDQKICAgICAgfSwKICAgICAgImxpc3RlbmVycyI6IHsKICAgICAgICAibW92ZWVuZCI6IDgsCiAgICAgICAgIm1vdmUiOiA3LAogICAgICAgICJ6b29tIjogMSwKICAgICAgICAidGVycmFpbiI6IDgsCiAgICAgICAgInN0eWxlZGF0YSI6IDEsCiAgICAgICAgInNvdXJjZWRhdGEiOiAxLAogICAgICAgICJyZXNpemUiOiAxLAogICAgICAgICJkcmFnIjogMSwKICAgICAgICAic3R5bGUubG9hZCI6IDIsCiAgICAgICAgImRhdGEiOiAxLAogICAgICAgICJkYXRhbG9hZGluZyI6IDEsCiAgICAgICAgImRhdGFhYm9ydCI6IDEsCiAgICAgICAgImNsaWNrIjogNywKICAgICAgICAibW91c2Vtb3ZlIjogMiwKICAgICAgICAibW91c2VvdXQiOiAyLAogICAgICAgICJyZW1vdmUiOiAwCiAgICAgIH0sCiAgICAgICJjYW52YXMiOiAxCiAgICB9LAogICAgewogICAgICAiY3ljbGUiOiAxMSwKICAgICAgInJlc291cmNlcyI6IHsKICAgICAgICAiZ2VvbWV0cmllcyI6IDUsCiAgICAgICAgIm1hdGVyaWFscyI6IDYsCiAgICAgICAgInRleHR1cmVzIjogMCwKICAgICAgICAicHJvZ3JhbXMiOiA0CiAgICAgIH0sCiAgICAgICJsaXN0ZW5lcnMiOiB7CiAgICAgICAgIm1vdmVlbmQiOiA4LAogICAgICAgICJtb3ZlIjogNywKICAgICAgICAiem9vbSI6IDEsCiAgICAgICAgInRlcnJhaW4iOiA4LAogICAgICAgICJzdHlsZWRhdGEiOiAxLAogICAgICAgICJzb3VyY2VkYXRhIjogMSwKICAgICAgICAicmVzaXplIjogMSwKICAgICAgICAiZHJhZyI6IDEsCiAgICAgICAgInN0eWxlLmxvYWQiOiAyLAogICAgICAgICJkYXRhIjogMSwKICAgICAgICAiZGF0YWxvYWRpbmciOiAxLAogICAgICAgICJkYXRhYWJvcnQiOiAxLAogICAgICAgICJjbGljayI6IDcsCiAgICAgICAgIm1vdXNlbW92ZSI6IDIsCiAgICAgICAgIm1vdXNlb3V0IjogMiwKICAgICAgICAicmVtb3ZlIjogMAogICAgICB9LAogICAgICAiY2FudmFzIjogMQogICAgfSwKICAgIHsKICAgICAgImN5Y2xlIjogMTIsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDEzLAogICAgICAicmVzb3VyY2VzIjogewogICAgICAgICJnZW9tZXRyaWVzIjogNSwKICAgICAgICAibWF0ZXJpYWxzIjogNiwKICAgICAgICAidGV4dHVyZXMiOiAwLAogICAgICAgICJwcm9ncmFtcyI6IDQKICAgICAgfSwKICAgICAgImxpc3RlbmVycyI6IHsKICAgICAgICAibW92ZWVuZCI6IDgsCiAgICAgICAgIm1vdmUiOiA3LAogICAgICAgICJ6b29tIjogMSwKICAgICAgICAidGVycmFpbiI6IDgsCiAgICAgICAgInN0eWxlZGF0YSI6IDEsCiAgICAgICAgInNvdXJjZWRhdGEiOiAxLAogICAgICAgICJyZXNpemUiOiAxLAogICAgICAgICJkcmFnIjogMSwKICAgICAgICAic3R5bGUubG9hZCI6IDIsCiAgICAgICAgImRhdGEiOiAxLAogICAgICAgICJkYXRhbG9hZGluZyI6IDEsCiAgICAgICAgImRhdGFhYm9ydCI6IDEsCiAgICAgICAgImNsaWNrIjogNywKICAgICAgICAibW91c2Vtb3ZlIjogMiwKICAgICAgICAibW91c2VvdXQiOiAyLAogICAgICAgICJyZW1vdmUiOiAwCiAgICAgIH0sCiAgICAgICJjYW52YXMiOiAxCiAgICB9LAogICAgewogICAgICAiY3ljbGUiOiAxNCwKICAgICAgInJlc291cmNlcyI6IHsKICAgICAgICAiZ2VvbWV0cmllcyI6IDUsCiAgICAgICAgIm1hdGVyaWFscyI6IDYsCiAgICAgICAgInRleHR1cmVzIjogMCwKICAgICAgICAicHJvZ3JhbXMiOiA0CiAgICAgIH0sCiAgICAgICJsaXN0ZW5lcnMiOiB7CiAgICAgICAgIm1vdmVlbmQiOiA4LAogICAgICAgICJtb3ZlIjogNywKICAgICAgICAiem9vbSI6IDEsCiAgICAgICAgInRlcnJhaW4iOiA4LAogICAgICAgICJzdHlsZWRhdGEiOiAxLAogICAgICAgICJzb3VyY2VkYXRhIjogMSwKICAgICAgICAicmVzaXplIjogMSwKICAgICAgICAiZHJhZyI6IDEsCiAgICAgICAgInN0eWxlLmxvYWQiOiAyLAogICAgICAgICJkYXRhIjogMSwKICAgICAgICAiZGF0YWxvYWRpbmciOiAxLAogICAgICAgICJkYXRhYWJvcnQiOiAxLAogICAgICAgICJjbGljayI6IDcsCiAgICAgICAgIm1vdXNlbW92ZSI6IDIsCiAgICAgICAgIm1vdXNlb3V0IjogMiwKICAgICAgICAicmVtb3ZlIjogMAogICAgICB9LAogICAgICAiY2FudmFzIjogMQogICAgfSwKICAgIHsKICAgICAgImN5Y2xlIjogMTUsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDE2LAogICAgICAicmVzb3VyY2VzIjogewogICAgICAgICJnZW9tZXRyaWVzIjogNSwKICAgICAgICAibWF0ZXJpYWxzIjogNiwKICAgICAgICAidGV4dHVyZXMiOiAwLAogICAgICAgICJwcm9ncmFtcyI6IDQKICAgICAgfSwKICAgICAgImxpc3RlbmVycyI6IHsKICAgICAgICAibW92ZWVuZCI6IDgsCiAgICAgICAgIm1vdmUiOiA3LAogICAgICAgICJ6b29tIjogMSwKICAgICAgICAidGVycmFpbiI6IDgsCiAgICAgICAgInN0eWxlZGF0YSI6IDEsCiAgICAgICAgInNvdXJjZWRhdGEiOiAxLAogICAgICAgICJyZXNpemUiOiAxLAogICAgICAgICJkcmFnIjogMSwKICAgICAgICAic3R5bGUubG9hZCI6IDIsCiAgICAgICAgImRhdGEiOiAxLAogICAgICAgICJkYXRhbG9hZGluZyI6IDEsCiAgICAgICAgImRhdGFhYm9ydCI6IDEsCiAgICAgICAgImNsaWNrIjogNywKICAgICAgICAibW91c2Vtb3ZlIjogMiwKICAgICAgICAibW91c2VvdXQiOiAyLAogICAgICAgICJyZW1vdmUiOiAwCiAgICAgIH0sCiAgICAgICJjYW52YXMiOiAxCiAgICB9LAogICAgewogICAgICAiY3ljbGUiOiAxNywKICAgICAgInJlc291cmNlcyI6IHsKICAgICAgICAiZ2VvbWV0cmllcyI6IDUsCiAgICAgICAgIm1hdGVyaWFscyI6IDYsCiAgICAgICAgInRleHR1cmVzIjogMCwKICAgICAgICAicHJvZ3JhbXMiOiA0CiAgICAgIH0sCiAgICAgICJsaXN0ZW5lcnMiOiB7CiAgICAgICAgIm1vdmVlbmQiOiA4LAogICAgICAgICJtb3ZlIjogNywKICAgICAgICAiem9vbSI6IDEsCiAgICAgICAgInRlcnJhaW4iOiA4LAogICAgICAgICJzdHlsZWRhdGEiOiAxLAogICAgICAgICJzb3VyY2VkYXRhIjogMSwKICAgICAgICAicmVzaXplIjogMSwKICAgICAgICAiZHJhZyI6IDEsCiAgICAgICAgInN0eWxlLmxvYWQiOiAyLAogICAgICAgICJkYXRhIjogMSwKICAgICAgICAiZGF0YWxvYWRpbmciOiAxLAogICAgICAgICJkYXRhYWJvcnQiOiAxLAogICAgICAgICJjbGljayI6IDcsCiAgICAgICAgIm1vdXNlbW92ZSI6IDIsCiAgICAgICAgIm1vdXNlb3V0IjogMiwKICAgICAgICAicmVtb3ZlIjogMAogICAgICB9LAogICAgICAiY2FudmFzIjogMQogICAgfSwKICAgIHsKICAgICAgImN5Y2xlIjogMTgsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA2LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogNAogICAgICB9LAogICAgICAibGlzdGVuZXJzIjogewogICAgICAgICJtb3ZlZW5kIjogOCwKICAgICAgICAibW92ZSI6IDcsCiAgICAgICAgInpvb20iOiAxLAogICAgICAgICJ0ZXJyYWluIjogOCwKICAgICAgICAic3R5bGVkYXRhIjogMSwKICAgICAgICAic291cmNlZGF0YSI6IDEsCiAgICAgICAgInJlc2l6ZSI6IDEsCiAgICAgICAgImRyYWciOiAxLAogICAgICAgICJzdHlsZS5sb2FkIjogMiwKICAgICAgICAiZGF0YSI6IDEsCiAgICAgICAgImRhdGFsb2FkaW5nIjogMSwKICAgICAgICAiZGF0YWFib3J0IjogMSwKICAgICAgICAiY2xpY2siOiA3LAogICAgICAgICJtb3VzZW1vdmUiOiAyLAogICAgICAgICJtb3VzZW91dCI6IDIsCiAgICAgICAgInJlbW92ZSI6IDAKICAgICAgfSwKICAgICAgImNhbnZhcyI6IDEKICAgIH0sCiAgICB7CiAgICAgICJjeWNsZSI6IDE5LAogICAgICAicmVzb3VyY2VzIjogewogICAgICAgICJnZW9tZXRyaWVzIjogNSwKICAgICAgICAibWF0ZXJpYWxzIjogNiwKICAgICAgICAidGV4dHVyZXMiOiAwLAogICAgICAgICJwcm9ncmFtcyI6IDQKICAgICAgfSwKICAgICAgImxpc3RlbmVycyI6IHsKICAgICAgICAibW92ZWVuZCI6IDgsCiAgICAgICAgIm1vdmUiOiA3LAogICAgICAgICJ6b29tIjogMSwKICAgICAgICAidGVycmFpbiI6IDgsCiAgICAgICAgInN0eWxlZGF0YSI6IDEsCiAgICAgICAgInNvdXJjZWRhdGEiOiAxLAogICAgICAgICJyZXNpemUiOiAxLAogICAgICAgICJkcmFnIjogMSwKICAgICAgICAic3R5bGUubG9hZCI6IDIsCiAgICAgICAgImRhdGEiOiAxLAogICAgICAgICJkYXRhbG9hZGluZyI6IDEsCiAgICAgICAgImRhdGFhYm9ydCI6IDEsCiAgICAgICAgImNsaWNrIjogNywKICAgICAgICAibW91c2Vtb3ZlIjogMiwKICAgICAgICAibW91c2VvdXQiOiAyLAogICAgICAgICJyZW1vdmUiOiAwCiAgICAgIH0sCiAgICAgICJjYW52YXMiOiAxCiAgICB9LAogICAgewogICAgICAiY3ljbGUiOiAyMCwKICAgICAgInJlc291cmNlcyI6IHsKICAgICAgICAiZ2VvbWV0cmllcyI6IDUsCiAgICAgICAgIm1hdGVyaWFscyI6IDYsCiAgICAgICAgInRleHR1cmVzIjogMCwKICAgICAgICAicHJvZ3JhbXMiOiA0CiAgICAgIH0sCiAgICAgICJsaXN0ZW5lcnMiOiB7CiAgICAgICAgIm1vdmVlbmQiOiA4LAogICAgICAgICJtb3ZlIjogNywKICAgICAgICAiem9vbSI6IDEsCiAgICAgICAgInRlcnJhaW4iOiA4LAogICAgICAgICJzdHlsZWRhdGEiOiAxLAogICAgICAgICJzb3VyY2VkYXRhIjogMSwKICAgICAgICAicmVzaXplIjogMSwKICAgICAgICAiZHJhZyI6IDEsCiAgICAgICAgInN0eWxlLmxvYWQiOiAyLAogICAgICAgICJkYXRhIjogMSwKICAgICAgICAiZGF0YWxvYWRpbmciOiAxLAogICAgICAgICJkYXRhYWJvcnQiOiAxLAogICAgICAgICJjbGljayI6IDcsCiAgICAgICAgIm1vdXNlbW92ZSI6IDIsCiAgICAgICAgIm1vdXNlb3V0IjogMiwKICAgICAgICAicmVtb3ZlIjogMAogICAgICB9LAogICAgICAiY2FudmFzIjogMQogICAgfQogIF0sCiAgInVuYXZhaWxhYmxlIjogWwogICAgIkdQVSB0b3RhbCBtZW1vcnkiLAogICAgImdhcmJhZ2UtY29sbGVjdGVkIGhlYXAgcmV0ZW50aW9uIgogIF0KfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts/lifecycle.browser-L01-L02--4a6a6-over-twenty-complete-cycles-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb9ad9f599d9b550af8d-b37b046fa7c32eb9859d",
+          "file": "lifecycle.browser.spec.ts",
+          "line": 41,
+          "column": 1
+        },
+        {
+          "title": "G05 G06 style reload and context recovery preserve inspection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3142,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:33:23.375Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "context-restored-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDYwLAogICAgImJlYXJpbmciOiAxODAsCiAgICAiem9vbSI6IDI1LAogICAgImluc3BlY3Rpb24iOiB7CiAgICAgICJhbmNob3IiOiBbCiAgICAgICAgMTA2LjgyMzIsCiAgICAgICAgLTYuMTk2NQogICAgICBdLAogICAgICAid2lkdGhNIjogMC41MiwKICAgICAgImRlcHRoTSI6IDAuMDc1LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgInZlcnRleENvdW50IjogMTI4MSwKICAgICAgICAibWluWiI6IC0wLjA3NTAwMDAwMjk4MDIzMjI0LAogICAgICAgICJtYXhaIjogMCwKICAgICAgICAic3VwcG9ydERpYW1ldGVyTSI6IDAuNTE5OTk5OTgwOTI2NTEzNwogICAgICB9LAogICAgICAicmVuZGVyQ291bnQiOiAxMSwKICAgICAgInJlc291cmNlcyI6IHsKICAgICAgICAiZ2VvbWV0cmllcyI6IDUsCiAgICAgICAgIm1hdGVyaWFscyI6IDYsCiAgICAgICAgInRleHR1cmVzIjogMCwKICAgICAgICAicHJvZ3JhbXMiOiA0CiAgICAgIH0sCiAgICAgICJkZXB0aFJhbmdlQmVmb3JlIjogWwogICAgICAgIDAsCiAgICAgICAgMC45OTc0MzY1MjM0Mzc1CiAgICAgIF0sCiAgICAgICJkZXB0aFJhbmdlQWZ0ZXIiOiBbCiAgICAgICAgMCwKICAgICAgICAwLjk5NzQzNjUyMzQzNzUKICAgICAgXSwKICAgICAgInByb2plY3RlZEFuY2hvckNzcyI6IFsKICAgICAgICAxOTcuNDM5OTc2MjE1NTE3MDgsCiAgICAgICAgMjUzLjA5OTc4NTQwNzQ3MTc2CiAgICAgIF0sCiAgICAgICJkaXNwb3NlZCI6IGZhbHNlLAogICAgICAiY2FudmFzU2hhcmVkIjogdHJ1ZSwKICAgICAgIndlYmdsMiI6IHRydWUKICAgIH0sCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMjAwMDQ5NzAxMiwKICAgICAgLTYuMTk2NTAwODUwNTEzNDE2NQogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts/lifecycle.browser-G05-G06--5bfb0-ecovery-preserve-inspection-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb9ad9f599d9b550af8d-79620a35ec04e31d1098",
+          "file": "lifecycle.browser.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "L01 L02 L03 application resources plateau over twenty complete cycles",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 180432,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/lifecycle.browser.spec.ts",
+                        "column": 41,
+                        "line": 70
+                      },
+                      "message": "Error: locator.click: Test timeout of 180000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTitle('Tutup CCTV')\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Tutup CCTV\" class=\"rounded-lg p-1 text-slate-500 hover:bg-slate-100\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    346 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m        - element is visible, enabled and stable\u001b[22m\n\u001b[2m        - scrolling into view if needed\u001b[22m\n\u001b[2m        - done scrolling\u001b[22m\n\u001b[2m        - element is outside of the viewport\u001b[22m\n\u001b[2m      - retrying click action\u001b[22m\n\u001b[2m        - waiting 500ms\u001b[22m\n\n\n  68 |     await page.getByText('1 • CCTV Bundaran HI', { exact: true }).first().click();\n  69 |     await ready(page);\n> 70 |     await page.getByTitle('Tutup CCTV').click();\n     |                                         ^\n  71 |     const listeners = await map.evaluate(map => Object.fromEntries(Object.entries(map._listeners).map(([key, list]) => [key, (list as any[]).length])));\n  72 |     cycles.push({ cycle: index + 1, resources, listeners, canvas: await page.locator('canvas').count() });\n  73 |     await page.evaluate(() => (window as any).mountFixtureApp(false));\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/lifecycle.browser.spec.ts:70:41"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T05:33:26.657Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts/lifecycle.browser-L01-L02--4a6a6-over-twenty-complete-cycles-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts/lifecycle.browser-L01-L02--4a6a6-over-twenty-complete-cycles-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/lifecycle-first/artifacts/lifecycle.browser-L01-L02--4a6a6-over-twenty-complete-cycles-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "eb9ad9f599d9b550af8d-3c1240b9d5aef06a46ef",
+          "file": "lifecycle.browser.spec.ts",
+          "line": 41,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T05:32:38.685Z",
+    "duration": 228825.178,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

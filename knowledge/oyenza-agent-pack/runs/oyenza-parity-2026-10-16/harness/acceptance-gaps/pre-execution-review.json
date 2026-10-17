@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-17T04:14:52.930522+00:00",
+  "reviewer": "root",
+  "status": "approved_for_execution",
+  "spec_sha256": "e8bd2c5aecc1f9d585e8760b71e9f1082def9a9a61e486c7e71c6aba27a9bb71",
+  "scope": "13new boundedbehaviorcases reviewed before execution; no appfixorfullacceptance.",
+  "boundaries": [
+    "Rapidmarkerdispatchtests intent-state, notpointer/keyboardreachability.",
+    "Manual2D expectedto preserve latestreporttarget; afailure will be investigated, notrelaxed.",
+    "Latecameraerrorrequesttiming needsfirstexecution.",
+    "POSTassertslocalDemo/examplebehavior, notserverpersistenceorexplicitfaileduploadlabel.",
+    "Maintenance andwholekeyboard remainnot_run."
+  ]
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "name": "build-rejects-missing-api",
+    "command": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "node_modules/vite/bin/vite.js",
+      "build"
+    ],
+    "exitCode": 1,
+    "expectedExit": 1,
+    "passed": true,
+    "at": "2026-10-17T10:19:49.529408+00:00"
+  },
+  {
+    "name": "build-rejects-localhost",
+    "command": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "node_modules/vite/bin/vite.js",
+      "build"
+    ],
+    "exitCode": 1,
+    "expectedExit": 1,
+    "passed": true,
+    "at": "2026-10-17T10:19:49.660760+00:00"
+  },
+  {
+    "name": "backend-build",
+    "command": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "node_modules/typescript/bin/tsc"
+    ],
+    "exitCode": 0,
+    "expectedExit": 0,
+    "passed": true,
+    "at": "2026-10-17T10:19:55.604162+00:00"
+  },
+  {
+    "name": "backend-tests",
+    "command": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "--import",
+      "./node_modules/tsx/dist/loader.mjs",
+      "--test",
+      "tests/publicReports.test.ts",
+      "tests/publicMode.test.ts"
+    ],
+    "exitCode": 0,
+    "expectedExit": 0,
+    "passed": true,
+    "at": "2026-10-17T10:20:06.601566+00:00"
+  },
+  {
+    "name": "frontend-typecheck",
+    "exitCode": 0,
+    "passed": true,
+    "at": "2026-10-17T10:28:42.883806+00:00"
+  },
+  {
+    "name": "frontend-build",
+    "exitCode": 0,
+    "passed": true,
+    "at": "2026-10-17T10:28:48.890688+00:00"
+  }
+]

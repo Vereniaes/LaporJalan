@@ -1,0 +1,22 @@
+{
+  "created_at": "2026-10-16T21:49:59.444409+00:00",
+  "checks": {
+    "baseline_snapshots_match": true,
+    "current_candidate_matches": true,
+    "paired_baseline_unchanged": true,
+    "runner_unchanged": true,
+    "fixture_source_unchanged": true,
+    "fixture_module_unchanged": true,
+    "settings_unchanged": true,
+    "only_authorized_app_delta": true
+  },
+  "changed_candidate_files": [
+    "src/components/Map3D.tsx",
+    "src/map/DamageLayer.ts",
+    "src/map/damageMaterial.ts"
+  ],
+  "baseline_files": 25,
+  "candidate_files": 25,
+  "status": "passed",
+  "scope": "Frozen-source and settings integrity only; not functional, visual or timing acceptance."
+}

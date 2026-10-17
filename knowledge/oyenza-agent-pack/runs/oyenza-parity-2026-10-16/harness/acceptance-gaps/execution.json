@@ -1,0 +1,14 @@
+{
+  "started_at": "2026-10-17T04:14:52.930698+00:00",
+  "finished_at": "2026-10-17T04:18:15.425905+00:00",
+  "exit_code": 1,
+  "command": [
+    "node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "tests/acceptance-gaps.browser.spec.ts",
+    "--project=desktop",
+    "--project=mobile"
+  ],
+  "spec_sha256": "e8bd2c5aecc1f9d585e8760b71e9f1082def9a9a61e486c7e71c6aba27a9bb71"
+}

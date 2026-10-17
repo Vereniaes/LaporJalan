@@ -1,0 +1,18 @@
+{
+  "city-desktop.png": {
+    "source": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle20-full/artifacts/parity.browser-B03-live-integration-map-screenshot-desktop/real-map-baseline.png",
+    "sha256": "a764da72ca880963919e92736729cd8ee0a399444af835fe357b46bd65f19049"
+  },
+  "inspection-desktop.png": {
+    "source": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle20-full/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-desktop/mapped-road-90.png",
+    "sha256": "b7cadfdb048b1b1511d38844e54f357a3b459f4696af551f0abf21b09e2ce5ff"
+  },
+  "inspection-mobile.png": {
+    "source": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle20-full/artifacts/mapped-road.browser-G03-G0-623b4--at-the-verified-map-anchor-mobile/mapped-road-90.png",
+    "sha256": "ef81d6b7e39ac4525cddeea008b89f401a009d59927971a59ff12f11f922aac4"
+  },
+  "cctv-mobile.png": {
+    "source": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/cycle20-full/artifacts/layout.browser-M02-U02-CCT-f29e0-d-fullscreen-restores-focus-mobile/settled-cctv.png",
+    "sha256": "f732669b258b10bce0de4a5edea4ba6938e51f4e59c26a4cafb0fefb29ad6b1b"
+  }
+}

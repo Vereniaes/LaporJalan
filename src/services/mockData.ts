@@ -181,3 +181,123 @@ export const INITIAL_TRAFFIC_SEGMENTS: TrafficSegment[] = [
     ]
   }
 ];
+
+// data poligon gedung pencakar langit 3d koridor thamrin - sudirman
+export const BUILDINGS_3D_GEOJSON: any = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      properties: { name: 'Menara BCA', height: 230 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8208, -6.1950], [106.8218, -6.1950], [106.8218, -6.1962], [106.8208, -6.1962], [106.8208, -6.1950]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Grand Indonesia West Mall', height: 48 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8196, -6.1945], [106.8208, -6.1945], [106.8208, -6.1966], [106.8196, -6.1966], [106.8196, -6.1945]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Kempinski Private Residences', height: 215 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8218, -6.1960], [106.8226, -6.1960], [106.8226, -6.1969], [106.8218, -6.1969], [106.8218, -6.1960]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'The Plaza Office Tower', height: 210 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8216, -6.1926], [106.8226, -6.1926], [106.8226, -6.1936], [106.8216, -6.1936], [106.8216, -6.1926]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Keraton at The Plaza', height: 180 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8216, -6.1936], [106.8224, -6.1936], [106.8224, -6.1944], [106.8216, -6.1944], [106.8216, -6.1936]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Plaza Indonesia Mall', height: 42 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8224, -6.1930], [106.8234, -6.1930], [106.8234, -6.1944], [106.8224, -6.1944], [106.8224, -6.1930]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Hotel Mandarin Oriental', height: 110 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8236, -6.1965], [106.8246, -6.1965], [106.8246, -6.1975], [106.8236, -6.1975], [106.8236, -6.1965]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Wisma Nusantara & Pullman', height: 120 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8236, -6.1938], [106.8246, -6.1938], [106.8246, -6.1950], [106.8236, -6.1950], [106.8236, -6.1938]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Autograph Tower (Thamrin Nine)', height: 382 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8212, -6.2002], [106.8224, -6.2002], [106.8224, -6.2014], [106.8212, -6.2014], [106.8212, -6.2002]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'UOB Plaza', height: 195 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8224, -6.2004], [106.8234, -6.2004], [106.8234, -6.2014], [106.8224, -6.2014], [106.8224, -6.2004]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Wisma 46 (BNI City)', height: 262 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8208, -6.2036], [106.8220, -6.2036], [106.8220, -6.2048], [106.8208, -6.2048], [106.8208, -6.2036]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Menara Astra', height: 260 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8222, -6.2064], [106.8234, -6.2064], [106.8234, -6.2076], [106.8222, -6.2076], [106.8222, -6.2064]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'Chase Plaza', height: 130 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8218, -6.2086], [106.8228, -6.2086], [106.8228, -6.2096], [106.8218, -6.2096], [106.8218, -6.2086]]]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: { name: 'MidPlaza 1 & 2', height: 115 },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[106.8206, -6.2078], [106.8218, -6.2078], [106.8218, -6.2088], [106.8206, -6.2088], [106.8206, -6.2078]]]
+      }
+    }
+  ]
+};
+

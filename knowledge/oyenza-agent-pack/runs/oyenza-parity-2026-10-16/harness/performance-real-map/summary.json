@@ -1,0 +1,110 @@
+{
+  "recorded_at": "2026-10-16T18:43:24.823795+00:00",
+  "collection": "passed",
+  "exit_code": 0,
+  "performance_verdict": "not_assigned",
+  "scope": "Actual-map orbit timing observation, not paired acceptance",
+  "summaries": [
+    {
+      "viewport": "desktop",
+      "collection_status": "expected",
+      "sample_raf_medians_ms": [
+        127,
+        137,
+        132
+      ],
+      "sample_raf_p95_ms": [
+        204,
+        230,
+        210
+      ],
+      "median_sample_p95_ms": 210,
+      "sample_input_p95_ms": [
+        128,
+        152,
+        124
+      ],
+      "renderer_frame_counts": [
+        264,
+        243,
+        252
+      ],
+      "app_errors": [],
+      "request_abort_counts": [
+        12,
+        12,
+        12
+      ],
+      "zoom": [
+        25.5,
+        25.5,
+        25.5
+      ],
+      "style_ready": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "collection_status": "expected",
+      "sample_raf_medians_ms": [
+        99,
+        96,
+        104
+      ],
+      "sample_raf_p95_ms": [
+        148,
+        163,
+        164
+      ],
+      "median_sample_p95_ms": 163,
+      "sample_input_p95_ms": [
+        19,
+        91,
+        137
+      ],
+      "renderer_frame_counts": [
+        331,
+        332,
+        314
+      ],
+      "app_errors": [],
+      "request_abort_counts": [
+        9,
+        9,
+        9
+      ],
+      "zoom": [
+        24.99999983050088,
+        24.99999983050088,
+        24.99999983050088
+      ],
+      "style_ready": [
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "limitations": [
+    "SwiftShader software renderer",
+    "Playwright trace and screenshots were enabled, adding unquantified overhead",
+    "No paired baseline or acceptance threshold for this observation",
+    "Network request aborts were captured; not labelled application failures or erased",
+    "RAF callback intervals are not display presentation FPS",
+    "Synthetic damage at a verified mapped-road coordinate"
+  ],
+  "files": {
+    "mobile-observation.json": "f7b9a2bf330c9a0d019d2e2630c38b63167d0818ac3ef7db084dfc1a3c95eacb",
+    "mobile-sample-1.json": "bdcd755874f6524e51c33eb2107efcb26a826202abfeb3bf9d9ae0bf04ed8f2b",
+    "results.json": "d8839646711ec527a7b04c4cfccef6094a374628d9f03e889e9fb138bb19e0be",
+    "desktop-sample-3.json": "953a788324650250754f9fa1e4c603ff82277816bc52473b80225ba7ac991407",
+    "mobile-sample-3.json": "a27ec2335f9580273aab64e261273e485023ab14c42505d5ba58f12928404619",
+    "desktop-sample-2.json": "381471daf7a69fcafac7c73a8a1362df1d932a79b57de87910acfa5cb5f9986b",
+    "desktop-sample-1.json": "8a74b546e78f028d895cef5ea2a88bea83698c0c7c2f541ef4a9106428946b20",
+    "mobile-sample-2.json": "84370b489c7c6fe7adfd0e4d43ae502c0939ad0b20d43b32f71b618be4e25b77",
+    "desktop-observation.json": "2dc7c77d0f0c564e53b471dd62a287f14b12a5242ba82d89ca033a5f9f7b4d51"
+  }
+}

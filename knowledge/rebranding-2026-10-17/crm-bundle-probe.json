@@ -1,0 +1,34 @@
+[
+  {
+    "url": "https://crm.jakarta.go.id/peta/_next/static/chunks/864-f310aba39e18f9f0.js",
+    "status": 200,
+    "bytes": 25771,
+    "sha256": "35ad2bd4d160c41f4f59c8bb6b4683ce134c4ea2ebda8e15ef916b2f6c10c875",
+    "temp_id": "91a755c460",
+    "urls": [
+      "https://crm.jakarta.go.id/api"
+    ],
+    "paths": [
+      "/public/dashboard/distribution-map"
+    ]
+  },
+  {
+    "url": "https://crm.jakarta.go.id/peta/_next/static/chunks/205-d228c5a7a2055eaa.js",
+    "status": 200,
+    "bytes": 933951,
+    "sha256": "7c88c0673d9127a9333020ba4b78b92fe57ae1b6a04e58336fd8de66578393fd",
+    "temp_id": "70fc867e4e",
+    "urls": [
+      "http://fb.me/use-check-prop-types",
+      "http://jedwatson.github.io/classnames",
+      "http://www.w3.org/2000/svg",
+      "https://feross.org",
+      "https://feross.org/opensource",
+      "https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#string-arguments",
+      "https://maps.googleapis.com/maps/api/js",
+      "https://nextjs.org/docs/messages/next-image-missing-loader",
+      "https://stackoverflow.com/q/20007992"
+    ],
+    "paths": []
+  }
+]

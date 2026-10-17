@@ -1,0 +1,22 @@
+{
+  "LaporJalan": {
+    "changedFromBaseline": [
+      "src/App.tsx"
+    ],
+    "gitStatus": " M .gitignore\n M index.html\n M knowledge/video-ui-comparison-2026-10-16.md\n M package-lock.json\n M package.json\n M src/App.tsx\n M src/components/CameraReportModal.tsx\n M src/components/CctvModal.tsx\n M src/components/CompareModal.tsx\n M src/components/DamageReportCard.tsx\n M src/components/DepthInspector3D.tsx\n M src/components/FloodMonitorCard.tsx\n M src/components/Map3D.tsx\n M src/components/MascotBanner.tsx\n M src/components/StreetSimulation3D.tsx\n M src/index.css\n M src/services/api.ts\n M src/services/imageDetection.ts\n M src/services/mockData.ts\n M tailwind.config.js\n M vite.config.ts\n?? .env.example\n?? knowledge/oyenza-agent-pack/\n?? knowledge/rebranding-2026-10-17/\n?? playwright.config.ts\n?? playwright.public.config.ts\n?? public/\n?? src/InspectionWorkspace.tsx\n?? src/components/CctvPopover.tsx\n?? src/components/useModalDialog.ts\n?? src/map/\n?? src/public-reports/\n?? src/vite-env.d.ts\n?? tests/\n"
+  },
+  "laporjalan-be": {
+    "changedFromBaseline": [
+      "src/app.ts",
+      "src/index.ts",
+      "src/routes/healthRoutes.ts",
+      "src/config/env.ts"
+    ],
+    "gitStatus": " M .dockerignore\n M .env.example\n M src/app.ts\n M src/config/env.ts\n M src/index.ts\n M src/routes/healthRoutes.ts\n?? src/routes/publicReportRoutes.ts\n?? src/services/publicReports.ts\n?? tests/\n"
+  },
+  "inspectionPreservedExactly": true,
+  "productionBundle": {
+    "configuredBuildTestOrigin": true,
+    "legacyTokensFound": []
+  }
+}

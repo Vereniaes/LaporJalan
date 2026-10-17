@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "task_id": null,
+  "run_id": null,
+  "phase": null,
+  "owner": null,
+  "status": "not_run",
+  "objective": null,
+  "read_paths": [],
+  "allowed_paths": [],
+  "acceptance_ids": [],
+  "acceptance_scope": null,
+  "baseline_id": null,
+  "defect_id": null,
+  "runtime": { "model_requested": null, "reasoning_requested": null },
+  "time_budget_seconds": null,
+  "deadline_at": null,
+  "budget": {
+    "max_session_repair_cycles": 12,
+    "max_defect_repair_cycles": 2,
+    "session_repair_cycles_used": 0,
+    "defect_repair_cycles_used": 0
+  }
+}

@@ -1,0 +1,1372 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/acceptance-gaps.browser.spec.ts",
+      "--project=desktop",
+      "--project=mobile"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "acceptance-gaps.browser.spec.ts",
+      "file": "acceptance-gaps.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "C05 rapid report B then A during flight preserves latest report and manual 2D",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 45152,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                        "column": 82,
+                        "line": 31
+                      },
+                      "message": "Error: locator.dispatchEvent: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.map-report-marker[aria-label=\"Fixture pothole 52 cm\"]')\u001b[22m\n\n\n  29 |   expect((await mapState(page))!.moving).toBe(true);\n  30 |   // Dispatch the second marker action before flight completion, regardless of visual overlap.\n> 31 |   await page.locator(`.map-report-marker[aria-label=\"${fixture.report.title}\"]`).dispatchEvent('click');\n     |                                                                                  ^\n  32 |   await page.locator('#b-3d').click();\n  33 |   await assert2D(page);\n  34 |   await expect(page.getByRole('heading', { name: fixture.report.title })).toBeVisible();\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:31:82"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:14:53.845Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-1b436-latest-report-and-manual-2D-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-1b436-latest-report-and-manual-2D-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-1b436-latest-report-and-manual-2D-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-829ae94e854fc8a0016e",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "C05 pending report refresh cannot replace latest search target or manual 2D",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5853,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.824\u001b[39m\nReceived: \u001b[31m106.82329332414508\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0007066758549143515\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.824\u001b[39m\nReceived: \u001b[31m106.82329332414508\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0007066758549143515\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:69:24",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                      "column": 24,
+                      "line": 69
+                    },
+                    "snippet": "  67 |     expect(after[1]).toBeCloseTo(before[1], 6);\n  68 |     if (target === 'search') {\n> 69 |       expect(after[0]).toBeCloseTo(106.824, 6);\n     |                        ^\n  70 |       expect(after[1]).toBeCloseTo(-6.197, 6);\n  71 |     } else {\n  72 |       await expect(page.getByRole('region', { name: 'Pratinjau CCTV' })).toContainText(INITIAL_CCTV_CAMERAS[1].name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                        "column": 24,
+                        "line": 69
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.824\u001b[39m\nReceived: \u001b[31m106.82329332414508\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0007066758549143515\u001b[39m\n\n  67 |     expect(after[1]).toBeCloseTo(before[1], 6);\n  68 |     if (target === 'search') {\n> 69 |       expect(after[0]).toBeCloseTo(106.824, 6);\n     |                        ^\n  70 |       expect(after[1]).toBeCloseTo(-6.197, 6);\n  71 |     } else {\n  72 |       await expect(page.getByRole('region', { name: 'Pratinjau CCTV' })).toContainText(INITIAL_CCTV_CAMERAS[1].name);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:69:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:15:43.015Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-ba1b7--search-target-or-manual-2D-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-ba1b7--search-target-or-manual-2D-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-ba1b7--search-target-or-manual-2D-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                    "column": 24,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-8cc64cd81468f094649b",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 42,
+          "column": 3
+        },
+        {
+          "title": "C05 pending report refresh cannot replace latest cctv target or manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5037,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:15:49.476Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "late-refresh-cctv-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiAwLAogICAgImJlYXJpbmciOiAwLAogICAgInpvb20iOiAxNS4yNDkxMzI4MzA4MjIxNTUsCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMTc4NDE3MTAyNTUsCiAgICAgIC02LjE5Njc1NjI2MDkxMDAyMQogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAiZmFsc2UiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-b95a2-st-cctv-target-or-manual-2D-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-b16d7cab30ffbfd38a94",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 42,
+          "column": 3
+        },
+        {
+          "title": "G06 reports received before delayed style are present when map becomes ready",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5199,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:15:54.716Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reports-before-style-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJtYXAiOiB7CiAgICAicGl0Y2giOiA2MCwKICAgICJiZWFyaW5nIjogLTE3LjAwMDAwMDAwMDAwMDAwNCwKICAgICJ6b29tIjogMjUuNSwKICAgICJpbnNwZWN0aW9uIjogewogICAgICAiYW5jaG9yIjogWwogICAgICAgIDEwNi44MjMyLAogICAgICAgIC02LjE5NjUKICAgICAgXSwKICAgICAgIndpZHRoTSI6IDAuNTIsCiAgICAgICJkZXB0aE0iOiAwLjA3NSwKICAgICAgImdlb21ldHJ5IjogewogICAgICAgICJ2ZXJ0ZXhDb3VudCI6IDc0ODgsCiAgICAgICAgIm1pbloiOiAtMC4wNzUwMDAwMDI5ODAyMzIyNCwKICAgICAgICAibWF4WiI6IDAsCiAgICAgICAgInN1cHBvcnREaWFtZXRlck0iOiAwLjUxOTk5OTk4MDkyNjUxMzcKICAgICAgfSwKICAgICAgInJlbmRlckNvdW50IjogMzAsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA1LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogMwogICAgICB9LAogICAgICAiZGVwdGhSYW5nZUJlZm9yZSI6IG51bGwsCiAgICAgICJkZXB0aFJhbmdlQWZ0ZXIiOiBudWxsLAogICAgICAicHJvamVjdGVkQW5jaG9yQ3NzIjogWwogICAgICAgIDUyMCwKICAgICAgICA1MjQuOTk5OTkwMDEwMjI0MQogICAgICBdLAogICAgICAiZGlzcG9zZWQiOiBmYWxzZSwKICAgICAgImNhbnZhc1NoYXJlZCI6IHRydWUsCiAgICAgICJ3ZWJnbDIiOiB0cnVlCiAgICB9LAogICAgIm1vdmluZyI6IGZhbHNlLAogICAgInN0eWxlUmVhZHkiOiB0cnVlLAogICAgImNlbnRlciI6IFsKICAgICAgMTA2LjgyMzE5OTQwNzIxODY4LAogICAgICAtNi4xOTY0OTgwNzI0Mjc3NzIKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogInRydWUiLAogICJicm93c2VyIjogIjE0OS4wLjc4MjcuNTUiLAogICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTozMDAyLyIKfQ=="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-G0-c6795-sent-when-map-becomes-ready-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-503942fef9a0f01f08d9",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 78,
+          "column": 1
+        },
+        {
+          "title": "M03 camera B remains current after camera A late image error",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3367,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\nExpected: \u001b[32m\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"\u001b[39m\nError: strict mode violation: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img') resolved to 4 elements:\n    1) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> aka getByRole('button', { name: 'Tutup CCTV' })\n    2) <img class=\"h-full w-full object-contain\" alt=\"Gambar contoh untuk 6B • CCTV Tosari Dukuh Atas\" src=\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"/> aka getByRole('img', { name: 'Gambar contoh untuk 6B • CCTV' })\n    3) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-copy h-3 w-3\">…</svg> aka getByRole('button', { name: 'Salin lokasi contoh' })\n    4) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-maximize2 h-3 w-3\">…</svg> aka getByRole('button', { name: 'Layar Penuh' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\nExpected: \u001b[32m\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"\u001b[39m\nError: strict mode violation: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img') resolved to 4 elements:\n    1) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> aka getByRole('button', { name: 'Tutup CCTV' })\n    2) <img class=\"h-full w-full object-contain\" alt=\"Gambar contoh untuk 6B • CCTV Tosari Dukuh Atas\" src=\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"/> aka getByRole('img', { name: 'Gambar contoh untuk 6B • CCTV' })\n    3) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-copy h-3 w-3\">…</svg> aka getByRole('button', { name: 'Salin lokasi contoh' })\n    4) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-maximize2 h-3 w-3\">…</svg> aka getByRole('button', { name: 'Layar Penuh' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\u001b[22m\n\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:125:40",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                      "column": 40,
+                      "line": 125
+                    },
+                    "snippet": "  123 |   await ready(page);\n  124 |   await expect(page.locator('.cctv-oyenza-popup')).toHaveCount(1);\n> 125 |   await expect(popup.getByRole('img')).toHaveAttribute('src', b.snapshotUrl);\n      |                                        ^\n  126 |   await expect(popup.getByRole('img')).toHaveJSProperty('naturalWidth', 640);\n  127 |   await expect(popup.getByRole('status')).toHaveCount(0);\n  128 |   const map = await mapHandle(page);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                        "column": 40,
+                        "line": 125
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\nExpected: \u001b[32m\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"\u001b[39m\nError: strict mode violation: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img') resolved to 4 elements:\n    1) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> aka getByRole('button', { name: 'Tutup CCTV' })\n    2) <img class=\"h-full w-full object-contain\" alt=\"Gambar contoh untuk 6B • CCTV Tosari Dukuh Atas\" src=\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"/> aka getByRole('img', { name: 'Gambar contoh untuk 6B • CCTV' })\n    3) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-copy h-3 w-3\">…</svg> aka getByRole('button', { name: 'Salin lokasi contoh' })\n    4) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-maximize2 h-3 w-3\">…</svg> aka getByRole('button', { name: 'Layar Penuh' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\u001b[22m\n\n\n  123 |   await ready(page);\n  124 |   await expect(page.locator('.cctv-oyenza-popup')).toHaveCount(1);\n> 125 |   await expect(popup.getByRole('img')).toHaveAttribute('src', b.snapshotUrl);\n      |                                        ^\n  126 |   await expect(popup.getByRole('img')).toHaveJSProperty('naturalWidth', 640);\n  127 |   await expect(popup.getByRole('status')).toHaveCount(0);\n  128 |   const map = await mapHandle(page);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:125:40"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:03.461Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-M0-9765c-r-camera-A-late-image-error-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-M0-9765c-r-camera-A-late-image-error-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-M0-9765c-r-camera-A-late-image-error-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                    "column": 40,
+                    "line": 125
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-3b0b7c6d2c66a81f9831",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 104,
+          "column": 1
+        },
+        {
+          "title": "M01 unavailable static image stays honestly labelled and closes with Escape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3174,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:07.313Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-M0-24837-lled-and-closes-with-Escape-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-3a285f205b023e39c6a2",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 148,
+          "column": 1
+        },
+        {
+          "title": "R02 traffic geometry status and colors survive report filter and style replacement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:10.607Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-11113-ilter-and-style-replacement-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-872c980aa7a43efbce1f",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 163,
+          "column": 1
+        },
+        {
+          "title": "R02 reports GET abort retains usable demo fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3793,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:13.352Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-c1479-etains-usable-demo-fallback-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-35b2c0277a81f441c01a",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 190,
+          "column": 3
+        },
+        {
+          "title": "R02 reports GET 503 retains usable demo fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:17.265Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-157a8-etains-usable-demo-fallback-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-f6c7dbf539eb8ea6fdac",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 190,
+          "column": 3
+        },
+        {
+          "title": "R02 reports GET malformed retains usable demo fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3959,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:21.174Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-a1a4d-etains-usable-demo-fallback-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-1343a9011872ffecef9b",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 190,
+          "column": 3
+        },
+        {
+          "title": "R02 failed geocoder clears old suggestions and leaves the map usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3736,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:25.275Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-c6172-s-and-leaves-the-map-usable-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-f35c44955943e68f5b16",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 204,
+          "column": 1
+        },
+        {
+          "title": "R02 rejected report POST 405 keeps local example visibly labelled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:29.102Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-6a09a-al-example-visibly-labelled-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-59d1da4ba42561fad083",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 219,
+          "column": 3
+        },
+        {
+          "title": "R02 rejected report POST abort keeps local example visibly labelled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:35.382Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-63a4a-al-example-visibly-labelled-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-d77bf12d5f4ad06ca7ab",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 219,
+          "column": 3
+        },
+        {
+          "title": "C05 rapid report B then A during flight preserves latest report and manual 2D",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 45136,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                        "column": 82,
+                        "line": 31
+                      },
+                      "message": "Error: locator.dispatchEvent: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.map-report-marker[aria-label=\"Fixture pothole 52 cm\"]')\u001b[22m\n\n\n  29 |   expect((await mapState(page))!.moving).toBe(true);\n  30 |   // Dispatch the second marker action before flight completion, regardless of visual overlap.\n> 31 |   await page.locator(`.map-report-marker[aria-label=\"${fixture.report.title}\"]`).dispatchEvent('click');\n     |                                                                                  ^\n  32 |   await page.locator('#b-3d').click();\n  33 |   await assert2D(page);\n  34 |   await expect(page.getByRole('heading', { name: fixture.report.title })).toBeVisible();\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:31:82"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:16:38.295Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-1b436-latest-report-and-manual-2D-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-1b436-latest-report-and-manual-2D-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-1b436-latest-report-and-manual-2D-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-bd09dd1f3162004b45ce",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "C05 pending report refresh cannot replace latest search target or manual 2D",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4444,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.824\u001b[39m\nReceived: \u001b[31m106.82329555286367\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0007044471363286675\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.824\u001b[39m\nReceived: \u001b[31m106.82329555286367\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0007044471363286675\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:69:24",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                      "column": 24,
+                      "line": 69
+                    },
+                    "snippet": "  67 |     expect(after[1]).toBeCloseTo(before[1], 6);\n  68 |     if (target === 'search') {\n> 69 |       expect(after[0]).toBeCloseTo(106.824, 6);\n     |                        ^\n  70 |       expect(after[1]).toBeCloseTo(-6.197, 6);\n  71 |     } else {\n  72 |       await expect(page.getByRole('region', { name: 'Pratinjau CCTV' })).toContainText(INITIAL_CCTV_CAMERAS[1].name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                        "column": 24,
+                        "line": 69
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeCloseTo\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m, \u001b[22mprecision\u001b[2m)\u001b[22m\n\nExpected: \u001b[32m106.824\u001b[39m\nReceived: \u001b[31m106.82329555286367\u001b[39m\n\nExpected precision:    6\nExpected difference: < \u001b[32m0.0000005\u001b[39m\nReceived difference:   \u001b[31m0.0007044471363286675\u001b[39m\n\n  67 |     expect(after[1]).toBeCloseTo(before[1], 6);\n  68 |     if (target === 'search') {\n> 69 |       expect(after[0]).toBeCloseTo(106.824, 6);\n     |                        ^\n  70 |       expect(after[1]).toBeCloseTo(-6.197, 6);\n  71 |     } else {\n  72 |       await expect(page.getByRole('region', { name: 'Pratinjau CCTV' })).toContainText(INITIAL_CCTV_CAMERAS[1].name);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:69:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:17:27.346Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-ba1b7--search-target-or-manual-2D-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-ba1b7--search-target-or-manual-2D-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-ba1b7--search-target-or-manual-2D-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                    "column": 24,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-a923145ad79a29d407a3",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 42,
+          "column": 3
+        },
+        {
+          "title": "C05 pending report refresh cannot replace latest cctv target or manual 2D",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4909,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:17:32.450Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "late-refresh-cctv-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDAsCiAgICAiYmVhcmluZyI6IDAsCiAgICAiem9vbSI6IDE1LjIyMzMyMTI4Nzc2NjkyOSwKICAgICJtb3ZpbmciOiBmYWxzZSwKICAgICJzdHlsZVJlYWR5IjogdHJ1ZSwKICAgICJjZW50ZXIiOiBbCiAgICAgIDEwNi44MjMxOTY4MjE5ODI0OSwKICAgICAgLTYuMTk2NTc1Mjk4NjQ0MjIKICAgIF0sCiAgICAibGF5ZXJzIjogWwogICAgICB7CiAgICAgICAgImlkIjogImZpeHR1cmUtYmFja2dyb3VuZCIsCiAgICAgICAgInR5cGUiOiAiYmFja2dyb3VuZCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1jb25lcy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInRyYWZmaWMtbGluZXMiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiY2N0di1zaWdodGxpbmUtZ2xvdyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogIjNkLWJ1aWxkaW5ncy1leHRydXNpb24iLAogICAgICAgICJ0eXBlIjogImZpbGwtZXh0cnVzaW9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1maWxsIiwKICAgICAgICAidHlwZSI6ICJmaWxsIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogInJvYWQtZGFtYWdlLWRlY2Fscy1saW5lIiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9CiAgICBdCiAgfSwKICAidG9nZ2xlIjogImZhbHNlIiwKICAiYnJvd3NlciI6ICIxNDkuMC43ODI3LjU1IiwKICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6MzAwMi8iCn0="
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-C0-b95a2-st-cctv-target-or-manual-2D-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-ecb25706d40a2f526fa6",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 42,
+          "column": 3
+        },
+        {
+          "title": "G06 reports received before delayed style are present when map becomes ready",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4816,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:17:37.585Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reports-before-style-state",
+                      "contentType": "application/json",
+                      "body": "ewogICJmaXh0dXJlIjogIm95ZW56YS1wYXJpdHktZml4dHVyZS12MSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgIm1hcCI6IHsKICAgICJwaXRjaCI6IDYwLAogICAgImJlYXJpbmciOiAtMTcuMDAwMDAwMDAwMDAwMDA0LAogICAgInpvb20iOiAyNSwKICAgICJpbnNwZWN0aW9uIjogewogICAgICAiYW5jaG9yIjogWwogICAgICAgIDEwNi44MjMyLAogICAgICAgIC02LjE5NjUKICAgICAgXSwKICAgICAgIndpZHRoTSI6IDAuNTIsCiAgICAgICJkZXB0aE0iOiAwLjA3NSwKICAgICAgImdlb21ldHJ5IjogewogICAgICAgICJ2ZXJ0ZXhDb3VudCI6IDc0ODgsCiAgICAgICAgIm1pbloiOiAtMC4wNzUwMDAwMDI5ODAyMzIyNCwKICAgICAgICAibWF4WiI6IDAsCiAgICAgICAgInN1cHBvcnREaWFtZXRlck0iOiAwLjUxOTk5OTk4MDkyNjUxMzcKICAgICAgfSwKICAgICAgInJlbmRlckNvdW50IjogNDEsCiAgICAgICJyZXNvdXJjZXMiOiB7CiAgICAgICAgImdlb21ldHJpZXMiOiA1LAogICAgICAgICJtYXRlcmlhbHMiOiA1LAogICAgICAgICJ0ZXh0dXJlcyI6IDAsCiAgICAgICAgInByb2dyYW1zIjogMwogICAgICB9LAogICAgICAiZGVwdGhSYW5nZUJlZm9yZSI6IG51bGwsCiAgICAgICJkZXB0aFJhbmdlQWZ0ZXIiOiBudWxsLAogICAgICAicHJvamVjdGVkQW5jaG9yQ3NzIjogWwogICAgICAgIDE5NS4wMDAwMDkwNzAwNzM0NywKICAgICAgICAzMDcuMDk5OTk4NTY1MjM0CiAgICAgIF0sCiAgICAgICJkaXNwb3NlZCI6IGZhbHNlLAogICAgICAiY2FudmFzU2hhcmVkIjogdHJ1ZSwKICAgICAgIndlYmdsMiI6IHRydWUKICAgIH0sCiAgICAibW92aW5nIjogZmFsc2UsCiAgICAic3R5bGVSZWFkeSI6IHRydWUsCiAgICAiY2VudGVyIjogWwogICAgICAxMDYuODIzMTk5MTY2NTM0NjYsCiAgICAgIC02LjE5NjQ5NzI4OTc4NTY1NAogICAgXSwKICAgICJsYXllcnMiOiBbCiAgICAgIHsKICAgICAgICAiaWQiOiAiZml4dHVyZS1iYWNrZ3JvdW5kIiwKICAgICAgICAidHlwZSI6ICJiYWNrZ3JvdW5kIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtY29uZXMtZmlsbCIsCiAgICAgICAgInR5cGUiOiAiZmlsbCIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LWNvbmVzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAidHJhZmZpYy1saW5lcyIsCiAgICAgICAgInR5cGUiOiAibGluZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJpZCI6ICJjY3R2LXNpZ2h0bGluZS1nbG93IiwKICAgICAgICAidHlwZSI6ICJsaW5lIgogICAgICB9LAogICAgICB7CiAgICAgICAgImlkIjogImNjdHYtc2lnaHRsaW5lLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAiM2QtYnVpbGRpbmdzLWV4dHJ1c2lvbiIsCiAgICAgICAgInR5cGUiOiAiZmlsbC1leHRydXNpb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWZpbGwiLAogICAgICAgICJ0eXBlIjogImZpbGwiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaWQiOiAicm9hZC1kYW1hZ2UtZGVjYWxzLWxpbmUiLAogICAgICAgICJ0eXBlIjogImxpbmUiCiAgICAgIH0KICAgIF0KICB9LAogICJ0b2dnbGUiOiAidHJ1ZSIsCiAgImJyb3dzZXIiOiAiMTQ5LjAuNzgyNy41NSIsCiAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjMwMDIvIgp9"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-G0-c6795-sent-when-map-becomes-ready-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-c45af164f0f707121286",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 78,
+          "column": 1
+        },
+        {
+          "title": "M03 camera B remains current after camera A late image error",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3028,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\nExpected: \u001b[32m\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"\u001b[39m\nError: strict mode violation: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img') resolved to 4 elements:\n    1) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> aka getByRole('button', { name: 'Tutup CCTV' })\n    2) <img class=\"h-full w-full object-contain\" alt=\"Gambar contoh untuk 6B • CCTV Tosari Dukuh Atas\" src=\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"/> aka getByRole('img', { name: 'Gambar contoh untuk 6B • CCTV' })\n    3) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-copy h-3 w-3\">…</svg> aka getByRole('button', { name: 'Salin lokasi contoh' })\n    4) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-maximize2 h-3 w-3\">…</svg> aka getByRole('button', { name: 'Layar Penuh' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\nExpected: \u001b[32m\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"\u001b[39m\nError: strict mode violation: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img') resolved to 4 elements:\n    1) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> aka getByRole('button', { name: 'Tutup CCTV' })\n    2) <img class=\"h-full w-full object-contain\" alt=\"Gambar contoh untuk 6B • CCTV Tosari Dukuh Atas\" src=\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"/> aka getByRole('img', { name: 'Gambar contoh untuk 6B • CCTV' })\n    3) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-copy h-3 w-3\">…</svg> aka getByRole('button', { name: 'Salin lokasi contoh' })\n    4) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-maximize2 h-3 w-3\">…</svg> aka getByRole('button', { name: 'Layar Penuh' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\u001b[22m\n\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:125:40",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                      "column": 40,
+                      "line": 125
+                    },
+                    "snippet": "  123 |   await ready(page);\n  124 |   await expect(page.locator('.cctv-oyenza-popup')).toHaveCount(1);\n> 125 |   await expect(popup.getByRole('img')).toHaveAttribute('src', b.snapshotUrl);\n      |                                        ^\n  126 |   await expect(popup.getByRole('img')).toHaveJSProperty('naturalWidth', 640);\n  127 |   await expect(popup.getByRole('status')).toHaveCount(0);\n  128 |   const map = await mapHandle(page);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                        "column": 40,
+                        "line": 125
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\nExpected: \u001b[32m\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"\u001b[39m\nError: strict mode violation: getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img') resolved to 4 elements:\n    1) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> aka getByRole('button', { name: 'Tutup CCTV' })\n    2) <img class=\"h-full w-full object-contain\" alt=\"Gambar contoh untuk 6B • CCTV Tosari Dukuh Atas\" src=\"https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80\"/> aka getByRole('img', { name: 'Gambar contoh untuk 6B • CCTV' })\n    3) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-copy h-3 w-3\">…</svg> aka getByRole('button', { name: 'Salin lokasi contoh' })\n    4) <svg width=\"24\" height=\"24\" fill=\"none\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\" class=\"lucide lucide-maximize2 h-3 w-3\">…</svg> aka getByRole('button', { name: 'Layar Penuh' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Pratinjau CCTV' }).getByRole('img')\u001b[22m\n\n\n  123 |   await ready(page);\n  124 |   await expect(page.locator('.cctv-oyenza-popup')).toHaveCount(1);\n> 125 |   await expect(popup.getByRole('img')).toHaveAttribute('src', b.snapshotUrl);\n      |                                        ^\n  126 |   await expect(popup.getByRole('img')).toHaveJSProperty('naturalWidth', 640);\n  127 |   await expect(popup.getByRole('status')).toHaveCount(0);\n  128 |   const map = await mapHandle(page);\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts:125:40"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:17:42.552Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-M0-9765c-r-camera-A-late-image-error-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-M0-9765c-r-camera-A-late-image-error-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-M0-9765c-r-camera-A-late-image-error-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/acceptance-gaps.browser.spec.ts",
+                    "column": 40,
+                    "line": 125
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-698153464390f56aa93b",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 104,
+          "column": 1
+        },
+        {
+          "title": "M01 unavailable static image stays honestly labelled and closes with Escape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3125,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:17:49.607Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-M0-24837-lled-and-closes-with-Escape-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-2ed1a4992fca8d0fb49f",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 148,
+          "column": 1
+        },
+        {
+          "title": "R02 traffic geometry status and colors survive report filter and style replacement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2197,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:17:52.867Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-11113-ilter-and-style-replacement-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-8962aac63750e368d5ef",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 163,
+          "column": 1
+        },
+        {
+          "title": "R02 reports GET abort retains usable demo fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3717,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:17:55.120Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-c1479-etains-usable-demo-fallback-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-2eb344d2be241328c9b5",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 190,
+          "column": 3
+        },
+        {
+          "title": "R02 reports GET 503 retains usable demo fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3733,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:17:58.964Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-157a8-etains-usable-demo-fallback-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-1096f42a4da6e011a63d",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 190,
+          "column": 3
+        },
+        {
+          "title": "R02 reports GET malformed retains usable demo fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3776,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:18:02.833Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-a1a4d-etains-usable-demo-fallback-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-9db02908d703b2070f29",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 190,
+          "column": 3
+        },
+        {
+          "title": "R02 failed geocoder clears old suggestions and leaves the map usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3700,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:18:06.741Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-c6172-s-and-leaves-the-map-usable-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-7e8ace5ae300885440db",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 204,
+          "column": 1
+        },
+        {
+          "title": "R02 rejected report POST 405 keeps local example visibly labelled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2425,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:18:10.554Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-6a09a-al-example-visibly-labelled-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-49b03031f71c2d73c251",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 219,
+          "column": 3
+        },
+        {
+          "title": "R02 rejected report POST abort keeps local example visibly labelled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2249,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T04:18:13.029Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/execution/artifacts/acceptance-gaps.browser-R0-63a4a-al-example-visibly-labelled-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4b887db419a2979015f6-9d4664eb8b3028790b46",
+          "file": "acceptance-gaps.browser.spec.ts",
+          "line": 219,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T04:14:53.361Z",
+    "duration": 184785.09600000002,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

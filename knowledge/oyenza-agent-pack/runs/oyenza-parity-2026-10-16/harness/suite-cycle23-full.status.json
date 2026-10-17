@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--grep-invert",
+    "U03"
+  ],
+  "started_at": "2026-10-17T04:30:08.214809+00:00",
+  "source_manifest": "candidate-cycle23.json",
+  "test_hashes": {
+    "tests/acceptance-gaps.browser.spec.ts": "015a932d2e0bd53ad6ea5657e24318c646f6b0c3f020915de3c243818c35f02c",
+    "tests/keyboard-flow.browser.spec.ts": "7d392b75afea95c6f3496ac6a297aa17fff68f40f444e4410fd9fc18d2c328ae",
+    "tests/resolution.browser.spec.ts": "f18a510c4961941642683ff795eb44bd9a73b76d155592d06a84fb2b9f92814c"
+  },
+  "exit_code": 130,
+  "finished_at": "2026-10-17T04:37:13.035668+00:00"
+}

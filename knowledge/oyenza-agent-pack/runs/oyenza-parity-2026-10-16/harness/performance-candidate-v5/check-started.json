@@ -1,0 +1,36 @@
+{
+  "startedAt": "2026-10-16T16:40:58.425Z",
+  "settings": {
+    "samples": 3,
+    "sampleMs": 30000,
+    "warmupMs": 5000,
+    "dpr": 1,
+    "threshold": 1.2,
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "scenarios": [
+      "idle",
+      "inspection-orbit",
+      "pan-in-inspection"
+    ],
+    "pose": {
+      "center": [
+        106.8232,
+        -6.1965
+      ],
+      "zoom": 19.2,
+      "pitch": 60,
+      "bearing": 0
+    },
+    "note": "Same synthetic inputs and calibrated equal camera pose. Baseline has decorative buildings; candidate uses new cavity. Real tiles, mapped-road workloads, production build and device FPS are not measured.",
+    "latency": "Trusted pointer events to first subsequent browser RAF callback; idle/orbit hover by 2px each second, inspection-pan drags by 40px each second. This is browser event-to-frame scheduling, not display presentation latency."
+  }
+}

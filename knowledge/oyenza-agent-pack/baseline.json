@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "id": "documentation-2026-10-16",
+  "scope": "Immutable pre-edit application/config hashes for the documentation session. Not a P0 browser baseline or feature acceptance result.",
+  "captured_on": "2026-10-16",
+  "timezone": "Asia/Jakarta",
+  "frontend_head": "42f720ed46e0f2f32e29537ed35c045aaf922648",
+  "frontend_preexisting_status": [
+    " M src/App.tsx",
+    " M src/components/CctvModal.tsx",
+    " M src/components/CompareModal.tsx",
+    " M src/components/DamageReportCard.tsx",
+    " M src/components/DepthInspector3D.tsx",
+    " M src/components/Map3D.tsx",
+    " M src/components/StreetSimulation3D.tsx",
+    " M src/index.css",
+    " M src/services/mockData.ts",
+    " M tailwind.config.js",
+    "?? src/components/CctvPopover.tsx"
+  ],
+  "backend_preexisting_status": [],
+  "path_base": "workspace root (parent of frontend and backend)",
+  "hash_algorithm": "sha256 of file bytes",
+  "coverage": "All regular files under LaporJalan/src and laporjalan-be/src, plus top-level .json/.js/.ts/.html in both repositories; not all workspace files.",
+  "files": [
+    {
+      "path": "LaporJalan/src/App.tsx",
+      "sha256": "64b74dffc29b0991362b378015a96479dfba79cb437893cbbbebf1b1caaa4a14"
+    },
+    {
+      "path": "LaporJalan/src/index.css",
+      "sha256": "73e7d7cce2bf63dc0f1ec1b5a5317b4e8535ae98c5957f8cc9f606c132e74c6e"
+    },
+    {
+      "path": "LaporJalan/src/main.tsx",
+      "sha256": "9addf1ccee5145a7d41d8989594a783f1cc7344abfce17fbf082946dc90d6c88"
+    },
+    {
+      "path": "LaporJalan/src/types.ts",
+      "sha256": "8b2ee8d9cb3618067bb9c511c846876a62d8ee8e9170cda699d724479302ef0e"
+    },
+    {
+      "path": "LaporJalan/src/services/api.ts",
+      "sha256": "3260e49137405d0161e5a2afb7e29fa894a61106bee8715c02d051cb9e4df84c"
+    },
+    {
+      "path": "LaporJalan/src/services/imageDetection.ts",
+      "sha256": "4614b95358d4fb7c6ec5dfaae8ab351000c00f5e17391d86da4f6eaca0ad9308"
+    },
+    {
+      "path": "LaporJalan/src/services/mockData.ts",
+      "sha256": "e7c605f1a445dfaf0b31b477aa53b68864980e7d3d688e8c17d6ee8b23530e7f"
+    },
+    {
+      "path": "LaporJalan/src/components/CameraReportModal.tsx",
+      "sha256": "94cdf2f627f0c8ccf51988173a1ce80e7367fc2611700b4b1424fd90e2f65532"
+    },
+    {
+      "path": "LaporJalan/src/components/CctvModal.tsx",
+      "sha256": "7f873f8f0ad28eba67e8125fb4797c29282f188959489f104baa404875d75cf4"
+    },
+    {
+      "path": "LaporJalan/src/components/CctvPopover.tsx",
+      "sha256": "ae9aef4d9f1961edac4bbd95b26f68fc973b6a807bcb8a749b1cc5bbc7255dfb"
+    },
+    {
+      "path": "LaporJalan/src/components/CompareModal.tsx",
+      "sha256": "7fa951375969c73dcab92f77a21b1a0b09079106a4c9dbd2e39e6661aa942f93"
+    },
+    {
+      "path": "LaporJalan/src/components/DamageReportCard.tsx",
+      "sha256": "3b6b29ad225a08635ecedc8f05b85a98b2f7be14c902b396e879effe94831442"
+    },
+    {
+      "path": "LaporJalan/src/components/DepthInspector3D.tsx",
+      "sha256": "f8a66ffcc253bb90dfc30d2a08ef4d2703d2c4b0fed0bff989127acdae01ea4f"
+    },
+    {
+      "path": "LaporJalan/src/components/FloodMonitorCard.tsx",
+      "sha256": "44f5be63a511aa20797daaccbe02b8de887b82983ef27bee6fedc088201bbd09"
+    },
+    {
+      "path": "LaporJalan/src/components/Map3D.tsx",
+      "sha256": "e25d2fd9b0510bfa4883129114ed2b18e67eff8d5c36df5756769d6c52361e24"
+    },
+    {
+      "path": "LaporJalan/src/components/MascotBanner.tsx",
+      "sha256": "dac7ae9ff3373bce5a763020887ba0215bc33af2f55e9d1bab5b0ab7a0a86a74"
+    },
+    {
+      "path": "LaporJalan/src/components/StreetSimulation3D.tsx",
+      "sha256": "73e742b369dbe8486ead12ee566bcd32db317bdf98e37333e5b229d4a2a677bd"
+    },
+    {
+      "path": "laporjalan-be/src/app.ts",
+      "sha256": "f214d67d46b3fd4ddba2c894493d7cafa1d02855eba89684720b6d00a38527c8"
+    },
+    {
+      "path": "laporjalan-be/src/index.ts",
+      "sha256": "e916be01397f44d919f4e23daef042108558f36a6545bff56484742e60e861c9"
+    },
+    {
+      "path": "laporjalan-be/src/routes/cctvRoutes.ts",
+      "sha256": "bbc4aa29f8c1992b68bc4603f626deaba2e8412e19be14b873e1db7240fc1775"
+    },
+    {
+      "path": "laporjalan-be/src/routes/healthRoutes.ts",
+      "sha256": "a30151bf1af5a756103c6d32c31cff05b7d01e0947b660cf0c9ff3f4e701357e"
+    },
+    {
+      "path": "laporjalan-be/src/routes/placesRoutes.ts",
+      "sha256": "9d317892ace5fe9b4594fb54e29b5347c594af1c01bbe082bc764b265429546c"
+    },
+    {
+      "path": "laporjalan-be/src/routes/reportRoutes.ts",
+      "sha256": "e5dc32dc3acc85a3b414e154b25bcaa004a71a9e7470e37bf553c5936e06de66"
+    },
+    {
+      "path": "laporjalan-be/src/routes/trafficRoutes.ts",
+      "sha256": "7119b9199f2ac03a24f6187e022d7a2188a25ee2f40d9b068080874a422a3f24"
+    },
+    {
+      "path": "laporjalan-be/src/config/env.ts",
+      "sha256": "ab997bce2f32c33b99a4a023a57abd76110d066b11a07194ee610a76efb387ad"
+    },
+    {
+      "path": "laporjalan-be/src/models/Cctv.ts",
+      "sha256": "f84249774c61195c5740ec5282000c0965ffa888686423bb1d20a14f3a88d5d1"
+    },
+    {
+      "path": "laporjalan-be/src/models/Report.ts",
+      "sha256": "9582c925826fdfa2412d1600cd84d1f691de68362ed27240df32adf13cc4c900"
+    },
+    {
+      "path": "laporjalan-be/src/models/types.ts",
+      "sha256": "a92d995eee2287ac1f8ea9565d99fdffc348338e8ebc3d05f3c1cab0e330c0a8"
+    },
+    {
+      "path": "laporjalan-be/src/services/seedData.ts",
+      "sha256": "f096701d939364ec20c4667fb3848418780bfb1976374e5db04f35489d800bd1"
+    },
+    {
+      "path": "laporjalan-be/src/services/storage.ts",
+      "sha256": "a39a1ad9f7f03a73d2a1f2b619d061898f0d9d1011ae5665bc4ffc4b559df32b"
+    },
+    {
+      "path": "laporjalan-be/src/controllers/cctvController.ts",
+      "sha256": "6f6340d794815ba06422e1505e72188d52e298850fb63fde5d6df0d555425111"
+    },
+    {
+      "path": "laporjalan-be/src/controllers/placesController.ts",
+      "sha256": "ef0cca13f97f43ec05af19538153d1a9bac1366f8a06255d7a0c6c61612ddbd7"
+    },
+    {
+      "path": "laporjalan-be/src/controllers/reportController.ts",
+      "sha256": "b3fb9d58bd52390806bad02cb449bc53df5b237060f01372df66ca76c9b94f7f"
+    },
+    {
+      "path": "laporjalan-be/src/controllers/trafficController.ts",
+      "sha256": "76ceadb34fb674f8d069e7457658f334c91e5f0f0148a88649815222c902220e"
+    },
+    {
+      "path": "LaporJalan/index.html",
+      "sha256": "c53e09081115e2f65c4e4c3aab0580ad0956a9d7b2e6b6490bf27ed6239362d6"
+    },
+    {
+      "path": "LaporJalan/package-lock.json",
+      "sha256": "32821aa2ce2fb925d03f2eb87cd3c7ce04e8646e2228ea9891dd39929424b1b5"
+    },
+    {
+      "path": "LaporJalan/package.json",
+      "sha256": "a6ba3548d02145fdb0b6fb40216545ec91094a516c503102c61e00acdf93ac9d"
+    },
+    {
+      "path": "LaporJalan/postcss.config.js",
+      "sha256": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27"
+    },
+    {
+      "path": "LaporJalan/tailwind.config.js",
+      "sha256": "081a7017c153e3ffb87f0210b91c3f14459f3899c0c0618345e4cde64966e782"
+    },
+    {
+      "path": "LaporJalan/tsconfig.json",
+      "sha256": "24dd02d49c24ee7f9b640029bae95c5fd695a1eb58b40d1b343e7567afa211c6"
+    },
+    {
+      "path": "LaporJalan/tsconfig.node.json",
+      "sha256": "9e2abb169ea87b7190613a1d4da57ca608463a453bd4231fa3aeee5e308370dd"
+    },
+    {
+      "path": "LaporJalan/vite.config.ts",
+      "sha256": "18b6b566448938d9f6b7f19628f0cc459a7fbeca4dabcb09ab69c6e36e027515"
+    },
+    {
+      "path": "laporjalan-be/package-lock.json",
+      "sha256": "b46346e7fb163f2413b60a4aa69cfd49820ed0ae754055e5089c092611da653a"
+    },
+    {
+      "path": "laporjalan-be/package.json",
+      "sha256": "8150916a3b5acf95e7c9717821a67e3a44ec98efa909448c1e0725629a24e792"
+    },
+    {
+      "path": "laporjalan-be/tsconfig.json",
+      "sha256": "a1ce0c11baac41ab4418aecf53c62100612b545f398e09c0efb34620c678b6cc"
+    }
+  ],
+  "application_checks": {
+    "typecheck": "not_run",
+    "build": "not_run",
+    "browser": "not_run",
+    "geometry_prototype": "not_run"
+  },
+  "future_baselines": "Write runs/<run-id>/baseline.json. Never replace this document-session record."
+}

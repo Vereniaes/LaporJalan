@@ -1,0 +1,576 @@
+{
+  "config": {
+    "argv": [
+      "/home/vereniaes/.nvm/versions/node/v22.23.3/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/interaction.browser.spec.ts"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3002",
+      "url": "http://127.0.0.1:3002",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "interaction.browser.spec.ts",
+      "file": "interaction.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "C05 an older geocoder response cannot replace a newer query",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:41:09.013Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-C05-an-54519-annot-replace-a-newer-query-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-403aca61028d588681a6",
+          "file": "interaction.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "C02 late flight and zoom callbacks cannot override manual 2D",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3141,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m56.17421668480562\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m56.17421668480562\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts:32:41",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts",
+                      "column": 41,
+                      "line": 32
+                    },
+                    "snippet": "  30 |   await page.getByRole('button', { name: 'Perbesar peta' }).click();\n  31 |   await ready(page);\n> 32 |   expect((await mapState(page))!.pitch).toBe(0);\n     |                                         ^\n  33 |   await expect(page.locator('#b-3d')).toHaveAttribute('aria-pressed', 'false');\n  34 |   expect((await mapState(page))!.inspection).toBeUndefined();\n  35 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts",
+                        "column": 41,
+                        "line": 32
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m56.17421668480562\u001b[39m\n\n  30 |   await page.getByRole('button', { name: 'Perbesar peta' }).click();\n  31 |   await ready(page);\n> 32 |   expect((await mapState(page))!.pitch).toBe(0);\n     |                                         ^\n  33 |   await expect(page.locator('#b-3d')).toHaveAttribute('aria-pressed', 'false');\n  34 |   expect((await mapState(page))!.inspection).toBeUndefined();\n  35 | });\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts:32:41"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:41:12.830Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-C02-la-4c69b-s-cannot-override-manual-2D-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-C02-la-4c69b-s-cannot-override-manual-2D-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-C02-la-4c69b-s-cannot-override-manual-2D-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts",
+                    "column": 41,
+                    "line": 32
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-27800cb3bcf40721abfd",
+          "file": "interaction.browser.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "M02 device fullscreen rejection retains an accessible preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4215,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:41:16.427Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-M02-de-5ca52-tains-an-accessible-preview-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-41a5e47a212ec84bd001",
+          "file": "interaction.browser.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "M03 popup anchor tracks pan zoom and resize within two CSS pixels",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1282,
+                  "error": {
+                    "message": "Error: jsHandle.evaluate: TypeError: Cannot read properties of undefined (reading '0')\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+                    "stack": "Error: jsHandle.evaluate: TypeError: Cannot read properties of undefined (reading '0')\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts:66:30",
+                    "location": {
+                      "file": "eval at evaluate (:303:30), <anonymous>",
+                      "column": 32,
+                      "line": 2
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "eval at evaluate (:303:30), <anonymous>",
+                        "column": 32,
+                        "line": 2
+                      },
+                      "message": "Error: jsHandle.evaluate: TypeError: Cannot read properties of undefined (reading '0')\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts:66:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:41:20.791Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-M03-po-6244f-esize-within-two-CSS-pixels-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-M03-po-6244f-esize-within-two-CSS-pixels-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-M03-po-6244f-esize-within-two-CSS-pixels-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "eval at evaluate (:303:30), <anonymous>",
+                    "column": 32,
+                    "line": 2
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-f2c01cd3b38487653fbd",
+          "file": "interaction.browser.spec.ts",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "C05 an older geocoder response cannot replace a newer query",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3268,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:41:22.478Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-C05-an-54519-annot-replace-a-newer-query-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-57a2a81c52c191dfcddd",
+          "file": "interaction.browser.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "C02 late flight and zoom callbacks cannot override manual 2D",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3147,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m55.94336303072171\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m55.94336303072171\u001b[39m\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts:32:41",
+                    "location": {
+                      "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts",
+                      "column": 41,
+                      "line": 32
+                    },
+                    "snippet": "  30 |   await page.getByRole('button', { name: 'Perbesar peta' }).click();\n  31 |   await ready(page);\n> 32 |   expect((await mapState(page))!.pitch).toBe(0);\n     |                                         ^\n  33 |   await expect(page.locator('#b-3d')).toHaveAttribute('aria-pressed', 'false');\n  34 |   expect((await mapState(page))!.inspection).toBeUndefined();\n  35 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts",
+                        "column": 41,
+                        "line": 32
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m55.94336303072171\u001b[39m\n\n  30 |   await page.getByRole('button', { name: 'Perbesar peta' }).click();\n  31 |   await ready(page);\n> 32 |   expect((await mapState(page))!.pitch).toBe(0);\n     |                                         ^\n  33 |   await expect(page.locator('#b-3d')).toHaveAttribute('aria-pressed', 'false');\n  34 |   expect((await mapState(page))!.inspection).toBeUndefined();\n  35 | });\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts:32:41"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:41:25.873Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-C02-la-4c69b-s-cannot-override-manual-2D-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-C02-la-4c69b-s-cannot-override-manual-2D-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-C02-la-4c69b-s-cannot-override-manual-2D-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts",
+                    "column": 41,
+                    "line": 32
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-23560777e0eccff8338f",
+          "file": "interaction.browser.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "M02 device fullscreen rejection retains an accessible preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3792,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:41:29.476Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-M02-de-5ca52-tains-an-accessible-preview-mobile/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-99bc01b5de7971cdc77c",
+          "file": "interaction.browser.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "M03 popup anchor tracks pan zoom and resize within two CSS pixels",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1206,
+                  "error": {
+                    "message": "Error: jsHandle.evaluate: TypeError: Cannot read properties of undefined (reading '0')\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+                    "stack": "Error: jsHandle.evaluate: TypeError: Cannot read properties of undefined (reading '0')\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts:66:30",
+                    "location": {
+                      "file": "eval at evaluate (:303:30), <anonymous>",
+                      "column": 32,
+                      "line": 2
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "eval at evaluate (:303:30), <anonymous>",
+                        "column": 32,
+                        "line": 2
+                      },
+                      "message": "Error: jsHandle.evaluate: TypeError: Cannot read properties of undefined (reading '0')\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:303:30), <anonymous>:2:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/vereniaes/project/hackathon/LaporJalan/tests/interaction.browser.spec.ts:66:30"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T11:41:33.422Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-M03-po-6244f-esize-within-two-CSS-pixels-mobile/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-M03-po-6244f-esize-within-two-CSS-pixels-mobile/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/interaction-first/artifacts/interaction.browser-M03-po-6244f-esize-within-two-CSS-pixels-mobile/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "eval at evaluate (:303:30), <anonymous>",
+                    "column": 32,
+                    "line": 2
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0c0ca8ec9cf19f311350-a6ce4742d763d26f6824",
+          "file": "interaction.browser.spec.ts",
+          "line": 50,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T11:41:08.600Z",
+    "duration": 26126.115,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

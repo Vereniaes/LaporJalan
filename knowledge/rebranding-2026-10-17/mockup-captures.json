@@ -1,0 +1,75 @@
+{
+  "captured_at": "2026-10-17T09:27:49.680Z",
+  "captures": [
+    {
+      "viewport": "desktop",
+      "state": "map",
+      "file": "mockup-desktop-map.png"
+    },
+    {
+      "viewport": "desktop",
+      "state": "detail",
+      "file": "mockup-desktop-detail.png"
+    },
+    {
+      "viewport": "desktop",
+      "state": "updates",
+      "file": "mockup-desktop-updates.png"
+    },
+    {
+      "viewport": "desktop",
+      "state": "comments",
+      "file": "mockup-desktop-comments.png"
+    },
+    {
+      "viewport": "desktop",
+      "state": "location",
+      "file": "mockup-desktop-location.png"
+    },
+    {
+      "viewport": "desktop",
+      "state": "condition",
+      "file": "mockup-desktop-condition.png"
+    },
+    {
+      "viewport": "mobile",
+      "state": "map",
+      "file": "mockup-mobile-map.png"
+    },
+    {
+      "viewport": "mobile",
+      "state": "list",
+      "file": "mockup-mobile-list.png"
+    },
+    {
+      "viewport": "mobile",
+      "state": "detail",
+      "file": "mockup-mobile-detail.png"
+    },
+    {
+      "viewport": "mobile",
+      "state": "updates",
+      "file": "mockup-mobile-updates.png"
+    },
+    {
+      "viewport": "mobile",
+      "state": "comments",
+      "file": "mockup-mobile-comments.png"
+    },
+    {
+      "viewport": "mobile",
+      "state": "location",
+      "file": "mockup-mobile-location.png"
+    },
+    {
+      "viewport": "mobile",
+      "state": "condition",
+      "file": "mockup-mobile-condition.png"
+    }
+  ],
+  "basemapFailure": {
+    "rows": 25,
+    "message": "Peta belum dapat dimuat. Daftar laporan tetap tersedia.",
+    "messageVisible": true
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "checked_at": "2026-10-17T04:56:12.648Z",
+  "checks": [
+    {
+      "size": "desktop",
+      "state": "list",
+      "visible": true,
+      "visible_panels": 1
+    },
+    {
+      "size": "desktop",
+      "state": "detail",
+      "visible": true,
+      "visible_panels": 1
+    },
+    {
+      "size": "desktop",
+      "state": "report",
+      "visible": true,
+      "visible_panels": 1
+    },
+    {
+      "size": "desktop",
+      "state": "error",
+      "visible": true,
+      "visible_panels": 1
+    },
+    {
+      "size": "mobile",
+      "state": "list",
+      "visible": true,
+      "visible_panels": 1
+    },
+    {
+      "size": "mobile",
+      "state": "detail",
+      "visible": true,
+      "visible_panels": 1
+    },
+    {
+      "size": "mobile",
+      "state": "report",
+      "visible": true,
+      "visible_panels": 1
+    },
+    {
+      "size": "mobile",
+      "state": "error",
+      "visible": true,
+      "visible_panels": 1
+    },
+    {
+      "name": "detail updates",
+      "visible": true,
+      "evidence_hidden": true
+    }
+  ],
+  "widths": {
+    "viewport": 390,
+    "page": 390
+  },
+  "images": [
+    {
+      "src": "references/boston-reports-desktop.png",
+      "loaded": true
+    },
+    {
+      "src": "references/singapore-onemap.png",
+      "loaded": true
+    }
+  ],
+  "errors": [],
+  "scope": "Design board only. Application tests not_run."
+}

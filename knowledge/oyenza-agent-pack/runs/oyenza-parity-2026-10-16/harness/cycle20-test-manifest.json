@@ -1,0 +1,31 @@
+{
+  "captured_at": "2026-10-16T13:55:18.061842+00:00",
+  "source_manifest": "candidate-cycle20.json",
+  "fixture_unchanged_from_frozen_contract": true,
+  "files": {
+    "tests/close-labels.browser.spec.ts": "4063d3dfadbe7c9b68be60d43a3bf7c90d9866146819d0b599900d022a885437",
+    "tests/dimensions.unit.spec.ts": "5871e5afe160ed23c69e6bf0173dea58d9bac3fae5cfba6fda4098c9cc30eab2",
+    "tests/empty-mode.browser.spec.ts": "73c81d73f7c938efb69f5bc22a46ca76e97d8cd35ddbb2c3abb3b1a773c9d9f9",
+    "tests/fixture.unit.spec.ts": "789819c7a11e187217266d1572f3179a7eda3821c97138c12a55fbbdc56fe916",
+    "tests/fixtures.ts": "de2b92da244274ce2c8522c1d8f77b8b4241c2badae9f4b6a57149b714d912b7",
+    "tests/geometry/prototype.html": "1c8e0db033ae961eb3cfd453ed32f9941bc79bf49273b10481f0ff4371654421",
+    "tests/geometry.browser.spec.ts": "98841c05a467d62886ae563d606bede08c5372e0ff8bdfdc1f33f487fa808c1f",
+    "tests/geometry.unit.spec.ts": "2201c0a6735e79e8820d39b0cfdc9f3029e4e2354d822e6b50f05a45bc908459",
+    "tests/helpers/map.ts": "a667343b184064b9739e9d9e0dd6a065b0b626fbcad919c404a6c09f1eb37751",
+    "tests/inspection.browser.spec.ts": "8cc2fb14a6534362beb05a29d99edef19fa97c92b176faa8dde42117a7a7a378",
+    "tests/interaction.browser.spec.ts": "bd678073ff101b114801c538a7c8d045d20de658dfd83e45be4fc83e1665d34c",
+    "tests/layout.browser.spec.ts": "7af1234cee7d67c7dd5b7a7b3d6c72b3107cb972bf1556db73f109432cd106f7",
+    "tests/lifecycle/index.html": "4a332b86871e961a0212def1b831b6b735425148217ebf53c8d9ec4dc8e65523",
+    "tests/lifecycle/mount.tsx": "5255bed000104938ae996a6a266e9a98c386c91ce0971e7c415366f29cf7bba5",
+    "tests/lifecycle.browser.spec.ts": "cd2ab11a6d8ddc626a7fb7ac2384d62196b14543322f3183f7ccdcd48a7365dc",
+    "tests/mapped-road.browser.spec.ts": "83176648aff6414846577e2cd4f70c2f8fc970a9bd902abd4d81f5e46560f467",
+    "tests/mapped-road.json": "9b1ccb2c11dc5d357a2827c625760efef23b8bd8e9e04e07381cb34342198e72",
+    "tests/orbit-framing.browser.spec.ts": "ee2dd6805a7179d64dfcf2980c560f36d3861b58c72f6e7da5eaccf9017d63cb",
+    "tests/parity.browser.spec.ts": "3a409475d121855940c46b664ac20fcdc709f21d9d0b4fdabe3110fa9c3e5827",
+    "tests/performance.mjs": "f967b910f0be31b4f48e33b358efbed8d4e02b77481f53811e596e7ee4d656fb",
+    "tests/races.browser.spec.ts": "581cca6c8f9ff74d2ff4621d8c58840786b114ded78a6fd69047331e185f8f32",
+    "tests/review.browser.spec.ts": "83fc32bf36dd6bb14192cfd9568b6db73606757377f944965790098a3ee8234d",
+    "tests/secondary.browser.spec.ts": "5cff6f249e134c2deb5738c92c894e262f407133696ecf309e7213d1ef117dbc",
+    "tests/webgl-fallback.browser.spec.ts": "4cf4263c410f77626ae5f4e6392af3343e5086c9175236e30827cf6bfdafb450"
+  }
+}

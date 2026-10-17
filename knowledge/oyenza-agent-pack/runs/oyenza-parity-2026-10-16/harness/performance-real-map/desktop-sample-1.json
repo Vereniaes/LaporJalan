@@ -1,0 +1,929 @@
+{
+  "sample": 1,
+  "raw": {
+    "intervals": [
+      108,
+      76,
+      178,
+      129,
+      132,
+      133,
+      112,
+      152,
+      101,
+      120,
+      139,
+      141,
+      116,
+      100,
+      123,
+      129,
+      117,
+      67,
+      65,
+      132,
+      117,
+      120,
+      113,
+      107,
+      183,
+      74,
+      133,
+      107,
+      131,
+      126,
+      123,
+      109,
+      136,
+      170,
+      124,
+      86,
+      125,
+      165,
+      154,
+      110,
+      127,
+      138,
+      112,
+      125,
+      131,
+      76,
+      95,
+      121,
+      178,
+      143,
+      232,
+      158,
+      114,
+      152,
+      103,
+      116,
+      111,
+      61,
+      136,
+      119,
+      99,
+      111,
+      176,
+      136,
+      124,
+      162,
+      163,
+      121,
+      123,
+      46,
+      182,
+      139,
+      152,
+      175,
+      132,
+      316,
+      152,
+      174,
+      129,
+      98,
+      119,
+      120,
+      143,
+      112,
+      131,
+      221,
+      168,
+      136,
+      142,
+      159,
+      95,
+      104,
+      138,
+      87,
+      77,
+      129,
+      125,
+      157,
+      152,
+      187,
+      139,
+      79,
+      142,
+      132,
+      118,
+      136,
+      142,
+      232,
+      153,
+      127,
+      120,
+      109,
+      132,
+      146,
+      148,
+      115,
+      241,
+      138,
+      80,
+      88,
+      109,
+      146,
+      66,
+      120,
+      119,
+      204,
+      146,
+      81,
+      90,
+      259,
+      142,
+      70,
+      93,
+      113,
+      180,
+      120,
+      122,
+      116,
+      131,
+      138,
+      122,
+      116,
+      188,
+      195,
+      153,
+      174,
+      113,
+      145,
+      112,
+      156,
+      132,
+      18,
+      131,
+      119,
+      194,
+      73,
+      117,
+      94,
+      88,
+      151,
+      208,
+      62,
+      89,
+      177,
+      118,
+      198,
+      138,
+      112,
+      139,
+      177,
+      102,
+      174,
+      131,
+      192,
+      145,
+      81,
+      58,
+      51,
+      116,
+      193,
+      79,
+      126,
+      107,
+      165,
+      83,
+      230,
+      134,
+      137,
+      158,
+      156,
+      222,
+      165,
+      102,
+      89,
+      107,
+      147,
+      87,
+      117,
+      123,
+      137,
+      137,
+      167,
+      63,
+      118,
+      133,
+      127,
+      149,
+      119,
+      227,
+      197,
+      136,
+      124,
+      97,
+      133,
+      123,
+      140,
+      234,
+      124,
+      76,
+      114,
+      115,
+      119,
+      152,
+      141,
+      107,
+      184,
+      82,
+      140
+    ],
+    "latencies": [
+      10,
+      1,
+      64,
+      4,
+      14,
+      14,
+      13,
+      13,
+      21,
+      19,
+      3,
+      4,
+      15,
+      128,
+      147,
+      14,
+      13,
+      109,
+      16,
+      13,
+      16,
+      14,
+      23,
+      14,
+      15,
+      18
+    ],
+    "elapsedMs": 30132,
+    "trustedEvents": 26
+  },
+  "raf": {
+    "count": 228,
+    "median": 127,
+    "p95": 204
+  },
+  "inputLatency": {
+    "count": 26,
+    "median": 14,
+    "p95": 128
+  },
+  "rendererFrames": 264,
+  "before": {
+    "pitch": 60,
+    "bearing": 60.74200000000076,
+    "zoom": 25.5,
+    "inspection": {
+      "anchor": [
+        106.8232095,
+        -6.196562
+      ],
+      "widthM": 0.52,
+      "depthM": 0.075,
+      "geometry": {
+        "vertexCount": 1281,
+        "minZ": -0.07500000298023224,
+        "maxZ": 0,
+        "supportDiameterM": 0.5199999809265137
+      },
+      "renderCount": 52,
+      "resources": {
+        "geometries": 5,
+        "materials": 6,
+        "textures": 0,
+        "programs": 4
+      },
+      "depthRangeBefore": [
+        0,
+        0.98590087890625
+      ],
+      "depthRangeAfter": [
+        0,
+        0.98590087890625
+      ],
+      "projectedAnchorCss": [
+        520.0004574541751,
+        524.9997686089729
+      ],
+      "disposed": false,
+      "canvasShared": true,
+      "webgl2": true
+    },
+    "moving": false,
+    "styleReady": true,
+    "center": [
+      106.82321126883244,
+      -6.196561014864173
+    ],
+    "layers": [
+      {
+        "id": "background",
+        "type": "background"
+      },
+      {
+        "id": "park",
+        "type": "fill"
+      },
+      {
+        "id": "water",
+        "type": "fill"
+      },
+      {
+        "id": "landcover_ice_shelf",
+        "type": "fill"
+      },
+      {
+        "id": "landcover_glacier",
+        "type": "fill"
+      },
+      {
+        "id": "landuse_residential",
+        "type": "fill"
+      },
+      {
+        "id": "landcover_wood",
+        "type": "fill"
+      },
+      {
+        "id": "waterway",
+        "type": "line"
+      },
+      {
+        "id": "building",
+        "type": "fill"
+      },
+      {
+        "id": "tunnel_motorway_casing",
+        "type": "line"
+      },
+      {
+        "id": "tunnel_motorway_inner",
+        "type": "line"
+      },
+      {
+        "id": "aeroway-taxiway",
+        "type": "line"
+      },
+      {
+        "id": "aeroway-runway-casing",
+        "type": "line"
+      },
+      {
+        "id": "aeroway-area",
+        "type": "fill"
+      },
+      {
+        "id": "aeroway-runway",
+        "type": "line"
+      },
+      {
+        "id": "road_area_pier",
+        "type": "fill"
+      },
+      {
+        "id": "road_pier",
+        "type": "line"
+      },
+      {
+        "id": "highway_path",
+        "type": "line"
+      },
+      {
+        "id": "highway_minor",
+        "type": "line"
+      },
+      {
+        "id": "highway_major_casing",
+        "type": "line"
+      },
+      {
+        "id": "highway_major_inner",
+        "type": "line"
+      },
+      {
+        "id": "highway_major_subtle",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_casing",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_inner",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_subtle",
+        "type": "line"
+      },
+      {
+        "id": "railway_transit",
+        "type": "line"
+      },
+      {
+        "id": "railway_transit_dashline",
+        "type": "line"
+      },
+      {
+        "id": "railway_service",
+        "type": "line"
+      },
+      {
+        "id": "railway_service_dashline",
+        "type": "line"
+      },
+      {
+        "id": "railway",
+        "type": "line"
+      },
+      {
+        "id": "railway_dashline",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_bridge_casing",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_bridge_inner",
+        "type": "line"
+      },
+      {
+        "id": "boundary_3",
+        "type": "line"
+      },
+      {
+        "id": "boundary_2",
+        "type": "line"
+      },
+      {
+        "id": "boundary_disputed",
+        "type": "line"
+      },
+      {
+        "id": "waterway_line_label",
+        "type": "symbol"
+      },
+      {
+        "id": "water_name_point_label",
+        "type": "symbol"
+      },
+      {
+        "id": "water_name_line_label",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-name-path",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-name-minor",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-name-major",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-shield-non-us",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-shield-us-interstate",
+        "type": "symbol"
+      },
+      {
+        "id": "road_shield_us",
+        "type": "symbol"
+      },
+      {
+        "id": "airport",
+        "type": "symbol"
+      },
+      {
+        "id": "label_other",
+        "type": "symbol"
+      },
+      {
+        "id": "label_village",
+        "type": "symbol"
+      },
+      {
+        "id": "label_town",
+        "type": "symbol"
+      },
+      {
+        "id": "label_state",
+        "type": "symbol"
+      },
+      {
+        "id": "label_city",
+        "type": "symbol"
+      },
+      {
+        "id": "label_city_capital",
+        "type": "symbol"
+      },
+      {
+        "id": "label_country_3",
+        "type": "symbol"
+      },
+      {
+        "id": "label_country_2",
+        "type": "symbol"
+      },
+      {
+        "id": "label_country_1",
+        "type": "symbol"
+      },
+      {
+        "id": "cctv-cones-fill",
+        "type": "fill"
+      },
+      {
+        "id": "cctv-cones-line",
+        "type": "line"
+      },
+      {
+        "id": "traffic-lines",
+        "type": "line"
+      },
+      {
+        "id": "cctv-sightline-glow",
+        "type": "line"
+      },
+      {
+        "id": "cctv-sightline-line",
+        "type": "line"
+      },
+      {
+        "id": "3d-buildings-extrusion",
+        "type": "fill-extrusion"
+      },
+      {
+        "id": "road-damage-decals-fill",
+        "type": "fill"
+      },
+      {
+        "id": "road-damage-decals-line",
+        "type": "line"
+      }
+    ]
+  },
+  "after": {
+    "pitch": 60,
+    "bearing": -125.33299999999706,
+    "zoom": 25.5,
+    "inspection": {
+      "anchor": [
+        106.8232095,
+        -6.196562
+      ],
+      "widthM": 0.52,
+      "depthM": 0.075,
+      "geometry": {
+        "vertexCount": 1281,
+        "minZ": -0.07500000298023224,
+        "maxZ": 0,
+        "supportDiameterM": 0.5199999809265137
+      },
+      "renderCount": 316,
+      "resources": {
+        "geometries": 5,
+        "materials": 6,
+        "textures": 0,
+        "programs": 4
+      },
+      "depthRangeBefore": [
+        0,
+        0.98590087890625
+      ],
+      "depthRangeAfter": [
+        0,
+        0.98590087890625
+      ],
+      "projectedAnchorCss": [
+        519.9999935569828,
+        524.9998601431596
+      ],
+      "disposed": false,
+      "canvasShared": true,
+      "webgl2": true
+    },
+    "moving": false,
+    "styleReady": true,
+    "center": [
+      106.82320784596527,
+      -6.196563165701917
+    ],
+    "layers": [
+      {
+        "id": "background",
+        "type": "background"
+      },
+      {
+        "id": "park",
+        "type": "fill"
+      },
+      {
+        "id": "water",
+        "type": "fill"
+      },
+      {
+        "id": "landcover_ice_shelf",
+        "type": "fill"
+      },
+      {
+        "id": "landcover_glacier",
+        "type": "fill"
+      },
+      {
+        "id": "landuse_residential",
+        "type": "fill"
+      },
+      {
+        "id": "landcover_wood",
+        "type": "fill"
+      },
+      {
+        "id": "waterway",
+        "type": "line"
+      },
+      {
+        "id": "building",
+        "type": "fill"
+      },
+      {
+        "id": "tunnel_motorway_casing",
+        "type": "line"
+      },
+      {
+        "id": "tunnel_motorway_inner",
+        "type": "line"
+      },
+      {
+        "id": "aeroway-taxiway",
+        "type": "line"
+      },
+      {
+        "id": "aeroway-runway-casing",
+        "type": "line"
+      },
+      {
+        "id": "aeroway-area",
+        "type": "fill"
+      },
+      {
+        "id": "aeroway-runway",
+        "type": "line"
+      },
+      {
+        "id": "road_area_pier",
+        "type": "fill"
+      },
+      {
+        "id": "road_pier",
+        "type": "line"
+      },
+      {
+        "id": "highway_path",
+        "type": "line"
+      },
+      {
+        "id": "highway_minor",
+        "type": "line"
+      },
+      {
+        "id": "highway_major_casing",
+        "type": "line"
+      },
+      {
+        "id": "highway_major_inner",
+        "type": "line"
+      },
+      {
+        "id": "highway_major_subtle",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_casing",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_inner",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_subtle",
+        "type": "line"
+      },
+      {
+        "id": "railway_transit",
+        "type": "line"
+      },
+      {
+        "id": "railway_transit_dashline",
+        "type": "line"
+      },
+      {
+        "id": "railway_service",
+        "type": "line"
+      },
+      {
+        "id": "railway_service_dashline",
+        "type": "line"
+      },
+      {
+        "id": "railway",
+        "type": "line"
+      },
+      {
+        "id": "railway_dashline",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_bridge_casing",
+        "type": "line"
+      },
+      {
+        "id": "highway_motorway_bridge_inner",
+        "type": "line"
+      },
+      {
+        "id": "boundary_3",
+        "type": "line"
+      },
+      {
+        "id": "boundary_2",
+        "type": "line"
+      },
+      {
+        "id": "boundary_disputed",
+        "type": "line"
+      },
+      {
+        "id": "waterway_line_label",
+        "type": "symbol"
+      },
+      {
+        "id": "water_name_point_label",
+        "type": "symbol"
+      },
+      {
+        "id": "water_name_line_label",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-name-path",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-name-minor",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-name-major",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-shield-non-us",
+        "type": "symbol"
+      },
+      {
+        "id": "highway-shield-us-interstate",
+        "type": "symbol"
+      },
+      {
+        "id": "road_shield_us",
+        "type": "symbol"
+      },
+      {
+        "id": "airport",
+        "type": "symbol"
+      },
+      {
+        "id": "label_other",
+        "type": "symbol"
+      },
+      {
+        "id": "label_village",
+        "type": "symbol"
+      },
+      {
+        "id": "label_town",
+        "type": "symbol"
+      },
+      {
+        "id": "label_state",
+        "type": "symbol"
+      },
+      {
+        "id": "label_city",
+        "type": "symbol"
+      },
+      {
+        "id": "label_city_capital",
+        "type": "symbol"
+      },
+      {
+        "id": "label_country_3",
+        "type": "symbol"
+      },
+      {
+        "id": "label_country_2",
+        "type": "symbol"
+      },
+      {
+        "id": "label_country_1",
+        "type": "symbol"
+      },
+      {
+        "id": "cctv-cones-fill",
+        "type": "fill"
+      },
+      {
+        "id": "cctv-cones-line",
+        "type": "line"
+      },
+      {
+        "id": "traffic-lines",
+        "type": "line"
+      },
+      {
+        "id": "cctv-sightline-glow",
+        "type": "line"
+      },
+      {
+        "id": "cctv-sightline-line",
+        "type": "line"
+      },
+      {
+        "id": "3d-buildings-extrusion",
+        "type": "fill-extrusion"
+      },
+      {
+        "id": "road-damage-decals-fill",
+        "type": "fill"
+      },
+      {
+        "id": "road-damage-decals-line",
+        "type": "line"
+      }
+    ]
+  },
+  "errors": [],
+  "networkFailures": [
+    {
+      "url": "https://tiles.openfreemap.org/styles/positron",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/styles/positron",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8475.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8473.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13052/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13052/8473.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8475.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13052/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/13053/8474.pbf",
+      "error": "net::ERR_ABORTED"
+    }
+  ]
+}

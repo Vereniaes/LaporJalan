@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-16T13:58:03.412Z",
+  "error": "Error: Insufficient frame/input samples",
+  "stack": "Error: Insufficient frame/input samples\n    at run (file:///home/vereniaes/project/hackathon/LaporJalan/tests/performance.mjs:137:68)\n    at async file:///home/vereniaes/project/hackathon/LaporJalan/tests/performance.mjs:157:41",
+  "completedSamples": 0
+}

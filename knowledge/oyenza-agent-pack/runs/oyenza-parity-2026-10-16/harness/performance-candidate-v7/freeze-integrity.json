@@ -1,0 +1,11 @@
+{
+  "settings_equal": true,
+  "runner_equal": true,
+  "fixture_equal": true,
+  "baseline_equal": true,
+  "changed_candidate_files": [
+    "src/components/Map3D.tsx"
+  ],
+  "baseline_frozen_hashes_valid": true,
+  "candidate_frozen_hashes_valid": true
+}

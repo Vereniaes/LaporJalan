@@ -1,0 +1,54 @@
+[
+  {
+    "url": "https://crm.jakarta.go.id/peta/_next/static/chunks/pages/index-f75dfda2ac445b48.js",
+    "status": 200,
+    "bytes": 248,
+    "sha256": "72fc26d6deba26f2c437ef2e31dca33fa5b0716421d7c810464ecea97a205fd5",
+    "temp_id": "87c2e29c00",
+    "content_type": "application/javascript",
+    "frame_options": null,
+    "urls": [],
+    "quoted_api_paths": []
+  },
+  {
+    "url": "https://crm.jakarta.go.id/peta/_next/static/chunks/pages/_app-df511a3677d160f6.js",
+    "status": 200,
+    "bytes": 279,
+    "sha256": "aa8506ce531080230c3e627d89c8cb04d7762206b6f5cec598df20d66d489952",
+    "temp_id": "c5a921dd31",
+    "content_type": "application/javascript",
+    "frame_options": null,
+    "urls": [],
+    "quoted_api_paths": []
+  },
+  {
+    "url": "https://api-jalankita.binamarga.pu.go.id/common/dashboard",
+    "status": 200,
+    "bytes": 9675,
+    "sha256": "8dbb231c8a50d03fedeb5d7de57549b855834ac91c07d715202475ff8a2afb2f",
+    "temp_id": "402f773954",
+    "content_type": "application/json",
+    "frame_options": null,
+    "top_keys": [
+      "message",
+      "data"
+    ],
+    "data_kind": "dict"
+  },
+  {
+    "url": "https://api-jalankita.binamarga.pu.go.id/data-map",
+    "status": 401,
+    "not_retried": true
+  },
+  {
+    "url": "https://dki-jkt.balitower.co.id:7028/502045_JKP_POLDA_JPO-JL.-GATOT-SUBROTO-7_CCTV-01/embed.html",
+    "status": 200,
+    "bytes": 2361,
+    "sha256": "9e89aa912bc6cd2234146a6a6ebd1c14977b32c8acad239fa8413a5cc3305933",
+    "temp_id": "36fe66e572",
+    "content_type": "text/html",
+    "frame_options": null,
+    "urls": [],
+    "quoted_api_paths": []
+  }
+]

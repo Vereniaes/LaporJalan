@@ -47,7 +47,7 @@ function analyzePixelMatrix(img: HTMLImageElement): {
   canvas.height = h;
 
   if (!ctx) {
-    return { darkRatio: 0.2, edgeDensity: 0.3, roughness: 0.4, centerMass: { x: 50, y: 50 } };
+    throw new Error('Image analysis unavailable');
   }
 
   ctx.drawImage(img, 0, 0, w, h);
@@ -116,12 +116,14 @@ function analyzePixelMatrix(img: HTMLImageElement): {
 // input param : image source url atau base64
 // output : payload promise hasil deteksi AI
 export async function detectRoadDamage(imageSrc: string): Promise<DetectionResult> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = 'anonymous';
 
     img.onload = () => {
-      const metrics = analyzePixelMatrix(img);
+      let metrics: ReturnType<typeof analyzePixelMatrix>;
+      try { metrics = analyzePixelMatrix(img); }
+      catch (error) { reject(error); return; }
 
       // aturan heuristik klasifikasi standar bina marga
       let type: 'pothole' | 'crack' | 'trench' | 'subsidence' = 'pothole';
@@ -192,19 +194,7 @@ export async function detectRoadDamage(imageSrc: string): Promise<DetectionResul
       });
     };
 
-    img.onerror = () => {
-      // fallback jika gambar tidak bisa diakses
-      resolve({
-        type: 'pothole',
-        typeName: 'Lubang Jalan (Pothole)',
-        severity: 'sedang',
-        confidence: 80,
-        depthCm: 4.0,
-        widthCm: 30.0,
-        boundingBox: { x: 25, y: 30, w: 50, h: 40 },
-        metrics: { darkRatio: 0.15, edgeDensity: 0.2, roughness: 0.3 }
-      });
-    };
+    img.onerror = () => reject(new Error('Image unavailable'));
 
     img.src = imageSrc;
   });

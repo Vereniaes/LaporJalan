@@ -1,0 +1,9 @@
+{
+  "captured_at": "2026-10-16T16:44:57.029735+00:00",
+  "application_manifest": "candidate-cycle20.json",
+  "application_unchanged": true,
+  "functional_test_manifest": "harness/cycle20-test-manifest.json",
+  "performance_runner_sha256": "0bf428813147c22cdabc4e6ca81a15bc371711848ff1ee9e7463fabb633b34e6",
+  "performance_manifest": "harness/performance-candidate-v5/manifest.json",
+  "note": "Only runner correction after the82case candidate; historical cycle20 test manifest intentionally retains its older runner hash."
+}

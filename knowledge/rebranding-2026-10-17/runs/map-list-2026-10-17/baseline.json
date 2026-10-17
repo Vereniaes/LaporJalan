@@ -1,0 +1,62 @@
+{
+  "capturedAt": "2026-10-17T09:57:37.190340+00:00",
+  "scope": "Approved map/list implementation; no commits or push",
+  "repos": {
+    "LaporJalan": {
+      "status": " M knowledge/video-ui-comparison-2026-10-16.md\n M package-lock.json\n M package.json\n M src/App.tsx\n M src/components/CameraReportModal.tsx\n M src/components/CctvModal.tsx\n M src/components/CompareModal.tsx\n M src/components/DamageReportCard.tsx\n M src/components/DepthInspector3D.tsx\n M src/components/FloodMonitorCard.tsx\n M src/components/Map3D.tsx\n M src/components/MascotBanner.tsx\n M src/components/StreetSimulation3D.tsx\n M src/index.css\n M src/services/api.ts\n M src/services/imageDetection.ts\n M src/services/mockData.ts\n M tailwind.config.js\n?? knowledge/oyenza-agent-pack/\n?? knowledge/rebranding-2026-10-17/\n?? playwright.config.ts\n?? src/components/CctvPopover.tsx\n?? src/components/useModalDialog.ts\n?? src/map/\n?? tests/\n",
+      "sha256": {
+        "src/main.tsx": "9addf1ccee5145a7d41d8989594a783f1cc7344abfce17fbf082946dc90d6c88",
+        "src/App.tsx": "8f1dfaa973be4db7d933c9a652abcd748f67d372a7be45c37625ff2d5d752f6c",
+        "src/types.ts": "8b2ee8d9cb3618067bb9c511c846876a62d8ee8e9170cda699d724479302ef0e",
+        "src/index.css": "e59de44bfe5ac427a5369fd7382bd5e576ae19709fc9e40b2af38cf7f9c1753a",
+        "src/services/api.ts": "a92ae9820ed8cc20cebc669e5d24403c82a9a84d70f698db6daa942d3f449e79",
+        "src/services/imageDetection.ts": "93a4a1abbbbb43eb31cb163fc478923115808a79ef9c61793ba94f1089effaf5",
+        "src/services/mockData.ts": "e7c605f1a445dfaf0b31b477aa53b68864980e7d3d688e8c17d6ee8b23530e7f",
+        "src/components/DamageReportCard.tsx": "49e7b67072ac09d1b03bc88d6ac729503fa843de5b0209957abdcaa85fe162c7",
+        "src/components/Map3D.tsx": "6e7a46bac01b9471053da69680a402ebd112f7ec66ca7d589e9b39b79754182a",
+        "src/components/CctvModal.tsx": "444270e5aad57fcb28841c605630e8a4f62a8a4189570b99bf3f177dc5c262e6",
+        "src/components/FloodMonitorCard.tsx": "76a73de0a9613427d251fbbae07128c97db3ff679a211ffa06862c895c5f4ab8",
+        "src/components/StreetSimulation3D.tsx": "73e742b369dbe8486ead12ee566bcd32db317bdf98e37333e5b229d4a2a677bd",
+        "src/components/DepthInspector3D.tsx": "3b7ce5d3637f9cf21c22db117bd29a010111919e972961568437567411714d3d",
+        "src/components/useModalDialog.ts": "1455cde303b2e53237be9674f4887ddc8089ac8ab74d651eda2de2bee178c596",
+        "src/components/MascotBanner.tsx": "28f94c19aa10081d1fea5fbe10e17a1f135b5e39925fac58d0794b30358ecc01",
+        "src/components/CameraReportModal.tsx": "6e4cb1e8643d5b735d4dcba33d7cfc99c0b3d01ddbb6c754071f20400378aa0b",
+        "src/components/CctvPopover.tsx": "3763ad8780ccf757f46c0ebfa21974ce1b1f3c070fb1164dc0c1a46331d5a6e9",
+        "src/components/CompareModal.tsx": "fa2e7eac969026cb43f61228cec936348e8e11cf660ca0028c5e9609b2c75d79",
+        "src/map/damageMaterial.ts": "31c01a729cab566508883550f7df1ecd2bc3c89230fbef4730b1d7bd5a699fbb",
+        "src/map/closeZoomLabels.ts": "67e035aa5be6e68cdcdf2fdb5b4789456280b5c19d6782d6d2aa947bb7e5955a",
+        "src/map/DamageLayer.ts": "4d6819b78a8c6d4de55400965025ae089c9d57f5abae170292f64e8f0c6c4bde",
+        "src/map/dimensions.ts": "42118f40644b4a12bfbabeb22fc1dedc542d5d4accdb260c333f0f7111f6f225",
+        "src/map/coordinates.ts": "0428420ec2098a881c2c6aaf709aa153794f728099f83baacb9bfc0da02d41aa",
+        "src/map/damageGeometry.ts": "eaf07f8df2b9412dab0d24dab511319222a423ef9dec7a58211f3b1b2a0dff02",
+        "src/map/camera.ts": "ce3abc659e563bf6b8347de7f865a72290eb18ef42a208b7b5a29e72fae9550b",
+        "package.json": "5989870c150fc4fabdc562f610a3e9d857b36ad3d64bcc191f28148b98fe3331",
+        "package-lock.json": "fa7797c617552120f59033bb266d4fa0df831fd99058a6493bc2092d26935079"
+      }
+    },
+    "laporjalan-be": {
+      "status": "",
+      "sha256": {
+        "src/app.ts": "f214d67d46b3fd4ddba2c894493d7cafa1d02855eba89684720b6d00a38527c8",
+        "src/index.ts": "e916be01397f44d919f4e23daef042108558f36a6545bff56484742e60e861c9",
+        "src/routes/reportRoutes.ts": "e5dc32dc3acc85a3b414e154b25bcaa004a71a9e7470e37bf553c5936e06de66",
+        "src/routes/trafficRoutes.ts": "7119b9199f2ac03a24f6187e022d7a2188a25ee2f40d9b068080874a422a3f24",
+        "src/routes/cctvRoutes.ts": "bbc4aa29f8c1992b68bc4603f626deaba2e8412e19be14b873e1db7240fc1775",
+        "src/routes/healthRoutes.ts": "a30151bf1af5a756103c6d32c31cff05b7d01e0947b660cf0c9ff3f4e701357e",
+        "src/routes/placesRoutes.ts": "9d317892ace5fe9b4594fb54e29b5347c594af1c01bbe082bc764b265429546c",
+        "src/config/env.ts": "ab997bce2f32c33b99a4a023a57abd76110d066b11a07194ee610a76efb387ad",
+        "src/models/types.ts": "a92d995eee2287ac1f8ea9565d99fdffc348338e8ebc3d05f3c1cab0e330c0a8",
+        "src/models/Report.ts": "9582c925826fdfa2412d1600cd84d1f691de68362ed27240df32adf13cc4c900",
+        "src/models/Cctv.ts": "f84249774c61195c5740ec5282000c0965ffa888686423bb1d20a14f3a88d5d1",
+        "src/services/storage.ts": "a39a1ad9f7f03a73d2a1f2b619d061898f0d9d1011ae5665bc4ffc4b559df32b",
+        "src/services/seedData.ts": "f096701d939364ec20c4667fb3848418780bfb1976374e5db04f35489d800bd1",
+        "src/controllers/trafficController.ts": "76ceadb34fb674f8d069e7457658f334c91e5f0f0148a88649815222c902220e",
+        "src/controllers/reportController.ts": "b3fb9d58bd52390806bad02cb449bc53df5b237060f01372df66ca76c9b94f7f",
+        "src/controllers/cctvController.ts": "6f6340d794815ba06422e1505e72188d52e298850fb63fde5d6df0d555425111",
+        "src/controllers/placesController.ts": "ef0cca13f97f43ec05af19538153d1a9bac1366f8a06255d7a0c6c61612ddbd7",
+        "package.json": "8150916a3b5acf95e7c9717821a67e3a44ec98efa909448c1e0725629a24e792",
+        "package-lock.json": "b46346e7fb163f2413b60a4aa69cfd49820ed0ae754055e5089c092611da653a"
+      }
+    }
+  }
+}

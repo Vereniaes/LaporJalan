@@ -1,0 +1,1346 @@
+{
+  "schema_version": 1,
+  "run_id": "oyenza-parity-2026-10-16",
+  "session_id": "oyenza-parity-2026-10-16",
+  "orchestrator": "root",
+  "status": "stopped",
+  "runtime": {
+    "model_requested": null,
+    "model_actual": null,
+    "reasoning_requested": null,
+    "reasoning_actual": null,
+    "verification_note": "Root follows current desktop model; child settings explicitly requested. Actual-model telemetry not exposed.",
+    "authorization_ref": "User goal: lanjut sampe mirip bngt dengan oyenza"
+  },
+  "timing": {
+    "started_at": "2026-10-15T21:33:34.369652+00:00",
+    "finished_at": null,
+    "elapsed_seconds": null
+  },
+  "usage": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "cached_input_tokens": null,
+    "unavailable_reason": "Runtime token telemetry not exposed"
+  },
+  "budget": {
+    "max_session_repair_cycles": 23,
+    "max_defect_repair_cycles": 2,
+    "max_active_workers": 2,
+    "max_writers_per_file": 1,
+    "extension": {
+      "additional_cycles": 4,
+      "authorization": "User selected Tambahkan maksimal 4 siklus through /grillme on 2026-10-16. Prior counters preserved."
+    },
+    "extensions": [
+      {
+        "additional_cycles": 2,
+        "authorization": "User selected Tambahkan 2 siklus untuk perbaikan label dan verifikasi akhir through /grillme on 2026-10-16. Prior 16 cycles preserved."
+      },
+      {
+        "additional_cycles": 2,
+        "authorization": "User selected orbit centering, overlay/attribution separation and verification through /grillme on 2026-10-16. Prior18 preserved."
+      },
+      {
+        "additional_cycles": 1,
+        "authorization": "User selected one cycle exclusively for performance runner correction and a new benchmark with unchanged threshold on2026-10-16."
+      },
+      {
+        "additional_cycles": 2,
+        "authorization": "User explicitly selected at most2cycles for profiling, minimal performance repair and unchanged-threshold verification through /grillme on2026-10-17 Asia/Jakarta."
+      }
+    ]
+  },
+  "repair_cycles_used": 23,
+  "delegation_count": 26,
+  "delegations": [
+    {
+      "task_id": "P0-harness",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "stopped",
+      "stop_reason": "Worker usage limit; authoritative collaboration notification"
+    },
+    {
+      "task_id": "P0-plan",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "stopped",
+      "stop_reason": "Worker usage limit; authoritative collaboration notification"
+    },
+    {
+      "task_id": "P1-camera-dimensions",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "stopped",
+      "stop_reason": "Worker usage limit; authoritative collaboration notification"
+    },
+    {
+      "task_id": "P4-P5-independent-review",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "status": "failed",
+      "verdict": "request_changes",
+      "note": "Bounded retry after local reset time succeeded.",
+      "historical_status": "completed"
+    },
+    {
+      "task_id": "P1-independent-review",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "status": "failed",
+      "verdict": "request_changes",
+      "historical_status": "completed"
+    },
+    {
+      "task_id": "camera-framing-road-evidence",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "status": "failed",
+      "verdict": "request_changes",
+      "historical_status": "completed"
+    },
+    {
+      "task_id": "file-race-test-selector",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "status": "stopped",
+      "historical_status": "completed",
+      "stop_reason": "Historical worker turn finished; exact acceptance scope was not recorded. No passed verdict inferred."
+    },
+    {
+      "task_id": "cycle16-readonly-interaction-audit",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "failed",
+      "verdict": "request_changes",
+      "note": "No edits or benchmark execution. Confirmed C02 app defect, M03 probe defect and deferred performance recommendation.",
+      "historical_status": "completed"
+    },
+    {
+      "task_id": "cycle16-visual-audit",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "stopped",
+      "stop_reason": "Authoritative worker usage-limit notification; no visual verdict received."
+    },
+    {
+      "task_id": "cycle20-final-app-visual-review",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "scope": "Application and image review only; test author does not self-approve test oracle.",
+      "verdict": "scoped_approval",
+      "evidence": "FINAL-INDEPENDENT-REVIEW.md",
+      "note": "App/source and captured visuals only; no self-approval of reviewer-authored tests or performance verdict."
+    },
+    {
+      "task_id": "performance-v4-diagnosis",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "scope": "Diagnosis only, no performance pass",
+      "evidence": "harness/performance-candidate-v4/DIAGNOSIS.md"
+    },
+    {
+      "task_id": "performance-v5-runner-review",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "scope": "Runner change only; no benchmark pass",
+      "evidence": "harness/performance-candidate-v5/REVIEW.md"
+    },
+    {
+      "task_id": "real-map-timing-preparation",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "scope": "Prepared observational test only; no browser run or timing verdict",
+      "evidence": "harness/REAL-MAP-PERFORMANCE.md",
+      "recorded_retrospectively": true,
+      "timing_note": "Exact dispatch timestamp unavailable; task result received in current continuation."
+    },
+    {
+      "task_id": "performance-source-triage",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "scope": "Read-only hypotheses; no causal diagnosis or code change",
+      "evidence": "harness/PERFORMANCE-TRIAGE.md",
+      "recorded_retrospectively": true,
+      "timing_note": "Exact dispatch timestamp unavailable; task result received in current continuation."
+    },
+    {
+      "task_id": "performance-cycle22-profile",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "started_at": "2026-10-16T18:45:14.355602+00:00",
+      "time_budget_seconds": 600,
+      "scope": "Diagnostic collection and qualified hypotheses only, no performance acceptance",
+      "evidence": "harness/performance-diagnosis-cycle22/RESULTS.md",
+      "finished_at": "2026-10-16T18:56:33.097158+00:00"
+    },
+    {
+      "task_id": "remaining-acceptance-audit",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "passed",
+      "started_at": "2026-10-16T18:50:07.043661+00:00",
+      "time_budget_seconds": 600,
+      "scope": "Gap audit only, not full acceptance",
+      "evidence": "REMAINING-ACCEPTANCE.md",
+      "finished_at": "2026-10-16T18:53:54.139132+00:00"
+    },
+    {
+      "task_id": "cycle22-app-visual-review",
+      "agent": "/root/parity_harness",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "stopped",
+      "started_at": "2026-10-16T18:56:33.097176+00:00",
+      "time_budget_seconds": 480,
+      "scope": "Independent application/material review and opened savedpixels; no selfapprovaloforacletests",
+      "stop_reason": "Authoritative worker usage-limit notification; no review artifact exists. No verdict inferred."
+    },
+    {
+      "task_id": "cycle22-app-visual-review-reassignment",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "passed",
+      "started_at": "2026-10-16T21:48:35.712807+00:00",
+      "time_budget_seconds": 480,
+      "scope": "Independent application/material and saved image review only; no tests or oracle edits.",
+      "finished_at": "2026-10-16T21:52:32.541396+00:00",
+      "verdict": "scoped_approval",
+      "evidence": "harness/CYCLE22-REVIEW.md",
+      "note": "Cavity/source approved; supplemental city review identifies AA-related edge quality regression. Not full visual approval."
+    },
+    {
+      "task_id": "cycle22-city-image-review",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "passed",
+      "verdict": "finding_reported",
+      "evidence": "harness/CYCLE22-REVIEW.md",
+      "recorded_retrospectively": true,
+      "note": "Read-only comparison, exact dispatch timestamp unavailable; desktop edges more jagged. Mobile not yet available."
+    },
+    {
+      "task_id": "cycle23-aa-feasibility",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "passed",
+      "recorded_retrospectively": true,
+      "scope": "Read-only installed-renderer source investigation, no repair attempt allocated.",
+      "time_budget_seconds": 360,
+      "evidence": "harness/CYCLE23-FEASIBILITY.md",
+      "scope_note": "Authoring/investigation completed; application acceptance not inferred."
+    },
+    {
+      "task_id": "missing-acceptance-test-authoring",
+      "agent": "/root/acceptance_verifier",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "time_budget_seconds": 600,
+      "scope": "New missing-case tests only, browser execution awaitsrootreview; noappfix or repaircycle allocated.",
+      "recorded_retrospectively": true,
+      "scope_note": "Authoring/investigation completed; application acceptance not inferred."
+    },
+    {
+      "task_id": "keyboard-flow-authoring",
+      "agent": "/root/acceptance_verifier",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "evidence": "harness/keyboard-flow/PROPOSAL.md",
+      "recorded_retrospectively": true,
+      "exact_dispatch_time": null
+    },
+    {
+      "task_id": "city-resolution-timing",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "passed",
+      "evidence": "harness/city-resolution-diagnostic/timing/",
+      "recorded_retrospectively": true,
+      "exact_dispatch_time": null
+    },
+    {
+      "task_id": "acceptance-selector-diagnosis",
+      "agent": "/root/acceptance_verifier",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "passed",
+      "evidence": "harness/acceptance-gaps/",
+      "recorded_retrospectively": true,
+      "exact_dispatch_time": null
+    },
+    {
+      "task_id": "cycle23-source-review",
+      "agent": "/root/parity_planner",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "high",
+      "model_actual": null,
+      "status": "stopped",
+      "stop_reason": "Runtime usage limit; root continuing permitted work",
+      "recorded_retrospectively": true
+    },
+    {
+      "task_id": "resolution-test-authoring",
+      "agent": "/root/acceptance_verifier",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_requested": "medium",
+      "model_actual": null,
+      "status": "stopped",
+      "stop_reason": "Runtime usage limit; root continuing permitted work",
+      "recorded_retrospectively": true
+    }
+  ],
+  "defect_counters": [
+    {
+      "defect_id": "late-initial-report-selection",
+      "attempts": 1,
+      "evidence": "harness/race-before/results.json",
+      "status": "automated_passed"
+    },
+    {
+      "defect_id": "profile-negative-zero",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/prototype-verified/results.json"
+    },
+    {
+      "defect_id": "prototype-frame-wait",
+      "attempts": 1,
+      "status": "automated_passed",
+      "kind": "harness",
+      "evidence": "harness/prototype-verified/results.json"
+    },
+    {
+      "defect_id": "es2020-array-at",
+      "attempts": 1,
+      "status": "automated_passed",
+      "note": "Array.at replaced with supported indexing; typecheck exit 0 after P4 map styling."
+    },
+    {
+      "defect_id": "panel-responsive-width",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/layout-before/results.json",
+      "evidence_after": "harness/layout-after/results.json"
+    },
+    {
+      "defect_id": "cctv-mobile-popup-clipped",
+      "attempts": 2,
+      "status": "automated_passed",
+      "evidence": "harness/layout-before/results.json",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "defect_id": "dialog-focus-return",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/layout-before/results.json",
+      "evidence_after": "harness/layout-after/results.json"
+    },
+    {
+      "defect_id": "empty-reports",
+      "attempts": 2,
+      "status": "automated_passed",
+      "repair_task": "P1-data-camera-review",
+      "evidence_after": "harness/empty-mode-after/results.json"
+    },
+    {
+      "defect_id": "invalid-coordinates",
+      "attempts": 1,
+      "status": "automated_passed",
+      "repair_task": "P1-data-camera-review",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "defect_id": "same-id-coordinate-refresh",
+      "attempts": 1,
+      "status": "automated_passed",
+      "repair_task": "P1-data-camera-review",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "defect_id": "file-reader-race",
+      "attempts": 1,
+      "status": "automated_passed",
+      "repair_task": "image-input-validation",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "defect_id": "image-load-fabrication",
+      "attempts": 2,
+      "status": "automated_passed",
+      "repair_task": "image-input-validation",
+      "evidence_after": "harness/integrated-candidate/results.json"
+    },
+    {
+      "defect_id": "inspection-width-clipping",
+      "attempts": 1,
+      "status": "automated_passed",
+      "repair_task": "inspection-camera-framing",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "defect_id": "ambiguous-modal-sample-selector",
+      "attempts": 1,
+      "status": "reproduced_application_defect"
+    },
+    {
+      "defect_id": "node-json-import-attribute",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence_after": "harness/integrated-candidate/results.json"
+    },
+    {
+      "defect_id": "mapped-road-render-wait",
+      "attempts": 1,
+      "status": "diagnosed_application_defect",
+      "evidence_after": "harness/mapped-road-diagnostic/DIAGNOSIS.md"
+    },
+    {
+      "defect_id": "extreme-zoom-line-label-placement",
+      "kind": "application",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/mapped-road-diagnostic/direct-probe/results.json",
+      "evidence_after": "harness/cycle17-camera/results.json"
+    },
+    {
+      "defect_id": "zoom-interrupts-2d-transition",
+      "kind": "application",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/interaction-first/results.json",
+      "evidence_after": "harness/cycle17-camera/results.json"
+    },
+    {
+      "defect_id": "popup-anchor-probe",
+      "kind": "harness",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/interaction-first/results.json",
+      "evidence_after": "harness/cycle18-interactions/results.json"
+    },
+    {
+      "defect_id": "orbit-mobile-framing",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/cycle18-visual-probes/results.json",
+      "evidence_after": "harness/cycle20-orbit-complete/results.json"
+    },
+    {
+      "defect_id": "attribution-overlay",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/cycle18-visual-probes/results.json",
+      "evidence_after": "harness/cycle20-orbit-complete/results.json"
+    },
+    {
+      "defect_id": "performance-baseline-css-isolation",
+      "attempts": 1,
+      "status": "passed",
+      "kind": "harness",
+      "evidence": "harness/performance-candidate-v4/DIAGNOSIS.md",
+      "evidence_after": "harness/performance-candidate-v5/result.json"
+    },
+    {
+      "defect_id": "inspection-performance-regression",
+      "kind": "application-performance",
+      "attempts": 1,
+      "status": "automated_passed",
+      "evidence": "harness/performance-candidate-v5/result.json",
+      "diagnosis": "Three failed groups measured; source hypotheses only, no cause established or repair authorized.",
+      "evidence_after": "harness/performance-candidate-v6/result.json",
+      "limitations": "AA-disabled candidate has visible city-edge regression; not full visual acceptance."
+    },
+    {
+      "defect_id": "aa-disabled-city-edges",
+      "attempts": 1,
+      "status": "repairing",
+      "evidence": "harness/city-resolution-diagnostic/REPORT.md"
+    }
+  ],
+  "documentation_baseline": {
+    "path": "knowledge/oyenza-agent-pack/baseline.json",
+    "manifest_sha256": "d6234ba79074bf1ecccd1b75e208563fc1b34378b5f318aab2246f39aa3886a7"
+  },
+  "baseline": {
+    "id": "oyenza-parity-2026-10-16",
+    "path": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/baseline.json",
+    "manifest_sha256": "71f16beecf5f8f374d0e9ed3be19f74fd27046c24e8372c843a7ba6c2dc1c7ef",
+    "fixture_sha256": "de2b92da244274ce2c8522c1d8f77b8b4241c2badae9f4b6a57149b714d912b7",
+    "test_contract_sha256": "aebb58ec37dbb89e149c6b7e9efc2e4403545e513b1cf87b79b0cf2092c808b4"
+  },
+  "locks": [
+    {
+      "owner": "root",
+      "paths": [
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/run.json",
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/TODO.md",
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/PROGRESS.md",
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/REVIEWS.md",
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/HANDOFF.md"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "src/components/Map3D.tsx",
+        "src/map/closeZoomLabels.ts",
+        "tests/close-labels.browser.spec.ts"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "tests/interaction.browser.spec.ts"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "tests/orbit-framing.browser.spec.ts",
+        "tests/mapped-road.browser.spec.ts",
+        "src/index.css"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "src/App.tsx"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "tests/performance.mjs"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "src/map/DamageLayer.ts"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "src/map/damageMaterial.ts"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "tests/acceptance-gaps.browser.spec.ts",
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/"
+      ]
+    },
+    {
+      "owner": "root",
+      "paths": [
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/city-resolution-diagnostic/"
+      ]
+    }
+  ],
+  "active_workers": [],
+  "tasks": [
+    "P0-harness",
+    "P0-plan",
+    "P1-camera-dimensions"
+  ],
+  "phase_results": [
+    {
+      "phase": "P0",
+      "status": "passed",
+      "acceptance_scope": "P0:baseline",
+      "evidence": [
+        "baseline.json",
+        "harness/checkpoint-integrity-cycle20.json"
+      ],
+      "limitations": [
+        "Historical baseline defects remain recorded; no current-feature pass inferred."
+      ]
+    },
+    {
+      "phase": "P1",
+      "status": "failed",
+      "acceptance_scope": "P1:camera-dimensions",
+      "evidence": [
+        "harness/cycle20-full/results.json",
+        "FINAL-INDEPENDENT-REVIEW.md",
+        "harness/cycle22-full/results.json",
+        "harness/acceptance-gaps/execution/results.json"
+      ],
+      "remaining": [
+        "Manual2D during search flight loses selected destination; additional mixed race rerun pending."
+      ],
+      "status_note": "Full declared phase scope not yet verified; recorded subcase evidence remains valid."
+    },
+    {
+      "phase": "P2/P3",
+      "status": "not_run",
+      "acceptance_scope": "P2/P3:shared-map-inspection",
+      "evidence": [
+        "harness/cycle20-full/results.json",
+        "harness/cycle20-orbit-complete/results.json",
+        "FINAL-INDEPENDENT-REVIEW.md",
+        "harness/cycle22-full/results.json"
+      ],
+      "limitations": [
+        "Delayed-style/report ordering passed on both viewports. Geometry/projection/owned-resource lifecycle passed in recorded cycle22 cases. V6 synthetic timing passed; total GPU memory unavailable. Full visual scope remains incomplete."
+      ],
+      "status_note": "Full declared phase scope not yet verified; recorded subcase evidence remains valid."
+    },
+    {
+      "phase": "P4/P5",
+      "status": "not_run",
+      "acceptance_scope": "P4/P5:city-ui-media",
+      "evidence": [
+        "harness/cycle20-full/results.json",
+        "FINAL-INDEPENDENT-REVIEW.md",
+        "harness/cycle22-full/results.json"
+      ],
+      "limitations": [
+        "City-edge regression open. Static unavailable media/traffic/network fallback passed. Rapid media test selector correction and keyboard execution pending. No real stream."
+      ],
+      "status_note": "Full declared phase scope not yet verified; recorded subcase evidence remains valid."
+    },
+    {
+      "phase": "P6",
+      "status": "failed",
+      "acceptance_scope": "P6:full-application",
+      "evidence": [
+        "harness/cycle20-full/results.json",
+        "harness/build-cycle20.log",
+        "harness/performance-candidate-v5/result.json",
+        "harness/REAL-MAP-RESULTS.md",
+        "harness/cycle22-full/results.json",
+        "harness/performance-candidate-v6/result.json",
+        "harness/acceptance-gaps/execution/results.json"
+      ],
+      "remaining": [
+        "City-edge visual regression",
+        "Camera interrupted destination failure",
+        "Keyboard/mixed-media verification and complete ledger validation"
+      ]
+    }
+  ],
+  "gates": {
+    "automated": "failed",
+    "visual": "not_run",
+    "review": "not_run"
+  },
+  "checkpoint": {
+    "id": "paused-for-rebranding",
+    "path": "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/HANDOFF.md",
+    "sha256": "b25aee38ff87ccf434598b2b84f373e2a4e6a0c1fb0a4a7e3c1b9016810708f6",
+    "updated_at": "2026-10-17T04:38:31.654101+00:00"
+  },
+  "limitations": [
+    "Cycle22 existing82 functional cases and build passed. Independent cavity/material review approved; city AA-edge tradeoff remains explicit.",
+    "V6 completed36valid samples, all6groups passed at fixed1.20. City-edge quality remains unresolved.",
+    "Actual-map observation collected6samples with trace overhead; no additional timing verdict.",
+    "No complete executable ledger validator is present; bounded consistency checks are recorded."
+  ],
+  "repair_tasks": [
+    {
+      "cycle": 1,
+      "id": "late-initial-report-selection",
+      "defects": [
+        "late-initial-report-selection"
+      ],
+      "status": "passed",
+      "evidence_after": "harness/race-verified/results.json",
+      "recorded_retrospectively": true,
+      "note": "Reconstructed from existing defect counters and progress log; exact original dispatch time unavailable. Scoped evidence only; later findings remain separate."
+    },
+    {
+      "cycle": 2,
+      "id": "profile-negative-zero",
+      "defects": [
+        "profile-negative-zero"
+      ],
+      "status": "passed",
+      "evidence_after": "harness/prototype-verified/results.json",
+      "recorded_retrospectively": true,
+      "note": "Reconstructed from existing defect counters and progress log; exact original dispatch time unavailable. Scoped evidence only; later findings remain separate."
+    },
+    {
+      "cycle": 3,
+      "id": "prototype-frame-wait",
+      "defects": [
+        "prototype-frame-wait"
+      ],
+      "status": "passed",
+      "evidence_after": "harness/prototype-verified/results.json",
+      "recorded_retrospectively": true,
+      "note": "Reconstructed from existing defect counters and progress log; exact original dispatch time unavailable. Scoped evidence only; later findings remain separate."
+    },
+    {
+      "cycle": 4,
+      "id": "es2020-array-at",
+      "defects": [
+        "es2020-array-at"
+      ],
+      "status": "passed",
+      "evidence_after": "harness/build-cycle20.log",
+      "recorded_retrospectively": true,
+      "note": "Reconstructed from existing defect counters and progress log; exact original dispatch time unavailable. Scoped evidence only; later findings remain separate."
+    },
+    {
+      "cycle": 5,
+      "id": "panel-responsive-width",
+      "defects": [
+        "panel-responsive-width"
+      ],
+      "status": "passed",
+      "evidence_after": "harness/layout-after/results.json",
+      "recorded_retrospectively": true,
+      "note": "Reconstructed from existing defect counters and progress log; exact original dispatch time unavailable. Scoped evidence only; later findings remain separate."
+    },
+    {
+      "cycle": 6,
+      "id": "cctv-mobile-popup-clipped",
+      "defects": [
+        "cctv-mobile-popup-clipped"
+      ],
+      "status": "passed",
+      "evidence_after": "harness/layout-after/results.json",
+      "recorded_retrospectively": true,
+      "note": "Reconstructed from existing defect counters and progress log; exact original dispatch time unavailable. Scoped evidence only; later findings remain separate."
+    },
+    {
+      "cycle": 7,
+      "id": "dialog-focus-return",
+      "defects": [
+        "dialog-focus-return"
+      ],
+      "status": "passed",
+      "evidence_after": "harness/layout-after/results.json",
+      "recorded_retrospectively": true,
+      "note": "Reconstructed from existing defect counters and progress log; exact original dispatch time unavailable. Scoped evidence only; later findings remain separate."
+    },
+    {
+      "cycle": 8,
+      "id": "P1-data-camera-review",
+      "defects": [
+        "empty-reports",
+        "invalid-coordinates",
+        "same-id-coordinate-refresh"
+      ],
+      "status": "automated_passed",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "cycle": 9,
+      "id": "reduced-motion-offset",
+      "defects": [
+        "cctv-mobile-popup-clipped"
+      ],
+      "status": "automated_passed",
+      "evidence": "harness/lifecycle-first/results.json",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "cycle": 10,
+      "id": "image-input-validation",
+      "defects": [
+        "file-reader-race",
+        "image-load-fabrication"
+      ],
+      "status": "automated_passed",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "cycle": 11,
+      "id": "inspection-camera-framing",
+      "defects": [
+        "inspection-width-clipping"
+      ],
+      "status": "automated_passed",
+      "evidence_after": "harness/review-after/results.json"
+    },
+    {
+      "cycle": 12,
+      "id": "file-race-test-selector",
+      "defects": [
+        "ambiguous-modal-sample-selector"
+      ],
+      "status": "completed",
+      "evidence": "harness/file-race-reproduced/results.json",
+      "note": "Verifier scoped the sample control to the dialog; assertions unchanged. This exposed the actual file-read race."
+    },
+    {
+      "cycle": 13,
+      "id": "mapped-json-import",
+      "defects": [
+        "node-json-import-attribute"
+      ],
+      "status": "automated_passed",
+      "evidence": "harness/final-candidate/results.json",
+      "evidence_after": "harness/integrated-candidate/results.json"
+    },
+    {
+      "cycle": 14,
+      "id": "canvas-unavailable-analysis",
+      "defects": [
+        "image-load-fabrication"
+      ],
+      "status": "automated_passed",
+      "evidence": "harness/canvas-before/results.json",
+      "evidence_after": "harness/integrated-candidate/results.json"
+    },
+    {
+      "cycle": 15,
+      "id": "empty-selection-mode-restore",
+      "defects": [
+        "empty-reports"
+      ],
+      "status": "automated_passed",
+      "evidence": "harness/empty-mode-before/results.json",
+      "evidence_after": "harness/empty-mode-after/results.json"
+    },
+    {
+      "cycle": 16,
+      "id": "mapped-road-render-wait",
+      "defects": [
+        "mapped-road-render-wait"
+      ],
+      "status": "failed",
+      "evidence": "harness/integrated-candidate/results.json",
+      "owner": "parity_planner",
+      "evidence_after": "harness/mapped-road-diagnostic/results.json",
+      "diagnosis": "Bounded waiter preserved failure; direct render probe identified MapLibre line-symbol placement exception before cavity rendering. Application fix not attempted."
+    },
+    {
+      "cycle": 17,
+      "id": "close-inspection-camera-policy",
+      "owner": "root",
+      "defects": [
+        "extreme-zoom-line-label-placement",
+        "zoom-interrupts-2d-transition"
+      ],
+      "status": "passed",
+      "evidence": "harness/mapped-road-diagnostic/DIAGNOSIS.md; harness/interaction-first/results.json",
+      "acceptance_scope": "Close zoom renderer and mode-aware zoom controls; final visual framing not approved",
+      "evidence_after": "harness/cycle17-camera/results.json"
+    },
+    {
+      "cycle": 18,
+      "id": "popup-dom-anchor-probe",
+      "owner": "root",
+      "defects": [
+        "popup-anchor-probe"
+      ],
+      "status": "passed",
+      "evidence": "harness/interaction-first/results.json",
+      "note": "Independent review already specified DOM bottom-midpoint oracle. Root executes correction because worker usage limit prevents further delegation; independent final gate remains not_run.",
+      "acceptance_scope": "Popup DOM projection after pan/zoom/resize",
+      "evidence_after": "harness/cycle18-interactions/results.json"
+    },
+    {
+      "cycle": 19,
+      "id": "inspection-orbit-anchor",
+      "owner": "root",
+      "defects": [
+        "orbit-mobile-framing"
+      ],
+      "status": "passed",
+      "evidence": "harness/cycle18-visual-probes/results.json",
+      "evidence_after": "harness/cycle20-orbit-complete/results.json",
+      "acceptance_scope": "Explicit full orbit: four quadrants, <=2px anchor drift and unobstructed rim on both viewports"
+    },
+    {
+      "cycle": 20,
+      "id": "attribution-overlay-spacing",
+      "owner": "root",
+      "defects": [
+        "attribution-overlay"
+      ],
+      "status": "passed",
+      "evidence": "harness/cycle18-visual-probes/results.json",
+      "evidence_after": "harness/cycle20-visual/results.json",
+      "acceptance_scope": "Attribution links and responsive layout/CCTV on both viewports"
+    },
+    {
+      "cycle": 21,
+      "id": "performance-css-isolation",
+      "owner": "root",
+      "defects": [
+        "performance-baseline-css-isolation"
+      ],
+      "status": "passed",
+      "evidence": "harness/performance-candidate-v4/DIAGNOSIS.md",
+      "acceptance_scope": "Frozen-source CSS isolation and valid benchmark execution, not application timing acceptance",
+      "evidence_after": "harness/performance-candidate-v5/result.json"
+    },
+    {
+      "cycle": 22,
+      "id": "inspection-performance-1",
+      "owner": "root",
+      "defects": [
+        "inspection-performance-regression"
+      ],
+      "status": "passed",
+      "evidence": "harness/performance-candidate-v5/result.json",
+      "acceptance_scope": "Synthetic performance and existing82functional cases passed. Close-grid review passed; whole-city AA quality tradeoff remains open.",
+      "evidence_after": "harness/performance-candidate-v6/result.json"
+    },
+    {
+      "task_id": "cycle23-city-resolution",
+      "cycle": 23,
+      "status": "stopped",
+      "owner": "root",
+      "scope": "Minimum public pixel-ratio policy to repair cycle22 city-edge tradeoff",
+      "evidence": "harness/CYCLE23-PLAN.md",
+      "note": "Patch retained, build passed, verification interrupted by explicit user rebranding request."
+    }
+  ],
+  "delegation_count_note": "Count of recorded delegation entries, not a complete runtime usage total. Earlier follow-up invocations were not individually recorded; actual total is unavailable.",
+  "pending_decision": {
+    "approved": true,
+    "status": "applied",
+    "requested_additional_cycles": 2,
+    "proposal": [
+      "Profile unchanged candidate to distinguish GL queries, render and camera cost.",
+      "Make at most two evidenced minimal optimization attempts with existing visual/geometry/camera criteria and unchanged1.20performance threshold."
+    ],
+    "constraints": [
+      "No engine/model escalation, baseline replacement, commit or push.",
+      "Stop if cause remains unproven or two attempts fail."
+    ],
+    "question": "Two additional optimization cycles, diagnosis only, or handoff with failed performance gate"
+  },
+  "gate_scopes": {
+    "visual": "Cycle22 cavity/source scoped approval; whole-city edge regression under assessment. Broader visual/keyboard scope not passed.",
+    "review": "Application source and captured visuals; not independent approval of reviewer-authored test oracles.",
+    "automated": "Cycle22 existing82 functional cases and build passed; full catalogue incomplete and paired performance not yet rerun."
+  },
+  "verification": {
+    "functional_suite": {
+      "status": "passed",
+      "cases": 82,
+      "exit_code": 0,
+      "evidence": "harness/cycle22-full/results.json",
+      "source_manifest": "candidate-cycle22.json",
+      "scope": "Existing82 functional cases; missing catalogue subcases remain not_run."
+    },
+    "build": {
+      "status": "passed",
+      "exit_code": 0,
+      "evidence": "harness/build-cycle22-verified.log",
+      "execution": "harness/build-cycle22-verified.status.json",
+      "source_manifest": "candidate-cycle22.json"
+    },
+    "performance": {
+      "status": "passed",
+      "run": "performance-candidate-v6",
+      "session_id": 87562,
+      "exit_code": 0,
+      "evidence": "harness/performance-candidate-v6/result.json",
+      "integrity": "harness/performance-candidate-v6/integrity.json",
+      "completed_samples": 36,
+      "passed_groups": 6,
+      "failed_groups": 0,
+      "threshold": 1.2,
+      "scope": "Synthetic paired RAF timing of candidate-cycle22; city-edge tradeoff unresolved, not overall application acceptance."
+    },
+    "performance_setup": {
+      "status": "passed",
+      "run": "performance-candidate-v5",
+      "session_id": 59211,
+      "review": "harness/performance-candidate-v5/REVIEW.md",
+      "exit_code": 0,
+      "evidence": "harness/performance-candidate-v5/check-result.json",
+      "cases": 12
+    },
+    "performance_previous": {
+      "status": "failed",
+      "run": "performance-candidate-v4",
+      "session_id": 57062,
+      "started_evidence": "harness/performance-candidate-v4/started.json",
+      "exit_code": 1,
+      "error": "Insufficient frame/input samples",
+      "completed_samples": 0,
+      "evidence": "harness/performance-candidate-v4/error.json",
+      "session_status": "terminated"
+    },
+    "real_map_performance": {
+      "status": "passed",
+      "test": "tests/performance-real-map.browser.spec.ts",
+      "scope": "Actual map at normal inspection zoom; observational timing only",
+      "blocked_until": null,
+      "session_id": 92638,
+      "output": "harness/performance-real-map",
+      "acceptance_scope": "Sample collection and renderer progression only",
+      "performance_verdict": "not_assigned",
+      "exit_code": 0,
+      "cases": 2,
+      "evidence": "harness/performance-real-map/results.json",
+      "summary": "harness/performance-real-map/summary.json",
+      "limitations": [
+        "SwiftShader software renderer",
+        "Playwright trace and screenshots were enabled, adding unquantified overhead",
+        "No paired baseline or acceptance threshold for this observation",
+        "Network request aborts were captured; not labelled application failures or erased",
+        "RAF callback intervals are not display presentation FPS",
+        "Synthetic damage at a verified mapped-road coordinate"
+      ]
+    },
+    "cycle22": {
+      "status": "running",
+      "geometry_session": 14239,
+      "build_session": 94586,
+      "geometry_status": "passed",
+      "geometry_evidence": "harness/cycle22-geometry/results.json",
+      "geometry_cases": 10,
+      "geometry_exit_code": null,
+      "geometry_note": "Persisted JSON reports all10 expected, no errors/skips/flaky. Old terminal handle unavailable; process absent.",
+      "build_status": "passed",
+      "build_evidence": "harness/build-cycle22-verified.status.json",
+      "build_exit_code": 0,
+      "full_suite_session": 40376,
+      "full_suite_evidence": "harness/cycle22-full/results.json",
+      "review": {
+        "status": "passed",
+        "scope": "Material/source and close inspection only",
+        "evidence": "harness/CYCLE22-REVIEW.md",
+        "city_finding": "AA-disabled building silhouettes have visible staircase edges compared with cycle20. Additional bounded comparison pending."
+      },
+      "performance_v6": {
+        "status": "passed",
+        "prepared": true,
+        "evidence": "harness/performance-candidate-v6/result.json",
+        "note": "Same baseline, runner, fixtures/settings; no measurements started. New material AA-on/off diagnostic must complete after full suite.",
+        "setup_status": "passed",
+        "setup_cases": 12,
+        "setup_exit_code": 0,
+        "scope": "Paired timing of current candidate; unresolved city-edge tradeoff is separate from timing verdict.",
+        "started_evidence": "harness/performance-candidate-v6/started.json",
+        "session_id": 87562,
+        "exit_code": 0,
+        "completed_samples": 36,
+        "passed_groups": 6
+      },
+      "full_suite_status": "passed",
+      "full_suite_exit_code": 0,
+      "full_suite_cases": 82,
+      "aa_diagnostic_session": 70271,
+      "aa_diagnostic_status": "passed",
+      "aa_diagnostic_evidence": "harness/performance-diagnosis-cycle22-material/RESULTS.md"
+    },
+    "functional_suite_history": [
+      {
+        "status": "passed",
+        "cases": 82,
+        "evidence": "harness/cycle20-full/results.json",
+        "source_manifest": "candidate-cycle20.json"
+      }
+    ],
+    "build_history": [
+      {
+        "status": "passed",
+        "exit_code": 0,
+        "evidence": "harness/build-cycle20.log"
+      }
+    ],
+    "performance_history": [
+      {
+        "status": "failed",
+        "run": "performance-candidate-v5",
+        "session_id": 86278,
+        "started_evidence": "harness/performance-candidate-v5/started.json",
+        "threshold": 1.2,
+        "exit_code": 0,
+        "evidence": "harness/performance-candidate-v5/result.json",
+        "completed_samples": 36,
+        "failed_groups": 3,
+        "passed_groups": 3,
+        "integrity": "harness/performance-candidate-v5/integrity.json",
+        "note": "Execution completed successfully; unchanged performance acceptance failed."
+      }
+    ],
+    "acceptance_gaps": {
+      "status": "failed",
+      "expected": 20,
+      "unexpected": 6,
+      "skipped": 0,
+      "flaky": 0,
+      "exit_code": 1,
+      "evidence": "harness/acceptance-gaps/execution/results.json",
+      "classification": "Two application failures (search flight interrupted by2D); four selector failures, correction pending."
+    },
+    "keyboard_flow": {
+      "status": "not_run",
+      "evidence": "harness/keyboard-flow/PROPOSAL.md"
+    },
+    "cycle23": {
+      "status": "stopped",
+      "plan": "harness/CYCLE23-PLAN.md",
+      "source_before": "candidate-cycle22.json",
+      "build": "passed",
+      "functional_suite": "interrupted",
+      "suite_evidence": "harness/cycle23-full/results.json",
+      "performance_v7": "not_run",
+      "note": "69 passed,7 failed,1 interrupted,45 not run; exit130 on user pause. Native dialog oracle under investigation; no all-suite pass."
+    }
+  },
+  "phase_results_history": [
+    {
+      "checkpoint": "cycle16-before-reconciliation",
+      "results": [
+        {
+          "phase": "P0",
+          "status": "passed",
+          "acceptance_scope": "P0:baseline",
+          "evidence": [
+            "baseline.json",
+            "harness/build-before.log",
+            "harness/typecheck-before.log",
+            "harness/test-contract.sha256",
+            "harness/before/artifacts/"
+          ],
+          "limitations": [
+            "Browser uses software rendering; device performance not inferred.",
+            "Source style/media tests use declared fixtures.",
+            "Remaining feature defects stay open."
+          ]
+        },
+        {
+          "phase": "P1",
+          "status": "partial",
+          "automated": "partial",
+          "evidence": [
+            "harness/p1-root/results.json",
+            "harness/race-verified/results.json",
+            "harness/empty-mode-after/results.json",
+            "harness/interaction-first/results.json"
+          ],
+          "passed_cases": 22,
+          "remaining": [
+            "C02 late-flight zoom defect",
+            "Final full camera acceptance review"
+          ]
+        },
+        {
+          "phase": "P2",
+          "status": "partial",
+          "evidence": [
+            "harness/prototype-verified/results.json"
+          ],
+          "limitations": [
+            "Synthetic cavity and blocker reviewed independently; real mapped-road four-bearing rendering fails."
+          ]
+        },
+        {
+          "phase": "P3",
+          "status": "partial",
+          "evidence": [
+            "harness/integration-first/results.json",
+            "harness/review-after/results.json"
+          ],
+          "limitations": [
+            "20-cycle application lifecycle and context recovery passed on both viewports; real-map render exception still blocks integrated acceptance. GPU heap unavailable."
+          ]
+        },
+        {
+          "phase": "P4/P5",
+          "status": "partial",
+          "evidence": [
+            "harness/layout-after/results.json",
+            "harness/secondary-first/results.json",
+            "harness/interaction-first/results.json"
+          ],
+          "limitations": [
+            "Mapped-road visual gate and popup DOM anchor measurement remain open."
+          ]
+        },
+        {
+          "phase": "P6",
+          "status": "partial",
+          "evidence": [
+            "harness/integrated-candidate/results.json",
+            "harness/empty-mode-after/results.json",
+            "harness/interaction-first/results.json",
+            "harness/build-cycle16-checkpoint.log"
+          ],
+          "limitations": [
+            "Mapped-road rendering fails in MapLibre 4.7.1 line-label placement at extreme inspection zoom; four-bearing gate remains failed.",
+            "C02: zoom during transition to 2D cancels pitch transition at approximately 56 degrees on both viewports.",
+            "M03: popup anchor probe uses unavailable map._popups property; visual drift has not been measured.",
+            "Performance not_run; V3 is retained as historical snapshot pending candidate corrections.",
+            "Final visual, review and full acceptance catalogue are not passed."
+          ]
+        }
+      ]
+    },
+    {
+      "checkpoint": "cycle22-before-scope-reconciliation",
+      "at": "2026-10-16T22:04:05.559148+00:00",
+      "results": [
+        {
+          "phase": "P0",
+          "status": "passed",
+          "acceptance_scope": "P0:baseline",
+          "evidence": [
+            "baseline.json",
+            "harness/checkpoint-integrity-cycle20.json"
+          ],
+          "limitations": [
+            "Historical baseline defects remain recorded; no current-feature pass inferred."
+          ]
+        },
+        {
+          "phase": "P1",
+          "status": "partial",
+          "acceptance_scope": "P1:camera-dimensions",
+          "evidence": [
+            "harness/cycle20-full/results.json",
+            "FINAL-INDEPENDENT-REVIEW.md"
+          ],
+          "remaining": [
+            "Broader final acceptance catalogue reconciliation; specific async race paths are covered, not every possible interleaving."
+          ]
+        },
+        {
+          "phase": "P2/P3",
+          "status": "partial",
+          "acceptance_scope": "P2/P3:shared-map-inspection",
+          "evidence": [
+            "harness/cycle20-full/results.json",
+            "harness/cycle20-orbit-complete/results.json",
+            "FINAL-INDEPENDENT-REVIEW.md"
+          ],
+          "limitations": [
+            "Geometric, projection, lifecycle and real-road bearing cases passed; total GPU memory unavailable. Final integrated acceptance depends on performance."
+          ]
+        },
+        {
+          "phase": "P4/P5",
+          "status": "partial",
+          "acceptance_scope": "P4/P5:city-ui-media",
+          "evidence": [
+            "harness/cycle20-full/results.json",
+            "FINAL-INDEPENDENT-REVIEW.md"
+          ],
+          "limitations": [
+            "Current captured visual states approved; exact parity not claimed. Static example media, no real live stream. Performance remains pending."
+          ]
+        },
+        {
+          "phase": "P6",
+          "status": "failed",
+          "acceptance_scope": "P6:full-application",
+          "evidence": [
+            "harness/cycle20-full/results.json",
+            "harness/build-cycle20.log",
+            "harness/performance-candidate-v5/result.json",
+            "harness/REAL-MAP-RESULTS.md"
+          ],
+          "remaining": [
+            "Inspection performance regression",
+            "Remaining full-scope acceptance evidence per ACCEPTANCE-AUDIT.md"
+          ]
+        }
+      ]
+    }
+  ],
+  "lock_history": [
+    {
+      "released_at": "2026-10-16T22:04:05.559148+00:00",
+      "reason": "Worker turn completed or usage-limited; no writer remains active. Historical ownership retained.",
+      "locks": [
+        {
+          "owner": "/root/parity_harness",
+          "paths": [
+            "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/performance-diagnosis-cycle22/"
+          ]
+        },
+        {
+          "owner": "/root/parity_harness",
+          "paths": [
+            "tests/geometry/prototype.html",
+            "tests/geometry.browser.spec.ts"
+          ]
+        },
+        {
+          "owner": "/root/parity_planner",
+          "paths": [
+            "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/REMAINING-ACCEPTANCE.md"
+          ]
+        },
+        {
+          "owner": "parity_planner",
+          "paths": [
+            "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/CYCLE22-REVIEW.md"
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "/root/acceptance_verifier",
+      "paths": [
+        "tests/acceptance-gaps.browser.spec.ts",
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/acceptance-gaps/"
+      ],
+      "released_reason": "Worker stopped or completed; root resumes verification",
+      "released_at": "2026-10-17T04:30:08.214809+00:00"
+    },
+    {
+      "owner": "/root/parity_planner",
+      "paths": [
+        "knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/city-resolution-diagnostic/"
+      ],
+      "released_reason": "Worker stopped or completed; root resumes verification",
+      "released_at": "2026-10-17T04:30:08.214809+00:00"
+    }
+  ],
+  "stop_reason": "User explicitly paused Oyenza work to plan a public-map civic rebrand; no further app repair/benchmark authorized by the new planning request."
+}

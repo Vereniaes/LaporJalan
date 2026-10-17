@@ -1,0 +1,533 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-16",
+  "timezone": "Asia/Jakarta",
+  "scope": "Public assets, primary documentation, local source and prior visual review. No private access, deployment, app test run or asset reuse is implied.",
+  "remote_sources": [
+    {
+      "id": "O1",
+      "url": "https://transit.oyenza.com/",
+      "status": 200,
+      "length_characters": 23144,
+      "sha256_utf8": "5b9e93800a8b739688a33108fcc1e3d1f4ac2499f729cf58e49e53e51faf7f0e",
+      "repository_count": null,
+      "markers": null,
+      "title": "Oyenza public transit page",
+      "version": "Asset manifest observed on 2026-10-16",
+      "findings": [
+        "The public document links the inspected JavaScript and CSS assets."
+      ],
+      "locator": "HTML asset references",
+      "confidence": "high",
+      "checked_on": "2026-10-16",
+      "method": "HTTP GET via PowerShell Invoke-WebRequest; inspect public decoded text",
+      "hash_basis": "SHA256 of decoded response Content re-encoded as UTF-8, not a promise of raw transfer bytes",
+      "recheck": "GET exact URL without authentication. Check status, asset identity, hash and locator. If the hash changes, re-read findings rather than trusting old offsets."
+    },
+    {
+      "id": "O2",
+      "url": "https://transit.oyenza.com/assets/lib-GZTYGNAT.js",
+      "status": 200,
+      "length_characters": 1133325,
+      "sha256_utf8": "119b30f99114dbe9d546b0f814a2b00768cea6e73dd717b7460c4b8428490346",
+      "repository_count": null,
+      "markers": [
+        {
+          "term": "5.24.0",
+          "offset": 486463
+        },
+        {
+          "term": "jbd-bld-v2",
+          "offset": 1045543
+        },
+        {
+          "term": "set3D(re)",
+          "offset": 1131237
+        },
+        {
+          "term": "this.renderingMode=\"2d\"",
+          "offset": 1089346
+        },
+        {
+          "term": "\"fill-extrusion-opacity\":.92",
+          "offset": 1052476
+        }
+      ],
+      "title": "Oyenza public map bundle",
+      "version": "lib-GZTYGNAT.js; embedded MapLibre GL JS 5.24.0",
+      "findings": [
+        "Building vector tiles use source bld and source-layer buildings, with height/min_height and fallback height 5 m.",
+        "bld-3d is a fill-extrusion layer; height interpolates from 0 at zoom 14.5 to attribute height at 15.5; opacity 0.92 and vertical gradient.",
+        "set3D uses pitch 56, current bearing or -17, minimum zoom 15.4, and reduced-motion-aware transition.",
+        "Map limits include maxPitch 65, maxZoom 18.6, and device pixel ratio cap 2.",
+        "Bus custom layer uses renderingMode 2d; this does not establish that bus meshes are 3D.",
+        "Ln/Vr are reused minified symbols. In the transit map factory they concern user location and building visibility, not evidence of CCTV frustum geometry."
+      ],
+      "locator": "Search bld-3d, jbd-bld-v2, fill-extrusion-height, set3D(re), buses; offsets below are zero-based character offsets in decoded text.",
+      "confidence": "high within inspected bundle",
+      "checked_on": "2026-10-16",
+      "method": "HTTP GET via PowerShell Invoke-WebRequest; inspect public decoded text",
+      "hash_basis": "SHA256 of decoded response Content re-encoded as UTF-8, not a promise of raw transfer bytes",
+      "recheck": "GET exact URL without authentication. Check status, asset identity, hash and locator. If the hash changes, re-read findings rather than trusting old offsets."
+    },
+    {
+      "id": "O3",
+      "url": "https://transit.oyenza.com/assets/app-ZWGDPUS7.css",
+      "status": 200,
+      "length_characters": 48039,
+      "sha256_utf8": "fffc154b539b847875d371504fd295dba12dffec9056ab5aafef505f4e70ea46",
+      "repository_count": null,
+      "markers": null,
+      "title": "Oyenza public stylesheet",
+      "version": "app-ZWGDPUS7.css",
+      "findings": [
+        "Neutral palette and panel tokens participate in the visual design; the 400 px base panel width is not a universal viewport size."
+      ],
+      "locator": "Search pane/panel width rules, root tokens and media queries.",
+      "confidence": "high",
+      "checked_on": "2026-10-16",
+      "method": "HTTP GET via PowerShell Invoke-WebRequest; inspect public decoded text",
+      "hash_basis": "SHA256 of decoded response Content re-encoded as UTF-8, not a promise of raw transfer bytes",
+      "recheck": "GET exact URL without authentication. Check status, asset identity, hash and locator. If the hash changes, re-read findings rather than trusting old offsets."
+    },
+    {
+      "id": "O4",
+      "url": "https://transit-staging.oyenza.com/compare",
+      "status": 200,
+      "length_characters": 6204,
+      "sha256_utf8": "a97289b8b0c07e6898fd5ccc623b1b85829dc5c25760d1811d42d3235d51e9a4",
+      "repository_count": null,
+      "markers": null,
+      "title": "Oyenza comparison page",
+      "version": "Public HTML on check date",
+      "findings": [
+        "The comparison concerns camera bus observations and timetable simulation, not road damage before/after."
+      ],
+      "locator": "Document title and comparison explanation text",
+      "confidence": "high for page purpose",
+      "checked_on": "2026-10-16",
+      "method": "HTTP GET via PowerShell Invoke-WebRequest; inspect public decoded text",
+      "hash_basis": "SHA256 of decoded response Content re-encoded as UTF-8, not a promise of raw transfer bytes",
+      "recheck": "GET exact URL without authentication. Check status, asset identity, hash and locator. If the hash changes, re-read findings rather than trusting old offsets."
+    },
+    {
+      "id": "M1",
+      "url": "https://raw.githubusercontent.com/maplibre/maplibre-gl-js/v4.7.1/test/examples/add-3d-model.html",
+      "status": 200,
+      "length_characters": 5043,
+      "sha256_utf8": "b88ba3efd75ad74caee579151b812fbdca63b55fb3d3d9e6b1eee484af20d02a",
+      "repository_count": null,
+      "markers": null,
+      "title": "MapLibre 4.7.1 Three.js custom layer example",
+      "version": "v4.7.1; tag commit 87486a5ef2085e600e8fa4e31252629dd8488dcd",
+      "findings": [
+        "Demonstrates Mercator meter scale, shared canvas/context, map matrix and renderer resetState.",
+        "Example imports Three 0.147.0. It is not proof of full compatibility with local Three 0.170.0 or of a negative-elevation road cavity."
+      ],
+      "locator": "onAdd and render functions; model transform",
+      "confidence": "high",
+      "checked_on": "2026-10-16",
+      "method": "HTTP GET via PowerShell Invoke-WebRequest; inspect public decoded text",
+      "hash_basis": "SHA256 of decoded response Content re-encoded as UTF-8, not a promise of raw transfer bytes",
+      "recheck": "GET exact URL without authentication. Check status, asset identity, hash and locator. If the hash changes, re-read findings rather than trusting old offsets."
+    },
+    {
+      "id": "G1",
+      "url": "https://api.github.com/search/repositories?q=oyenza&per_page=5",
+      "status": 200,
+      "length_characters": 55,
+      "sha256_utf8": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+      "repository_count": 0,
+      "markers": null,
+      "title": "GitHub repository search by name",
+      "version": "Public search response on check date",
+      "findings": [
+        "Zero repositories returned for query oyenza. This does not prove no repository exists under another name or privately."
+      ],
+      "locator": "total_count",
+      "confidence": "high for query result only",
+      "checked_on": "2026-10-16",
+      "method": "HTTP GET via PowerShell Invoke-WebRequest; inspect public decoded text",
+      "hash_basis": "SHA256 of decoded response Content re-encoded as UTF-8, not a promise of raw transfer bytes",
+      "recheck": "GET exact URL without authentication. Check status, asset identity, hash and locator. If the hash changes, re-read findings rather than trusting old offsets."
+    },
+    {
+      "id": "G2",
+      "url": "https://api.github.com/search/repositories?q=%22transit.oyenza.com%22+in%3Areadme&per_page=5",
+      "status": 200,
+      "length_characters": 55,
+      "sha256_utf8": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+      "repository_count": 0,
+      "markers": null,
+      "title": "GitHub repository search by domain in README",
+      "version": "Public search response on check date",
+      "findings": [
+        "Zero repositories returned for query \"transit.oyenza.com\" in:readme. Search visibility is limited."
+      ],
+      "locator": "total_count",
+      "confidence": "high for query result only",
+      "checked_on": "2026-10-16",
+      "method": "HTTP GET via PowerShell Invoke-WebRequest; inspect public decoded text",
+      "hash_basis": "SHA256 of decoded response Content re-encoded as UTF-8, not a promise of raw transfer bytes",
+      "recheck": "GET exact URL without authentication. Check status, asset identity, hash and locator. If the hash changes, re-read findings rather than trusting old offsets."
+    },
+    {
+      "id": "M2",
+      "title": "MapLibre CustomLayerInterface",
+      "url": "https://maplibre.org/maplibre-gl-js/docs/API/interfaces/CustomLayerInterface/",
+      "version": "Current documentation, not pinned to local version",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Custom layers integrate custom rendering and lifecycle. Use installed 4.7.1 signatures as the compatibility authority."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "T1",
+      "title": "Three.js r170 WebGLRenderer",
+      "url": "https://github.com/mrdoob/three.js/blob/r170/src/renderers/WebGLRenderer.js",
+      "version": "r170 / local 0.170.0",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "WebGL1 is not supported; shared MapLibre context must be checked for WebGL2 before constructing the renderer."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "D1",
+      "title": "deck.gl using with MapLibre",
+      "url": "https://deck.gl/docs/developer-guide/base-maps/using-with-maplibre",
+      "version": "Current documentation",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Interleaved integration can share WebGL2 context and layer order. It does not automatically cut an opening in road geometry."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "F1",
+      "title": "OpenFreeMap Positron style",
+      "url": "https://tiles.openfreemap.org/styles/positron",
+      "version": "Live style inspected; recheck before implementation",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Source openmaptiles and building source-layer differ from Oyenza bld/buildings. Verify actual tile attributes instead of copying another provider's schema."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "G3",
+      "title": "Mini Tokyo 3D repository",
+      "url": "https://github.com/nagix/mini-tokyo-3d",
+      "version": "Public repository; not Oyenza source",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "An open-source transit visualization comparison with Mapbox/deck.gl/Three integrations. Its existence does not establish the architecture of Oyenza."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "A1",
+      "title": "OpenAI subagent configuration",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+      "version": "Current official documentation; runtime capability must be checked",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Subagents can inherit the parent's model unless overridden. Configure worker model and reasoning explicitly. Markdown prompts alone do not change runtime configuration."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "A2",
+      "title": "OpenAI agent improvement loop",
+      "url": "https://developers.openai.com/cookbook/examples/agents_sdk/agent_improvement_loop",
+      "version": "Current official cookbook example",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Traces and evaluations can inform targeted agent improvements. This package adapts the pattern with its own bounded 12-cycle/2-attempt policy, not a claimed universal OpenAI limit."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "P1",
+      "title": "Playwright visual comparisons",
+      "url": "https://playwright.dev/docs/test-snapshots",
+      "version": "Current documentation",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Screenshot comparisons depend on a stable rendering environment. Pixel snapshots are useful for regression, not automatic proof of matching an unrelated video."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "P2",
+      "title": "Playwright Clock",
+      "url": "https://playwright.dev/docs/clock",
+      "version": "Current documentation",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Clock controls can stabilize time-dependent UI tests. Do not freeze requestAnimationFrame while measuring real rendering performance."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "V1",
+      "title": "OpenCode V2 agents",
+      "url": "https://opencode.ai/v2/docs/agents/",
+      "version": "V2 documentation; no binary installed",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Agent Markdown body becomes runtime system instructions when configured. Explicit model and steps must be verified for the provider. New user input can reset the per-invocation steps allowance."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "V2",
+      "title": "OpenCode V2 permissions",
+      "url": "https://opencode.ai/v2/docs/permissions/",
+      "version": "V2 documentation",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Permission entries use action/resource/effect, including shell and subagent. Read-only reviewer example denies edit, shell and subagent."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "V3",
+      "title": "OpenCode V2 providers",
+      "url": "https://opencode.ai/v2/docs/providers/",
+      "version": "V2 documentation",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Provider authentication and available models must be checked before activation. No shared subscription billing is assumed."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "V4",
+      "title": "OpenCode V2 installer",
+      "url": "https://opencode.ai/v2/install",
+      "version": "HTTP 200; 14404 characters in inspected response; not executed",
+      "checked_on": "2026-10-16",
+      "method": "Read official public source/documentation during research",
+      "sha256_utf8": null,
+      "locator": "Sections supporting the stated findings; consult linked version when specified",
+      "findings": [
+        "Supports a selected version and disabling PATH modification. Installation is outside this documentation session."
+      ],
+      "confidence": "high for documented behavior; local implementation untested",
+      "recheck": "Read the source again before adopting a newer API or configuration. Record changed versions and preserve local compatibility."
+    },
+    {
+      "id": "M3",
+      "title": "MapLibre v4.7.1 custom layer type",
+      "url": "https://github.com/maplibre/maplibre-gl-js/blob/v4.7.1/src/style/style_layer/custom_style_layer.ts",
+      "version": "v4.7.1",
+      "checked_on": "2026-10-16",
+      "method": "Official pinned source and installed local source inspection",
+      "sha256_utf8": null,
+      "locator": "CustomLayerInterface.render and lifecycle callbacks",
+      "findings": [
+        "The installed version accepts gl, matrix and additional options. Do not adopt current documentation signatures without checking compatibility."
+      ],
+      "confidence": "high",
+      "recheck": "Read pinned source and installed node_modules/maplibre-gl/src/style/style_layer/custom_style_layer.ts."
+    },
+    {
+      "id": "A3",
+      "title": "OpenAI model family guide",
+      "url": "https://developers.openai.com/api/docs/guides/latest-model",
+      "version": "Current official guide; runtime inventory takes precedence",
+      "checked_on": "2026-10-16",
+      "method": "Official OpenAI documentation read during research",
+      "sha256_utf8": null,
+      "locator": "Model selection guidance",
+      "findings": [
+        "Sol/Luna routing is a project cost-control choice. No prices, API identifier for the user's Ultra UI selection, or account billing assumptions are inferred."
+      ],
+      "confidence": "high for guidance, no claim of per-task price guarantee",
+      "recheck": "Read current official guidance and actual available tool models before dispatch."
+    }
+  ],
+  "local_sources": [
+    {
+      "id": "L1",
+      "title": "Map and camera",
+      "path": "LaporJalan/src/components/Map3D.tsx",
+      "path_base": "workspace root",
+      "checked_on": "2026-10-16",
+      "method": "Read working-tree source before documentation edits",
+      "locator": "91, 186, 250, 458, 723, 787",
+      "sha256": "e25d2fd9b0510bfa4883129114ed2b18e67eff8d5c36df5756769d6c52361e24",
+      "findings": [
+        "Damage shapes are generated with large fixed dimensions and rendered as fill/line layers.",
+        "Report/search camera transitions use pitch 58 despite the 2D UI mode.",
+        "Load handlers and early source updates require race/data-arrival testing."
+      ],
+      "confidence": "high for source behavior; browser behavior is not re-tested in this session",
+      "recheck": "Compare baseline.json hash, then read current symbols. Line numbers can move; do not patch using stale positions."
+    },
+    {
+      "id": "L2",
+      "title": "Standalone depth inspector",
+      "path": "LaporJalan/src/components/DepthInspector3D.tsx",
+      "path_base": "workspace root",
+      "checked_on": "2026-10-16",
+      "method": "Read working-tree source before documentation edits",
+      "locator": "72-90 and cleanup around 279",
+      "sha256": "f8a66ffcc253bb90dfc30d2a08ef4d2703d2c4b0fed0bff989127acdae01ea4f",
+      "findings": [
+        "Separate Three canvas uses minimum depth/radius and generated profile/contours.",
+        "Its forceContextLoss cleanup must not be reused for MapLibre's shared context."
+      ],
+      "confidence": "high for source behavior; browser behavior is not re-tested in this session",
+      "recheck": "Compare baseline.json hash, then read current symbols. Line numbers can move; do not patch using stale positions."
+    },
+    {
+      "id": "L3",
+      "title": "Camera report flow",
+      "path": "LaporJalan/src/components/CameraReportModal.tsx",
+      "path_base": "workspace root",
+      "checked_on": "2026-10-16",
+      "method": "Read working-tree source before documentation edits",
+      "locator": "86-87",
+      "sha256": "94cdf2f627f0c8ccf51988173a1ce80e7367fc2611700b4b1424fd90e2f65532",
+      "findings": [
+        "Report coordinates use Math.random and must not be presented as measured GPS."
+      ],
+      "confidence": "high for source behavior; browser behavior is not re-tested in this session",
+      "recheck": "Compare baseline.json hash, then read current symbols. Line numbers can move; do not patch using stale positions."
+    },
+    {
+      "id": "L4",
+      "title": "Image heuristics",
+      "path": "LaporJalan/src/services/imageDetection.ts",
+      "path_base": "workspace root",
+      "checked_on": "2026-10-16",
+      "method": "Read working-tree source before documentation edits",
+      "locator": "Search estimatedDepth, estimatedWidth, confidence and pixel heuristics",
+      "sha256": "4614b95358d4fb7c6ec5dfaae8ab351000c00f5e17391d86da4f6eaca0ad9308",
+      "findings": [
+        "Dimensions and confidence are heuristic; geometry consistency cannot establish validated measurement accuracy."
+      ],
+      "confidence": "high for source behavior; browser behavior is not re-tested in this session",
+      "recheck": "Compare baseline.json hash, then read current symbols. Line numbers can move; do not patch using stale positions."
+    },
+    {
+      "id": "L5",
+      "title": "CCTV card",
+      "path": "LaporJalan/src/components/CctvPopover.tsx",
+      "path_base": "workspace root",
+      "checked_on": "2026-10-16",
+      "method": "Read working-tree source before documentation edits",
+      "locator": "Search img, LIVE and onFullscreen",
+      "sha256": "ae9aef4d9f1961edac4bbd95b26f68fc973b6a807bcb8a749b1cc5bbc7255dfb",
+      "findings": [
+        "Static sample image is labelled LIVE; fullscreen callback exists but must be connected to the parent."
+      ],
+      "confidence": "high for source behavior; browser behavior is not re-tested in this session",
+      "recheck": "Compare baseline.json hash, then read current symbols. Line numbers can move; do not patch using stale positions."
+    },
+    {
+      "id": "L6",
+      "title": "App state",
+      "path": "LaporJalan/src/App.tsx",
+      "path_base": "workspace root",
+      "checked_on": "2026-10-16",
+      "method": "Read working-tree source before documentation edits",
+      "locator": "Search selectedReport, filters and Map3D props",
+      "sha256": "64b74dffc29b0991362b378015a96479dfba79cb437893cbbbebf1b1caaa4a14",
+      "findings": [
+        "Selection, filters, map mode and asynchronous report arrival need a shared acceptance contract."
+      ],
+      "confidence": "high for source behavior; browser behavior is not re-tested in this session",
+      "recheck": "Compare baseline.json hash, then read current symbols. Line numbers can move; do not patch using stale positions."
+    },
+    {
+      "id": "L7",
+      "title": "Package versions",
+      "path": "LaporJalan/package-lock.json",
+      "path_base": "workspace root",
+      "checked_on": "2026-10-16",
+      "method": "Read working-tree source before documentation edits",
+      "locator": "node_modules/maplibre-gl and node_modules/three",
+      "sha256": "32821aa2ce2fb925d03f2eb87cd3c7ce04e8646e2228ea9891dd39929424b1b5",
+      "findings": [
+        "Locked versions are MapLibre 4.7.1 and Three 0.170.0; inspect installed code as well as package ranges."
+      ],
+      "confidence": "high for source behavior; browser behavior is not re-tested in this session",
+      "recheck": "Compare baseline.json hash, then read current symbols. Line numbers can move; do not patch using stale positions."
+    }
+  ],
+  "prior_visual_review": {
+    "path": "LaporJalan/knowledge/video-ui-comparison-2026-10-16.md",
+    "path_base": "workspace root",
+    "evidence_paths": [
+      "LaporJalan/knowledge/video-review-2026-10-16/inspection-comparison.jpg",
+      "LaporJalan/knowledge/video-review-2026-10-16/map-comparison.jpg",
+      "LaporJalan/knowledge/video-review-2026-10-16/cctv-comparison.jpg",
+      "LaporJalan/knowledge/video-review-2026-10-16/browser-results.json"
+    ],
+    "method": "Read prior report and inspect its comparison images. No new video transcription or browser acceptance run in this documentation session.",
+    "findings": [
+      "Reference 230929 around 00:56 shows the desired cavity/wireframe experience in a generative clip; it does not prove an Oyenza feature.",
+      "Prior browser findings establish the reported baseline gaps, not acceptance of future changes."
+    ],
+    "confidence": "Mixed: direct prior review evidence, with video authenticity and measurement limitations explicitly stated",
+    "recheck": "Reproduce on the target working tree with deterministic fixtures in P0. Preserve historical evidence."
+  },
+  "unknowns": [
+    "Private or uninspected Oyenza modules and backend.",
+    "Accuracy and provenance of real-world road measurements.",
+    "Feasibility of a true below-road cavity with current map composition until P2 passes.",
+    "Actual runtime tokens, prices and worker model delivery unless runtime exposes them."
+  ]
+}

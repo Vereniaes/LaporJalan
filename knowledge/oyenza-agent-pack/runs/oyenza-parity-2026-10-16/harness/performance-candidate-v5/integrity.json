@@ -1,0 +1,328 @@
+{
+  "at": "2026-10-16T17:08:09.011584+00:00",
+  "scope": "Raw-sample and comparison recomputation, not performance pass",
+  "samples": [
+    {
+      "file": "baseline-1440-idle-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-idle-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-idle-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-1440-idle-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-1440-idle-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-idle-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-1440-inspection-orbit-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-inspection-orbit-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-inspection-orbit-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-1440-inspection-orbit-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-1440-inspection-orbit-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-inspection-orbit-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-1440-pan-in-inspection-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-pan-in-inspection-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-pan-in-inspection-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-1440-pan-in-inspection-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-1440-pan-in-inspection-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-1440-pan-in-inspection-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-idle-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-idle-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-idle-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-idle-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-idle-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-idle-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-inspection-orbit-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-inspection-orbit-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-inspection-orbit-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-inspection-orbit-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-inspection-orbit-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-inspection-orbit-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-pan-in-inspection-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-pan-in-inspection-1.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-pan-in-inspection-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-pan-in-inspection-2.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "baseline-390-pan-in-inspection-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    },
+    {
+      "file": "candidate-390-pan-in-inspection-3.json",
+      "frames_match": true,
+      "input_present": true,
+      "app_errors": []
+    }
+  ],
+  "comparisons": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "idle",
+      "ratio": 1.0,
+      "status": "passed",
+      "matches_report": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "inspection-orbit",
+      "ratio": 1.6679999999999928,
+      "status": "failed",
+      "matches_report": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scenario": "pan-in-inspection",
+      "ratio": 4.958333333333613,
+      "status": "failed",
+      "matches_report": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "idle",
+      "ratio": 1.0,
+      "status": "passed",
+      "matches_report": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "inspection-orbit",
+      "ratio": 1.9999999999995643,
+      "status": "failed",
+      "matches_report": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scenario": "pan-in-inspection",
+      "ratio": 0.9940476190479219,
+      "status": "passed",
+      "matches_report": true
+    }
+  ],
+  "sha256": {
+    "baseline-1440-idle-1.json": "510a7c7a1f8172a74802335c76cdfb851f5bc874d8455fe416657be8f97c0238",
+    "candidate-1440-idle-1.json": "0dea0bbcba65eb11585124c79445fd79201eee9fd28eadbd0ff113c886f40609",
+    "candidate-1440-idle-2.json": "f00818f588ae863fea9dc0edb28ccc1e464d54731f47edb4c6ed2b2be5aabf8a",
+    "baseline-1440-idle-2.json": "1d0b6836e3c9b2d400a839b04b78586a6c2229cd68952688751a304a779ea3a5",
+    "baseline-1440-idle-3.json": "bd9f192067264ccdb0d25a828837afed0d63be47d1a112deef8159d1d3665d40",
+    "candidate-1440-idle-3.json": "b564c4116abb7b00d5898f861fc17c99b934e6a2c92402de2d5f9fd039bd4f95",
+    "baseline-1440-inspection-orbit-1.json": "1b79c148c751e00bbb84e9ab9c450f4e900d1899461a069f07739e524983074a",
+    "candidate-1440-inspection-orbit-1.json": "a1db7a77979141bb879aebb536e6e59222cf69f7f7dce454c2c99ec203e4b5fd",
+    "candidate-1440-inspection-orbit-2.json": "ac195fd28d53b8b3b78babedd2793c0640825b6aa5396e79b658387f4b2865b6",
+    "baseline-1440-inspection-orbit-2.json": "ddf660aca75d5056cd3b68a7b6b2e3790b3aee78673f4cf4eec3255e30bee10f",
+    "baseline-1440-inspection-orbit-3.json": "3ad38fa3ce0d11f68b590817b90b92363d8a8f8391441936b1e01db27e13d828",
+    "candidate-1440-inspection-orbit-3.json": "78e45ddaa2321361cfea0562b9bef4b838db0ee86380fb714da4557db498c667",
+    "baseline-1440-pan-in-inspection-1.json": "4e5f5c45b29227c24b96a42377889da623eba093121bf8e1b94ae2f22334632d",
+    "candidate-1440-pan-in-inspection-1.json": "bdd6c99396bc3b11428b3d230515f96893af821696775485f5555494643608bb",
+    "candidate-1440-pan-in-inspection-2.json": "1a65bd739113a0a143eefc9ea565204e231ab92a0d3e45cb406d1d603e7844a7",
+    "baseline-1440-pan-in-inspection-2.json": "818e2d5bd155e4290d7cd434cb930836b879832115ebeb0c454aefcf7553acab",
+    "baseline-1440-pan-in-inspection-3.json": "69e454ed27181081513d71247134d092ab397d52c5f5f2ad11027e1c66532cf0",
+    "candidate-1440-pan-in-inspection-3.json": "104c0b68ff8f4d154fd890c4ed4920dade8d6251a368b29d475f9a150fb99d95",
+    "baseline-390-idle-1.json": "9e12aa252cee170b2487642c11ccb3b749712f9463e91f8f3ab23a8c9ca143c0",
+    "candidate-390-idle-1.json": "e4daec4dffa15b98c00a62574a61940f7d673250019e3897770ce68f31e766c2",
+    "candidate-390-idle-2.json": "9e4c546c1376180f80eefb9dd0d434c325dda6c5bbbc3193e5f73ada843bce14",
+    "baseline-390-idle-2.json": "2287abe507e84fe1739b7854379c1f9bf4dd556f711e70ef5d67ddeb46403eae",
+    "baseline-390-idle-3.json": "4b42723aedb967d125f071ef6a81dbc9a817936d1062a4f02865affbf474353d",
+    "candidate-390-idle-3.json": "50a455f1c1a736a5263cf6678a68c6930b534cc234b4b6c012e24631472a05df",
+    "baseline-390-inspection-orbit-1.json": "07dfc10331dfb579478952613db174b1b19cdb22919d05c4d024a21ab71af151",
+    "candidate-390-inspection-orbit-1.json": "1f23c638522df7e044dff1cdc9d35d8ec85df198456ef0fc1bf0c203683c19a7",
+    "candidate-390-inspection-orbit-2.json": "9677f19d1d5db7ceb2aadd114098bdd871a25542d2f4040847306e8770cb380f",
+    "baseline-390-inspection-orbit-2.json": "5d7afa933c55ed8f8eb602abd013be2bc7d3cf90bb69dc0f53726dd550d3189f",
+    "baseline-390-inspection-orbit-3.json": "66eebee32828ede58be6ced6eede3ff7a0994197e06266772e1a44aaf4ed7418",
+    "candidate-390-inspection-orbit-3.json": "5403b5d922f14e7cefcf4e2611c7e1710a091d7f578d436102b8e71c7c55e419",
+    "baseline-390-pan-in-inspection-1.json": "85c980dd379af55074c851a6ed5e10d958a456bc7ea376ae3e918756ed98d68a",
+    "candidate-390-pan-in-inspection-1.json": "efe3ad56f97e3406f011b021cd6a3f73fc3af54032dd2bfd171fbeeb8338016e",
+    "candidate-390-pan-in-inspection-2.json": "4d97581ab33e15705363858efe5cfdab01311d5f086c84182688619d6eebf067",
+    "baseline-390-pan-in-inspection-2.json": "d3d77c1232575131d9c940e327bb7ce8441faf4174ad145be1a3ee1a68d7a814",
+    "baseline-390-pan-in-inspection-3.json": "c6af57f2bc44781cef29adf4e7af27d663a311df8937f0b67d5e945b97d46c3a",
+    "candidate-390-pan-in-inspection-3.json": "e02edfc1cdaa64b670bf139c98f376ef71674465ecb25e98b3bdd777ce7a3916",
+    "manifest.json": "75bfce514a2ade291b0c6792226415e3890b31334a5f56fa55341b0e611bcc11",
+    "result.json": "0443c68875e8c29ba70c0e1987b4bb7bb4022a43c0d81fa15e0fc049e000f898",
+    "check-result.json": "85b4bb25641eefc94079bc5a91778bb31a1c33f9f0de4c98cb46890129daef22",
+    "started.json": "bc0a0bc988424c8395e0d4dcfeead800e1201e3e0356917316473c8d8ff539be",
+    "fixtures-frozen.mjs": "a9a001922ea4775e1eb26439ac2bfe00ee80f16404c2f870477c44248444eb24",
+    "REVIEW.md": "ec165fe15c2590d1516979e4821be28d94a0cc0273ec804353e42c9b5b6cced4"
+  }
+}

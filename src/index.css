@@ -50,3 +50,81 @@ body {
 .maplibregl-canvas {
   outline: none;
 }
+
+/* styling popup cctv mengambang tertambat di peta ala oyenza */
+.cctv-oyenza-popup .maplibregl-popup-content {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 1rem !important;
+}
+
+.cctv-oyenza-popup .maplibregl-popup-tip {
+  border-top-color: #020617 !important;
+}
+
+/* Map and panel share the same restrained visual hierarchy. */
+.app-shell {
+  height: 100dvh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #171717;
+  -webkit-font-smoothing: antialiased;
+}
+.control-panel {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 400px;
+  height: 100%;
+  border-right: 1px solid #e3e3e7;
+  background: #fff;
+  box-shadow: none;
+}
+.map-region { position: absolute; inset: 0 0 0 400px; height: 100%; }
+.panel-tabs {
+  margin: 0 16px 10px;
+  padding: 4px;
+  gap: 0;
+  border-radius: 999px;
+  background: #ececef;
+}
+.panel-tabs > button { margin: 0 !important; padding: 8px 6px; font-weight: 600; }
+.control-panel > :first-child { border: 0; padding: 18px 20px 16px; }
+.control-panel input { background: #f5f5f7; border-color: transparent; border-radius: 12px; }
+.map-controls { gap: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px #17171712; }
+.map-controls > button {
+  width: 44px; height: 44px; margin: 0 !important; padding: 0;
+  border: 0; border-radius: 0; box-shadow: none; background: white; color: #29292e;
+}
+.map-controls > button + button { border-top: 1px solid #ececef; }
+.map-controls > button[aria-pressed=true] { color: #6c63c9; }
+.map-zoom { border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px #17171712; }
+.map-zoom button { width: 44px; height: 40px; background: white; font-size: 22px; color: #55555c; }
+.map-zoom button + button { border-top: 1px solid #ececef; }
+.map-camera-marker, .map-report-marker {
+  padding: 6px 9px; border-radius: 8px; background: #fff;
+  border: 1px solid #dcdce3; color: #545063; font: 600 10px system-ui;
+  box-shadow: 0 2px 5px #17171715; cursor: pointer;
+}
+.map-report-marker { background: #fff4ee; color: #a35431; border-color: #efc9b4; }
+.map-report-marker.selected { box-shadow: 0 0 0 3px #a3543125; }
+.cctv-expanded:fullscreen { width: 100%; height: 100%; border-radius: 0; }
+button:focus-visible, [role=button]:focus-visible, input:focus-visible {
+  outline: 2px solid #6c63c9;
+  outline-offset: 3px;
+}
+@media (max-width: 899px) {
+  .map-region { inset: 0; height: 100%; }
+  .control-panel {
+    inset: auto 0 0;
+    width: 100%; height: 45dvh;
+    border: 0; border-radius: 24px 24px 0 0;
+    box-shadow: 0 -4px 24px #17171712;
+  }
+  .control-panel > :first-child { padding: 12px 16px; }
+  .mobile-report { bottom: calc(45dvh + 64px); }
+  .maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right { bottom: calc(45dvh + 4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
+

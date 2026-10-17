@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": null,
+  "session_id": null,
+  "orchestrator": null,
+  "status": "not_run",
+  "runtime": {
+    "model_requested": null,
+    "model_actual": null,
+    "reasoning_requested": null,
+    "reasoning_actual": null,
+    "verification_note": null,
+    "authorization_ref": null
+  },
+  "timing": { "started_at": null, "finished_at": null, "elapsed_seconds": null },
+  "usage": { "input_tokens": null, "output_tokens": null, "cached_input_tokens": null, "unavailable_reason": null },
+  "budget": { "max_session_repair_cycles": 12, "max_defect_repair_cycles": 2, "max_active_workers": 2, "max_writers_per_file": 1 },
+  "repair_cycles_used": 0,
+  "delegation_count": 0,
+  "delegations": [],
+  "defect_counters": [],
+  "documentation_baseline": { "path": "knowledge/oyenza-agent-pack/baseline.json", "manifest_sha256": null },
+  "baseline": { "id": null, "path": null, "manifest_sha256": null, "fixture_sha256": null, "test_contract_sha256": null },
+  "locks": [],
+  "active_workers": [],
+  "tasks": [],
+  "phase_results": [],
+  "gates": { "automated": "not_run", "visual": "not_run", "review": "not_run" },
+  "checkpoint": { "id": null, "path": null, "sha256": null, "updated_at": null }
+}

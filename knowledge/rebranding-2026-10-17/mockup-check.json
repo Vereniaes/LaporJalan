@@ -1,0 +1,157 @@
+{
+  "checked_at": "2026-10-17T09:26:01.604Z",
+  "scope": "Standalone mockup only; synthetic strings/files used only inside browser test and never persisted as report data.",
+  "checks": [
+    {
+      "name": "25 public source rows",
+      "pass": true
+    },
+    {
+      "name": "cluster totals equal rows",
+      "pass": true
+    },
+    {
+      "name": "no horizontal desktop overflow",
+      "pass": true
+    },
+    {
+      "name": "unavailable category empty",
+      "pass": true
+    },
+    {
+      "name": "empty category no map points",
+      "pass": true
+    },
+    {
+      "name": "search exact source id",
+      "pass": true
+    },
+    {
+      "name": "detail and selected marker agree",
+      "pass": true
+    },
+    {
+      "name": "source status labelled",
+      "pass": true
+    },
+    {
+      "name": "history limitation visible",
+      "pass": true
+    },
+    {
+      "name": "empty comment rejected",
+      "pass": true
+    },
+    {
+      "name": "comment preview explicitly unsent",
+      "pass": true
+    },
+    {
+      "name": "comment HTML escaped",
+      "pass": true
+    },
+    {
+      "name": "missing location rejected",
+      "pass": true
+    },
+    {
+      "name": "location step advances",
+      "pass": true
+    },
+    {
+      "name": "missing category rejected",
+      "pass": true
+    },
+    {
+      "name": "invalid media rejected",
+      "pass": true
+    },
+    {
+      "name": "local file preview shown",
+      "pass": true
+    },
+    {
+      "name": "local file removal",
+      "pass": true
+    },
+    {
+      "name": "review shows entered values",
+      "pass": true
+    },
+    {
+      "name": "finish not claimed submitted",
+      "pass": true
+    },
+    {
+      "name": "dirty draft requires explicit discard",
+      "pass": true
+    },
+    {
+      "name": "cancel discard preserves values",
+      "pass": true
+    },
+    {
+      "name": "form exit restores detail",
+      "pass": true
+    },
+    {
+      "name": "focus returns to report button",
+      "pass": true
+    },
+    {
+      "name": "no overflow 390",
+      "pass": true
+    },
+    {
+      "name": "first report visible 390",
+      "pass": true,
+      "detail": {
+        "firstTop": 665,
+        "footerTop": 792
+      }
+    },
+    {
+      "name": "map attribution not under panel 390",
+      "pass": true
+    },
+    {
+      "name": "selected point visible 390",
+      "pass": true
+    },
+    {
+      "name": "no overflow 320",
+      "pass": true
+    },
+    {
+      "name": "first report visible 320",
+      "pass": true,
+      "detail": {
+        "firstTop": 541,
+        "footerTop": 668
+      }
+    },
+    {
+      "name": "map attribution not under panel 320",
+      "pass": true
+    },
+    {
+      "name": "selected point visible 320",
+      "pass": true
+    },
+    {
+      "name": "no external mutations",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "no JS errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "externalWrites": [],
+  "nonAbortedRequestFailures": [],
+  "passed": 34,
+  "failed": 0
+}
