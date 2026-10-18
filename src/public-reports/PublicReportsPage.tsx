@@ -3,11 +3,16 @@ Todo:
 -> keep filters, selection and the mobile panel in sync
 */
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowDown, ArrowLeft, ArrowUpRight, ChevronRight, Construction, Flame, ImageOff, List, MapPin, RefreshCw, Route, Search, Waves, X } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowUpRight, ChevronRight, Construction, Flame, ImageOff, List, MapPin, Plus, RefreshCw, Route, Search, Waves, X } from 'lucide-react';
 import { filterReports, MapArea, PublicReport, ReportCategory, reportDate, SOURCE_URL } from './data';
 import { PublicMap } from './PublicMap';
 import { usePublicReports } from './usePublicReports';
+import { CATEGORY_LABELS, CitizenReport, errorMessage, mediaUrl, useCitizenReports, useEmailSession } from './community';
+import { EmailLogin } from './EmailLogin';
+import { NewReport, ReportLocation } from './NewReport';
+import { CitizenDetail } from './CitizenDetail';
 import './public-reports.css';
+import './community.css';
 
 const categories = [
   { id: 'all', label: 'Semua', icon: List },
@@ -19,6 +24,26 @@ const categories = [
 
 export function PublicReportsPage() {
   const { snapshot, loading, error, refresh } = usePublicReports();
+  const session = useEmailSession();
+  const [mine, setMine] = useState(false);
+  const community = useCitizenReports(mine, session.user);
+  const [composing, setComposing] = useState(false), [picking, setPicking] = useState(false);
+  const [draftLocation, setDraftLocation] = useState<ReportLocation | null>(null);
+  const [loginLink, setLoginLink] = useState(() => new URLSearchParams(location.hash.slice(1)).get('masuk') ?? '');
+  const [loginOpen, setLoginOpen] = useState(Boolean(loginLink));
+  const [loginIntent, setLoginIntent] = useState<'new' | 'manage'>('new');
+  const [pendingUpdate, setPendingUpdate] = useState(false);
+  const [accountError, setAccountError] = useState('');
+  useEffect(() => {
+    const readLink = () => {
+      const value = new URLSearchParams(location.hash.slice(1)).get('masuk');
+      if (!value) return;
+      setLoginLink(value); setLoginOpen(true);
+      history.replaceState(null, '', location.pathname + location.search);
+    };
+    readLink(); window.addEventListener('hashchange', readLink);
+    return () => window.removeEventListener('hashchange', readLink);
+  }, []);
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<ReportCategory | 'all'>('all');
   const [area, setArea] = useState<MapArea | null>(null);
@@ -28,10 +53,19 @@ export function PublicReportsPage() {
   const returnFocus = useRef<HTMLElement | null>(null);
   const previousPanel = useRef(false);
   const listHeading = useRef<HTMLHeadingElement>(null);
-  const filtered = useMemo(() => filterReports(snapshot?.reports ?? [], category, query, area), [snapshot, category, query, area]);
+  const rows = useMemo(() => [...(mine ? [] : snapshot?.reports ?? []), ...community.reports].sort((a, b) => b.createdAt.localeCompare(a.createdAt)), [snapshot, community.reports, mine]);
+  const filtered = useMemo(() => filterReports(rows, category, query, area), [rows, category, query, area]);
   const selected = filtered.find(report => report.id === selectedId) ?? null;
   const unsupported = category !== 'all' && category !== 'road';
 
+  function startReport() {
+    if (!session.user) { setLoginIntent('new'); setLoginOpen(true); return; }
+    setSelectedId(null); setComposing(true); setExpanded(true); setDraftLocation(null);
+  }
+  function savedReport(report: CitizenReport) {
+    community.merge(report); setComposing(false); setPicking(false); setDraftLocation(null);
+    setQuery(''); setCategory('all'); setArea(null); setSelectedId(report.id); setExpanded(true);
+  }
   function select(report: PublicReport) {
     returnFocus.current = document.activeElement as HTMLElement;
     previousPanel.current = expanded;
@@ -50,13 +84,17 @@ export function PublicReportsPage() {
   useEffect(() => { if (selectedId && !selected) setSelectedId(null); }, [selectedId, selected]);
   useEffect(() => { if (selectedId) heading.current?.focus(); }, [selectedId]);
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape' && selectedId) closeDetail(); };
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape' && selectedId && selected?.origin !== 'community') closeDetail(); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [selectedId]);
 
   return <div className={`lj-app${expanded ? ' lj-expanded' : ''}`}>
     <a className="lj-skip" href="#report-panel">Ke daftar laporan</a>
+    {loginOpen && <EmailLogin link={loginLink} onClose={() => { setLoginOpen(false); setLoginLink(''); }} onExchange={async link => {
+      await session.exchange(link);
+      if (loginIntent === 'new') { setSelectedId(null); setComposing(true); setExpanded(true); setDraftLocation(null); }
+    }} />}
     <header className="lj-header">
       <a className="lj-brand" href="/" aria-label="LaporJalan - halaman utama">
         <span className="lj-logo" aria-hidden="true"><Route size={25} strokeWidth={2.2} /></span>
@@ -65,63 +103,78 @@ export function PublicReportsPage() {
       <div className="lj-search">
         <label htmlFor="report-search">Cari laporan</label>
         <div><Search size={18} aria-hidden="true" /><input id="report-search" type="search" value={query}
-          placeholder="Kode atau status laporan" onChange={event => setQuery(event.target.value)} /></div>
+          disabled={composing || pendingUpdate} placeholder="Judul, kode, atau status laporan" onChange={event => setQuery(event.target.value)} /></div>
       </div>
       <span className="lj-region"><MapPin size={16} aria-hidden="true" /> Jakarta</span>
+      <button className="lj-primary lj-add-report" disabled={composing || pendingUpdate} onClick={startReport}><Plus size={18} aria-hidden="true" /> Tambah laporan</button>
       <a className="lj-source-link" href={SOURCE_URL} target="_blank" rel="noreferrer">Peta CRM <ArrowUpRight size={16} aria-hidden="true" /></a>
     </header>
 
     <main className="lj-workspace">
-      <PublicMap reports={filtered} selected={selected} onSelect={select} onArea={setArea} />
+      <PublicMap reports={filtered} selected={composing ? null : selected} onSelect={select} onArea={setArea} selectionLocked={pendingUpdate || composing} picking={picking} draftLocation={draftLocation} onLocation={setDraftLocation} />
       <section id="report-panel" className="lj-panel" aria-label="Laporan publik" tabIndex={-1}>
         <button className="lj-panel-toggle" aria-expanded={expanded} onClick={() => setExpanded(value => !value)}>
           {expanded ? <><ArrowDown size={16} /> Lihat peta</> : <><List size={16} /> Perluas daftar</>}
         </button>
+        {composing ? <NewReport location={draftLocation} onLocation={setDraftLocation} onPicking={setPicking}
+          onClose={() => { setComposing(false); setPicking(false); setDraftLocation(null); }} onSaved={savedReport} /> : <>
         <div className="lj-panel-intro">
           <div><p className="lj-eyebrow">PETA WARGA</p><h1>Jalan di sekitar.</h1></div>
-          <button className="lj-refresh" aria-label="Perbarui laporan" disabled={loading} onClick={() => void refresh()}>
+          <button className="lj-refresh" aria-label="Perbarui laporan" disabled={loading || pendingUpdate} onClick={() => void refresh()}>
             <RefreshCw size={18} className={loading ? 'lj-spinning' : ''} />
           </button>
           <p className="lj-intro-copy">Pantau laporan publik dan status dari sumbernya.</p>
         </div>
         <nav className="lj-categories" aria-label="Kategori laporan">
           {categories.map(({ id, label, icon: Icon }) => <button key={id} aria-pressed={category === id}
-            onClick={() => setCategory(id)}><Icon size={16} aria-hidden="true" />{label}</button>)}
+            disabled={pendingUpdate} onClick={() => setCategory(id)}><Icon size={16} aria-hidden="true" />{label}</button>)}
         </nav>
 
-        {error && <div className="lj-data-warning" role="alert">
+        <div className="lj-account-row">
+          {session.user ? <><button disabled={pendingUpdate} aria-pressed={mine} onClick={() => { setSelectedId(null); setMine(value => !value); }}>{mine ? 'Lihat semua laporan' : 'Laporan sendiri'}</button>
+            <button disabled={pendingUpdate} onClick={() => { void session.logout().then(() => setMine(false)).catch(error => setAccountError(errorMessage(error))); }}>Keluar</button></>
+          : <button onClick={() => { setLoginIntent('manage'); setLoginOpen(true); }}>Masuk untuk mengelola laporan</button>}
+        </div>
+        {accountError && <p className="lj-form-error" role="alert">{accountError}</p>}
+        {community.error && <div className="lj-community-warning" role="status"><span>Laporan LaporJalan: {community.error}</span><button onClick={community.refresh}>Coba muat laporan warga</button></div>}
+        {error && !mine && <div className="lj-data-warning" role="alert">
           <strong>{snapshot ? 'Pembaruan belum berhasil.' : 'Laporan belum dapat dimuat.'}</strong>
           <span>{snapshot ? `Menampilkan data yang diambil ${reportDate(snapshot.source.retrievedAt)} WIB.` : 'Sumber sedang tidak tersedia. Silakan coba kembali.'}</span>
           <button onClick={() => void refresh()} disabled={loading}>Coba lagi</button>
         </div>}
-        {loading && <p className="lj-loading" role="status">{snapshot ? 'Memperbarui laporan…' : 'Memuat laporan dari CRM Jakarta…'}</p>}
+        {community.loading && <p className="lj-loading" role="status">Memuat laporan warga…</p>}
+        {loading && !mine && <p className="lj-loading" role="status">{snapshot ? 'Memperbarui laporan…' : 'Memuat laporan dari CRM Jakarta…'}</p>}
 
         <div className="lj-list-section" hidden={Boolean(selected)}>
           <div className="lj-results-heading">
-            <h2 ref={listHeading} tabIndex={-1} aria-live="polite">{snapshot ? `${filtered.length} laporan${area ? ' di area ini' : ''}` : 'Daftar laporan'}</h2>
+            <h2 ref={listHeading} tabIndex={-1} aria-live="polite">{snapshot || community.reports.length ? `${filtered.length} laporan${area ? ' di area ini' : ''}` : 'Daftar laporan'}</h2>
             <span>Terbaru dahulu</span>
           </div>
           {area && <div className="lj-area-filter">Area peta dipilih<button onClick={() => setArea(null)}><X size={14} /> Hapus area</button></div>}
           <div className="lj-report-list" aria-label="Daftar laporan">
             {filtered.map(report => <button key={report.id} className="lj-report-row" data-report-id={report.id} onClick={() => select(report)}>
-              <span className="lj-thumbnail" aria-hidden="true"><Route size={25} /><small>Tanpa foto</small></span>
-              <span className="lj-row-copy"><span className="lj-row-meta">JALAN <time dateTime={report.createdAt}>{reportDate(report.createdAt)}</time></span>
-                <strong>{report.code}</strong>
-                <span className="lj-row-source">Laporan warga · JAKI</span>
-                <span className="lj-status">{report.sourceStatus ?? 'Status belum tersedia'}</span>
+              <span className="lj-thumbnail" aria-hidden="true">{report.origin === 'community' && report.media?.[0]?.mime.startsWith('image/')
+                ? <img src={mediaUrl(report.id, report.media[0].id)} alt="" loading="lazy" /> : <><Route size={25} /><small>{report.media?.length ? 'Video' : 'Tanpa foto'}</small></>}</span>
+              <span className="lj-row-copy"><span className="lj-row-meta">{CATEGORY_LABELS[report.category].toUpperCase()} <time dateTime={report.createdAt}>{reportDate(report.createdAt)}</time></span>
+                <strong>{report.title ?? report.code}</strong>
+                <span className="lj-row-source">{report.origin === 'community' ? 'Warga · LaporJalan' : 'Laporan warga · JAKI'}</span>
+                <span className="lj-status">{report.sourceStatus ?? 'Status belum tersedia'}{report.origin === 'community' ? ' · Pelapor' : ''}</span>
               </span>
               <ChevronRight size={17} className="lj-row-arrow" aria-hidden="true" />
             </button>)}
-            {!loading && !error && !filtered.length && <div className="lj-empty" role="status">
+            {community.cursor && <button className="lj-load-more" disabled={community.loading} onClick={() => void community.more()}>Muat laporan warga berikutnya</button>}
+            {!loading && !error && !community.loading && !community.error && !filtered.length && <div className="lj-empty" role="status">
               <Route size={28} aria-hidden="true" />
-              <h3>{unsupported ? 'Sumber kategori belum tersedia' : 'Belum ada laporan yang sesuai'}</h3>
-              <p>{unsupported ? 'Belum ada data terverifikasi untuk kategori ini. Laporan kategori Jalan dapat dilihat pada pilihan Semua.' : 'Coba ubah pencarian, kategori, atau area peta. Data mencakup hari ini dan kemarin.'}</p>
+              <h3>{'Belum ada laporan yang sesuai'}</h3>
+              <p>{unsupported ? 'Belum ada laporan warga pada kategori ini. Laporan baru dapat ditambahkan dari lokasi kejadian; sumber CRM pada integrasi ini hanya mencakup kategori Jalan.' : 'Coba ubah pencarian, kategori, atau area peta. Data mencakup hari ini dan kemarin.'}</p>
               <button onClick={() => { setQuery(''); setCategory('all'); setArea(null); }}>Lihat semua laporan</button>
             </div>}
           </div>
         </div>
 
-        {selected && <div className="lj-detail">
+        {selected?.origin === 'community' && <CitizenDetail key={selected.id} summary={selected} user={session.user} onClose={closeDetail}
+          onLogin={() => { setLoginIntent('manage'); setLoginOpen(true); }} onSaved={community.merge} onDirty={setPendingUpdate} />}
+        {selected && selected.origin !== 'community' && <div className="lj-detail">
           <button className="lj-back" onClick={closeDetail}><ArrowLeft size={18} /> Kembali ke daftar</button>
           <div className="lj-detail-body">
             <p className="lj-eyebrow">LAPORAN KATEGORI JALAN</p>
@@ -142,10 +195,11 @@ export function PublicReportsPage() {
             </section>
           </div>
         </div>}
+        </>}
         <footer className="lj-source-footer">
-          <div><span className="lj-source-dot" /><strong>CRM Jakarta · JAKI</strong><span>Bukan layanan resmi pemerintah</span></div>
+          <div><span className="lj-source-dot" /><strong>CRM Jakarta + warga LaporJalan</strong><span>Bukan layanan resmi pemerintah</span></div>
           {snapshot && <p>{reportDate(snapshot.source.dateStart, false)} - {reportDate(snapshot.source.dateEnd, false)} · Diambil {reportDate(snapshot.source.retrievedAt)} WIB</p>}
-          <p>Hanya laporan publik berkategori Jalan pada peta CRM. Bukan seluruh laporan Jakarta.</p>
+          <p>CRM: kategori Jalan, hari ini dan kemarin. LaporJalan: kiriman warga. Bukan seluruh laporan Jakarta.</p>
         </footer>
       </section>
     </main>

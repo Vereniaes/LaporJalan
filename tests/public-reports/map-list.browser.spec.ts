@@ -6,11 +6,16 @@ import { test, expect, Page } from '@playwright/test';
 import { snapshot, style } from './fixtures';
 import { mapHandle, mapState, ready } from '../helpers/map';
 
+test.beforeEach(async ({ page }) => {
+  await page.route('**/api/community/reports*', route => route.fulfill({ json: { reports: [], nextCursor: null } }));
+});
+
 async function prepare(page: Page, data: unknown = snapshot) {
   await page.route('**/api/public-reports', route => route.fulfill({ json: data }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
   await page.goto('/');
   await expect(page.getByRole('heading', { name: '3 laporan', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Mode 3D', exact: true })).toBeVisible();
   await ready(page);
 }
 async function expand(page: Page) {
@@ -42,7 +47,7 @@ test('marker opens the matching report and a filter removes hidden selections', 
   await expect(page.locator('.lj-detail')).toHaveCount(0);
   await expect(page.locator('.lj-marker')).toHaveCount(0);
   await expand(page);
-  await expect(page.getByRole('heading', { name: 'Sumber kategori belum tersedia' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Belum ada laporan yang sesuai' })).toBeVisible();
 });
 
 test('search synchronizes the list and markers without inventing locations', async ({ page }) => {

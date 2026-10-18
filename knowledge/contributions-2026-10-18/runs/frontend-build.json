@@ -1,0 +1,12 @@
+[
+  {
+    "command": "node_modules/typescript/bin/tsc --noEmit",
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": "node_modules/vite/bin/vite.js build",
+    "exitCode": 0,
+    "output": "vite v5.4.21 building for production...\ntransforming...\n\u2713 1592 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.64 kB \u2502 gzip:   0.38 kB\ndist/assets/index-BLxnBkSw.css  119.58 kB \u2502 gzip:  20.08 kB\ndist/assets/index-XaUx036R.js   993.52 kB \u2502 gzip: 278.84 kB\n\u2713 built in 4.89s\n\n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "frontendHead": "b681a62",
+  "backendHead": "0dfba15",
+  "workingTrees": "clean",
+  "inspectionHashes": {
+    "LaporJalan/src/map/damageMaterial.ts": "31c01a729cab566508883550f7df1ecd2bc3c89230fbef4730b1d7bd5a699fbb",
+    "LaporJalan/src/map/closeZoomLabels.ts": "67e035aa5be6e68cdcdf2fdb5b4789456280b5c19d6782d6d2aa947bb7e5955a",
+    "LaporJalan/src/map/DamageLayer.ts": "4d6819b78a8c6d4de55400965025ae089c9d57f5abae170292f64e8f0c6c4bde",
+    "LaporJalan/src/map/dimensions.ts": "42118f40644b4a12bfbabeb22fc1dedc542d5d4accdb260c333f0f7111f6f225",
+    "LaporJalan/src/map/coordinates.ts": "0428420ec2098a881c2c6aaf709aa153794f728099f83baacb9bfc0da02d41aa",
+    "LaporJalan/src/map/damageGeometry.ts": "eaf07f8df2b9412dab0d24dab511319222a423ef9dec7a58211f3b1b2a0dff02",
+    "LaporJalan/src/map/camera.ts": "ce3abc659e563bf6b8347de7f865a72290eb18ef42a208b7b5a29e72fae9550b",
+    "LaporJalan/src/components/Map3D.tsx": "6e7a46bac01b9471053da69680a402ebd112f7ec66ca7d589e9b39b79754182a"
+  }
+}

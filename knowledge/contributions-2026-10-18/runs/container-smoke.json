@@ -1,0 +1,30 @@
+{
+  "/health": {
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "service": "laporjalan-be",
+      "uptime": 19.687170265,
+      "timestamp": "2026-10-17T21:21:39.342Z",
+      "mode": "public-reports",
+      "community": true,
+      "database": "connected"
+    }
+  },
+  "/api/community/reports": {
+    "status": 200,
+    "body": {
+      "reports": [],
+      "nextCursor": null
+    }
+  },
+  "/api/reports": {
+    "status": 404
+  },
+  "email-without-config": {
+    "status": 503,
+    "body": {
+      "message": "Layanan email belum dikonfigurasi."
+    }
+  }
+}

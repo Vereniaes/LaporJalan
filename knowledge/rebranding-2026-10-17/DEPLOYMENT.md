@@ -1,5 +1,7 @@
 # Deploy peta publik LaporJalan
 
+Pembaruan 18 Oktober 2026: untuk Tambah laporan dan pembaruan warga, ikuti [panduan kontribusi](../contributions-2026-10-18/DEPLOYMENT.md). Rilis tersebut menambahkan MongoDB dan layanan email; panduan di bawah menyimpan konfigurasi pembaca CRM sebelumnya.
+
 Panduan ini untuk implementasi peta/daftar CRM pada 17 Oktober 2026. Frontend dan backend sudah diubah secara lokal. Belum ada commit, push, deployment, atau perubahan pengaturan akun cloud.
 
 ## Variabel yang diperlukan

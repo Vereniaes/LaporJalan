@@ -10,8 +10,13 @@ export interface PublicReport {
   code: string;
   lng: number;
   lat: number;
-  category: 'road';
-  sourceCategory: 'Jalan';
+  category: ReportCategory;
+  sourceCategory: string;
+  origin?: 'community';
+  title?: string;
+  description?: string;
+  address?: string;
+  media?: { id: string; mime: string; size: number }[];
   createdAt: string;
   sourceStatus: string | null;
 }
@@ -21,7 +26,7 @@ export interface PublicReportsSnapshot {
 }
 export type MapArea = { west: number; south: number; east: number; north: number };
 export const SOURCE_URL = 'https://crm.jakarta.go.id/peta/';
-const API_BASE = (import.meta.env?.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '');
+export const API_BASE = (import.meta.env?.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '');
 
 const object = (value: unknown): Record<string, unknown> =>
   value !== null && typeof value === 'object' ? value as Record<string, unknown> : {};
@@ -62,7 +67,7 @@ export async function fetchPublicReports(signal: AbortSignal): Promise<PublicRep
 export function filterReports(reports: PublicReport[], category: ReportCategory | 'all', query: string, area: MapArea | null) {
   const term = query.trim().toLocaleLowerCase('id');
   return reports.filter(report => (category === 'all' || report.category === category) &&
-    `${report.code} ${report.sourceCategory} ${report.sourceStatus ?? ''}`.toLocaleLowerCase('id').includes(term) &&
+    `${report.code} ${report.title ?? ''} ${report.address ?? ''} ${report.sourceCategory} ${report.sourceStatus ?? ''}`.toLocaleLowerCase('id').includes(term) &&
     (!area || (report.lng >= area.west && report.lng <= area.east && report.lat >= area.south && report.lat <= area.north)));
 }
 

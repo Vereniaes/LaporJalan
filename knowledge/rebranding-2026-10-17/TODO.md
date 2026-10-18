@@ -158,3 +158,7 @@ Bukti: [hasil pemeriksaan](IMPLEMENTATION-RESULTS.md), [panduan deploy](DEPLOYME
 - [ ] Pemilik meninjau staged diff lalu melakukan commit/push bila sesuai.
 
 Rincian: [pembersihan tracking](GIT-ARTIFACT-CLEANUP.md). Pekerjaan ini tidak mengubah peta 2D/3D atau geometri inspeksi.
+
+## Perubahan lingkup 18 Oktober 2026
+
+Pengguna meminta Tambah laporan serta riwayat, memilih laporan warga LaporJalan dan autentikasi tautan email. Fitur kontribusi dilanjutkan pada [rencana kontribusi](../contributions-2026-10-18/PLAN.md). Konfigurasi tahap baru berada pada [panduan aktivasi](../contributions-2026-10-18/DEPLOYMENT.md); pernyataan tidak membutuhkan database/email pada rilis pembaca 17 Oktober tidak berlaku untuk kontribusi.

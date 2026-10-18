@@ -7,6 +7,7 @@ import maplibregl, { Map as LibreMap, Marker } from 'maplibre-gl';
 import { LocateFixed, Minus, Plus } from 'lucide-react';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapArea, PublicReport } from './data';
+import type { ReportLocation } from './NewReport';
 import { cameraPose, NavigationMode } from '../map/camera';
 
 interface Props {
@@ -14,17 +15,22 @@ interface Props {
   selected: PublicReport | null;
   onSelect: (report: PublicReport) => void;
   onArea: (area: MapArea) => void;
+  picking?: boolean;
+  selectionLocked?: boolean;
+  draftLocation?: ReportLocation | null;
+  onLocation?: (location: ReportLocation) => void;
 }
 const duration = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350;
 
-export function PublicMap({ reports, selected, onSelect, onArea }: Props) {
+export function PublicMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<LibreMap>();
   const markers = useRef<Marker[]>([]);
+  const draftMarker = useRef<Marker>();
   const [mode, setMode] = useState<NavigationMode>('2d');
   const appliedMode = useRef<NavigationMode>('2d');
-  const props = useRef({ reports, selected, onSelect, mode });
-  props.current = { reports, selected, onSelect, mode };
+  const props = useRef({ reports, selected, onSelect, mode, picking, onLocation, selectionLocked });
+  props.current = { reports, selected, onSelect, mode, picking, onLocation, selectionLocked };
   const previousView = useRef<{ center: [number, number]; zoom: number }>();
   const fitted = useRef(false);
   const [ready, setReady] = useState(false);
@@ -54,7 +60,12 @@ export function PublicMap({ reports, selected, onSelect, onArea }: Props) {
       button.type = 'button';
       button.className = `lj-marker${isGroup ? ' is-cluster' : ''}${active?.id === row.id ? ' is-selected' : ''}`;
       button.dataset.reportIds = group.map(item => item.id).join(',');
-      button.innerHTML = isGroup ? `<span>${group.length}</span>` : '<span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4-2 16M16 4l2 16M12 5v3m0 3v3m0 3v2"/></svg></span>';
+      const paths = { road: 'm8 4-2 16M16 4l2 16M12 5v3m0 3v3m0 3v2',
+        construction: 'M4 8h16v7H4zM7 15v5m10-5v5M7 8l5 7m1-7 5 7',
+        drain: 'M3 7c3-4 6 4 9 0s6 4 9 0M3 12c3-4 6 4 9 0s6 4 9 0M3 17c3-4 6 4 9 0s6 4 9 0',
+        burning: 'M12 3c1 5 7 5 7 11a7 7 0 0 1-14 0c0-3 2-5 4-7 0 3 1 4 3 5 2-3 1-6 0-9Z' };
+      button.innerHTML = isGroup ? `<span>${group.length}</span>` : `<span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${paths[row.category] ?? paths.road}"/></svg></span>`;
+      button.disabled = props.current.picking || props.current.selectionLocked;
       button.onclick = () => {
         if (isGroup) instance.easeTo({ center: [row.lng, row.lat], zoom: Math.min(instance.getZoom() + 2, 19), duration: duration() });
         else props.current.onSelect(row);
@@ -107,6 +118,7 @@ export function PublicMap({ reports, selected, onSelect, onArea }: Props) {
       }
       setReady(true); setFailed(false); drawMarkers();
     });
+    instance.on('click', event => { if (props.current.picking) props.current.onLocation?.({ lng: event.lngLat.lng, lat: event.lngLat.lat }); });
     instance.on('error', () => setFailed(true));
     instance.on('moveend', () => { drawMarkers(); setMoved(true); });
     const observer = new ResizeObserver(() => {
@@ -122,6 +134,8 @@ export function PublicMap({ reports, selected, onSelect, onArea }: Props) {
       observer.disconnect();
       markers.current.forEach(marker => marker.remove());
       markers.current = [];
+      draftMarker.current?.remove();
+      draftMarker.current = undefined;
       instance.remove();
       map.current = undefined;
     };
@@ -131,7 +145,17 @@ export function PublicMap({ reports, selected, onSelect, onArea }: Props) {
     if (!ready) return;
     if (reports.length && !fitted.current) { fitted.current = true; fitReports(); }
     drawMarkers();
-  }, [reports, ready]);
+  }, [reports, ready, picking, selectionLocked]);
+
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance || !ready) return;
+    instance.getCanvas().style.cursor = picking ? 'crosshair' : '';
+    if (!draftLocation) { draftMarker.current?.remove(); draftMarker.current = undefined; return; }
+    if (!draftMarker.current) draftMarker.current = new maplibregl.Marker({ color: '#b65d24' }).setLngLat([draftLocation.lng, draftLocation.lat]).addTo(instance);
+    draftMarker.current.setLngLat([draftLocation.lng, draftLocation.lat]);
+    instance.easeTo({ center: [draftLocation.lng, draftLocation.lat], duration: duration() });
+  }, [draftLocation, picking, ready]);
 
   useEffect(() => {
     const instance = map.current;
@@ -177,7 +201,7 @@ export function PublicMap({ reports, selected, onSelect, onArea }: Props) {
     {failed && <div className="lj-map-notice" role="status">Peta belum tersedia sepenuhnya. Daftar laporan tetap dapat digunakan.</div>}
     {!failed && !ready && <div className="lj-map-notice" role="status">Memuat peta…</div>}
     {ready && <>
-      {moved && !selected && <button className="lj-area-button" onClick={() => {
+      {moved && !selected && !picking && !selectionLocked && <button className="lj-area-button" onClick={() => {
         const bounds = map.current!.getBounds();
         onArea({ west: bounds.getWest(), south: bounds.getSouth(), east: bounds.getEast(), north: bounds.getNorth() });
         setMoved(false);
@@ -191,7 +215,7 @@ export function PublicMap({ reports, selected, onSelect, onArea }: Props) {
         <button aria-label="Perkecil peta" onClick={() => map.current?.zoomOut({ duration: duration() })}><Minus size={20} /></button>
         <button aria-label="Tampilkan semua hasil pada peta" disabled={!reports.length} onClick={fitReports}><LocateFixed size={20} /></button>
       </div>
-      <div className="lj-map-key"><span className="lj-key-dot" /> {mode === '3d' ? '3D · tinggi bangunan menurut sumber peta' : 'Laporan kategori Jalan'}</div>
+      <div className="lj-map-key"><span className="lj-key-dot" /> {mode === '3d' ? '3D · tinggi bangunan menurut sumber peta' : picking ? 'Klik peta untuk lokasi laporan' : 'Laporan publik'}</div>
     </>}
   </section>;
 }
