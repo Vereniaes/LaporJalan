@@ -7,7 +7,8 @@ export default defineConfig({
   outputDir: `${output}/artifacts`,
   reporter: [['list'], ['json', { outputFile: `${output}/results.json` }]],
   use: {
-    baseURL: 'http://127.0.0.1:3002', locale: 'id-ID', timezoneId: 'Asia/Jakarta',
+    baseURL: 'http://127.0.0.1:3002', storageState: { cookies: [], origins: [{ origin: 'http://127.0.0.1:3002', localStorage: [{ name: 'lj-map-mode', value: 'penuh' }] }] }, // full map: headless WebGL is software, which the app would treat as a weak device
+    locale: 'id-ID', timezoneId: 'Asia/Jakarta',
     deviceScaleFactor: 1, trace: 'on', screenshot: 'only-on-failure',
     launchOptions: { args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] },
   },

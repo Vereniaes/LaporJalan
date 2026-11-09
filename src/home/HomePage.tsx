@@ -8,8 +8,9 @@
     -> live data only from the public reports API, never naming the source; nothing shown when it fails
     -> row pictures are samples built from the app's own classes (owner choice, 9 Nov)
 -> signature move: at Laporkan the pin drops onto the road and the reported stretch is drawn (once)
+-> weak devices (saver mode or no WebGL): the hero shows a still of the map first; the live map loads on request (owner choice, 10 Nov)
 */
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { motion, MotionConfig, useReducedMotion, useScroll, useTransform, type Variants } from 'motion/react';
 import { ArrowRight, ChevronDown, Construction, Route, Search } from 'lucide-react';
 import { PublicMap } from '../public-reports/PublicMap';
@@ -19,6 +20,7 @@ import { CONDITION_LABELS } from '../public-reports/condition';
 import { swatchStyle } from '../public-reports/conditionFeatures';
 import { reportDate, type PublicReport } from '../public-reports/data';
 import { SiteFooter, SiteHeader } from './SiteChrome';
+import { useMapMode } from '../map/capability';
 import '../public-reports/public-reports.css';
 import '../public-reports/community.css';
 import './home.css';
@@ -117,6 +119,8 @@ export default function HomePage() {
     return counts;
   }, {})).sort((a, b) => b[1] - a[1]);
   const latest = reports.slice(0, 2);
+  const { tier } = useMapMode(), [liveMap, setLiveMap] = useState(false);
+  const showMap = tier === 'full' || liveMap;
   useEffect(() => { document.title = 'LaporJalan - Tandai jalan rusak, pengendara berikutnya ikut tahu'; }, []);
   const enter = (delay: number, y = 12) => ({ initial: { opacity: 0, y }, animate: { opacity: 1, y: 0 }, transition: { duration: .7, ease: EASE_OUT, delay } });
 
@@ -145,7 +149,12 @@ export default function HomePage() {
         </motion.div>
         <motion.div className="hero-app" {...enter(.32, 24)}>
           <div className="app-frame">
-            <PublicMap reports={reports} selected={null} onSelect={openReport} onArea={() => {}} cooperative minimal />
+            {showMap ? <PublicMap reports={reports} selected={null} onSelect={openReport} onArea={() => {}} cooperative minimal />
+              : <div className="map-still">
+                <img src="/home/peta-statis-1200.webp" srcSet="/home/peta-statis-640.webp 640w, /home/peta-statis-1200.webp 1200w" sizes="(min-width: 1248px) 1200px, 100vw"
+                  width="1200" height="621" alt="Cuplikan peta laporan jalan di Jakarta" decoding="async" />
+                <div className="map-still-bar"><span>Perangkat ini memakai mode hemat.</span><button className="btn btn-quiet" onClick={() => setLiveMap(true)}>Muat peta interaktif</button></div>
+              </div>}
           </div>
           <img className="hero-miko" src="/home/miko/point-512.webp" srcSet="/home/miko/point-512.webp 512w, /home/miko/point-1024.webp 1024w" sizes="(min-width: 700px) 150px, 96px" width="512" height="512" alt="" decoding="async" />
         </motion.div>

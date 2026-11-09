@@ -190,7 +190,9 @@ export function PublicReportsPage() {
     <main className="lj-workspace">
       <PublicMap reports={filtered} selected={composing ? null : selected} onSelect={select} onArea={setArea} selectionLocked={pendingUpdate || composing} picking={picking && !drawing} draftLocation={draftLocation} onLocation={setDraftLocation}
         drawing={drawing ? { id: drawing.id, mode: drawing.mode } : null} onDrawingComplete={finishDrawing} onDrawingCancel={cancelDrawing} draftGeometry={draftGeometry}
-        inspecting={Boolean(inspectingId && inspectingId === selectedId)} onExitInspection={() => setInspectingId(null)} onHover={setHovered}
+        inspecting={Boolean(inspectingId && inspectingId === selectedId)} onExitInspection={() => setInspectingId(null)}
+        // Why/Note: a pin or row only clears its own preview (a pin losing focus to the card must not erase the row now hovered)
+        onHover={(report, leaving) => setHovered(current => report ?? (leaving && current?.id !== leaving.id ? current : null))}
         popups={cards.map(card => ({ report: card, pinned: card === selected, content: <ReportPopup report={card} pinned={card === selected} user={session.user} onClose={closeDetail}
           onInspect={card === selected && card.condition ? () => { setDrawing(null); setInspectingId(card.id); } : undefined} /> }))} />
       <section id="report-panel" ref={panel} className="lj-panel" aria-label="Laporan publik" tabIndex={-1}>
@@ -240,7 +242,7 @@ export function PublicReportsPage() {
           {area && <div className="lj-area-filter">Area peta dipilih<button onClick={() => setArea(null)}><X size={14} /> Hapus area</button></div>}
         <div ref={reportList} className="lj-report-list" aria-label="Daftar laporan">
             {filtered.map(report => <button key={report.id} className={`lj-report-row${report.id === selectedId ? ' is-selected' : ''}`} data-report-id={report.id} aria-pressed={report.id === selectedId} onClick={() => select(report)}
-              onMouseEnter={() => { if (previewable()) setHovered(report); }} onMouseLeave={() => setHovered(null)}>
+              onMouseEnter={() => { if (previewable()) setHovered(report); }} onMouseLeave={() => setHovered(current => current?.id === report.id ? null : current)}>
               <span className="lj-thumbnail" aria-hidden="true">{report.origin === 'community' && (!(report as CitizenReport).visibility || (report as CitizenReport).visibility === 'public') && report.media?.[0]?.mime.startsWith('image/')
                 ? <img src={mediaUrl(report.id, report.media[0].id)} alt="" loading="lazy" /> : <><Route size={25} /><small>{report.media?.length ? 'Video' : 'Tanpa foto'}</small></>}</span>
               <span className="lj-row-copy"><span className="lj-row-meta">{CATEGORY_LABELS[report.category].toUpperCase()} <time dateTime={report.createdAt}>{reportDate(report.createdAt)}</time></span>

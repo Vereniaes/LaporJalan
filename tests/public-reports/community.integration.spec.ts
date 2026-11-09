@@ -501,6 +501,29 @@ test('masuk: a wrong password keeps the form, the right one goes on to lanjut; t
 });
 // --- end of account pages ---
 
+// --- sign-up and sign-in from an address other than APP_ORIGIN (owner report, 10 Nov: "login sama regis gak bisa") ---
+test('daftar, keluar, lalu masuk work from another local address than APP_ORIGIN', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'One address check is enough');
+  await isolatedPublicData(page);
+  const base = 'http://localhost:3005'; // APP_ORIGIN in this suite is http://127.0.0.1:3005
+  const email = `alamat-${randomUUID()}@example.test`;
+  await page.goto(`${base}/daftar`);
+  await expect(page.locator('.lj-community-warning')).toHaveCount(0); // the server accepts this address
+  await page.getByLabel('Email', { exact: true }).fill(email);
+  await page.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
+  await page.getByRole('button', { name: 'Daftar', exact: true }).click();
+  await expect(page).toHaveURL(/\/akun$/);
+  await page.getByRole('button', { name: 'Keluar', exact: true }).click();
+  await expect(page).toHaveURL(new RegExp(`^${base}/?$`));
+  await page.goto(`${base}/masuk`);
+  await page.getByLabel('Email', { exact: true }).fill(email);
+  await page.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
+  await page.getByRole('button', { name: 'Masuk', exact: true }).click();
+  await expect(page).toHaveURL(/\/akun$/);
+  await expect(page.locator('.account-email')).toContainText(email);
+});
+// --- end of sign-up and sign-in from another address ---
+
 // --- admin handling (owner choice, 10 Nov) ---
 test('an admin handles an imported report: status, unit and moderation reach the public card', async ({ page }, info) => {
   test.setTimeout(90_000);

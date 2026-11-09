@@ -19,9 +19,9 @@ export interface CitizenReport extends PublicReport {
 export interface User { id: string; email: string; displayName?: string; role?: 'admin' }
 const EMPTY_REPORTS: CitizenReport[] = [];
 export type LoginIntent = 'new' | 'mine' | string;
-export interface Capabilities { reports: boolean; write: boolean; login: boolean; emailLink?: boolean; reason: 'disabled' | 'storage_unavailable' | 'email_unconfigured' | 'origin_unconfigured' | null; analysis?: { available: boolean; reason: string | null } }
+export interface Capabilities { reports: boolean; write: boolean; login: boolean; emailLink?: boolean; reason: 'disabled' | 'storage_unavailable' | 'email_unconfigured' | 'origin_unconfigured' | 'origin_not_allowed' | null; analysis?: { available: boolean; reason: string | null } }
 export const isReportId = (value: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
-export const capabilityMessage = (capabilities: Capabilities | null) => !capabilities ? 'Kesiapan laporan warga belum dapat diperiksa.' : capabilities.reason ? { disabled: 'Laporan warga belum diaktifkan.', storage_unavailable: 'Penyimpanan laporan warga belum tersedia.', email_unconfigured: 'Masuk melalui email belum tersedia.', origin_unconfigured: 'Pengiriman laporan belum tersedia.' }[capabilities.reason] : '';
+export const capabilityMessage = (capabilities: Capabilities | null) => !capabilities ? 'Kesiapan laporan warga belum dapat diperiksa.' : capabilities.reason ? { disabled: 'Laporan warga belum diaktifkan.', storage_unavailable: 'Penyimpanan laporan warga belum tersedia.', email_unconfigured: 'Masuk melalui email belum tersedia.', origin_unconfigured: 'Pengiriman laporan belum tersedia.', origin_not_allowed: 'Alamat halaman ini belum diizinkan server untuk masuk, daftar, dan melapor. Buka LaporJalan lewat alamat resminya.' }[capabilities.reason] : '';
 let token = '';
 try { token = sessionStorage.getItem('lj-session') ?? ''; } catch { /* Session can stay in memory when storage is unavailable. */ }
 export class ApiError extends Error { constructor(public status: number, message: string) { super(message); } }

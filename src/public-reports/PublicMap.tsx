@@ -1,24 +1,28 @@
 /* Keep public report points and the list on the same 2D map.
 Todo:
 -> group nearby points and restore the view after closing a report
+-> fit the device (owner choice, 10 Nov): saver mode on weak or software-rendered graphics, a raster map without WebGL
 */
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import maplibregl, { Map as LibreMap, Marker, type GeoJSONSource } from 'maplibre-gl';
-import { LocateFixed, Minus, Plus } from 'lucide-react';
+import { Gauge, LocateFixed, Minus, Plus } from 'lucide-react';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapArea, PublicReport } from './data';
 import type { ReportLocation } from './NewReport';
 import { cameraPose, type CameraMode } from '../map/camera';
 import { manageCloseZoomLabels } from '../map/closeZoomLabels';
-import { addConditionLayers, conditionFootprints, conditionGlyph, emptyFeatures, geometryBounds, selectedConditionFilter } from './conditionFeatures';
+import { addConditionLayers, conditionFootprints, emptyFeatures, geometryBounds, selectedConditionFilter } from './conditionFeatures';
+import { groupReports, pinButton } from '../map/markers';
+import { markWebglBroken, mapTier, reportSlowMap, setSaverMode, strongDevice, useMapMode } from '../map/capability';
+import { LiteMap } from './LiteMap';
 import { ConditionLegend } from './ConditionLegend';
 import { conditionLabel, closureNeedsUpdate, type ConditionGeometry } from './condition';
 import { MapSketch, type DrawingRequest } from './MapSketch';
 import { configurePublicCamera, publicCameraSnapshot, usePublicInspection, PUBLIC_MAP_STYLE } from './usePublicInspection';
 import './map-inspection.css';
 
-interface Props {
+export interface MapProps {
   reports: PublicReport[];
   selected: PublicReport | null;
   onSelect: (report: PublicReport) => void;
@@ -36,9 +40,10 @@ interface Props {
   cooperative?: boolean; // landing hero: page scroll stays with the page; pan with two fingers or Ctrl+scroll
   minimal?: boolean;     // landing hero: no tools, area search, key or legend
   popups?: { report: PublicReport; pinned: boolean; content: ReactNode }[]; // report cards on their pins: the pinned one and a hover preview
-  onHover?: (report: PublicReport | null) => void; // pointer or keyboard focus on a single pin
+  onHover?: (report: PublicReport | null, leaving?: PublicReport) => void; // pointer or keyboard focus on a single pin; leaving names the pin that let go
 }
-const duration = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350;
+// saver mode moves the camera at once, like reduced motion
+const duration = () => matchMedia('(prefers-reduced-motion: reduce)').matches || mapTier() !== 'full' ? 0 : 350;
 const GESTURE_TEXT = {
   'CooperativeGesturesHandler.WindowsHelpText': 'Tekan Ctrl sambil scroll untuk memperbesar peta',
   'CooperativeGesturesHandler.MacHelpText': 'Tekan ⌘ sambil scroll untuk memperbesar peta',
@@ -73,7 +78,16 @@ function frameSelection(map: LibreMap, report: PublicReport, mode: CameraMode, a
   } else map.easeTo({ center: [report.lng, report.lat], offset: [-card / 2, 0], zoom: Math.max(map.getZoom(), geometry ? 18.8 : mode === '3d' ? 15.5 : 15), ...pose, duration: ms });
 }
 
-export function PublicMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingComplete, onDrawingCancel, draftGeometry, inspecting=false, onExitInspection, cooperative = false, minimal = false, popups = [], onHover }: Props) {
+// --- device choice: WebGL map (full or saver) or the raster map ---
+// Why/Note: saver mode is set when the map is created (pixel ratio), so a change of tier remounts the WebGL map
+export function PublicMap(props: MapProps) {
+  const { tier, auto } = useMapMode();
+  if (tier === 'none') return <LiteMap {...props} />;
+  return <GlMap key={tier} {...props} saver={tier === 'lite'} autoSaver={auto} />;
+}
+// --- end of device choice ---
+
+function GlMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingComplete, onDrawingCancel, draftGeometry, inspecting=false, onExitInspection, cooperative = false, minimal = false, popups = [], onHover, saver, autoSaver }: MapProps & { saver: boolean; autoSaver: boolean }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<LibreMap>();
   const markers = useRef<Marker[]>([]);
@@ -98,35 +112,12 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
     if (!instance) return;
     markers.current.forEach(marker => marker.remove());
     if(props.current.mode==='inspect' || props.current.drawing){markers.current=[];return;}
-    // Why/Note: grouped by distance, not 52 px grid cells - pins in neighbouring cells could sit 1 px apart
-    //           and their 44 px buttons overlapped (target size). Rule: closer than 44 px on both axes -> join the nearest group
-    const groups: { x: number; y: number; selected: boolean; members: PublicReport[] }[] = [];
-    const { reports: rows, selected: active } = props.current;
-    for (const row of rows) {
-      const point = instance.project([row.lng, row.lat]);
-      if (point.x < -44 || point.y < -44 || point.x > instance.getContainer().clientWidth + 44 ||
-        point.y > instance.getContainer().clientHeight + 44) continue;
-      const selected = active?.id === row.id;
-      let near: typeof groups[number] | undefined, best = 44;
-      if (!selected) for (const group of groups) {
-        const gap = Math.max(Math.abs(group.x - point.x), Math.abs(group.y - point.y));
-        if (!group.selected && gap < best) { best = gap; near = group; }
-      }
-      if (near) near.members.push(row); else groups.push({ x: point.x, y: point.y, selected, members: [row] });
-    }
+    const { reports: rows, selected: active } = props.current, size = instance.getContainer();
+    const groups = groupReports(rows, row => instance.project([row.lng, row.lat]), size.clientWidth, size.clientHeight, active?.id ?? null);
     markers.current = groups.map(({ members: group }) => {
       const row = group[0];
       const isGroup = group.length > 1;
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = `lj-marker${isGroup ? ' is-cluster' : ''}${active?.id === row.id ? ' is-selected' : ''}`;
-      button.dataset.reportIds = group.map(item => item.id).join(',');
-      const paths = { road: 'm8 4-2 16M16 4l2 16M12 5v3m0 3v3m0 3v2',
-        construction: 'M4 8h16v7H4zM7 15v5m10-5v5M7 8l5 7m1-7 5 7',
-        drain: 'M3 7c3-4 6 4 9 0s6 4 9 0M3 12c3-4 6 4 9 0s6 4 9 0M3 17c3-4 6 4 9 0s6 4 9 0',
-        burning: 'M12 3c1 5 7 5 7 11a7 7 0 0 1-14 0c0-3 2-5 4-7 0 3 1 4 3 5 2-3 1-6 0-9Z' };
-      button.innerHTML = isGroup ? `<span>${group.length}</span>` : `<span><svg viewBox="0 0 24 24" aria-hidden="true">${(row.condition && conditionGlyph(row.condition.kind)) ?? `<path d="${paths[row.category] ?? paths.road}"/>`}</svg></span>`;
-      button.disabled = props.current.picking || props.current.selectionLocked;
+      const button = pinButton(group, active?.id === row.id, props.current.picking || props.current.selectionLocked);
       button.onclick = () => {
         if (isGroup) instance.easeTo({ center: [row.lng, row.lat], zoom: Math.min(instance.getZoom() + 2, 19), duration: duration() });
         else props.current.onSelect(row);
@@ -134,16 +125,35 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
       // preview a single report on hover (fine pointers only) or keyboard focus; groups only zoom
       if (!isGroup) {
         const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
-        if (fine) { button.onmouseenter = () => props.current.onHover?.(row); button.onmouseleave = () => props.current.onHover?.(null); }
+        if (fine) { button.onmouseenter = () => props.current.onHover?.(row); button.onmouseleave = () => props.current.onHover?.(null, row); }
         button.onfocus = () => { if (button.matches(':focus-visible')) props.current.onHover?.(row); };
-        button.onblur = () => props.current.onHover?.(null);
+        button.onblur = () => props.current.onHover?.(null, row);
       }
+      // Why/Note: MapLibre labels its marker element "Map marker" when it wraps it; put our label back afterwards
+      const label = button.getAttribute('aria-label')!;
       const marker = new maplibregl.Marker({ element: button }).setLngLat([row.lng, row.lat]).addTo(instance);
-      button.setAttribute('aria-label', isGroup ? `Perbesar ${group.length} laporan` : `Buka laporan ${row.code}`);
+      button.setAttribute('aria-label', label);
       return marker;
     });
   }
   // end of helper ---------------------------------------------------------------------------------------
+
+  // --- frame watch (full mode chosen automatically) ---
+  // Why/Note: the probe cannot see a slow-but-hardware GPU (e.g. an old laptop on an unsupported OS);
+  //           time the first second of frames while the map draws, and drop to saver mode below ~25 fps
+  function watchFrames() {
+    const times: number[] = [];
+    let last = performance.now(), frame = 0;
+    const step = (now: number) => {
+      times.push(now - last); last = now;
+      if (times.length < 60 && map.current) { frame = requestAnimationFrame(step); return; }
+      const median = [...times].sort((a, b) => a - b)[Math.floor(times.length / 2)];
+      if (map.current && document.visibilityState === 'visible' && median > 40) reportSlowMap();
+    };
+    map.current?.once('idle', () => { last = performance.now(); frame = requestAnimationFrame(step); });
+    return () => cancelAnimationFrame(frame);
+  }
+  // --- end of frame watch ---
 
   function fitReports() {
     const instance = map.current;
@@ -161,9 +171,14 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
     try {
       instance = new maplibregl.Map({ container: container.current, style: PUBLIC_MAP_STYLE,
         center: [106.8456, -6.2088], zoom: 11, pitch: 0, bearing: 0, maxPitch: 0, maxZoom: 19,
-        dragRotate: false, pitchWithRotate: false, touchPitch: false, attributionControl: false, cooperativeGestures: cooperative, locale: GESTURE_TEXT });
+        dragRotate: false, pitchWithRotate: false, touchPitch: false, attributionControl: false, cooperativeGestures: cooperative, locale: GESTURE_TEXT,
+        // saver mode: 1x pixels (a third of the work on a Retina screen), no tile fade, a smaller tile cache
+        ...(saver ? { pixelRatio: 1, fadeDuration: 0, maxTileCacheSize: 60 } : {}),
+        // high-end: smooth edges on 3D buildings and the 3D illustration
+        ...(!saver && strongDevice() ? { antialias: true } : {}) });
     } catch {
-      setFailed(true);
+      // the probe said WebGL works but the map could not start it: use the raster map instead
+      markWebglBroken();
       return;
     }
     map.current = instance;
@@ -173,7 +188,7 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
     const timeout = window.setTimeout(() => { if (!disposed && !instance.isStyleLoaded()) setFailed(true); }, 15_000);
     instance.on('style.load', () => {
       window.clearTimeout(timeout);
-      if (instance.getSource('openmaptiles') && !instance.getLayer('public-buildings-3d')) {
+      if (!saver && instance.getSource('openmaptiles') && !instance.getLayer('public-buildings-3d')) { // saver mode: no 3D buildings
         const label = instance.getStyle().layers.find(layer => layer.type === 'symbol')?.id;
         instance.addLayer({ id: 'public-buildings-3d', type: 'fill-extrusion', source: 'openmaptiles',
           'source-layer': 'building', minzoom: 14.5,
@@ -191,6 +206,7 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
       if(!instance.getLayer('condition-symbols-3d')) instance.addLayer({id:'condition-symbols-3d',type:'fill-extrusion',source:'condition-symbols',filter:['!',['has','pattern']],paint:{'fill-extrusion-color':['get','color'],'fill-extrusion-height':['get','height'],'fill-extrusion-opacity':1}},before);
       if(!instance.getLayer('condition-symbols-3d-pattern')) instance.addLayer({id:'condition-symbols-3d-pattern',type:'fill-extrusion',source:'condition-symbols',filter:['has','pattern'],paint:{'fill-extrusion-pattern':['get','pattern'],'fill-extrusion-height':['get','height'],'fill-extrusion-opacity':1}},before);
       setEpoch(value=>value+1);setReady(true); setFailed(false); drawMarkers();
+      if (!saver && autoSaver) watchFrames();
     });
     instance.on('click', event => { if (props.current.picking && !props.current.drawing) props.current.onLocation?.({ lng: event.lngLat.lng, lat: event.lngLat.lat }); });
     instance.on('error', () => setFailed(true));
@@ -287,13 +303,16 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
         setMoved(false);
       }}>Cari di area ini</button>}
       <div className="lj-map-tools" aria-label="Kontrol peta">
-        <button className="lj-mode-toggle" aria-label="Mode 3D" aria-pressed={mode !== '2d'}
+        {!saver && <button className="lj-mode-toggle" aria-label="Mode 3D" aria-pressed={mode !== '2d'}
           title={mode !== '2d' ? 'Kembali ke peta 2D' : 'Lihat peta 3D'} onClick={() => {if(mode==='inspect')inspection.exitTo2D();else setMode(current => current === '2d' ? '3d' : '2d');}}>
           {mode !== '2d' ? '2D' : '3D'}
-        </button>
+        </button>}
         <button aria-label="Perbesar peta" onClick={() => map.current?.zoomIn({ duration: duration() })}><Plus size={20} /></button>
         <button aria-label="Perkecil peta" onClick={() => map.current?.zoomOut({ duration: duration() })}><Minus size={20} /></button>
         <button aria-label="Tampilkan semua hasil pada peta" disabled={!reports.length || mode==='inspect' || Boolean(drawing)} onClick={fitReports}><LocateFixed size={20} /></button>
+        <button className="lj-saver-toggle" aria-label="Mode hemat" aria-pressed={saver} disabled={mode === 'inspect' || Boolean(drawing)}
+          title={saver ? `Mode hemat menyala${autoSaver ? ' otomatis (grafis perangkat terbatas)' : ''}. Klik untuk peta penuh dengan 3D.` : 'Mode hemat: peta lebih ringan tanpa 3D, untuk laptop lama'}
+          onClick={() => setSaverMode(!saver)}><Gauge size={20} /></button>
       </div>
       {inspection.active && selected?.condition && <div className="lj-inspection-controls" role="region" aria-label="Inspeksi kondisi">
         <strong>{conditionLabel(selected.condition)}</strong><p>{inspection.label}</p>
@@ -301,7 +320,7 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
         {closureNeedsUpdate(selected.condition) && <p>Perlu pembaruan · pengamatan lebih dari 24 jam.</p>}
         <div><button disabled={inspection.loading} onClick={inspection.rotate}>{matchMedia('(prefers-reduced-motion: reduce)').matches?'Putar 90°':inspection.orbiting?'Hentikan putaran':'Putar mengelilingi'}</button><button onClick={inspection.stop}>Keluar inspeksi</button></div>
       </div>}
-      <div className="lj-map-key"><span className="lj-key-dot" /> {mode === 'inspect' ? 'Ilustrasi kondisi menurut pelapor' : mode === '3d' ? '3D · tinggi bangunan menurut sumber peta' : picking ? 'Klik peta untuk lokasi laporan' : 'Laporan publik'}</div>
+      <div className="lj-map-key"><span className="lj-key-dot" /> {mode === 'inspect' ? 'Ilustrasi kondisi menurut pelapor' : mode === '3d' ? '3D · tinggi bangunan menurut sumber peta' : picking ? 'Klik peta untuk lokasi laporan' : saver ? 'Laporan publik · mode hemat' : 'Laporan publik'}</div>
       {!drawing && mode !== 'inspect' && reports.some(row => row.condition) && <ConditionLegend />}
     </>}
   </section>;

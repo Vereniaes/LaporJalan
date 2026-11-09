@@ -86,6 +86,12 @@ html:has(.home) { scroll-padding-top: 24px; }
 .home .hero-app { grid-column: 1 / -1; position: relative; }
 .home .app-frame { border-radius: 20px; overflow: hidden; background: var(--paper); box-shadow: 0 0 0 1px var(--line), 0 2px 4px rgb(29 32 35 / .04), 0 32px 64px -32px rgb(29 32 35 / .35); }
 .home .app-frame .lj-map { height: clamp(420px, 62vh, 640px); }
+/* saver mode: a still of the map with the way to the live one; same height, so nothing shifts when it loads */
+.home .map-still { position: relative; height: clamp(420px, 62vh, 640px); }
+.home .map-still img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.home .map-still-bar { position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 10px 10px 16px; border-radius: 16px; background: var(--paper); box-shadow: var(--card-shadow); font-size: .9375rem; }
+.home .map-still-bar .btn { background: var(--paper); }
 /* the one break: Miko stands on the map's top edge and points into it; never covers a control */
 .home .hero-miko { position: absolute; left: 44.5%; top: 0; width: min(150px, 15%); height: auto; translate: 0 -70%; pointer-events: none; }
 /* --- end of hero --- */
@@ -213,7 +219,7 @@ html:has(.home) { scroll-padding-top: 24px; }
   .home .step-node { width: 22px; height: 22px; }
   .home .step-node.is-pin { width: 40px; height: 40px; }
   .home .hero { padding-bottom: 40px; }
-  .home .app-frame .lj-map { height: 440px; }
+  .home .app-frame .lj-map, .home .map-still { height: 440px; }
   .home .hero-miko { left: auto; right: 12px; width: 96px; }
   .home .screen { min-height: 0; padding: 18px; }
   .home .step-miko { width: 100px; }

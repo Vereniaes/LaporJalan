@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
 import { api, CATEGORY_LABELS, mediaUrl, type CitizenReport, type User } from './community';
 import { closureNeedsUpdate, conditionLabel, conditionSize, useConditionClock } from './condition';
+import { useMapMode } from '../map/capability';
 import { fetchHandling, fetchReportDetail, reportDate, type PublicHandling, type PublicReport, type ReportDetail } from './data';
 
 // --- report popup ---
@@ -18,6 +19,7 @@ export function ReportPopup({ report, pinned, user, onClose, onInspect }: {
   report: PublicReport; pinned: boolean; user: User | null; onClose: () => void; onInspect?: () => void;
 }) {
   const heading = useRef<HTMLHeadingElement>(null);
+  const { tier } = useMapMode(); // the 3D illustration needs the full WebGL map
   const now = useConditionClock();
   const citizen = report as CitizenReport;
   const community = report.origin === 'community';
@@ -78,7 +80,7 @@ export function ReportPopup({ report, pinned, user, onClose, onInspect }: {
       {closureNeedsUpdate(report.condition, now) && <strong className="lj-stale-condition">Perlu pembaruan</strong>}</p>}
     {citizen.visibility === 'withdrawn' && <p className="lj-popup-note">Ditarik dari publik. Hanya pemilik yang melihat laporan ini.</p>}
     {pinned && <div className="lj-popup-actions">
-      {report.condition && onInspect && <button className="lj-secondary" onClick={onInspect}>Lihat ilustrasi 3D</button>}
+      {report.condition && onInspect && tier === 'full' && <button className="lj-secondary" onClick={onInspect}>Lihat ilustrasi 3D</button>}
       {owned && <a className="lj-secondary" href={`/akun?laporan=${encodeURIComponent(report.id)}`}>Kelola di akun</a>}
     </div>}
   </article>;
