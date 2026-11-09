@@ -3,6 +3,8 @@ Todo:
 -> keep desktop and mobile controls readable
 */
 :root { --lj-ink: var(--asphalt); --lj-muted: var(--muted); --lj-brand: var(--sign-green); --lj-line: var(--line); } /* map aliases; the landing's live map uses them too */
+/* radii by role, after transit.oyenza.com (measured 9 Nov): cards 20, controls/rows 14, chips 10; floating shadow is soft and short */
+:root { --lj-r-card: 20px; --lj-r-control: 14px; --lj-r-chip: 10px; --lj-float: 0 1px 2px rgb(16 24 40 / .06), 0 6px 16px -6px rgb(16 24 40 / .18); }
 .lj-app { color: var(--lj-ink); background: var(--concrete); height: 100dvh; display: flex; flex-direction: column; font: 16px/1.5 var(--font-sans); -webkit-font-smoothing: antialiased; }
 .lj-app button, .lj-app input { font: inherit; }
 .lj-app button, .lj-app a { -webkit-tap-highlight-color: transparent; }
@@ -17,14 +19,12 @@ Todo:
 .lj-brand small { display: block; color: var(--lj-muted); font-size: 12px; margin-top: 4px; }
 .lj-search { margin: 0 auto; width: min(420px, 40%); }
 .lj-search label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 3px; }
-.lj-search > div { display: flex; align-items: center; gap: 9px; background: var(--concrete); border: 1px solid var(--lj-line); border-radius: 7px; padding: 0 12px; }
+.lj-search > div { display: flex; align-items: center; gap: 9px; background: var(--concrete); border: 1px solid transparent; border-radius: var(--lj-r-control); padding: 0 14px; }
 .lj-search svg { color: var(--lj-muted); flex-shrink: 0; }
 .lj-search input { background: transparent; width: 100%; min-width: 0; min-height: 42px; border: 0; color: var(--lj-ink); font-size: 14px; }
 .lj-region { display: flex; align-items: center; gap: 6px; font-size: 14px; }
-.lj-source-link { min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 15px; border: 1px solid var(--lj-ink); border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--lj-ink); white-space: nowrap; }
 .lj-workspace { display: grid; grid-template-columns: 420px minmax(0, 1fr); min-height: 0; flex: 1; }
 .lj-panel { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; min-height: 0; overflow-y: auto; background: white; border-right: 1px solid var(--lj-line); z-index: 1; }
-.lj-panel:has(.lj-detail) .lj-panel-intro { display: none; }
 .lj-panel-toggle { display: none; }
 .lj-panel-intro { display: flex; align-items: center; flex-wrap: wrap; padding: 22px 24px 16px; gap: 5px; }
 .lj-eyebrow { font-size: 11px; letter-spacing: 1.5px; font-weight: 700; color: var(--lj-brand); margin: 0 0 4px; }
@@ -32,24 +32,26 @@ Todo:
 .lj-refresh { display: grid; place-items: center; margin-left: auto; width: 44px; height: 44px; border: 1px solid var(--lj-line); border-radius: 50%; color: var(--lj-brand); flex-shrink: 0; }
 .lj-intro-copy { font-size: 14px; color: var(--lj-muted); margin-top: 4px; }
 .lj-categories { display: flex; overflow-x: auto; gap: 7px; padding: 2px 24px 14px; flex-shrink: 0; border-bottom: 1px solid var(--lj-line); }
-.lj-categories button { display: flex; align-items: center; gap: 6px; border: 1px solid var(--lj-line); border-radius: 6px; padding: 0 11px; min-height: 44px; font-size: 13px; white-space: nowrap; color: var(--lj-muted); }
+.lj-categories button { display: flex; align-items: center; gap: 6px; border: 1px solid var(--lj-line); border-radius: 999px; padding: 0 11px; min-height: 44px; font-size: 13px; white-space: nowrap; color: var(--lj-muted); }
 .lj-categories button[aria-pressed=true] { background: var(--lj-brand); color: white; border-color: var(--lj-brand); }
 .lj-list-section { display: flex; flex-direction: column; min-height: 220px; flex: 1; }
 .lj-list-section[hidden] { display: none; }
 .lj-results-heading { display: flex; align-items: center; justify-content: space-between; padding: 17px 24px 12px; gap: 8px; flex-shrink: 0; }
 .lj-results-heading h2 { font-size: 15px; font-weight: 650; }
 .lj-results-heading > span { color: var(--lj-muted); font-size: 12px; white-space: nowrap; }
-.lj-report-list { flex: 1; overflow: auto; overscroll-behavior: contain; }
-.lj-report-row { display: flex; width: 100%; align-items: center; gap: 13px; text-align: left; padding: 18px 24px; border-top: 1px solid var(--lj-line); }
+.lj-report-list { flex: 1; overflow: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 8px; padding: 4px 16px 16px; }
+.lj-report-row { display: flex; width: 100%; align-items: center; gap: 13px; text-align: left; padding: 12px; border-radius: var(--lj-r-control); box-shadow: inset 0 0 0 1px var(--lj-line); flex-shrink: 0; }
+.lj-report-row.is-selected { box-shadow: inset 0 0 0 2px var(--lj-brand); background: color-mix(in oklch, var(--lj-brand) 6%, white); }
+@media (hover: hover) and (pointer: fine) { .lj-report-row:hover { background: var(--concrete); } }
 .lj-report-row:hover, .lj-report-row:focus-visible { background: var(--concrete); }
-.lj-thumbnail { width: 70px; height: 78px; background: var(--concrete); color: var(--lj-muted); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-direction: column; flex-shrink: 0; gap: 8px; }
+.lj-thumbnail { width: 70px; height: 78px; background: var(--concrete); color: var(--lj-muted); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-direction: column; flex-shrink: 0; gap: 8px; }
 .lj-thumbnail small { font-size: 10px; }
 .lj-row-copy { display: flex; flex-direction: column; min-width: 0; flex: 1; align-items: flex-start; }
 .lj-row-meta { display: flex; justify-content: space-between; gap: 8px; width: 100%; color: var(--lj-muted); font-size: 10px; letter-spacing: .4px; }
 .lj-row-meta time { letter-spacing: 0; font-size: 11px; }
 .lj-row-copy strong { font-size: 16px; letter-spacing: -.2px; overflow-wrap: anywhere; margin: 3px 0 1px; }
 .lj-row-source { font-size: 12px; color: var(--lj-muted); }
-.lj-status { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #cdded9; border-radius: 4px; background: #f1f6f3; color: #345647; font-size: 12px; padding: 3px 7px; margin-top: 9px; max-width: 100%; overflow-wrap: anywhere; }
+.lj-status { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #cdded9; border-radius: 8px; background: #f1f6f3; color: #345647; font-size: 12px; padding: 3px 7px; margin-top: 9px; max-width: 100%; overflow-wrap: anywhere; }
 .lj-status::before { content: ''; width: 5px; height: 5px; background: currentColor; border-radius: 50%; flex-shrink: 0; }
 .lj-row-arrow { color: var(--lj-muted); flex-shrink: 0; }
 .lj-source-footer { padding: 13px 24px; border-top: 1px solid var(--lj-line); font-size: 11px; color: var(--lj-muted); background: var(--concrete); flex-shrink: 0; }
@@ -74,34 +76,29 @@ Todo:
 .lj-detail-body { padding: 22px 24px 28px; }
 .lj-detail-body h2 { font-size: 24px; font-weight: 650; letter-spacing: -.7px; overflow-wrap: anywhere; }
 .lj-detail-date { color: var(--lj-muted); font-size: 13px; margin-top: 4px; }
-.lj-media-empty { min-height: 145px; padding: 20px; background: var(--concrete); border: 1px dashed color-mix(in oklch, var(--muted) 35%, transparent); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--lj-muted); gap: 6px; margin: 22px 0; font-size: 13px; }
+.lj-media-empty { min-height: 145px; padding: 20px; background: var(--concrete); border: 1px dashed color-mix(in oklch, var(--muted) 35%, transparent); border-radius: var(--lj-r-control); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--lj-muted); gap: 6px; margin: 22px 0; font-size: 13px; }
 .lj-media-empty strong { font-size: 14px; font-weight: 500; }
 .lj-facts > div { display: flex; gap: 12px; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--lj-line); font-size: 13px; }
 .lj-facts dt { color: var(--lj-muted); flex-shrink: 0; }
 .lj-facts dd { text-align: right; overflow-wrap: anywhere; }
 .lj-detail-note { font-size: 13px; color: var(--lj-muted); padding: 14px 0; }
-.lj-detail-source { border-top: 1px solid var(--lj-line); padding-top: 18px; font-size: 13px; color: var(--lj-muted); }
-.lj-detail-source h3 { color: var(--lj-ink); font-size: 15px; font-weight: 650; margin-bottom: 5px; }
-.lj-detail-source p + p { margin-top: 8px; }
-.lj-detail-source a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--lj-brand); text-decoration: underline; }
 .lj-map { grid-column: 2; grid-row: 1; position: relative; min-height: 0; min-width: 0; overflow: hidden; background: var(--concrete); }
 .lj-map-canvas { position: absolute; inset: 0; }
 .lj-map .maplibregl-ctrl-bottom-left, .lj-map .maplibregl-ctrl-bottom-right { bottom: 0; }
 .lj-map .maplibregl-canvas:focus-visible { outline: 3px solid var(--lj-brand); outline-offset: -4px; }
 .lj-map .maplibregl-ctrl-attrib-button { width: 44px; height: 44px; background-repeat: no-repeat; background-position: center; }
-.lj-map .maplibregl-ctrl-attrib { min-height: 44px; border-radius: 5px; font-size: 11px; max-width: calc(100vw - 30px); }
+.lj-map .maplibregl-ctrl-attrib { min-height: 44px; border-radius: 12px; font-size: 11px; max-width: calc(100vw - 30px); }
 .lj-map .maplibregl-ctrl-attrib.maplibregl-compact { padding: 0 44px 0 8px; }
 .lj-map .maplibregl-ctrl-attrib-inner { padding-top: 10px; }
-.lj-map-tools { position: absolute; right: 18px; top: 18px; display: flex; flex-direction: column; border: 1px solid var(--lj-line); border-radius: 7px; overflow: hidden; background: white; box-shadow: 0 2px 6px #142b3a0d; }
-.lj-map-tools button { display: grid; place-items: center; width: 44px; height: 44px; color: var(--lj-ink); }
-.lj-map-tools button + button { border-top: 1px solid var(--lj-line); }
+.lj-map-tools { position: absolute; right: 18px; top: 18px; display: flex; flex-direction: column; gap: 8px; border: 0; border-radius: 0; overflow: visible; background: white; box-shadow: 0 2px 6px #142b3a0d; }
+.lj-map-tools button { display: grid; place-items: center; width: 44px; height: 44px; color: var(--lj-ink); background: var(--paper); border-radius: 50%; box-shadow: var(--lj-float); }
 .lj-map-tools button:not([aria-pressed=true]):hover { background: var(--concrete); }
 .lj-map-tools .lj-mode-toggle { font-size: 13px; font-weight: 700; color: var(--lj-ink); }
 .lj-mode-toggle[aria-pressed=true] { background: var(--lj-ink); color: var(--paper); }
-.lj-map-key { position: absolute; bottom: 18px; left: 18px; padding: 9px 12px; background: #fffffff0; border: 1px solid var(--lj-line); border-radius: 5px; font-size: 12px; display: flex; align-items: center; gap: 7px; pointer-events: none; }
+.lj-map-key { position: absolute; bottom: 18px; left: 18px; padding: 9px 12px; background: #fffffff0; border: 1px solid var(--lj-line); border-radius: 12px; font-size: 12px; display: flex; align-items: center; gap: 7px; pointer-events: none; }
 .lj-key-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lj-ink); }
 /* --- condition legend (bottom-left of the map, grows upward) --- */
-.lj-legend { position: absolute; left: 18px; bottom: 62px; z-index: 1; width: 240px; max-height: calc(100% - 150px); overflow: auto; background: var(--paper); border: 1px solid var(--lj-line); border-radius: 7px; font-size: 12px; box-shadow: 0 2px 6px rgb(29 32 35 / .06); }
+.lj-legend { position: absolute; left: 18px; bottom: 62px; z-index: 1; width: 240px; max-height: calc(100% - 150px); overflow: auto; background: var(--paper); border: 1px solid var(--lj-line); border-radius: var(--lj-r-control); font-size: 12px; box-shadow: 0 2px 6px rgb(29 32 35 / .06); }
 .lj-legend summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; font-weight: 600; cursor: pointer; list-style: none; }
 .lj-legend summary::-webkit-details-marker { display: none; }
 .lj-legend summary::after { content: '+'; margin-left: auto; font-size: 16px; color: var(--lj-muted); }
@@ -118,8 +115,8 @@ Todo:
 .lj-marker.is-cluster > span { background: var(--paper); color: var(--lj-ink); border: 2px solid var(--lj-ink); width: 36px; height: 36px; font-size: 13px; font-weight: 700; }
 .lj-marker.is-selected { z-index: 1; }
 .lj-marker.is-selected > span { background: var(--lj-brand); outline: 3px solid rgb(14 122 75 / .25); width: 38px; height: 38px; }
-.lj-area-button { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); min-height: 44px; padding: 0 15px; border: 1px solid var(--lj-line); border-radius: 6px; background: white; color: var(--lj-brand); font-size: 13px !important; box-shadow: 0 2px 8px #142b3a10; white-space: nowrap; }
-.lj-map-notice { position: absolute; top: 75px; left: 16px; right: 75px; max-width: 420px; padding: 10px 14px; background: #fff8e9; color: #664515; border: 1px solid #dfd3b9; border-radius: 5px; font-size: 13px; }
+.lj-area-button { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); min-height: 44px; padding: 0 15px; border: 1px solid var(--lj-line); border-radius: var(--lj-r-control); box-shadow: var(--lj-float); background: white; color: var(--lj-brand); font-size: 13px !important; box-shadow: 0 2px 8px #142b3a10; white-space: nowrap; }
+.lj-map-notice { position: absolute; top: 75px; left: 16px; right: 75px; max-width: 420px; padding: 10px 14px; background: #fff8e9; color: #664515; border: 1px solid #dfd3b9; border-radius: 12px; font-size: 13px; }
 .lj-spinning { animation: lj-spin 1.5s linear infinite; }
 @keyframes lj-spin { to { transform: rotate(360deg); } }
 @media (max-width: 800px) {
@@ -127,7 +124,6 @@ Todo:
   .lj-brand { gap: 8px; }
   .lj-brand small { font-size: 11px; }
   .lj-region { margin-left: auto; font-size: 12px; }
-  .lj-source-link { display: none; }
   .lj-search { order: 3; width: 100%; }
   .lj-search label { display: inline; font-size: 11px; }
   .lj-search input { min-height: 40px; font-size: 16px; }
@@ -137,7 +133,6 @@ Todo:
   .lj-expanded .lj-panel { flex: 1; height: auto; max-height: none; }
   .lj-expanded .lj-map { flex: none; height: 220px; }
   .lj-expanded .lj-map-tools { flex-direction: row; }
-  .lj-expanded .lj-map-tools button + button { border-top: 0; border-left: 1px solid var(--lj-line); }
   .lj-expanded .lj-area-button { top: 66px; }
   .lj-panel-toggle { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; min-height: 44px; flex-shrink: 0; font-size: 12px !important; color: var(--lj-brand); }
   .lj-panel-intro { padding: 0 18px 9px; }
@@ -150,7 +145,8 @@ Todo:
   .lj-results-heading { padding: 10px 18px; }
   .lj-list-section { min-height: 120px; }
   .lj-results-heading h2 { font-size: 14px; }
-  .lj-report-row { padding: 15px 18px; }
+  .lj-report-row { padding: 12px; }
+  .lj-report-list { padding-inline: 12px; }
   .lj-source-footer { padding: 8px 18px max(8px, env(safe-area-inset-bottom)); font-size: 10px; }
   .lj-source-footer > div { margin-bottom: 0; }
   .lj-source-footer > div > span:last-child { margin-left: auto; font-size: 9px; }
@@ -173,7 +169,68 @@ Todo:
   .lj-map, .lj-expanded .lj-map { min-height: 110px; height: 110px; }
   .lj-panel { flex: 1; max-height: none; height: auto; }
   .lj-map-tools { flex-direction: row; }
-  .lj-map-tools button + button { border-top: 0; border-left: 1px solid var(--lj-line); }
   .lj-area-button { top: auto; bottom: 14px; max-width: calc(100% - 75px); }
   .lj-legend { display: none; } /* 110 px map has no room */
 }
+
+/* --- report card on its pin (replaces the detail page beside the map) --- */
+.lj-popup { z-index: 3; }
+.lj-popup .maplibregl-popup-content { padding: 0; border-radius: var(--lj-r-card); background: var(--paper); box-shadow: 0 1px 2px rgb(16 24 40 / .06), 0 16px 36px -12px rgb(16 24 40 / .3); }
+.lj-popup .maplibregl-popup-tip { display: none; } /* the offset keeps the card clear of its pin */
+.lj-popup:not(.is-pinned) { pointer-events: none; } /* a preview never catches the pointer */
+.lj-popup-card { position: relative; display: grid; gap: 10px; width: 300px; padding: 16px; font: 14px/1.45 var(--font-sans); color: var(--lj-ink); }
+.lj-popup-head { display: flex; gap: 12px; align-items: flex-start; padding-right: 30px; }
+.lj-popup-card:not(.is-pinned) .lj-popup-head { padding-right: 0; }
+.lj-popup-photo { width: 64px; height: 64px; flex: none; object-fit: cover; border-radius: 12px; background: var(--concrete); }
+.lj-popup-card .lj-eyebrow { margin-bottom: 2px; }
+.lj-popup-card h2 { font-size: 17px; font-weight: 650; line-height: 1.3; letter-spacing: -.2px; overflow-wrap: anywhere; }
+.lj-popup-card h2:focus { outline: none; }
+.lj-popup-card h2:focus-visible { outline: 3px solid var(--lj-brand); outline-offset: 2px; border-radius: 4px; }
+.lj-popup-meta, .lj-popup-condition, .lj-popup-note { font-size: 12.5px; color: var(--lj-muted); }
+.lj-popup-card .lj-status { justify-self: start; margin-top: 0; }
+.lj-popup-condition .lj-stale-condition { margin-left: 6px; }
+.lj-popup-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.lj-popup-actions .lj-secondary { min-height: 40px; padding: 8px 14px; text-decoration: none; }
+.lj-popup-close { position: absolute; top: 8px; right: 8px; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; color: var(--lj-muted); }
+@media (hover: hover) and (pointer: fine) { .lj-popup-close:hover { background: var(--concrete); color: var(--lj-ink); } }
+.lj-link-status { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 16px 10px; padding: 10px 12px; border-radius: 12px; background: var(--concrete); font-size: 13px; }
+.lj-link-status button { min-height: 44px; padding: 0 10px; font-weight: 600; color: var(--lj-brand); }
+.lj-popup-fallback { position: absolute; left: 16px; bottom: 16px; z-index: 3; border-radius: var(--lj-r-card); background: var(--paper); box-shadow: 0 1px 2px rgb(16 24 40 / .06), 0 16px 36px -12px rgb(16 24 40 / .3); }
+/* phones: the tapped card sits as a sheet at the bottom of the map, above the list */
+@media (max-width: 800px) {
+  .lj-map .lj-popup, .lj-map .lj-popup-fallback { position: absolute; top: auto !important; left: 12px !important; right: 12px; bottom: 12px; transform: none !important; max-width: none !important; }
+  .lj-popup-card { width: auto; }
+}
+/* the pinned card docks on the right of the map (like the CRM panel), clear of the header and the tools; it scrolls inside itself */
+.lj-map .lj-popup.is-pinned { top: 16px !important; right: 76px; left: auto !important; bottom: auto; transform: none !important; }
+.lj-popup.is-pinned .lj-popup-card { width: 340px; max-height: min(calc(100dvh - 140px), 620px); overflow: auto; overscroll-behavior: contain; }
+.lj-popup-tabs { display: flex; border-bottom: 1px solid var(--lj-line); }
+.lj-popup-tabs button { flex: 1; min-height: 44px; font-size: 13px; font-weight: 650; color: var(--lj-muted); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.lj-popup-tabs button[aria-selected=true] { color: var(--lj-ink); border-color: var(--lj-brand); }
+.lj-popup-facts { display: grid; gap: 10px; }
+.lj-popup-facts dt { font-size: 11.5px; color: var(--lj-muted); }
+.lj-popup-facts dd { font-size: 13.5px; font-weight: 600; overflow-wrap: anywhere; }
+.lj-popup-facts .lj-status { margin-top: 2px; }
+.lj-popup-description { margin-top: 12px; }
+.lj-popup-description h3 { font-size: 11.5px; font-weight: 400; color: var(--lj-muted); }
+.lj-popup-description p { font-size: 13.5px; white-space: pre-line; overflow-wrap: anywhere; }
+.lj-popup-history { list-style: none; margin: 4px 0 0 6px; border-left: 2px solid var(--lj-line); }
+.lj-popup-history li { position: relative; padding: 0 0 14px 16px; font-size: 13px; }
+.lj-popup-history li::before { content: ''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--lj-brand); box-shadow: 0 0 0 2px var(--paper); }
+.lj-popup-history time { display: block; font-size: 12px; color: var(--lj-muted); }
+.lj-popup-history strong { display: block; font-weight: 650; overflow-wrap: anywhere; }
+.lj-popup-history p { margin-top: 2px; color: var(--lj-muted); overflow-wrap: anywhere; }
+/* phones: an open card lowers the list to its handle, and the card fits the map area (bottom-aligned, scrolling inside) */
+@media (max-width: 800px) {
+  .lj-card-open:not(.lj-expanded) .lj-panel { height: 112px; }
+  .lj-map .lj-popup.is-pinned { top: 12px !important; right: 12px; left: 12px !important; bottom: 12px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .lj-map .lj-popup.is-pinned .maplibregl-popup-content { max-height: 100%; display: flex; min-height: 0; }
+  .lj-popup.is-pinned .lj-popup-card { width: auto; max-height: 100%; }
+}
+/* handling by the LaporJalan team: its own band, so it is never read as the reporter's or the source's status */
+.lj-popup-handling { display: grid; gap: 2px; padding: 10px 12px; border-radius: 12px; background: color-mix(in oklch, var(--lj-brand) 8%, white); }
+.lj-popup-handling strong { font-size: 13.5px; overflow-wrap: anywhere; }
+.lj-popup-handling p { font-size: 12.5px; color: var(--lj-muted); overflow-wrap: anywhere; }
+.lj-popup-history li.is-team::before { background: var(--marking-yellow); box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--lj-ink); }
+/* --- end of report card --- */
+

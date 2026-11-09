@@ -60,7 +60,8 @@ async function deliverGps(page: Page, index = 0) {
 
 test('editing preserves the confirmed condition Point until a new Point is explicitly chosen', async ({ page }) => {
   const submitted = await setup(page);
-  await page.locator('.lj-report-row').click();
+  // owners manage a report on the account page (owner choice, 9 Nov)
+  await page.goto(`/akun?laporan=${fixture.id}`);
   await page.getByRole('button', { name: 'Tambah pembaruan', exact: true }).click();
   await page.getByLabel('Ubah kondisi dan bentuk', { exact: true }).check();
   await expect(page.getByText('Titik kondisi: -6.210000, 106.850000.', { exact: true })).toBeVisible();

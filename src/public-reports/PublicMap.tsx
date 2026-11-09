@@ -2,7 +2,8 @@
 Todo:
 -> group nearby points and restore the view after closing a report
 */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import maplibregl, { Map as LibreMap, Marker, type GeoJSONSource } from 'maplibre-gl';
 import { LocateFixed, Minus, Plus } from 'lucide-react';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -34,6 +35,8 @@ interface Props {
   onExitInspection?: () => void;
   cooperative?: boolean; // landing hero: page scroll stays with the page; pan with two fingers or Ctrl+scroll
   minimal?: boolean;     // landing hero: no tools, area search, key or legend
+  popups?: { report: PublicReport; pinned: boolean; content: ReactNode }[]; // report cards on their pins: the pinned one and a hover preview
+  onHover?: (report: PublicReport | null) => void; // pointer or keyboard focus on a single pin
 }
 const duration = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350;
 const GESTURE_TEXT = {
@@ -42,29 +45,43 @@ const GESTURE_TEXT = {
   'CooperativeGesturesHandler.MobileHelpText': 'Gunakan dua jari untuk menggeser peta',
 };
 
+// the report card follows its pin as the map moves; React renders into the popup's own element
+// Why/Note: pinned cards take clicks; a hover preview never does, so it cannot trap the pointer
+function MapPopup({ map, report, pinned, children }: { map: LibreMap; report: PublicReport; pinned: boolean; children: ReactNode }) {
+  const [node] = useState(() => document.createElement('div'));
+  useEffect(() => {
+    const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, focusAfterOpen: false, offset: 28, maxWidth: '340px',
+      className: `lj-popup${pinned ? ' is-pinned' : ''}` }).setLngLat([report.lng, report.lat]).setDOMContent(node).addTo(map);
+    return () => { popup.remove(); };
+  }, [map, report.id, report.lng, report.lat, pinned, node]);
+  return createPortal(children, node);
+}
+
 // Purpose : open a report where its drawing can be seen
 // Input   : map, report, camera mode, animate (false on resize)
 // Why/Note: zoom 15 hid small areas and the 8 m point spot under the pin (owner choice, 9 Nov: frame the shape)
+// the pinned card docks on the right of the map on wide screens: keep the report clear of it
+const dockedCard = (map: LibreMap) => map.getContainer().clientWidth > 640 && !matchMedia('(max-width: 800px)').matches ? 380 : 0;
 function frameSelection(map: LibreMap, report: PublicReport, mode: CameraMode, animate = true) {
-  const geometry = report.condition?.geometry, pose = cameraPose(mode, map.getBearing()), ms = animate ? duration() : 0;
+  const geometry = report.condition?.geometry, pose = cameraPose(mode, map.getBearing()), ms = animate ? duration() : 0, card = dockedCard(map);
   if (geometry && geometry.type !== 'Point') {
     const canvas = map.getCanvas(), side = Math.round(Math.min(80, canvas.clientWidth / 5, canvas.clientHeight / 5));
     // keep the shape above the attribution corner (open until the map is first dragged, 2 lines on narrow phones)
     const container = map.getContainer(), corner = container.querySelector<HTMLElement>('.maplibregl-ctrl-bottom-right');
     const bottom = Math.min(Math.max(side, corner ? container.clientHeight - corner.offsetTop + 8 : 0), canvas.clientHeight - side - 24);
-    map.fitBounds(geometryBounds(geometry), { padding: { top: side, right: side, left: side, bottom }, maxZoom: geometry.type === 'Polygon' ? 18.6 : 17.5, ...pose, duration: ms });
-  } else map.easeTo({ center: [report.lng, report.lat], zoom: Math.max(map.getZoom(), geometry ? 18.8 : mode === '3d' ? 15.5 : 15), ...pose, duration: ms });
+    map.fitBounds(geometryBounds(geometry), { padding: { top: side, right: side + card, left: side, bottom }, maxZoom: geometry.type === 'Polygon' ? 18.6 : 17.5, ...pose, duration: ms });
+  } else map.easeTo({ center: [report.lng, report.lat], offset: [-card / 2, 0], zoom: Math.max(map.getZoom(), geometry ? 18.8 : mode === '3d' ? 15.5 : 15), ...pose, duration: ms });
 }
 
-export function PublicMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingComplete, onDrawingCancel, draftGeometry, inspecting=false, onExitInspection, cooperative = false, minimal = false }: Props) {
+export function PublicMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingComplete, onDrawingCancel, draftGeometry, inspecting=false, onExitInspection, cooperative = false, minimal = false, popups = [], onHover }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<LibreMap>();
   const markers = useRef<Marker[]>([]);
   const draftMarker = useRef<Marker>();
   const [mode, setMode] = useState<CameraMode>('2d');
   const appliedMode = useRef<CameraMode>('2d');
-  const props = useRef({ reports, selected, onSelect, mode, picking, onLocation, selectionLocked, drawing });
-  props.current = { reports, selected, onSelect, mode, picking, onLocation, selectionLocked, drawing };
+  const props = useRef({ reports, selected, onSelect, mode, picking, onLocation, selectionLocked, drawing, onHover });
+  props.current = { reports, selected, onSelect, mode, picking, onLocation, selectionLocked, drawing, onHover };
   const previousView = useRef<{id:string;pose: ReturnType<typeof publicCameraSnapshot>;mode:CameraMode}>();
   const fitted = useRef(false);
   const [ready, setReady] = useState(false);
@@ -114,6 +131,13 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
         if (isGroup) instance.easeTo({ center: [row.lng, row.lat], zoom: Math.min(instance.getZoom() + 2, 19), duration: duration() });
         else props.current.onSelect(row);
       };
+      // preview a single report on hover (fine pointers only) or keyboard focus; groups only zoom
+      if (!isGroup) {
+        const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+        if (fine) { button.onmouseenter = () => props.current.onHover?.(row); button.onmouseleave = () => props.current.onHover?.(null); }
+        button.onfocus = () => { if (button.matches(':focus-visible')) props.current.onHover?.(row); };
+        button.onblur = () => props.current.onHover?.(null);
+      }
       const marker = new maplibregl.Marker({ element: button }).setLngLat([row.lng, row.lat]).addTo(instance);
       button.setAttribute('aria-label', isGroup ? `Perbesar ${group.length} laporan` : `Buka laporan ${row.code}`);
       return marker;
@@ -126,7 +150,8 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
     if (!instance || !props.current.reports.length) return;
     const bounds = new maplibregl.LngLatBounds();
     props.current.reports.forEach(row => bounds.extend([row.lng, row.lat]));
-    instance.fitBounds(bounds, { padding: 65, maxZoom: 15, duration: duration(), ...cameraPose(props.current.mode, instance.getBearing()) });
+    // Why/Note: the landing map has no tools, so it frames tighter (65 px left a phone hero mostly sea); the bottom keeps the attribution clear
+    instance.fitBounds(bounds, { padding: minimal ? { top: 24, right: 24, bottom: 56, left: 24 } : 65, maxZoom: 15, duration: duration(), ...cameraPose(props.current.mode, instance.getBearing()) });
   }
 
   useEffect(() => {
@@ -175,7 +200,8 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
       const active = props.current.selected;
       if (active && props.current.mode!=='inspect') {
         if (active.condition && active.condition.geometry.type !== 'Point') frameSelection(instance, active, props.current.mode, false);
-        else instance.jumpTo({ center: [active.lng, active.lat] });
+        // Why/Note: a resize while the camera is still flying to the report (phone list lowering) must not cancel that flight
+        else if (!instance.isMoving()) instance.jumpTo({ center: [active.lng, active.lat] });
       }
       drawMarkers();
     });
@@ -247,8 +273,12 @@ export function PublicMap({ reports, selected, onSelect, onArea, picking = false
   return <section className="lj-map" aria-label="Peta laporan">
     <div ref={container} className="lj-map-canvas" />
     {ready && <MapSketch map={map.current} epoch={epoch} drawing={drawing} preview={draftGeometry} onComplete={onDrawingComplete} onCancel={onDrawingCancel} />}
+    {ready && map.current && !drawing && !inspection.active && mode !== 'inspect' && popups.map(popup =>
+      <MapPopup key={`${popup.pinned ? 'pinned' : 'preview'}-${popup.report.id}`} map={map.current!} report={popup.report} pinned={popup.pinned}>{popup.content}</MapPopup>)}
     {inspection.error && <div className="lj-inspection-error" role="status">{inspection.error}</div>}
     {failed && <div className="lj-map-notice" role="status">Peta belum tersedia sepenuhnya. Daftar laporan tetap dapat digunakan.</div>}
+    {/* no map, no pin: the pinned card still opens, as a plain card over the map area */}
+    {failed && popups.filter(popup => popup.pinned).map(popup => <div key={popup.report.id} className="lj-popup lj-popup-fallback is-pinned">{popup.content}</div>)}
     {!failed && !ready && <div className="lj-map-notice" role="status">Memuat peta…</div>}
     {ready && !minimal && <>
       {moved && !selected && !picking && !selectionLocked && <button className="lj-area-button" onClick={() => {

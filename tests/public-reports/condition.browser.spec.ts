@@ -61,7 +61,7 @@ test('inspection reuses resources over 20 cycles and survives style reload',asyn
 
 test('24-hour closure shows stale observation and native symbols without a fake cavity',async({page},info)=>{
  const closure:CitizenReport={...cavity,id:'22222222-2222-4222-8222-222222222222',title:'MODEL UJI - pengamatan penutupan lama',condition:{kind:'closure',observedAt:'2026-10-27T11:59:00.000Z',locationConfirmed:true,source:'reporter',access:'closed',geometry:{type:'LineString',coordinates:[[anchor[0]-.0001,anchor[1]],[anchor[0]+.0001,anchor[1]]]}}};
- await setup(page,closure);await expect(page.locator('.lj-condition-summary')).toContainText('Perlu pembaruan');
+ await setup(page,closure);await expect(page.locator('.lj-popup.is-pinned .lj-popup-condition')).toContainText('Perlu pembaruan');
  await page.getByRole('button',{name:'Lihat ilustrasi 3D',exact:true}).click();await expect(page.getByRole('region',{name:'Inspeksi kondisi'})).toContainText('Perlu pembaruan');await ready(page);
  expect((await mapState(page))?.inspection).toBeUndefined();const map=await mapHandle(page);const data=await map.evaluate(m=>m.getSource('condition-symbols').serialize().data);expect(data.features.length).toBeGreaterThan(0);
  await page.screenshot({path:info.outputPath('closure-symbol.png')});await map.dispose();
@@ -70,17 +70,18 @@ test('24-hour closure shows stale observation and native symbols without a fake 
 test('WebGL1 fallback keeps public report and 2D camera available',async({page})=>{
  await page.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type:string,...args:any[]){if(type==='webgl2')return null;return original.call(this,type,...args);} as any;});
  await setup(page);await page.getByRole('button',{name:'Lihat ilustrasi 3D',exact:true}).click();await expect(page.getByText('Representasi 3D belum tersedia pada perangkat ini.',{exact:false})).toBeVisible();
- await ready(page);expect((await mapState(page))?.pitch).toBe(0);await expect(page.locator('.lj-detail h2')).toContainText('MODEL UJI');await expect(page.locator('canvas')).toHaveCount(1);
+ await ready(page);expect((await mapState(page))?.pitch).toBe(0);await expect(page.locator('.lj-popup.is-pinned h2')).toContainText('MODEL UJI');await expect(page.locator('canvas')).toHaveCount(1);
 });
 
 
 test('closing inspected detail restores overview pose instead of inspection pitch',async({page})=>{
- await setup(page);await page.getByRole('button',{name:'Kembali ke daftar',exact:true}).click();await ready(page);
+ await setup(page);await page.getByRole('button',{name:'Tutup laporan',exact:true}).click();await ready(page);
  await page.getByRole('button',{name:'Mode 3D',exact:true}).click();await ready(page);
  const map=await mapHandle(page);await map.evaluate(m=>m.jumpTo({center:[106.824,-6.197],zoom:16,pitch:43,bearing:27}));
  const before=await mapState(page);
  await page.locator('.lj-report-row').click();await inspect(page);
- await page.getByRole('button',{name:'Kembali ke daftar',exact:true}).click();await ready(page);
+ // the card is hidden during the 3D illustration: leave it, then close the card
+ await page.getByRole('button',{name:'Keluar inspeksi',exact:true}).click();await page.getByRole('button',{name:'Tutup laporan',exact:true}).click();await ready(page);
  const after=await mapState(page);expect(after!.inspection).toBeUndefined();expect(after!.pitch).toBeCloseTo(before!.pitch,5);expect(after!.bearing).toBeCloseTo(before!.bearing,5);expect(after!.zoom).toBeCloseTo(before!.zoom,5);
  expect(after!.center[0]).toBeCloseTo(before!.center[0],7);expect(after!.center[1]).toBeCloseTo(before!.center[1],7);await map.dispose();
 });

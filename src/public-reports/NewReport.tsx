@@ -11,8 +11,9 @@ import { ConditionFields, ConditionSummary } from './ConditionFields';
 import type { ConditionGeometry, GeometryDrawingStarter, RoadCondition } from './condition';
 
 export type ReportLocation = { lng: number; lat: number };
-export function NewReport({ location, preferredName = '', writeAvailable = true, onLocation, onPicking, onClose, onSaved, onDrawGeometry, onGeometryPreview }: {
-  preferredName?: string; writeAvailable?: boolean;
+// backLabel/autoFocus: the account page keeps the form open beside its own map, so it says what closing does and does not steal focus on load
+export function NewReport({ location, preferredName = '', writeAvailable = true, backLabel = 'Kembali ke peta', autoFocus = true, onLocation, onPicking, onClose, onSaved, onDrawGeometry, onGeometryPreview }: {
+  preferredName?: string; writeAvailable?: boolean; backLabel?: string; autoFocus?: boolean;
   onDrawGeometry?: GeometryDrawingStarter; onGeometryPreview?: (geometry: ConditionGeometry | null) => void; onInspect?: () => void;
   location: ReportLocation | null; onLocation: (point: ReportLocation) => void; onPicking: (value: boolean) => void;
   onClose: () => void; onSaved: (report: CitizenReport) => void;
@@ -28,13 +29,13 @@ export function NewReport({ location, preferredName = '', writeAvailable = true,
   locationOwner.current.location = location; locationOwner.current.step = step;
   useEffect(() => { locationOwner.current.active = true; return () => { locationOwner.current.active = false; locationOwner.current.request++; }; }, []);
   const dirty = Boolean(title || description || address || files.length || location);
-  useEffect(() => { onPicking(step === 0); heading.current?.focus(); return () => onPicking(false); }, [step, onPicking]);
+  useEffect(() => { onPicking(step === 0); if (autoFocus || step > 0) heading.current?.focus(); return () => onPicking(false); }, [step, onPicking]);
   useEffect(() => { if (location) { setLat(location.lat.toFixed(6)); setLng(location.lng.toFixed(6)); } }, [location]);
   useEffect(() => {
     const warn = (event: BeforeUnloadEvent) => { if (dirty || busy) { event.preventDefault(); event.returnValue = ''; } };
     window.addEventListener('beforeunload', warn); return () => window.removeEventListener('beforeunload', warn);
   }, [dirty, busy]);
-  function close() { if (!busy && (!dirty || confirm('Isian belum dikirim. Buang isian dan kembali ke peta?'))) { locationOwner.current.active = false; locationOwner.current.request++; onClose(); } }
+  function close() { if (!busy && (!dirty || confirm(`Isian belum dikirim. Buang isian${backLabel === 'Kembali ke peta' ? ' dan kembali ke peta' : ''}?`))) { locationOwner.current.active = false; locationOwner.current.request++; onClose(); } }
   function coordinates() {
     locationOwner.current.request++;
     const point = { lat: Number(lat), lng: Number(lng) };
@@ -72,7 +73,7 @@ export function NewReport({ location, preferredName = '', writeAvailable = true,
     finally { setBusy(false); }
   }
   return <div className="lj-composer" data-step={step}>
-    <button className="lj-back" onClick={close} disabled={busy}><ArrowLeft size={18} /> Kembali ke peta</button>
+    <button className="lj-back" onClick={close} disabled={busy}><ArrowLeft size={18} /> {backLabel}</button>
     <div className="lj-composer-body">
       <p className="lj-eyebrow">LAPORAN WARGA · LAPORJALAN</p><h2 ref={heading} tabIndex={-1}>Tambah laporan</h2>
       <ol className="lj-steps" aria-label="Langkah laporan">{['Lokasi', 'Kondisi', 'Tinjau'].map((label, index) => <li key={label} aria-current={step === index ? 'step' : undefined}>{index + 1}. {label}</li>)}</ol>

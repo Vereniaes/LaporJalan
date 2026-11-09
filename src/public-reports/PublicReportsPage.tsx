@@ -3,16 +3,17 @@
 -> keep filters, selection and the mobile panel in sync
 */
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowDown, ArrowLeft, ArrowUpRight, ChevronRight, Construction, Flame, ImageOff, List, MapPin, Plus, RefreshCw, Route, Search, Waves, X } from 'lucide-react';
-import { filterReports, MapArea, PublicReport, ReportCategory, reportDate, SOURCE_URL } from './data';
+import { ArrowDown, ChevronRight, Construction, Flame, List, MapPin, Plus, RefreshCw, Route, Search, Waves, X } from 'lucide-react';
+import { filterReports, MapArea, PublicReport, ReportCategory, reportDate } from './data';
 import { PublicMap } from './PublicMap';
 import { usePublicReports } from './usePublicReports';
 import { api, capabilityMessage, CATEGORY_LABELS, CitizenReport, errorMessage, isReportId, mediaUrl, useCapabilities, useCitizenReports, useEmailSession } from './community';
 import { EmailLogin } from './EmailLogin';
+import { useDrawing } from './useDrawing';
 import { NewReport, ReportLocation } from './NewReport';
-import { CitizenDetail } from './CitizenDetail';
+import { ReportPopup } from './ReportPopup';
 import { AccountProfile } from './AccountProfile';
-import { closureNeedsUpdate, ConditionGeometry, conditionLabel, conditionSize, GeometryDrawingStarter, useConditionClock } from './condition';
+import { closureNeedsUpdate, ConditionGeometry, conditionLabel, conditionSize, useConditionClock } from './condition';
 import './public-reports.css';
 import './community.css';
 
@@ -39,7 +40,6 @@ export function PublicReportsPage() {
   const [accountError, setAccountError] = useState('');
   const [accountOpen, setAccountOpen] = useState(false);
   const reportIntent = useRef(new URLSearchParams(location.search).get('buat') === '1');
-  const [drawing, setDrawing] = useState<{ id: string; mode: 'line' | 'area'; complete: (geometry: ConditionGeometry) => void } | null>(null);
   const [draftGeometry, setDraftGeometry] = useState<ConditionGeometry | null>(null), [inspectingId, setInspectingId] = useState<string | null>(null);
   const drawingExpanded = useRef(false), conditionNow = useConditionClock();
   useEffect(() => {
@@ -59,12 +59,11 @@ export function PublicReportsPage() {
   const [linkedReport, setLinkedReport] = useState<CitizenReport | null>(null), [linkError, setLinkError] = useState('');
   const linkedUser = useRef('');
   const [expanded, setExpanded] = useState(false);
-  const [crmTab, setCrmTab] = useState<'summary' | 'history'>('summary');
-  const heading = useRef<HTMLHeadingElement>(null);
+  // the report card on the map: a hover/focus preview, else the pinned (selected) report
+  const [hovered, setHovered] = useState<PublicReport | null>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
-  const previousPanel = useRef(false);
   const listHeading = useRef<HTMLHeadingElement>(null);
-  const listScroll = useRef(0), panelScroll = useRef(0), panel = useRef<HTMLElement>(null), reportList = useRef<HTMLDivElement>(null);
+  const panel = useRef<HTMLElement>(null), reportList = useRef<HTMLDivElement>(null);
   const historyIndex = useRef(Number(history.state?.ljIndex ?? 0)), restoringHistory = useRef(false);
   const rows = useMemo(() => {
     const reports = [...(mine ? [] : snapshot?.reports ?? []), ...community.reports];
@@ -75,12 +74,11 @@ export function PublicReportsPage() {
   const selectedRow = filtered.find(report => report.id === selectedId);
   const selected = selectedRow ? (linkedReport?.id === selectedId ? linkedReport : selectedRow) : (session.user && linkedUser.current === session.user.id && linkedReport?.id === selectedId && linkedReport.visibility && linkedReport.visibility !== 'public' ? linkedReport : null);
   const unsupported = category !== 'all' && category !== 'road';
-  const startDrawing: GeometryDrawingStarter = (mode, complete) => {
-    drawingExpanded.current = expanded; setInspectingId(null);
-    setDrawing({ id: crypto.randomUUID(), mode, complete }); setExpanded(false);
-  };
-  function finishDrawing(geometry: ConditionGeometry) { const request = drawing; setDrawing(null); setExpanded(drawingExpanded.current); request?.complete(geometry); }
-  function cancelDrawing() { setDrawing(null); setExpanded(drawingExpanded.current); }
+  // drawing takes the whole map; the panel returns to its earlier size afterwards
+  const { drawing, setDrawing, start: startDrawing, finish: finishDrawing, cancel: cancelDrawing } = useDrawing(active => {
+    if (active) { drawingExpanded.current = expanded; setInspectingId(null); setExpanded(false); }
+    else setExpanded(drawingExpanded.current);
+  });
   function navigate(id: string | null, replace = false) {
     const url = new URL(location.href); id ? url.searchParams.set('laporan', id) : url.searchParams.delete('laporan');
     if (!replace) historyIndex.current++;
@@ -107,7 +105,7 @@ export function PublicReportsPage() {
   useEffect(() => { setInspectingId(null); }, [query, category, area, mine, composing]);
   useEffect(() => {
     if (!selectedId || rows.some(row => row.id === selectedId)) return;
-    if (!isReportId(selectedId)) { if (!loading) setLinkError('Tautan laporan tidak valid atau laporan CRM tidak tersedia pada sumber yang dimuat.'); return; }
+    if (!isReportId(selectedId)) { if (!loading) setLinkError('Tautan laporan tidak valid atau laporan tidak tersedia.'); return; }
     if (linkedReport?.id === selectedId && (!linkedReport.visibility || linkedReport.visibility === 'public' || session.user?.id === linkedUser.current)) return;
     const controller = new AbortController();
     api<CitizenReport>(`/reports/${selectedId}`, { signal: controller.signal }).then(result => { if (!controller.signal.aborted) { linkedUser.current = session.user?.id ?? ''; setLinkedReport(result); setExpanded(true); } }).catch(error => { if (!controller.signal.aborted) setLinkError(errorMessage(error)); });
@@ -117,6 +115,15 @@ export function PublicReportsPage() {
   function startReport() {
     if (!session.user) { setLoginIntent('new'); setLoginOpen(true); return; }
     navigate(null); setComposing(true); setExpanded(true); setDraftLocation(null);
+  }
+  // after any sign-in (email link or password): open what the visitor was reaching for
+  function continueIntent(intent: string) {
+    if (intent === 'new') { navigate(null); setComposing(true); setExpanded(true); setDraftLocation(null); }
+    else if (intent === 'mine') { navigate(null); setMine(true); setExpanded(true); }
+    else {
+      if (linkedReport?.id !== intent || (linkedReport.visibility && linkedReport.visibility !== 'public')) setLinkedReport(null);
+      navigate(intent); setExpanded(true);
+    }
   }
   // --- landing report intent ---
   useEffect(() => {
@@ -133,47 +140,40 @@ export function PublicReportsPage() {
     linkedUser.current = session.user?.id ?? ''; setLinkedReport(report);
     setQuery(''); setCategory('all'); setArea(null); navigate(report.id); setExpanded(true);
   }
+  // pin a report: its card opens on the map; the list stays where it was (no second page)
   function select(report: PublicReport) {
     returnFocus.current = document.activeElement as HTMLElement;
-    previousPanel.current = expanded;
-    listScroll.current = reportList.current?.scrollTop ?? 0; panelScroll.current = panel.current?.scrollTop ?? 0;
     if (report.origin === 'community' && (!(report as CitizenReport).visibility || (report as CitizenReport).visibility === 'public')) {
       linkedUser.current = session.user?.id ?? ''; setLinkedReport(report as CitizenReport);
     }
-    navigate(report.id);
-    if (matchMedia('(max-width: 800px)').matches) setExpanded(true);
+    setHovered(null); navigate(report.id);
+    if (matchMedia('(max-width: 800px)').matches) setExpanded(false); // phones: the card sits on the map
   }
   function closeDetail() {
     navigate(null);
-    setExpanded(previousPanel.current);
     requestAnimationFrame(() => {
       const target = returnFocus.current;
-      if (target?.isConnected) target.focus();
-      else listHeading.current?.focus();
-      if (reportList.current) reportList.current.scrollTop = listScroll.current;
-      if (panel.current) panel.current.scrollTop = panelScroll.current;
+      if (target?.isConnected) target.focus(); else listHeading.current?.focus();
     });
   }
+  // hover previews follow fine pointers only; touch taps pin directly
+  const previewable = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
   useEffect(() => { if (selectedId && rows.some(row => row.id === selectedId) && !selected) navigate(null, true); }, [selectedId, selected, filtered]);
-  useEffect(() => { setCrmTab('summary'); if (selectedId) heading.current?.focus(); }, [selectedId]);
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape' && selectedId && selected?.origin !== 'community') closeDetail(); };
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape' && selectedId && !inspectingId) closeDetail(); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [selectedId]);
+  }, [selectedId, inspectingId]);
+  // the pinned card stays while another pin is previewed
+  const preview = hovered && hovered.id !== selected?.id ? hovered : null;
+  const cards = composing ? [] : [selected, preview].filter((report): report is PublicReport => Boolean(report));
 
-  return <div className={`lj-app${expanded ? ' lj-expanded' : ''}${composing ? ' lj-composing' : ''}${selected || selectedId ? ' lj-reading-detail' : ''}${drawing ? ' lj-drawing' : ''}${inspectingId && inspectingId === selectedId ? ' lj-inspecting' : ''}`}>
+  return <div className={`lj-app${expanded ? ' lj-expanded' : ''}${composing ? ' lj-composing' : ''}${drawing ? ' lj-drawing' : ''}${selected && !composing ? ' lj-card-open' : ''}${inspectingId && inspectingId === selectedId ? ' lj-inspecting' : ''}`}>
     <a className="lj-skip" href="#report-panel">Ke daftar laporan</a>
     {accountOpen && session.user && <AccountProfile user={session.user} writeAvailable={Boolean(capabilities?.write)} onSave={session.profile} onClose={() => setAccountOpen(false)} />}
-    {loginOpen && <EmailLogin link={loginLink} returnTo={loginIntent} onClose={() => { setLoginOpen(false); setLoginLink(''); }} onExchange={async link => {
-      const intent = await session.exchange(link);
-      if (intent === 'new') { navigate(null); setComposing(true); setExpanded(true); setDraftLocation(null); }
-      else if (intent === 'mine') { navigate(null); setMine(true); setExpanded(true); }
-      else {
-        if (linkedReport?.id !== intent || (linkedReport.visibility && linkedReport.visibility !== 'public')) setLinkedReport(null);
-        navigate(intent); setExpanded(true);
-      }
-    }} />}
+    {loginOpen && <EmailLogin link={loginLink} returnTo={loginIntent} emailLink={Boolean(capabilities?.emailLink)} onClose={() => { setLoginOpen(false); setLoginLink(''); }}
+      onExchange={async link => continueIntent(await session.exchange(link))}
+      onSignIn={async (path, body) => { await session.signIn(path, body); continueIntent(loginIntent); }} />}
     <header className="lj-header">
       <a className="lj-brand" href="/" aria-label="LaporJalan - halaman utama">
         <span><img src="/brand/lockup-horizontal.svg" width="162" height="32" alt="" /><small>Laporan jalan dari warga</small></span>
@@ -185,20 +185,21 @@ export function PublicReportsPage() {
       </div>
       <span className="lj-region"><MapPin size={16} aria-hidden="true" /> Jakarta</span>
       <button className="lj-primary lj-add-report" disabled={composing || pendingUpdate || !capabilities?.write || (!session.user && !capabilities.login)} title={capabilitiesLoading ? 'Memeriksa layanan…' : capabilityMessage(capabilities)} onClick={startReport}><Plus size={18} aria-hidden="true" /> Tambah laporan</button>
-      <a className="lj-source-link" href={SOURCE_URL} target="_blank" rel="noreferrer">Peta CRM <ArrowUpRight size={16} aria-hidden="true" /></a>
     </header>
 
     <main className="lj-workspace">
       <PublicMap reports={filtered} selected={composing ? null : selected} onSelect={select} onArea={setArea} selectionLocked={pendingUpdate || composing} picking={picking && !drawing} draftLocation={draftLocation} onLocation={setDraftLocation}
         drawing={drawing ? { id: drawing.id, mode: drawing.mode } : null} onDrawingComplete={finishDrawing} onDrawingCancel={cancelDrawing} draftGeometry={draftGeometry}
-        inspecting={Boolean(inspectingId && inspectingId === selectedId)} onExitInspection={() => setInspectingId(null)} />
+        inspecting={Boolean(inspectingId && inspectingId === selectedId)} onExitInspection={() => setInspectingId(null)} onHover={setHovered}
+        popups={cards.map(card => ({ report: card, pinned: card === selected, content: <ReportPopup report={card} pinned={card === selected} user={session.user} onClose={closeDetail}
+          onInspect={card === selected && card.condition ? () => { setDrawing(null); setInspectingId(card.id); } : undefined} /> }))} />
       <section id="report-panel" ref={panel} className="lj-panel" aria-label="Laporan publik" tabIndex={-1}>
         <button className="lj-panel-toggle" aria-expanded={expanded} onClick={() => setExpanded(value => !value)}>
           {expanded ? <><ArrowDown size={16} /> Lihat peta</> : <><List size={16} /> Perluas daftar</>}
         </button>
         {composing ? <NewReport location={draftLocation} writeAvailable={Boolean(capabilities?.write)} preferredName={session.user?.displayName} onLocation={setDraftLocation} onPicking={setPicking} onDrawGeometry={startDrawing} onGeometryPreview={setDraftGeometry}
           onClose={() => { setComposing(false); setPicking(false); setDraftLocation(null); setDraftGeometry(null); setDrawing(null); setInspectingId(null); }} onSaved={savedReport} /> : <>
-        {!selectedId && <><div className="lj-panel-intro">
+        <div className="lj-panel-intro">
           <div><p className="lj-eyebrow">PETA WARGA</p><h1>Jalan di sekitar.</h1></div>
           <button className="lj-refresh" aria-label="Perbarui laporan" disabled={loading || community.loading || capabilitiesLoading || pendingUpdate} onClick={() => { void refresh(); community.refresh(); refreshCapabilities(); }}>
             <RefreshCw size={18} className={loading ? 'lj-spinning' : ''} />
@@ -213,6 +214,7 @@ export function PublicReportsPage() {
         <div className="lj-account-row">
           {session.user ? <><button disabled={pendingUpdate} aria-pressed={mine} onClick={() => { navigate(null); setMine(value => !value); }}>{mine ? 'Lihat semua laporan' : 'Laporan sendiri'}</button>
             <button disabled={pendingUpdate} onClick={() => setAccountOpen(true)}>Akun</button>
+            <a href="/akun">Halaman akun</a>
             <button disabled={pendingUpdate} onClick={() => { void session.logout().then(() => { setMine(false); setLinkedReport(null); }).catch(error => setAccountError(errorMessage(error))); }}>Keluar</button></>
           : <button disabled={!capabilities?.login} onClick={() => { setLoginIntent('mine'); setLoginOpen(true); }}>Masuk untuk mengelola laporan</button>}
         </div>
@@ -226,24 +228,24 @@ export function PublicReportsPage() {
           <button onClick={() => void refresh()} disabled={loading}>Coba lagi</button>
         </div>}
         {community.loading && <p className="lj-loading" role="status">Memuat laporan warga…</p>}
-        {loading && !mine && <p className="lj-loading" role="status">{snapshot ? 'Memperbarui laporan…' : 'Memuat laporan dari CRM Jakarta…'}</p>}
-        </>}
+        {loading && !mine && <p className="lj-loading" role="status">{snapshot ? 'Memperbarui laporan…' : 'Memuat laporan…'}</p>}
 
-        {selectedId && !selected && <div className="lj-detail"><button className="lj-back" onClick={closeDetail}><ArrowLeft size={18} /> Kembali ke daftar</button><div className="lj-detail-body"><p role="status">{linkError || 'Memuat laporan…'}</p></div></div>}
+        {selectedId && !selected && <div className="lj-link-status" role="status"><span>{linkError || 'Memuat laporan…'}</span><button onClick={closeDetail}>Tutup</button></div>}
 
-        <div className="lj-list-section" hidden={Boolean(selectedId)}>
+        <div className="lj-list-section">
           <div className="lj-results-heading">
             <h2 ref={listHeading} tabIndex={-1} aria-live="polite">{snapshot || community.reports.length ? `${filtered.length} laporan${area ? ' di area ini' : ''}` : 'Daftar laporan'}</h2>
             <span>Terbaru dahulu</span>
           </div>
           {area && <div className="lj-area-filter">Area peta dipilih<button onClick={() => setArea(null)}><X size={14} /> Hapus area</button></div>}
         <div ref={reportList} className="lj-report-list" aria-label="Daftar laporan">
-            {filtered.map(report => <button key={report.id} className="lj-report-row" data-report-id={report.id} onClick={() => select(report)}>
+            {filtered.map(report => <button key={report.id} className={`lj-report-row${report.id === selectedId ? ' is-selected' : ''}`} data-report-id={report.id} aria-pressed={report.id === selectedId} onClick={() => select(report)}
+              onMouseEnter={() => { if (previewable()) setHovered(report); }} onMouseLeave={() => setHovered(null)}>
               <span className="lj-thumbnail" aria-hidden="true">{report.origin === 'community' && (!(report as CitizenReport).visibility || (report as CitizenReport).visibility === 'public') && report.media?.[0]?.mime.startsWith('image/')
                 ? <img src={mediaUrl(report.id, report.media[0].id)} alt="" loading="lazy" /> : <><Route size={25} /><small>{report.media?.length ? 'Video' : 'Tanpa foto'}</small></>}</span>
               <span className="lj-row-copy"><span className="lj-row-meta">{CATEGORY_LABELS[report.category].toUpperCase()} <time dateTime={report.createdAt}>{reportDate(report.createdAt)}</time></span>
                 <strong>{report.title ?? report.code}</strong>
-                <span className="lj-row-source">{report.origin === 'community' ? 'Warga · LaporJalan' : 'Laporan warga · JAKI'}</span>
+                <span className="lj-row-source">{report.origin === 'community' ? 'Warga · LaporJalan' : 'Laporan warga'}</span>
                 {report.condition && <span className="lj-row-condition">{[conditionLabel(report.condition), conditionSize(report.condition)?.short, 'pengamatan pelapor'].filter(Boolean).join(' · ')}<br /><time dateTime={report.condition.observedAt}>{reportDate(report.condition.observedAt)} WIB</time>{closureNeedsUpdate(report.condition, conditionNow) && <strong className="lj-stale-condition">Perlu pembaruan</strong>}</span>}
                 <span className="lj-status">{report.sourceStatus ?? 'Status belum tersedia'}{report.origin === 'community' ? ` · ${(report as CitizenReport).reporterName || 'Pelapor'}` : ''}</span>
                 {report.origin === 'community' && (report as CitizenReport).visibility === 'withdrawn' && <span className="lj-row-source">Ditarik dari publik</span>}
@@ -254,53 +256,17 @@ export function PublicReportsPage() {
             {!loading && !error && !community.loading && !community.error && !filtered.length && <div className="lj-empty" role="status">
               <Route size={28} aria-hidden="true" />
               <h3>{'Belum ada laporan yang sesuai'}</h3>
-              <p>{unsupported ? 'Belum ada laporan warga pada kategori ini. Laporan baru dapat ditambahkan dari lokasi kejadian; sumber CRM pada integrasi ini hanya mencakup kategori Jalan.' : 'Coba ubah pencarian, kategori, atau area peta. Data mencakup hari ini dan kemarin.'}</p>
+              <p>{unsupported ? 'Belum ada laporan pada kategori ini. Laporan baru dapat ditambahkan dari lokasi kejadian.' : 'Coba ubah pencarian, kategori, atau area peta.'}</p>
               <button onClick={() => { setMine(false); setQuery(''); setCategory('all'); setArea(null); }}>Lihat semua laporan</button>
             </div>}
           </div>
         </div>
 
-        {selected?.origin === 'community' && <CitizenDetail key={selected.id} summary={selected} user={session.user} loginAvailable={Boolean(capabilities?.login)} writeAvailable={Boolean(capabilities?.write)} sessionExpired={session.expired} onClose={closeDetail}
-          onDrawGeometry={startDrawing} onGeometryPreview={setDraftGeometry} onInspect={() => { setDrawing(null); setInspectingId(selected.id); }}
-          onResolved={report => { linkedUser.current = session.user?.id ?? ''; setLinkedReport(report); }}
-          onLogin={() => { if (capabilities?.login) { setLoginIntent(selected.id); setLoginOpen(true); } else setAccountError(capabilityMessage(capabilities)); }} onSaved={report => { community.merge(report); linkedUser.current = session.user?.id ?? ''; setLinkedReport(report); }} onDirty={setPendingUpdate} />}
-        {selected && selected.origin !== 'community' && <div className="lj-detail">
-          <button className="lj-back" onClick={closeDetail}><ArrowLeft size={18} /> Kembali ke daftar</button>
-          <div className="lj-detail-body">
-            <p className="lj-eyebrow">LAPORAN KATEGORI JALAN</p>
-            <h2 ref={heading} tabIndex={-1}>{selected.code}</h2>
-            <p className="lj-detail-date">Dibuat {reportDate(selected.createdAt)} WIB</p>
-            <span className="lj-status">{selected.sourceStatus ?? 'Status belum tersedia'}</span>
-            <p className="lj-detail-note">Sumber: CRM Jakarta · laporan JAKI</p>
-            <div className="lj-detail-tabs" role="tablist" aria-label="Isi laporan CRM">
-              <button role="tab" id="crm-summary-tab" aria-controls="crm-summary" aria-selected={crmTab === 'summary'} onClick={() => setCrmTab('summary')}>Ringkasan</button>
-              <button role="tab" id="crm-history-tab" aria-controls="crm-history" aria-selected={crmTab === 'history'} onClick={() => setCrmTab('history')}>Riwayat</button>
-            </div>
-            <div id="crm-summary" role="tabpanel" aria-labelledby="crm-summary-tab" hidden={crmTab !== 'summary'}>
-            <div className="lj-media-empty"><ImageOff size={28} aria-hidden="true" /><strong>Foto belum tersedia</strong><span>Sumber peta tidak menyertakan media laporan.</span></div>
-            <dl className="lj-facts">
-              <div><dt>Kategori sumber</dt><dd>{selected.sourceCategory}</dd></div>
-              <div><dt>Koordinat sumber</dt><dd>{selected.lat.toFixed(6)}, {selected.lng.toFixed(6)}</dd></div>
-              <div><dt>Alamat jalan</dt><dd>Belum tersedia</dd></div>
-              <div><dt>Status dari CRM</dt><dd>{selected.sourceStatus ?? 'Belum tersedia'}</dd></div>
-            </dl>
-            <p className="lj-detail-note">Kategori Jalan belum menjelaskan jenis kerusakan. Ketelitian lokasi dan kondisi lapangan belum diverifikasi oleh LaporJalan.</p>
-            </div>
-            <div id="crm-history" role="tabpanel" aria-labelledby="crm-history-tab" hidden={crmTab !== 'history'}>
-              <h3 className="lj-history-title">Riwayat sumber</h3><p className="lj-detail-note">Riwayat belum tersedia dari sumber ini.</p>
-              <p className="lj-detail-date">Status CRM saat data diambil: {selected.sourceStatus ?? 'Belum tersedia'}.{snapshot && <> Data diambil {reportDate(snapshot.source.retrievedAt)} WIB.</>}</p>
-            </div>
-            <section className="lj-detail-source"><h3>Sumber laporan</h3><p>CRM Jakarta · laporan JAKI</p>
-              <p>Riwayat penanganan dan deskripsi tidak tersedia pada tampilan ini.</p>
-              <a href={SOURCE_URL} target="_blank" rel="noreferrer">Buka peta sumber <ArrowUpRight size={16} /></a>
-            </section>
-          </div>
-        </div>}
         </>}
         <footer className="lj-source-footer">
-          <div><span className="lj-source-dot" /><strong>CRM Jakarta + warga LaporJalan</strong><span>Bukan layanan resmi pemerintah</span></div>
-          {snapshot && <p>{reportDate(snapshot.source.dateStart, false)} - {reportDate(snapshot.source.dateEnd, false)} · Diambil {reportDate(snapshot.source.retrievedAt)} WIB</p>}
-          <p>CRM: kategori Jalan, hari ini dan kemarin. LaporJalan: kiriman warga. Bukan seluruh laporan Jakarta.</p>
+          <div><span className="lj-source-dot" /><strong>Laporan jalan Jakarta</strong><span>Bukan layanan resmi pemerintah</span></div>
+          {snapshot && <p>{reportDate(snapshot.source.dateStart, false)} - {reportDate(snapshot.source.dateEnd, false)} · Diperbarui {reportDate(snapshot.source.retrievedAt)} WIB</p>}
+          <p>Jalan, pembangunan, saluran, dan pembakaran, ditambah kiriman warga. Bukan seluruh laporan Jakarta.</p>
         </footer>
       </section>
     </main>

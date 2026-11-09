@@ -16,10 +16,10 @@ export interface CitizenReport extends PublicReport {
   visibility?: 'public' | 'withdrawn' | 'hidden';
   updates?: { id: string; note: string; status: CitizenReport['status']; createdAt: string; actor: string; media: Media[]; condition?: RoadCondition | null }[];
 }
-export interface User { id: string; email: string; displayName?: string }
+export interface User { id: string; email: string; displayName?: string; role?: 'admin' }
 const EMPTY_REPORTS: CitizenReport[] = [];
 export type LoginIntent = 'new' | 'mine' | string;
-export interface Capabilities { reports: boolean; write: boolean; login: boolean; reason: 'disabled' | 'storage_unavailable' | 'email_unconfigured' | 'origin_unconfigured' | null; analysis?: { available: boolean; reason: string | null } }
+export interface Capabilities { reports: boolean; write: boolean; login: boolean; emailLink?: boolean; reason: 'disabled' | 'storage_unavailable' | 'email_unconfigured' | 'origin_unconfigured' | null; analysis?: { available: boolean; reason: string | null } }
 export const isReportId = (value: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
 export const capabilityMessage = (capabilities: Capabilities | null) => !capabilities ? 'Kesiapan laporan warga belum dapat diperiksa.' : capabilities.reason ? { disabled: 'Laporan warga belum diaktifkan.', storage_unavailable: 'Penyimpanan laporan warga belum tersedia.', email_unconfigured: 'Masuk melalui email belum tersedia.', origin_unconfigured: 'Pengiriman laporan belum tersedia.' }[capabilities.reason] : '';
 let token = '';
@@ -27,6 +27,8 @@ try { token = sessionStorage.getItem('lj-session') ?? ''; } catch { /* Session c
 export class ApiError extends Error { constructor(public status: number, message: string) { super(message); } }
 // dev only - ?contoh=1 at page load answers community GETs from labelled samples (dev/samples.ts)
 const devSamples = Boolean(import.meta.env?.DEV) && new URLSearchParams(location.search).get('contoh') === '1';
+// a 401 from these means wrong input, not an expired session
+const SIGN_IN_PATHS = ['/auth/exchange', '/auth/link', '/auth/login', '/auth/register'];
 export async function api<T>(path: string, init: RequestInit = {}, timeoutMs = 30_000): Promise<T> {
   if (import.meta.env.DEV && devSamples && (init.method ?? 'GET') === 'GET') {
     const answer = (await import('./dev/samples')).sampleAnswer(path);
@@ -42,7 +44,7 @@ export async function api<T>(path: string, init: RequestInit = {}, timeoutMs = 3
       signal: controller.signal, headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}), ...init.headers } });
     const data = response.status === 204 ? null : await response.json().catch(() => null);
     if (!response.ok) {
-      if (response.status === 401 && path !== '/auth/exchange' && path !== '/auth/link') window.dispatchEvent(new Event('lj-session-expired'));
+      if (response.status === 401 && !SIGN_IN_PATHS.includes(path)) window.dispatchEvent(new Event('lj-session-expired'));
       throw new ApiError(response.status, data?.message ?? 'Layanan laporan belum tersedia.');
     }
     return data as T;
@@ -73,9 +75,14 @@ export function useEmailSession() {
     setToken(result.token); setUser(result.user); setExpired(false);
     return result.returnTo === 'new' || isReportId(result.returnTo ?? '') ? result.returnTo! : 'mine';
   }
+  // password register or sign-in; the session is the same as after an email link
+  async function signIn(path: '/auth/login' | '/auth/register', body: Record<string, string>) {
+    const result = await postJson<{ token: string; user: User }>(path, body);
+    setToken(result.token); setUser(result.user); setExpired(false);
+  }
   async function profile(displayName: string) { const result = await writeJson<{ user: User }>('/auth/profile', { displayName }, 'PATCH'); setUser(result.user); }
   async function logout() { await postJson('/auth/logout', {}); setToken(''); setUser(null); }
-  return { user, expired, loading, exchange, logout, profile };
+  return { user, expired, loading, exchange, signIn, logout, profile };
 }
 
 export function useCapabilities() {

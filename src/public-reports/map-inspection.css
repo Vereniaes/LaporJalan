@@ -8,7 +8,7 @@
 @media(max-width:800px) {
  .lj-drawing .lj-header { min-height:68px;flex-wrap:nowrap; }
  .lj-drawing .lj-search { display:none; }
- .lj-app.lj-drawing .lj-map,.lj-app.lj-reading-detail.lj-drawing .lj-map,.lj-app.lj-reading-detail.lj-inspecting .lj-map { flex:none;height:min(52dvh,430px);min-height:300px; }
+ .lj-app.lj-drawing .lj-map,.lj-app.lj-inspecting .lj-map { flex:none;height:min(52dvh,430px);min-height:300px; }
  .lj-drawing .lj-panel,.lj-inspecting .lj-panel { flex:1;height:auto;max-height:none; }
  .lj-map-drawing,.lj-inspection-controls { left:12px;bottom:76px;max-width:calc(100% - 24px);padding:8px 12px;font-size:12px; }
  .lj-inspecting .lj-map-key,.lj-drawing .lj-map-key { display:none; }

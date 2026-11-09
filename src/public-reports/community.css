@@ -2,15 +2,14 @@
 -> style citizen forms and history in the public panel
 -> keep touch targets, focus and mobile reading space usable
 */
-.lj-primary, .lj-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 10px 15px; border-radius: 6px; font-weight: 600; font-size: 14px !important; }
+.lj-primary, .lj-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 10px 15px; border-radius: 12px; font-weight: 600; font-size: 14px !important; }
 .lj-primary { color: var(--lj-ink); background: var(--marking-yellow); border: 1px solid var(--marking-yellow); }
 .lj-secondary { border: 1px solid var(--lj-ink); color: var(--lj-ink); background: var(--paper); }
 .lj-app .lj-primary:disabled { background: var(--lj-line); border-color: var(--lj-line); color: var(--lj-muted); opacity: 1; } /* accent only on actions that work */
 .lj-add-report { white-space: nowrap; }
 /* one yellow action at a time: while a report is open, the panel action keeps the accent */
-.lj-reading-detail .lj-add-report:not(:disabled) { background: var(--paper); border-color: var(--lj-ink); color: var(--lj-ink); }
 .lj-account-row { display: flex; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid var(--lj-line); }
-.lj-account-row button, .lj-text-action, .lj-load-more { color: var(--lj-brand); min-height: 44px; font-size: 13px !important; text-decoration: underline; }
+.lj-account-row button, .lj-account-row a, .lj-text-action, .lj-load-more { color: var(--lj-brand); min-height: 44px; font-size: 13px !important; text-decoration: underline; }
 .lj-load-more { width: 100%; }
 .lj-community-warning { font-size: 12px; padding: 10px 24px; color: #664515; background: #fff4df; }
 .lj-community-warning button { display: block; min-height: 36px; text-decoration: underline; }
@@ -25,7 +24,7 @@
 .lj-form p { color: var(--lj-muted); }
 .lj-form label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
 .lj-form label > span, .lj-form small { color: var(--lj-muted); font-weight: 400; font-size: 12px; }
-.lj-form input:not([type=checkbox]), .lj-form textarea, .lj-form select { border: 1px solid var(--lj-muted); background: var(--paper); color: var(--lj-ink); border-radius: 5px; padding: 10px; min-height: 44px; width: 100%; min-width: 0; font: inherit; font-weight: 400; }
+.lj-form input:not([type=checkbox]), .lj-form textarea, .lj-form select { border: 1px solid var(--lj-muted); background: var(--paper); color: var(--lj-ink); border-radius: 10px; padding: 10px; min-height: 44px; width: 100%; min-width: 0; font: inherit; font-weight: 400; }
 .lj-form textarea { resize: vertical; }
 .lj-form input[type=file] { font-size: 12px; }
 .lj-form input:focus-visible, .lj-form textarea:focus-visible, .lj-form select:focus-visible { outline: 3px solid var(--lj-brand); outline-offset: 2px; }
@@ -36,14 +35,14 @@
 .lj-steps { display: flex; list-style: none; gap: 5px; font-size: 12px; margin: 16px 0 24px; }
 .lj-steps li { border-bottom: 3px solid var(--lj-line); padding: 7px 3px; flex: 1; color: var(--lj-muted); }
 .lj-steps [aria-current=step] { border-color: var(--lj-brand); color: var(--lj-brand); font-weight: 650; }
-.lj-review { background: var(--concrete); border: 1px solid var(--lj-line); padding: 14px; border-radius: 6px; overflow-wrap: anywhere; }
+.lj-review { background: var(--concrete); border: 1px solid var(--lj-line); padding: 14px; border-radius: var(--lj-r-control); overflow-wrap: anywhere; }
 .lj-review > p, .lj-description { white-space: pre-wrap; margin: 10px 0 16px; overflow-wrap: anywhere; }
 .lj-review dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px 12px; font-size: 12px; }
 .lj-review dt { color: var(--lj-muted); }
 .lj-form-note { border-left: 3px solid var(--lj-brand); padding: 4px 12px; }
-.lj-form .lj-form-error, .lj-form-error { color: #8a3620; background: #fff0e8; padding: 12px; border-radius: 4px; font-size: 13px; }
-.lj-form .lj-form-success, .lj-form-success { color: #265a44; background: #edf7ef; padding: 12px; border-radius: 4px; font-size: 13px; }
-.lj-media-picker figure, .lj-attachments figure { margin-top: 12px; border: 1px solid var(--lj-line); border-radius: 6px; overflow: hidden; }
+.lj-form .lj-form-error, .lj-form-error { color: #8a3620; background: #fff0e8; padding: 12px; border-radius: 10px; font-size: 13px; }
+.lj-form .lj-form-success, .lj-form-success { color: #265a44; background: #edf7ef; padding: 12px; border-radius: 10px; font-size: 13px; }
+.lj-media-picker figure, .lj-attachments figure { margin-top: 12px; border: 1px solid var(--lj-line); border-radius: 12px; overflow: hidden; }
 .lj-media-picker img, .lj-media-picker video, .lj-attachments img, .lj-attachments video { display: block; width: 100%; max-height: 300px; object-fit: contain; background: var(--concrete); }
 .lj-media-picker figcaption { font-size: 12px; padding: 8px; overflow-wrap: anywhere; }
 .lj-media-picker figcaption button { display: block; min-height: 36px; color: var(--lj-brand); text-decoration: underline; }
@@ -57,11 +56,11 @@
 .lj-timeline li > p { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 7px; }
 .lj-timeline .lj-entry-meta { color: var(--lj-muted); font-size: 11px; margin-top: 3px; }
 .lj-update-form { border-top: 1px solid var(--lj-line); padding-top: 18px; }
-.lj-login { color: var(--lj-ink); width: min(440px, calc(100vw - 28px)); max-height: calc(100dvh - 40px); border: 1px solid var(--lj-line); border-radius: 12px; padding: 28px; margin: auto; font: 15px/1.5 var(--font-sans); }
+.lj-login { color: var(--lj-ink); width: min(440px, calc(100vw - 28px)); max-height: calc(100dvh - 40px); border: 1px solid var(--lj-line); border-radius: var(--lj-r-card); padding: 28px; margin: auto; font: 15px/1.5 var(--font-sans); }
 .lj-login::backdrop { background: rgb(29 32 35 / .45); }
 .lj-login > p { color: var(--lj-muted); margin: 10px 0 20px; }
 .lj-dialog-close { float: right; display: grid; place-items: center; width: 44px; height: 44px; margin: -15px -15px 0 10px; }
-@media (max-width: 1100px) { .lj-header { gap: 14px; } .lj-header > .lj-source-link { display: none; } .lj-region { display: none; } }
+@media (max-width: 1100px) { .lj-header { gap: 14px; } .lj-region { display: none; } }
 @media (max-width: 800px) {
   .lj-header { gap: 8px; padding-inline: 14px; }
   .lj-add-report { margin-left: auto; padding: 8px 10px; font-size: 12px !important; }
@@ -94,31 +93,13 @@
 .lj-account-row { gap: 12px; flex-wrap: wrap; }
 .lj-detail-body > .lj-primary, .lj-detail-body > .lj-secondary { margin-top: 16px; }
 @media (max-width: 800px) {
-  .lj-reading-detail .lj-header { min-height: 68px; flex-wrap: nowrap; padding-top: 10px; padding-bottom: 10px; }
-  .lj-reading-detail .lj-search, .lj-reading-detail .lj-region, .lj-reading-detail .lj-brand small { display: none; }
-  .lj-reading-detail .lj-add-report { margin-left: auto; }
-  .lj-reading-detail.lj-expanded .lj-map { height: 158px; min-height: 158px; }
-  .lj-reading-detail .lj-detail-body { padding-top: 14px; }
-  .lj-reading-detail .lj-detail-body h2 { font-size: 22px; line-height: 1.25; }
-  .lj-reading-detail .lj-detail-date { font-size: 12px; }
-  .lj-reading-detail .lj-detail-tabs { margin: 12px 0; }
-  .lj-reading-detail .lj-source-footer p { display: none; }
-  .lj-reading-detail .lj-media-empty { min-height: 100px; margin: 12px 0; }
-  .lj-reading-detail .lj-attachments figure:first-child { margin-top: 0; }
-  .lj-reading-detail .lj-attachments img, .lj-reading-detail .lj-attachments video { max-height: 220px; }
 }
 /* --- phone detail map with room (owner choice, 9 Nov) --- */
 /* 158 px left about 40 px visible between the tool row and the attribution; phones up to 650 px tall keep 158 px */
 @media (max-width: 800px) and (min-height: 651px) {
-  .lj-reading-detail.lj-expanded .lj-map { height: min(40dvh, 340px); }
-  .lj-reading-detail.lj-expanded .lj-map-tools { flex-direction: column; }
-  .lj-reading-detail.lj-expanded .lj-map-tools button + button { border-left: 0; border-top: 1px solid var(--lj-line); }
 }
 /* --- end of phone detail map --- */
 @media (max-width: 360px) {
-  .lj-reading-detail .lj-brand img { height: 26px; }
-  .lj-reading-detail .lj-add-report { font-size: 12px !important; padding: 8px; gap: 4px; }
-  .lj-reading-detail .lj-header { gap: 6px; padding-left: 12px; padding-right: 12px; }
 }
 .lj-form[hidden] { display: none; }
 .lj-condition-fields { padding: 15px; border: 1px solid var(--lj-line); border-radius: 6px; margin-top: 4px; }

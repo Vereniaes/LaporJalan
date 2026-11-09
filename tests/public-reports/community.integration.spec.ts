@@ -36,6 +36,15 @@ test.afterAll(async () => {
   globalThis.fetch = nativeFetch;
 });
 
+// a report opens as a card on its pin; owners manage it on /akun (owner choice, 9 Nov)
+const card = (page: Page) => page.locator('.lj-popup.is-pinned');
+async function manageOnAccount(page: Page, title: string) {
+  const id = new URL(page.url()).searchParams.get('laporan')!;
+  await page.goto(`/akun?laporan=${id}`);
+  await expect(page.locator('.lj-detail h2')).toHaveText(title);
+  return id;
+}
+
 test('email login, map report, attachment and owner update survive reload', async ({ page }, info) => {
   const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
   await page.route('**/api/public-reports', route => route.fulfill({ json: snapshot }));
@@ -70,17 +79,21 @@ test('email login, map report, attachment and owner update survive reload', asyn
   await page.locator('input[type=checkbox][required]:enabled').check();
   await page.screenshot({ path: info.outputPath('review.png') });
   await page.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
-  await expect(page.locator('.lj-detail h2')).toHaveText(`Pekerjaan jalan - uji ${info.project.name}`);
+  const title = `Pekerjaan jalan - uji ${info.project.name}`;
+  await expect(card(page).locator('h2')).toHaveText(title);
+  await expect(card(page).locator('.lj-status')).toContainText('Dilaporkan');
+  await expect(page.locator('.lj-report-row')).not.toHaveCount(0); // no second page beside the map
+  expect((await mapState(page))?.pitch).toBeCloseTo(modeBefore!, 2);
+  await card(page).getByRole('link', { name: 'Kelola di akun', exact: true }).click();
+  await expect(page).toHaveURL(/\/akun\?laporan=/);
+  await expect(page.locator('.lj-detail h2')).toHaveText(title);
   await page.getByRole('tab', { name: /^Riwayat/ }).click();
   await expect(page.getByRole('heading', { name: 'Riwayat pengamatan' })).toBeVisible();
   await expect(page.locator('.lj-timeline li')).toHaveCount(1);
   await expect(page.locator('.lj-detail .lj-status')).toContainText('Dilaporkan');
-  expect((await mapState(page))?.pitch).toBeCloseTo(modeBefore!, 2);
   await page.getByRole('button', { name: 'Tambah pembaruan', exact: true }).click();
   await page.getByLabel('Kondisi saat ini').selectOption('work_observed');
   await page.getByLabel('Catatan pembaruan').fill('Terlihat pekerjaan di lokasi. Catatan pengujian terisolasi.');
-  await expect(page.getByLabel('Cari laporan', { exact: true })).toBeDisabled();
-  await expect(page.getByRole('button', { name: 'Tambah laporan', exact: true })).toBeDisabled();
   page.once('dialog', dialog => dialog.dismiss());
   await page.getByRole('button', { name: 'Kembali ke daftar', exact: true }).click();
   await expect(page.getByLabel('Catatan pembaruan')).toContainText('Terlihat pekerjaan');
@@ -90,18 +103,15 @@ test('email login, map report, attachment and owner update survive reload', asyn
   await expect(page.locator('.lj-detail .lj-status')).toContainText('Terlihat dikerjakan');
   await page.screenshot({ path: info.outputPath('history.png') });
   await page.reload();
-  await expect(page.locator('.lj-detail h2')).toHaveText(`Pekerjaan jalan - uji ${info.project.name}`);
-  await page.getByRole('button', { name: 'Kembali ke daftar', exact: true }).click();
-  if (await page.getByRole('button', { name: 'Perluas daftar' }).isVisible()) await page.getByRole('button', { name: 'Perluas daftar' }).click();
-  await page.getByRole('button', { name: 'Laporan sendiri', exact: true }).click();
-  await expect(page.locator('.lj-report-row')).toHaveCount(1);
-  await page.locator('.lj-report-row').click();
+  await expect(page.locator('.lj-detail h2')).toHaveText(title);
+  await expect(page.locator('.my-reports li').filter({ hasText: title })).toContainText('Terlihat dikerjakan');
   await page.getByRole('tab', { name: /^Riwayat/ }).click();
   await expect(page.locator('.lj-timeline li')).toHaveCount(2);
   await expect(page.locator('#citizen-history').getByAltText('Bukti laporan 1')).toBeVisible();
   expect(await page.locator('#citizen-history').getByAltText('Bukti laporan 1').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBe(1);
   await page.getByRole('button', { name: 'Kembali ke daftar', exact: true }).click();
   await page.getByRole('button', { name: 'Keluar', exact: true }).click();
+  await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole('button', { name: 'Tambah pembaruan', exact: true })).toHaveCount(0);
   expect(errors).toEqual([]);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -128,7 +138,7 @@ test('failed submission retains inputs and retries once without duplicate report
   await page.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
   await expect(page.getByRole('alert')).toContainText('Isi tetap tersedia');
   await page.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
-  await expect(page.locator('.lj-detail h2')).toHaveText('Pengiriman terputus untuk pengujian');
+  await expect(card(page).locator('h2')).toHaveText('Pengiriman terputus untuk pengujian');
   expect(await mongoose.connection.db!.collection('citizen_reports').countDocuments({ title: 'Pengiriman terputus untuk pengujian' })).toBe(1);
 });
 
@@ -177,9 +187,9 @@ test('management email opened in another tab preserves intent and private name p
   await expect(tab.getByLabel('Tampilkan nama pada laporan ini.', { exact: true })).not.toBeChecked();
   await tab.locator('input[type=checkbox][required]').check();
   await tab.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
-  await expect(tab.locator('.lj-detail h2')).toHaveText(`Anonim opt-in - ${info.project.name}`);
-  await expect(tab.locator('.lj-facts')).toContainText('Pelapor');
-  await expect(tab.locator('.lj-detail')).not.toContainText('Nama Pilihan Uji');
+  await expect(card(tab).locator('h2')).toHaveText(`Anonim opt-in - ${info.project.name}`);
+  await expect(card(tab).locator('.lj-popup-meta')).toContainText('Pelapor');
+  await expect(card(tab)).not.toContainText('Nama Pilihan Uji');
   await tab.close();
 });
 
@@ -197,16 +207,17 @@ test('named history, deep link, withdrawal and restoration keep private access s
   await page.getByLabel('Nama tampilan', { exact: true }).fill('Pelapor Uji Nama');
   await page.locator('input[type=checkbox][required]:enabled').check();
   await page.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
-  await expect(page.locator('.lj-detail h2')).toHaveText(title);
-  await expect(page.locator('.lj-detail-date')).toContainText('Pelapor Uji Nama');
+  await expect(card(page).locator('h2')).toHaveText(title);
+  await expect(card(page).locator('.lj-popup-meta')).toContainText('Pelapor Uji Nama');
   const url = page.url(); expect(url).toContain('?laporan=');
   const reportId = new URL(url).searchParams.get('laporan')!;
   const guestContext = await browser.newContext({ viewport: info.project.use.viewport });
   const guest = await guestContext.newPage(); await publicFixture(guest);
   await guest.route('**/api/community/reports', route => route.fulfill({ json: { reports: [], nextCursor: null } }));
   await guest.goto(url);
-  await expect(guest.locator('.lj-detail h2')).toHaveText(title);
-  await expect(guest.getByRole('heading', { name: 'Kelola publikasi' })).toHaveCount(0);
+  await expect(card(guest).locator('h2')).toHaveText(title);
+  await expect(card(guest).getByRole('link', { name: 'Kelola di akun' })).toHaveCount(0);
+  await manageOnAccount(page, title);
   const media = page.locator('#citizen-summary').getByAltText('Bukti laporan 1');
   await expect(media).toBeVisible();
   const mediaPath = await media.getAttribute('src');
@@ -254,7 +265,7 @@ test('named history, deep link, withdrawal and restoration keep private access s
   await page.getByRole('button', { name: 'Tarik lampiran', exact: true }).first().click();
   await expect(page.locator('#citizen-summary')).toContainText('Tanpa lampiran');
   expect((await guest.request.get(mediaPath!)).status()).toBe(404);
-  await guest.reload(); await expect(guest.locator('.lj-detail')).not.toContainText('Pelapor Uji Nama');
+  await guest.reload(); await expect(card(guest)).not.toContainText('Pelapor Uji Nama');
   await guestContext.close();
   await page.setViewportSize({ width: 320, height: 740 });
   await page.locator('.lj-detail').evaluate(el => el.scrollTop = 0);
@@ -275,10 +286,8 @@ test('expired owner session preserves note and file through login and retry', as
   await page.goto(`/#masuk=${lastLink}`); await page.getByRole('button', { name: 'Konfirmasi masuk', exact: true }).click();
   await reportFields(page, title); await page.locator('input[type=checkbox][required]:enabled').check();
   await page.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
-  await expect(page.locator('.lj-detail h2')).toHaveText(title);
-  await page.goto('/peta');
-  await expect(page.locator('.lj-report-row').filter({ hasText: title })).toBeVisible();
-  await page.locator('.lj-report-row').filter({ hasText: title }).click();
+  await expect(card(page).locator('h2')).toHaveText(title);
+  await manageOnAccount(page, title);
   await page.getByRole('button', { name: 'Tambah pembaruan', exact: true }).click();
   const note = 'Catatan dan lampiran tetap tersedia setelah sesi berakhir.';
   await page.getByLabel('Catatan pembaruan').fill(note);
@@ -343,12 +352,13 @@ test('confirmed line and area persist; ordinary notes preserve closure observati
   await page.getByRole('button',{name:'Lanjutkan',exact:true}).click();
   await page.locator('input[type=checkbox][required]:enabled').check();
   await page.getByRole('button',{name:'Kirim laporan',exact:true}).click();
-  await expect(page.locator('.lj-detail h2')).toHaveText(title);
-  await expect(page.locator('#citizen-summary .lj-condition-summary')).toContainText('Perlu pembaruan');
+  await expect(card(page).locator('h2')).toHaveText(title);
+  await expect(card(page).locator('.lj-popup-condition')).toContainText('Perlu pembaruan');
   const id=new URL(page.url()).searchParams.get('laporan')!;
   const read=async()=> (await page.request.get(`http://127.0.0.1:5005/api/community/reports/${id}`)).json();
   const created=await read();expect(created.condition.geometry.type).toBe('LineString');
-  await page.reload();await expect(page.locator('.lj-detail h2')).toHaveText(title);
+  await manageOnAccount(page,title);
+  await expect(page.locator('#citizen-summary .lj-condition-summary')).toContainText('Perlu pembaruan');
   await page.getByRole('button',{name:'Tambah pembaruan',exact:true}).click();
   await page.getByLabel('Catatan pembaruan').fill('Catatan biasa tidak memperbarui umur pengamatan kondisi.');
   await page.getByLabel('Catatan dan lampiran boleh dipublikasikan. Lampiran telah diperiksa agar tidak memuat data pribadi.',{exact:true}).check();
@@ -384,12 +394,13 @@ test('measured point feeds in-map geometry and explicit removal retains historic
   await page.getByLabel('Kedalaman (m)',{exact:true}).fill('0.075');
   await page.getByLabel('Lokasi dan bentuk telah diperiksa.',{exact:true}).check();
   await page.getByRole('button',{name:'Lanjutkan',exact:true}).click();await page.locator('input[type=checkbox][required]:enabled').check();
-  await page.getByRole('button',{name:'Kirim laporan',exact:true}).click();await expect(page.locator('.lj-detail h2')).toHaveText(title);
+  await page.getByRole('button',{name:'Kirim laporan',exact:true}).click();await expect(card(page).locator('h2')).toHaveText(title);
   await page.getByRole('button',{name:'Lihat ilustrasi 3D',exact:true}).click();
   await expect.poll(async()=>(await mapState(page))?.inspection?.renderCount??0).toBeGreaterThan(0);
   expect((await mapState(page))!.inspection!.widthM).toBe(.52);expect((await mapState(page))!.inspection!.depthM).toBe(.075);
   await page.screenshot({path:info.outputPath('persisted-condition-inspection.png')});
   await page.getByRole('button',{name:'Keluar inspeksi',exact:true}).click();
+  const reportId=await manageOnAccount(page,title);
   await page.getByRole('button',{name:'Tambah pembaruan',exact:true}).click();
   await page.getByLabel('Catatan pembaruan').fill('Kondisi dihapus secara eksplisit; riwayat pengamatan tetap tersedia.');
   page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Hapus kondisi dan bentuk',exact:true}).click();
@@ -401,5 +412,154 @@ test('measured point feeds in-map geometry and explicit removal retains historic
   await page.getByRole('tab',{name:/^Riwayat/}).click();
   await expect(page.locator('.lj-timeline li').first()).toContainText('Kondisi dan bentuk dihapus');
   await expect(page.locator('.lj-timeline li').last()).toContainText('Lebar 0.52 m');
-  await page.reload();await expect(page.getByRole('button',{name:'Lihat ilustrasi 3D',exact:true})).toHaveCount(0);
+  // back on the map the card has nothing left to inspect
+  await page.goto(`/peta?laporan=${reportId}`);await expect(card(page).locator('h2')).toHaveText(title);
+  await expect(card(page).getByRole('button',{name:'Lihat ilustrasi 3D',exact:true})).toHaveCount(0);
 });
+
+// --- account pages: password registration and sign-in (owner choice, 9 Nov) ---
+async function isolatedPublicData(page: Page) {
+  await page.route('**/api/public-reports', route => route.fulfill({ json: snapshot }));
+  await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
+}
+async function sendSimpleReport(page: Page, title: string) {
+  await page.getByLabel('Lintang', { exact: true }).fill('-6.20');
+  await page.getByLabel('Bujur', { exact: true }).fill('106.84');
+  await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
+  await page.getByLabel('Judul laporan', { exact: true }).fill(title);
+  await page.getByLabel('Uraian kejadian', { exact: true }).fill('Isian uji terisolasi untuk halaman akun.');
+  await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
+  await page.locator('input[type=checkbox][required]:enabled').check();
+  await page.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
+}
+const registerDirect = (email: string) => nativeFetch('http://127.0.0.1:5005/api/community/auth/register', { method: 'POST',
+  headers: { 'Content-Type': 'application/json', Origin: process.env.APP_ORIGIN! }, body: JSON.stringify({ email, password: 'kata-sandi-uji' }) });
+
+test('daftar (also /regis) opens the account page: a report made beside the map is listed with its status', async ({ page }, info) => {
+  const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
+  await isolatedPublicData(page);
+  const email = `akun-${randomUUID()}@example.test`, title = `Lubang uji akun ${info.project.name}`;
+  await page.goto('/regis');
+  await expect(page).toHaveURL(/\/daftar$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Daftar akun.');
+  await page.getByLabel('Email', { exact: true }).fill(email);
+  await page.getByLabel('Nama tampilan (opsional)', { exact: true }).fill('Warga Uji');
+  await page.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
+  await page.getByRole('button', { name: 'Daftar', exact: true }).click();
+  await expect(page).toHaveURL(/\/akun$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Warga Uji');
+  await expect(page.getByText('Belum ada laporan.', { exact: false })).toBeVisible();
+  await ready(page);
+  await sendSimpleReport(page, title);
+  await expect(page.getByRole('status').filter({ hasText: 'terkirim' })).toBeVisible();
+  const row = page.locator('.my-reports li').filter({ hasText: title });
+  await expect(row).toContainText('Dilaporkan'); await expect(row).toContainText('Publik');
+  await expect(page.getByLabel('Judul laporan', { exact: true })).toHaveCount(0);
+  await page.screenshot({ path: info.outputPath('akun.png'), fullPage: true });
+  await page.reload(); await expect(row).toBeVisible();
+  await page.goto('/');
+  await expect(page.locator('.home .site-head').getByRole('link', { name: 'Akun saya', exact: true })).toHaveAttribute('href', '/akun');
+  await page.goto('/akun'); await row.getByRole('button').click();
+  await expect(page.locator('.lj-detail h2')).toHaveText(title);
+  await expect(page).toHaveURL(/\/akun\?laporan=/);
+  await page.goto('/akun'); await page.getByRole('button', { name: 'Keluar', exact: true }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await page.goto('/akun'); await expect(page).toHaveURL(/\/masuk\?lanjut=%2Fakun$/);
+  expect(errors).toEqual([]);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('masuk: a wrong password keeps the form, the right one goes on to lanjut; the map dialog signs in in place', async ({ page }) => {
+  await isolatedPublicData(page);
+  const email = `masuk-${randomUUID()}@example.test`;
+  expect((await registerDirect(email)).status).toBe(201);
+  expect((await registerDirect(email)).status).toBe(409);
+  await page.goto('/masuk?lanjut=%2Fpeta%3Fbuat%3D1');
+  await page.getByLabel('Email', { exact: true }).fill(email);
+  await page.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-salah');
+  await page.getByRole('button', { name: 'Masuk', exact: true }).click();
+  await expect(page.getByRole('alert')).toHaveText('Email atau kata sandi salah.');
+  await expect(page).toHaveURL(/\/masuk/);
+  await page.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
+  await page.getByRole('button', { name: 'Masuk', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Tambah laporan', exact: true })).toBeVisible();
+  await expect(page).toHaveURL(/\/peta$/);
+  // a signed-out visitor on the map: Tambah laporan signs in with the password inside the dialog
+  await page.evaluate(() => sessionStorage.clear());
+  await page.goto('/peta'); await ready(page);
+  await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.getByRole('heading', { name: 'Masuk', exact: true })).toBeVisible();
+  await dialog.getByRole('button', { name: 'Belum punya akun? Daftar', exact: true }).click();
+  await expect(dialog.getByRole('heading', { name: 'Daftar akun', exact: true })).toBeVisible();
+  await dialog.getByRole('button', { name: 'Sudah punya akun? Masuk', exact: true }).click();
+  await dialog.getByLabel('Email', { exact: true }).fill(email);
+  await dialog.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
+  await dialog.getByRole('button', { name: 'Masuk', exact: true }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Tambah laporan', exact: true })).toBeVisible();
+});
+// --- end of account pages ---
+
+// --- admin handling (owner choice, 10 Nov) ---
+test('an admin handles an imported report: status, unit and moderation reach the public card', async ({ page }, info) => {
+  test.setTimeout(90_000);
+  await isolatedPublicData(page);
+  await page.unroute('**/api/public-reports'); // this test reads the map data from the isolated database
+  const email = `admin-${randomUUID()}@example.test`;
+  expect((await registerDirect(email)).status).toBe(201);
+  const db = mongoose.connection.db!;
+  await db.collection('citizen_accounts').updateOne({ email }, { $set: { role: 'admin' } });
+  const id = randomUUID(), code = `LJ-ADM${info.project.name === 'mobile' ? 'M' : 'D'}2345`;
+  await db.collection<any>('imported_reports').insertOne({ _id: id, code, sourceRef: `admin-${code}`, reporterId: null, category: 'road', subcategory: 'Jalan',
+    description: 'Lubang uji admin, data terisolasi.', address: 'Cakung', addressDetail: '', lat: -6.2, lng: 106.84, createdAt: new Date(), updatedAt: new Date(),
+    status: 'Menunggu', statusSlug: 'menunggu', unit: 'KELURAHAN UJI', area: { village: 'UJI', district: 'UJI', city: 'JAKARTA TIMUR' }, history: [], importedAt: new Date() });
+  await db.collection<any>('imported_meta').updateOne({ _id: 'crm' }, { $set: { importedAt: new Date(), dateStart: '2026-10-12', dateEnd: '2026-11-10' } }, { upsert: true });
+
+  await page.goto('/masuk?lanjut=%2Fadmin');
+  await page.getByLabel('Email', { exact: true }).fill(email);
+  await page.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
+  await page.getByRole('button', { name: 'Masuk', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Penanganan laporan.');
+  await page.getByLabel('Cari', { exact: true }).fill(code);
+  await page.locator('.admin-queue li button').filter({ hasText: code }).click();
+  await expect(page.locator('.admin-detail h2')).toHaveText(code);
+  await page.getByLabel('Status', { exact: true }).selectOption('diproses');
+  await page.getByLabel(/^Catatan/).fill('Diteruskan ke suku dinas terkait.');
+  await page.getByRole('button', { name: 'Simpan status', exact: true }).click();
+  await expect(page.getByRole('status').filter({ hasText: 'Status penanganan disimpan.' })).toBeVisible();
+  await page.getByLabel('Unit', { exact: true }).fill('SUDIN BINA MARGA UJI');
+  await page.getByRole('button', { name: 'Tugaskan', exact: true }).click();
+  await expect(page.locator('.admin-facts')).toContainText('SUDIN BINA MARGA UJI');
+  await expect(page.locator('.admin-queue li button').filter({ hasText: code })).toContainText('Diproses');
+
+  // the public card shows the team's handling, never the admin
+  await page.goto(`/peta?laporan=${id}`);
+  const card = page.locator('.lj-popup.is-pinned');
+  await expect(card.locator('.lj-popup-handling')).toContainText('Diproses · SUDIN BINA MARGA UJI');
+  await expect(card.locator('.lj-popup-handling')).toContainText('Diteruskan ke suku dinas terkait.');
+  await card.getByRole('tab', { name: /^Riwayat/ }).click();
+  await expect(card.locator('.lj-popup-history li.is-team').first()).toContainText('Pengelola LaporJalan');
+  await expect(card).not.toContainText(email);
+
+  // moderation removes it from the map
+  await page.goto('/admin');
+  await page.getByLabel('Cari', { exact: true }).fill(code);
+  await page.locator('.admin-queue li button').filter({ hasText: code }).click();
+  await page.getByRole('button', { name: 'Sembunyikan dari publik', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Tampilkan kembali', exact: true })).toBeVisible();
+  expect((await (await nativeFetch(`http://127.0.0.1:5005/api/public-reports/${id}`)).status)).toBe(404);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: info.outputPath('admin.png'), fullPage: true });
+
+  // an ordinary account is told the page is for admins
+  await page.evaluate(() => sessionStorage.clear());
+  const citizen = `warga-${randomUUID()}@example.test`; expect((await registerDirect(citizen)).status).toBe(201);
+  await page.goto('/masuk?lanjut=%2Fadmin');
+  await page.getByLabel('Email', { exact: true }).fill(citizen);
+  await page.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
+  await page.getByRole('button', { name: 'Masuk', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Khusus admin.');
+  await db.collection('imported_reports').deleteOne({ _id: id } as any);
+});
+// --- end of admin handling ---

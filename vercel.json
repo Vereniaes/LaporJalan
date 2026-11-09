@@ -1,6 +1,11 @@
 {
   "rewrites": [
     { "source": "/peta", "destination": "/index.html" },
-    { "source": "/peta/", "destination": "/index.html" }
+    { "source": "/peta/", "destination": "/index.html" },
+    { "source": "/daftar", "destination": "/index.html" },
+    { "source": "/regis", "destination": "/index.html" },
+    { "source": "/masuk", "destination": "/index.html" },
+    { "source": "/akun", "destination": "/index.html" },
+    { "source": "/admin", "destination": "/index.html" }
   ]
 }

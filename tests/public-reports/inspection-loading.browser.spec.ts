@@ -74,7 +74,7 @@ test('a failed inspection module preserves readable detail and recovers after re
   await page.getByRole('button', { name: 'Lihat ilustrasi 3D', exact: true }).click();
   await expect(page.getByText('Representasi 3D belum tersedia pada perangkat ini.', { exact: false })).toBeVisible();
   await expect(page.getByRole('region', { name: 'Inspeksi kondisi', exact: true })).toHaveCount(0);
-  await expect(page.locator('.lj-detail h2')).toHaveText(report.title);
+  await expect(page.locator('.lj-popup.is-pinned h2')).toHaveText(report.title);
   await ready(page);
   expect((await mapState(page))!.pitch).toBe(0);
   expect((await mapState(page))!.inspection).toBeUndefined();

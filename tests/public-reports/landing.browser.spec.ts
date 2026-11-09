@@ -27,21 +27,23 @@ test.beforeEach(async ({ page }) => { await prepare(page); });
 // --- landing ---
 test('the hero map is live: public pins, cooperative gestures, a pin opens its report', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.home .live')).toContainText(`${snapshot.reports.length} laporan Jalan`);
+  // live data, but the source is never named and no fetch time is shown (owner choice, 9 Nov)
+  await expect(page.locator('.home .demo .lj-status').first()).toBeVisible();
+  expect(await page.locator('body').innerText()).not.toMatch(/CRM|JAKI|diambil/);
+  await expect(page.locator('.home #data')).toHaveCount(0);
   await expect(page.locator('.home .maplibregl-cooperative-gesture-screen')).toContainText('dua jari');
   await expect(page.locator('.home .lj-map-tools')).toHaveCount(0);
   const pin = page.locator('.home .app-frame [data-report-ids="test-b"]');
   await expect(pin).toBeVisible();
   await pin.click();
   await expect(page).toHaveURL(/\/peta\?laporan=test-b/);
-  await expect(page.locator('.lj-detail h2')).toHaveText('TEST-B');
+  await expect(page.locator('.lj-popup.is-pinned h2')).toHaveText('TEST-B');
 });
 
 test('no live numbers are shown when the public reports API fails', async ({ page }) => {
   await page.route('**/api/public-reports', route => route.fulfill({ status: 503, json: { message: 'Sumber tidak tersedia.' } }));
   await page.goto('/');
   await expect(page.locator('.home h1')).toBeVisible();
-  await expect(page.locator('.home .live')).toHaveCount(0);
   await expect(page.locator('.home .demo .lj-status')).toHaveCount(0);
 });
 
@@ -56,7 +58,7 @@ test('unavailable service hides reporting, marks citizen features not active, ke
 
 test('legacy root report links and email confirmation links bypass the landing', async ({ page }) => {
   await page.goto('/?laporan=test-b');
-  await expect(page.locator('.lj-detail h2')).toHaveText('TEST-B');
+  await expect(page.locator('.lj-popup.is-pinned h2')).toHaveText('TEST-B');
   await expect(page.locator('.home')).toHaveCount(0);
   await page.goto('/#masuk=landing-fixture-link');
   await expect(page.getByRole('dialog')).toBeVisible();
@@ -103,14 +105,20 @@ test('a restored owner can report when delivery of new login emails is unavailab
   await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 
-test('the flow tells four steps in order and reporting leads the hero when it is on', async ({ page }) => {
+test('the flow tells four steps in order and reporting leads the hero when it is on', async ({ page }, info) => {
   await page.goto('/');
   await expect(page.locator('.home .flow .step h3')).toHaveText(['Lihat peta', 'Buka laporan', 'Laporkan', 'Pantau pembaruan']);
   const hero = page.locator('.home .hero .actions a');
   await expect(hero.first()).toHaveText('Laporkan jalan');
   await expect(hero.first()).toHaveClass(/btn-primary/);
-  // one yellow action at a time: the header map link steps back while reporting leads
-  await expect(page.locator('.home .head-cta')).toHaveClass(/btn-quiet/);
+  // the account pages are reachable from the header and the footer while sign-in is available
+  const head = page.locator('.home .site-head');
+  await expect(head.getByRole('link', { name: 'Masuk', exact: true })).toHaveAttribute('href', '/masuk');
+  await expect(head.getByRole('link', { name: 'Daftar', exact: true })).toHaveAttribute('href', '/daftar');
+  // phones hide the section nav; Peta stays in the hero and the footer there
+  if (info.project.name === 'desktop') await expect(head.getByRole('link', { name: 'Peta', exact: true })).toHaveAttribute('href', '/peta');
+  await expect(page.locator('.home .foot-nav a')).toHaveText(['Beranda', 'Peta laporan', 'Daftar', 'Masuk']);
+  await expect(page.locator('.home .btn-primary')).toHaveCount(2); // hero + closing card, never in the header
   await expect(page.locator('.home .flow .step').nth(2).getByRole('link', { name: 'Mulai lapor' })).toHaveAttribute('href', '/peta?buat=1');
 });
 
@@ -118,7 +126,9 @@ test('with reporting off the hero leads with the map and the flow says which ste
   await page.route('**/api/community/capabilities', route => route.fulfill({ status: 503, json: { message: 'Laporan warga belum diaktifkan.' } }));
   await page.goto('/');
   await expect(page.locator('.home .hero .actions a').first()).toHaveText('Buka peta');
-  await expect(page.locator('.home .head-cta')).toHaveClass(/btn-primary/);
+  // no links to account forms that cannot work
+  await expect(page.locator('.home .site-head').getByRole('link', { name: 'Masuk', exact: true })).toHaveCount(0);
+  await expect(page.locator('.home .foot-nav a')).toHaveText(['Beranda', 'Peta laporan']);
   await expect(page.locator('.home .flow .step').nth(2).locator('.avail')).toHaveText('Belum aktif');
   await expect(page.locator('.home .flow .step').nth(2).getByRole('link', { name: 'Buka peta' })).toHaveAttribute('href', '/peta');
 });
@@ -132,6 +142,22 @@ test('the report drop ends with the pin placed and the stretch drawn, also with 
     await expect(map.locator('.lj-marker')).toHaveCSS('opacity', '1');
     await expect.poll(() => map.locator('.ruas').evaluate(e => getComputedStyle(e).clipPath)).toMatch(/^(none|inset\((0(px|%)?\s*){1,4}\))$/);
   }
+});
+
+test('the road down the flow is drawn by scrolling, every active step lights up, and reduced motion shows it all drawn', async ({ page }) => {
+  await page.goto('/');
+  const marking = page.locator('.home .road-marking');
+  const clip = () => marking.evaluate(element => getComputedStyle(element).clipPath);
+  expect(await clip()).toMatch(/inset\(0% 0% (100|9\d)/); // at the top of the page nothing is drawn yet
+  await page.locator('.home .faq-sec').scrollIntoViewIfNeeded();
+  await expect.poll(clip).toMatch(/^(none|inset\(0%( 0%)*( 0px)*\)|inset\(0% 0% 0%( 0%)?\))$/);
+  await expect(page.locator('.home .step-node-fill')).toHaveCount(3); // steps 1, 2 and 4 are junctions; step 3 is the pin
+  // each row (and its junction) lands when the visitor reaches it
+  await page.locator('.home .flow .step').nth(2).scrollIntoViewIfNeeded();
+  await expect(page.locator('.home .step-node.is-pin')).toHaveCSS('opacity', '1');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  expect(await clip()).toBe('none');
 });
 
 test('FAQ opens with the keyboard, one answer at a time, and survives rapid clicks', async ({ page }) => {

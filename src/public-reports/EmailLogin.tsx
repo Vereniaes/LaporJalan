@@ -1,33 +1,39 @@
-/* Email sign-in dialog, without publishing the reporter's address.
+/* Sign-in dialog on the map, without publishing the reporter's address.
 Todo:
--> exchange a link only after an explicit confirmation
+-> exchange an email link only after an explicit confirmation
+-> otherwise masuk or daftar with a password in place, so a draft or an open report is not lost
 */
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
-import { errorMessage, LoginIntent, postJson } from './community';
+import { errorMessage, LoginIntent } from './community';
+import { AuthForm, type AuthMode, type SignIn } from './AuthForm';
 
-export function EmailLogin({ link, returnTo, onExchange, onClose }: { link: string; returnTo: LoginIntent; onExchange: (token: string) => Promise<void>; onClose: () => void }) {
+export function EmailLogin({ link, returnTo, emailLink = false, onExchange, onSignIn, onClose }: {
+  link: string; returnTo: LoginIntent; emailLink?: boolean; onExchange: (token: string) => Promise<void>; onSignIn: SignIn; onClose: () => void;
+}) {
   const dialog = useRef<HTMLDialogElement>(null);
-  const [email, setEmail] = useState(''), [busy, setBusy] = useState(false), [message, setMessage] = useState(''), [error, setError] = useState('');
+  const [mode, setMode] = useState<AuthMode>('masuk');
+  const [busy, setBusy] = useState(false), [error, setError] = useState('');
   useEffect(() => { dialog.current?.showModal(); }, []);
-  async function submit(event: FormEvent) {
-    event.preventDefault(); setBusy(true); setError(''); setMessage('');
-    try {
-      if (link) { await onExchange(link); onClose(); }
-      else { const result = await postJson<{ message: string }>('/auth/link', { email, returnTo }); setMessage(result.message); }
-    } catch (error) { setError(errorMessage(error)); }
-    finally { setBusy(false); }
+  async function confirm(event: FormEvent) {
+    event.preventDefault(); setBusy(true); setError('');
+    try { await onExchange(link); onClose(); } catch (failure) { setError(errorMessage(failure)); } finally { setBusy(false); }
   }
+  const title = link ? 'Masuk melalui email' : mode === 'daftar' ? 'Daftar akun' : 'Masuk';
   return <dialog className="lj-login" ref={dialog} aria-labelledby="login-heading" onCancel={event => { event.preventDefault(); if (!busy) onClose(); }}>
     <button className="lj-dialog-close" aria-label="Tutup masuk" disabled={busy} onClick={onClose}><X size={20} /></button>
-    <h2 id="login-heading">Masuk melalui email</h2>
-    <p>{link ? 'Konfirmasi untuk membuka akses ke laporan. Tautan hanya dapat digunakan sekali.' : 'Tautan masuk akan dikirim ke email. Alamat email tidak ditampilkan pada laporan publik.'}</p>
-    <form className="lj-form" onSubmit={submit}>
-      {!link && <label>Email<input type="email" autoComplete="email" required maxLength={254} value={email} onChange={event => setEmail(event.target.value)} /></label>}
-      {error && <p className="lj-form-error" role="alert">{error}</p>}
-      {message && <p className="lj-form-success" role="status">{message}</p>}
-      <button className="lj-primary" disabled={busy}>{busy ? 'Memproses…' : link ? 'Konfirmasi masuk' : 'Kirim tautan masuk'}</button>
-      {link && error && <button type="button" onClick={onClose}>Tutup dan minta tautan baru</button>}
-    </form>
+    <h2 id="login-heading">{title}</h2>
+    {link ? <>
+      <p>Konfirmasi untuk membuka akses ke laporan. Tautan hanya dapat digunakan sekali.</p>
+      <form className="lj-form" onSubmit={confirm}>
+        {error && <p className="lj-form-error" role="alert">{error}</p>}
+        <button className="lj-primary" disabled={busy}>{busy ? 'Memproses…' : 'Konfirmasi masuk'}</button>
+        {error && <button type="button" onClick={onClose}>Tutup dan minta tautan baru</button>}
+      </form>
+    </> : <>
+      <p>{mode === 'daftar' ? 'Buat akun untuk mengirim dan memantau laporan.' : 'Masuk untuk membuat dan mengelola laporan.'} Alamat email tidak ditampilkan pada laporan publik.</p>
+      <AuthForm key={mode} mode={mode} emailLink={emailLink} returnTo={returnTo} onSignIn={async (path, body) => { await onSignIn(path, body); onClose(); }}
+        footer={<button type="button" className="lj-text-action" onClick={() => setMode(mode === 'daftar' ? 'masuk' : 'daftar')}>{mode === 'daftar' ? 'Sudah punya akun? Masuk' : 'Belum punya akun? Daftar'}</button>} />
+    </>}
   </dialog>;
 }

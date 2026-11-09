@@ -12,9 +12,17 @@ test('valid metadata stays distinct from damage measurements', () => {
   expect(result.reports[0]).not.toHaveProperty('widthCm');
 });
 test('malformed responses and invalid points fail instead of displaying sample data', () => {
-  for (const input of [{}, { ...snapshot, source: { ...snapshot.source, url: 'https://invalid.example' } },
+  // the source url may be empty (data from our database); a category outside our four is still refused
+  for (const input of [{}, { ...snapshot, reports: [{ ...snapshot.reports[0], category: 'parking' }] }, { ...snapshot, source: { ...snapshot.source, url: 42 } },
     { ...snapshot, reports: [{ ...snapshot.reports[0], lng: 999 }] },
     { ...snapshot, reports: [snapshot.reports[0], snapshot.reports[0]] }]) expect(() => parseSnapshot(input)).toThrow();
+});
+test('imported reports from the database parse with our categories and an empty source url', () => {
+  const imported = { ...snapshot, source: { ...snapshot.source, name: 'LaporJalan', url: '' },
+    reports: [{ ...snapshot.reports[0], category: 'drain', sourceCategory: 'Tutup Saluran' }] };
+  const result = parseSnapshot(imported);
+  expect(result.reports[0]).toMatchObject({ category: 'drain', sourceCategory: 'Tutup Saluran' });
+  expect(result.source.url).toBe('');
 });
 test('search, category and area use the same report set', () => {
   const reports = snapshot.reports;

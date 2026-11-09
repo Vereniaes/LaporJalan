@@ -38,6 +38,8 @@ html:has(.home) { scroll-padding-top: 24px; }
 .home .h2 { font-weight: 700; font-size: var(--step-h2); line-height: 1.02; letter-spacing: -.02em; }
 .home .lead { font-size: var(--step-lead); line-height: 1.45; }
 .home .display span { display: block; }
+/* hero entrance mask: the line's own box clips the rising text; the padding keeps descenders (g, j, y) */
+.home .display .line { overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
 .home .mono { font-family: var(--font-mono); font-weight: 500; font-size: .8125rem; font-variant-numeric: tabular-nums; }
 .home .kicker { font-size: .875rem; font-weight: 600; color: var(--muted); }
 @media (max-width: 599px) { .home .display, .home .h2 { text-wrap: balance; } }
@@ -58,6 +60,7 @@ html:has(.home) { scroll-padding-top: 24px; }
   .home .btn-quiet:hover { border-color: var(--asphalt); }
 }
 .home .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.home .btn { white-space: nowrap; } /* a label never breaks; the buttons wrap as a whole instead */
 /* --- end of buttons --- */
 
 /* --- header --- */
@@ -65,8 +68,9 @@ html:has(.home) { scroll-padding-top: 24px; }
 .home .brand { display: flex; align-items: center; min-height: 44px; }
 .home .brand img { width: 150px; height: auto; }
 .home .site-nav { display: flex; gap: 2px; margin-left: auto; }
-.home .site-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 12px; font-weight: 600; font-size: .9375rem; text-decoration: none; transition: background-color var(--dur-press) var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .home .site-nav a:hover { background: var(--paper); } }
+.home .site-nav a, .home .head-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 12px; font-weight: 600; font-size: .9375rem; text-decoration: none; transition: background-color var(--dur-press) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .home .site-nav a:hover, .home .head-link:hover { background: var(--paper); } }
+.home .head-account { display: flex; align-items: center; gap: 6px; }
 .home .head-cta { min-height: 44px; padding: 10px 18px; }
 /* --- end of header --- */
 
@@ -79,9 +83,6 @@ html:has(.home) { scroll-padding-top: 24px; }
 .home .hero .display { font-size: clamp(2.5rem, 1.2rem + 4.6vw, 4.5rem); line-height: .96; text-wrap: balance; }
 .home .hero-side { display: grid; gap: 20px; padding-bottom: 6px; }
 .home .hero-side .lead { max-width: 28ch; }
-.home .live { display: flex; gap: 10px; font-size: .8125rem; line-height: 1.5; color: var(--muted); }
-.home .live strong { color: var(--asphalt); font-weight: 600; }
-.home .live-dot { flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: var(--sign-green); box-shadow: 0 0 0 3px rgb(14 122 75 / .18); }
 .home .hero-app { grid-column: 1 / -1; position: relative; }
 .home .app-frame { border-radius: 20px; overflow: hidden; background: var(--paper); box-shadow: 0 0 0 1px var(--line), 0 2px 4px rgb(29 32 35 / .04), 0 32px 64px -32px rgb(29 32 35 / .35); }
 .home .app-frame .lj-map { height: clamp(420px, 62vh, 640px); }
@@ -90,10 +91,8 @@ html:has(.home) { scroll-padding-top: 24px; }
 /* --- end of hero --- */
 
 /* --- sections --- */
-.home .data, .home .faq-sec { padding-block: clamp(32px, 6vh, 64px); }
+.home .faq-sec { padding-block: clamp(32px, 6vh, 64px); }
 .home .sec-head { display: grid; gap: 10px; max-width: 640px; margin-bottom: 32px; }
-.home .sec-note { color: var(--muted); }
-.home .sec-note .avail { vertical-align: 1px; margin-inline: 2px; }
 /* availability: a glyph + a word, never colour alone */
 .home .avail { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px 0 8px; border-radius: 8px; flex: none; background: var(--concrete); font-size: .75rem; font-weight: 700; white-space: nowrap; line-height: 1; }
 .home .avail::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
@@ -105,7 +104,18 @@ html:has(.home) { scroll-padding-top: 24px; }
 
 /* --- the flow: four alternating rows, text beside a labelled sample of the app --- */
 .home .flow-sec { padding-block: clamp(32px, 6vh, 64px); }
-.home .flow { display: grid; gap: clamp(56px, 10vh, 112px); }
+/* the road: an asphalt strip with a dashed yellow centre marking; each step is a junction on it */
+.home .flow-road { --rail-pad: 72px; --rail-x: 22px; --rail-w: 18px; position: relative; }
+.home .flow { display: grid; gap: clamp(56px, 10vh, 112px); padding-left: var(--rail-pad); }
+.home .road-rail { position: absolute; top: 0; bottom: 0; left: calc(var(--rail-x) - var(--rail-w) / 2); width: var(--rail-w); border-radius: var(--rail-w);
+  background: var(--asphalt); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 48px, #000 calc(100% - 96px), transparent); mask-image: linear-gradient(to bottom, transparent, #000 48px, #000 calc(100% - 96px), transparent); }
+.home .road-marking { position: absolute; inset: 0 auto 0 50%; width: 2px; margin-left: -1px; background: repeating-linear-gradient(to bottom, var(--marking-yellow) 0 14px, transparent 14px 28px); }
+.home .step { position: relative; }
+/* junction: centred on the road beside its row (phones: beside the step number) */
+.home .step-node { position: absolute; top: 50%; left: calc(var(--rail-x) - var(--rail-pad)); translate: -50% -50%; z-index: 1;
+  width: 26px; height: 26px; border-radius: 50%; background: var(--paper); box-shadow: 0 0 0 3px var(--asphalt); }
+.home .step-node-fill { position: absolute; inset: 5px; border-radius: 50%; background: var(--sign-green); }
+.home .step-node.is-pin { width: 44px; height: 44px; background: none; box-shadow: none; }
 .home .step { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
 .home .step:nth-child(even) .step-text { order: 2; }
 .home .step-text { display: grid; gap: 14px; justify-items: start; max-width: 46ch; }
@@ -140,21 +150,20 @@ html:has(.home) { scroll-padding-top: 24px; }
 .home .road-v { top: 0; bottom: 0; left: 26%; width: 18px; }
 .home .ruas { position: absolute; top: calc(56% + 6px); left: 40%; width: 42%; height: 12px; border-radius: 3px; }
 /* the pin's centre sits on the road's centre line, at the start of the stretch */
+.home .mini-list { display: grid; gap: 8px; }
+.home .mini-report { display: flex; align-items: center; gap: 10px; padding: 8px 12px 8px 6px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); }
+.home .mini-report > span:last-child { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-width: 0; }
+.home .mini-report .lj-marker { width: 36px; height: 36px; flex: none; }
+.home .mini-report .lj-marker > span { width: 30px; height: 30px; }
+.home .mini-report .lj-marker svg { width: 16px; height: 16px; }
+.home .mini-report strong, .home .mini-title strong { font-size: .8125rem; font-weight: 600; }
+.home .mini-title { display: grid; gap: 2px; }
+.home .mini-title span { font-size: .8125rem; color: var(--muted); }
 .home .mini-map .lj-marker { position: absolute; left: calc(40% - 22px); top: calc(56% - 10px); }
-/* --- end of the flow --- */
-
-/* --- data sources --- */
-.home .sources { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.home .source { display: grid; gap: 18px; align-content: start; padding: 26px; border-radius: 22px; background: var(--paper); box-shadow: var(--card-shadow); }
-.home .source h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 1.1875rem; font-weight: 700; letter-spacing: -.01em; }
-.home .source ul { display: grid; gap: 14px; }
-.home .source li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 12px; text-wrap: pretty; }
-.home .source li svg { width: 20px; height: 20px; color: var(--sign-green); margin-top: 2px; }
-.home .source strong { font-weight: 600; }
-.home .source-foot { padding-top: 14px; border-top: 1px solid var(--line); font-size: .875rem; color: var(--muted); }
+/* the row's own link (was in the removed data section) */
 .home .text-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; justify-self: start; color: var(--sign-green); font-weight: 600; text-underline-offset: 3px; }
-.home .text-link svg { width: 18px; height: 18px; }
-/* --- end of data sources --- */
+.home .text-link svg { width: 18px; height: 18px; flex: none; }
+/* --- end of the flow --- */
 
 /* --- FAQ (exclusive <details>, works without JS) --- */
 .home .faq-sec { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 40px; align-items: start; }
@@ -177,12 +186,16 @@ html:has(.home) { scroll-padding-top: 24px; }
 .home .site-foot { display: grid; gap: 8px; padding-block: 8px 56px; font-size: .875rem; color: var(--muted); }
 .home .site-foot img { margin-bottom: 6px; }
 .home .site-foot a { color: var(--asphalt); text-decoration: underline; text-underline-offset: 3px; } /* Tailwind preflight removes link underlines */
+.home .foot-nav { display: flex; flex-wrap: wrap; gap: 0 20px; }
+.home .foot-nav a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
 /* --- end of close + footer --- */
 
 /* --- widths --- */
 @media (max-width: 899px) {
   .home .hero { grid-template-columns: minmax(0, 1fr); row-gap: 24px; }
   .home .step { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .home .step-node { top: 12px; translate: -50% 0; }
+  .home .step-node.is-pin { top: 2px; }
   .home .step:nth-child(even) .step-text { order: 0; }
   .home .hero-app { margin-top: 64px; }
   .home .hero-side .lead { max-width: 36ch; }
@@ -192,12 +205,16 @@ html:has(.home) { scroll-padding-top: 24px; }
   .home .site-head { min-height: 68px; }
   .home .brand img { width: 132px; }
   .home .site-nav { display: none; }
-  .home .head-cta { margin-left: auto; padding-inline: 14px; }
-  .home .actions .btn { flex: 1 1 140px; }
+  .home .head-account { margin-left: auto; }
+  .home .head-cta { padding-inline: 14px; }
+  .home .actions .btn { flex: 1 1 auto; }
+  .home .flow-road { --rail-pad: 40px; --rail-x: 10px; --rail-w: 14px; }
+  .home .flow { gap: 48px; }
+  .home .step-node { width: 22px; height: 22px; }
+  .home .step-node.is-pin { width: 40px; height: 40px; }
   .home .hero { padding-bottom: 40px; }
   .home .app-frame .lj-map { height: 440px; }
   .home .hero-miko { left: auto; right: 12px; width: 96px; }
-  .home .sources { grid-template-columns: minmax(0, 1fr); }
   .home .screen { min-height: 0; padding: 18px; }
   .home .step-miko { width: 100px; }
   .home .screen > :nth-last-child(2) { max-width: calc(100% - 80px); }
