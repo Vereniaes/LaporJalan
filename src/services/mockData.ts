@@ -1,15 +1,10 @@
-/*
-file ini isinya dummy data jalanan jakarta buat testing aplikasi
-ada data kamera cctv, data lubang jalan, data galian utilitas, sama garis macet
-Todo:
--> siapin koordinat cctv realistik di sudirman thamrin
--> siapin data laporan kerusakan jalan lengkap dengan kedalaman cm
--> siapin jalur kemacetan yang sesuai sama titik galian
+/* Todo:
+-> provide mock datasets for CCTV cameras, reports, traffic, and 3D buildings
 */
 
 import { DamageReport, CctvCamera, TrafficSegment } from '../types';
 
-// data kamera cctv publik terpasang di jakarta
+// --- Mock Datasets ------------------------------------------------------------
 export const INITIAL_CCTV_CAMERAS: CctvCamera[] = [
   {
     id: 'cctv-hi-01',
@@ -300,4 +295,5 @@ export const BUILDINGS_3D_GEOJSON: any = {
     }
   ]
 };
+// --- end of Mock Datasets -----------------------------------------------------
 

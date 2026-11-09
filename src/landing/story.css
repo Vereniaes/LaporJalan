@@ -1,0 +1,127 @@
+/* Todo:
+-> reserve readable regions around one scroll-linked canvas
+-> release sticky layout for reduced motion, large text and short screens
+*/
+
+/* --- story viewport --- */
+.lp-three-story { position: relative; height: 700svh; --lp-story-top: 104px; }
+.lp-three-stage { position: sticky; top: var(--lp-story-top); height: calc(100svh - var(--lp-story-top) - 16px); min-height: 540px; isolation: isolate; overflow: hidden; background: #f7f6f1; border: 1px solid #dce3de; border-radius: 14px; }
+.lp-three-canvas { position: absolute; inset: 0; min-width: 0; overflow: hidden; }
+.lp-three-canvas canvas, .lp-three-poster { display: block; width: 100%; height: 100%; object-fit: contain; }
+.lp-three-poster[hidden] { display: none; }
+.lp-three-flash { position: absolute; inset: 0; opacity: 0; background: white; pointer-events: none; }
+.lp-three-narrative { position: absolute; top: 24px; left: 24px; width: min(29%, 330px); padding: 20px; border: 1px solid #dce3de; border-radius: 10px; background: #f7f6f1f5; }
+.lp-three-kicker { color: #0b5b70; font-size: .6875rem; font-weight: 700; letter-spacing: .09em; line-height: 1.5; margin: 0 0 10px; }
+.lp-three-narrative h3 { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; letter-spacing: -.04em; margin: 0 0 16px; }
+.lp-three-narrative > p:last-child { font-size: .875rem; line-height: 1.6; color: #55646d; margin: 0; }
+.lp-three-card { position: absolute; top: 50%; right: 24px; translate: 0 -50%; width: min(26%, 300px); min-height: 250px; padding: 22px; border: 1px solid #cdd5d9; border-radius: 12px; background: #fff; display: flex; flex-direction: column; gap: 20px; }
+.lp-three-card h4 { font-size: 1.125rem; line-height: 1.35; letter-spacing: -.02em; margin: 0 0 12px; overflow-wrap: anywhere; }
+.lp-three-hint { color: #55646d; font-size: .9375rem; line-height: 1.6; margin: 0; }
+.lp-three-example-note { color: #55646d; font-size: .6875rem; line-height: 1.5; margin: auto 0 0; padding-top: 10px; }
+.lp-three-success { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid #0b5b70; border-radius: 50%; color: #0b5b70; margin-bottom: 16px; }
+.lp-three-capture { position: relative; margin: 0 0 12px; }
+.lp-three-capture img { display: block; width: 100%; aspect-ratio: 8 / 5; object-fit: cover; border: 1px solid #dce3de; border-radius: 6px; }
+.lp-three-capture figcaption { font-size: .6875rem; line-height: 1.5; color: #55646d; margin-top: 4px; }
+.lp-three-pin { position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; }
+.lp-three-pin[hidden] { display: none; }
+.lp-three-pin > svg { position: absolute; width: 24px; height: 36px; left: -12px; top: -35px; }
+.lp-three-pin > span { display: block; position: absolute; left: 18px; top: -32px; width: 142px; padding: 8px 10px; border: 1px solid #cdd5d9; border-radius: 6px; background: #fff; line-height: 1.3; }
+.lp-three-pin strong { display: block; font-size: .75rem; overflow-wrap: anywhere; }
+.lp-three-pin small { display: block; color: #55646d; font-size: .6875rem; margin-top: 3px; }
+.lp-three-link { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+.lp-three-link line { stroke: #0b5b70; stroke-width: 1; visibility: hidden; }
+.lp-three-tools { position: absolute; bottom: 22px; left: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; max-width: calc(100% - 420px); }
+.lp-three-tools p, .lp-three-tools a { font-size: .75rem; color: #55646d; line-height: 1.5; margin: 0; background: #f7f6f1ee; }
+.lp-three-tools a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 3px; color: #0b5b70; }
+.lp-three-chapters { position: absolute; bottom: 20px; right: 24px; display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; }
+.lp-three-chapters button { min-width: 44px; min-height: 44px; display: grid; place-items: center; border: 1px solid #cdd5d9; border-radius: 7px; background: white; color: #142b3a; font-size: .75rem; cursor: pointer; }
+.lp-three-chapters button[aria-current] { color: white; background: #0b5b70; border-color: #0b5b70; }
+/* --- end of story viewport --- */
+
+/* --- narrative and report entry --- */
+.lp-three-after { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-block: 32px; scroll-margin-top: 120px; }
+.lp-three-after h3 { font-size: 1.375rem; letter-spacing: -.025em; margin: 0 0 8px; }
+.lp-three-after p { font-size: .9375rem; color: #55646d; margin: 0; }
+.lp-three-readable { list-style: none; padding: 0; margin: 32px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.lp-three-readable li { display: flex; gap: 18px; padding-top: 20px; border-top: 1px solid #dce3de; }
+.lp-three-readable li > span { color: #0b5b70; font-size: .8125rem; }
+.lp-three-readable h3 { font-size: 1.125rem; margin: 0 0 10px; }
+.lp-three-readable p { color: #55646d; font-size: .9375rem; margin: 0; }
+/* --- end of narrative and report entry --- */
+
+/* --- stacked and readable alternatives --- */
+@media (max-width: 1099px) {
+ .lp-three-stage { display: grid; grid-template-rows: auto minmax(180px, 1fr) auto auto auto; padding: 16px 12px 12px; gap: 12px; }
+ .lp-three-narrative { position: static; width: 100%; padding: 0; border: 0; background: transparent; grid-row: 1; }
+ .lp-three-narrative h3 { font-size: 1.5rem; margin-bottom: 8px; }
+ .lp-three-narrative > p:last-child { font-size: .875rem; line-height: 1.5; }
+ .lp-three-kicker { font-size: .625rem; margin-bottom: 6px; }
+ .lp-three-canvas { position: relative; inset: auto; grid-row: 2; min-height: 180px; margin-inline: -12px; }
+ .lp-three-card { position: relative; inset: auto; translate: none; width: 100%; min-height: 160px; padding: 16px; gap: 10px; grid-row: 3; }
+ .lp-three-card h4 { font-size: 1rem; margin-bottom: 8px; }
+ .lp-three-hint { font-size: .9375rem; line-height: 1.5; }
+ .lp-three-example-note { font-size: .6875rem; padding-top: 4px; }
+ .lp-three-success { width: 26px; height: 26px; margin-bottom: 10px; }
+ .lp-three-capture img { max-height: 140px; }
+ .lp-three-tools { position: static; max-width: none; grid-row: 4; gap: 4px 12px; }
+ .lp-three-tools p, .lp-three-tools a { font-size: .6875rem; }
+ .lp-three-tools a { min-height: 24px; }
+ .lp-three-chapters { position: static; grid-row: 5; gap: 4px; }
+ .lp-three-chapters button { flex: 1 0 44px; max-width: 64px; }
+ .lp-three-pin > span { width: 132px; }
+ .lp-three-readable { grid-template-columns: 1fr; }
+}
+.lp-three-story[data-flow="true"] { height: auto; }
+.lp-three-story[data-flow="true"] .lp-three-stage { position: relative; top: auto; height: auto; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 320px auto auto auto; gap: 16px; padding: 16px; overflow: visible; }
+.lp-three-story[data-flow="true"] .lp-three-narrative { position: static; width: 100%; padding: 0; border: 0; grid-row: 1; }
+.lp-three-story[data-flow="true"] .lp-three-canvas { position: relative; inset: auto; height: 320px; grid-row: 2; margin: 0 -16px; overflow: hidden; }
+.lp-three-story[data-flow="true"] .lp-three-card { position: relative; inset: auto; translate: none; width: 100%; grid-row: 3; min-height: 0; padding: 18px; }
+.lp-three-story[data-flow="true"] .lp-three-tools { position: static; max-width: none; grid-row: 4; }
+.lp-three-story[data-flow="true"] .lp-three-chapters { position: static; grid-row: 5; }
+.lp-three-story[data-reduced="true"] .lp-three-stage { grid-template-rows: auto 320px auto auto; }
+.lp-three-story[data-reduced="true"] .lp-three-flash { display: none; }
+@media (prefers-reduced-motion: reduce) { .lp-three-story * { scroll-behavior: auto; } }
+/* --- end of stacked and readable alternatives --- */
+
+/* --- photo and compact narrative fit --- */
+.lp-three-card-top { display: flex; align-items: center; justify-content: space-between; min-height: 30px; margin-bottom: 10px; gap: 10px; }
+.lp-three-card-top .lp-three-kicker { margin: 0; }
+.lp-three-card-top .lp-three-success { margin: 0; }
+.lp-three-capture { position: absolute; top: 48%; left: 38%; width: min(30%, 340px); margin: 0; padding: 8px; border: 1px solid #cdd5d9; border-radius: 8px; background: white; pointer-events: none; transform-origin: center; }
+@media (max-width: 1099px) {
+ .lp-three-stage { grid-template-rows: auto minmax(140px, 1fr) auto auto auto; padding-inline: 8px; }
+ .lp-three-canvas { min-height: 140px; margin-inline: -8px; }
+ .lp-three-card { min-height: 180px; }
+ .lp-three-card-top { min-height: 26px; margin-bottom: 8px; }
+ .lp-three-capture { top: 8%; left: 22%; width: 56%; max-width: 230px; padding: 6px; }
+ .lp-three-tools a { min-height: 44px; }
+}
+@media (max-width: 380px) {
+ .lp-three-stage { gap: 8px; grid-template-rows: auto minmax(120px, 1fr) auto auto auto; }
+ .lp-three-canvas { min-height: 120px; }
+ .lp-three-narrative h3 { font-size: 1.375rem; }
+}
+/* --- end of photo and compact narrative fit --- */
+
+/* --- overlay separation --- */
+.lp-three-canvas { z-index: 0; }
+.lp-three-link { z-index: 1; }
+.lp-three-narrative, .lp-three-card, .lp-three-tools, .lp-three-chapters { z-index: 2; }
+.lp-three-narrative h3, .lp-three-card h4, .lp-three-after h3, .lp-three-readable h3 { font-weight: 650; }
+.lp-three-capture { opacity: 0; transform: translateY(12px) scale(.94); transition: opacity 350ms cubic-bezier(.2,.8,.2,1), transform 350ms cubic-bezier(.2,.8,.2,1); }
+.lp-three-capture[data-visible="true"] { opacity: 1; transform: translateY(0) scale(1); transition-delay: 80ms; }
+@supports (transition-timing-function: linear(0, 1)) { .lp-three-capture { transition-timing-function: linear(0, .2 15%, .66 40%, .9 65%, 1); } }
+@media (prefers-reduced-motion: reduce) { .lp-three-capture { transition: none; } }
+/* --- end of overlay separation --- */
+
+/* --- preserve the stopped camera while text changes --- */
+@media (max-width: 1099px) { .lp-three-narrative { min-height: 124px; } }
+/* --- end of preserve the stopped camera while text changes --- */
+
+/* --- available action at the story ending --- */
+.lp-three-tools > a[hidden] { display: none; }
+.lp-three-ending-action { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; width: 100%; }
+.lp-three-ending-action[hidden] { display: none; }
+.lp-three-ending-action > p { flex-basis: 100%; }
+@media (max-width: 1099px) { .lp-three-tools { min-height: 76px; } }
+/* --- end of available action at the story ending --- */

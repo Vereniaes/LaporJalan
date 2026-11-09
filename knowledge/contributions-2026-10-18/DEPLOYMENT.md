@@ -1,5 +1,7 @@
 # Mengaktifkan laporan warga
 
+Pembaruan 28 Oktober 2026: [panduan rilis P0-P2](../crm-3d-plan-2026-10-28/implementation-p012/DEPLOYMENT.md) menambahkan capability, nama publik opt-in, kontrol publikasi serta pemrosesan wajib foto/video. Media lama tanpa penanda pemrosesan tidak disajikan mentah.
+
 Tanggal: 18 Oktober 2026. Perubahan masih lokal, tanpa commit, push, pengiriman email sungguhan, atau deployment oleh agen. Rilis pembaca CRM sebelumnya tetap bisa berjalan dengan kontribusi dimatikan.
 
 ## Konfigurasi

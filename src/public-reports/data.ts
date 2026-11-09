@@ -3,6 +3,7 @@ Todo:
 -> validate responses and share map/list filters
 */
 import { isMapCoordinate } from '../map/coordinates';
+import { conditionLabel, RoadCondition } from './condition';
 
 export type ReportCategory = 'road' | 'construction' | 'drain' | 'burning';
 export interface PublicReport {
@@ -19,6 +20,7 @@ export interface PublicReport {
   media?: { id: string; mime: string; size: number }[];
   createdAt: string;
   sourceStatus: string | null;
+  condition?: RoadCondition | null;
 }
 export interface PublicReportsSnapshot {
   reports: PublicReport[];
@@ -67,7 +69,7 @@ export async function fetchPublicReports(signal: AbortSignal): Promise<PublicRep
 export function filterReports(reports: PublicReport[], category: ReportCategory | 'all', query: string, area: MapArea | null) {
   const term = query.trim().toLocaleLowerCase('id');
   return reports.filter(report => (category === 'all' || report.category === category) &&
-    `${report.code} ${report.title ?? ''} ${report.address ?? ''} ${report.sourceCategory} ${report.sourceStatus ?? ''}`.toLocaleLowerCase('id').includes(term) &&
+    `${report.code} ${report.title ?? ''} ${report.address ?? ''} ${report.sourceCategory} ${report.sourceStatus ?? ''} ${report.condition ? conditionLabel(report.condition) : ''}`.toLocaleLowerCase('id').includes(term) &&
     (!area || (report.lng >= area.west && report.lng <= area.east && report.lat >= area.south && report.lat <= area.north)));
 }
 

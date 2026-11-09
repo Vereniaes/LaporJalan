@@ -1,11 +1,7 @@
-/*
-file ini buat otak olah citra (image processing) di browser hp/pc
-baca tekstur aspal, cari garis retak, cari lubang hitam, atau garis galian
-Todo:
--> convert gambar ke canvas buat baca pixel
--> hitung variansi tekstur aspal sama kontras tepi jalan
--> klasifikasi otomatis: lubang vs retak vs galian vs ambles
--> keluarin kotak bounding box sama taksiran kedalaman cm
+/* Todo:
+-> analyze asphalt texture and edge gradients on canvas
+-> classify damage profile (pothole, crack, trench, subsidence)
+-> estimate physical dimensions and extract bounding box coordinates
 */
 
 export interface DetectionResult {
@@ -16,7 +12,7 @@ export interface DetectionResult {
   depthCm: number;
   widthCm: number;
   boundingBox: {
-    x: number; // persentase 0 - 100
+    x: number; // percentage 0 - 100
     y: number;
     w: number;
     h: number;
@@ -28,9 +24,12 @@ export interface DetectionResult {
   };
 }
 
-// helper kalkulasi tekstur piksel canvas --------------------------------------------------------------------------
-// input param : HTMLImageElement
-// output : matrix data piksel dan indikator tekstur permukaan
+// --- Image Processing Pipeline ------------------------------------------------
+
+// Purpose : Analyze pixel brightness, edge density, and surface roughness on an offscreen canvas
+// Input   : img (HTMLImageElement)
+// Output  : { darkRatio, edgeDensity, roughness, centerMass }
+// Why/Note: Image downscaled to 200x200 for sub-50ms processing on mobile devices
 function analyzePixelMatrix(img: HTMLImageElement): {
   darkRatio: number;
   edgeDensity: number;
@@ -40,7 +39,6 @@ function analyzePixelMatrix(img: HTMLImageElement): {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   
-  // resize ke 200x200 biar proses instan di bawah 50ms di hp kentang
   const w = 200;
   const h = 200;
   canvas.width = w;
@@ -110,11 +108,10 @@ function analyzePixelMatrix(img: HTMLImageElement): {
     centerMass: { x: Math.max(20, Math.min(80, centerX)), y: Math.max(20, Math.min(80, centerY)) }
   };
 }
-// end of helper ------------------------------------------------------------------
 
-// main function buat deteksi gambar kerusakan jalan --------------------------------------------------------------------------
-// input param : image source url atau base64
-// output : payload promise hasil deteksi AI
+// Purpose : Classify damage type and calculate bounding box from image source
+// Input   : imageSrc (string: blob or data URL)
+// Output  : Promise<DetectionResult>
 export async function detectRoadDamage(imageSrc: string): Promise<DetectionResult> {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -199,3 +196,4 @@ export async function detectRoadDamage(imageSrc: string): Promise<DetectionResul
     img.src = imageSrc;
   });
 }
+// --- end of Image Processing Pipeline -----------------------------------------

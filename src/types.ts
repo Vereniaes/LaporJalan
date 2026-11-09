@@ -1,12 +1,8 @@
-/*
-file ini isinya definisi data atau type buat typescript
-biar data laporan jalan, data kamera cctv, sama data macet gak tabrakan formatnya
-Todo:
--> definisikan skema kerusakan jalan (lubang, galian, retak)
--> definisikan skema cctv sama sudut pandang kerucut
--> definisikan status kewenangan dinas terkait
+/* Todo:
+-> define client domain types for damage reports, CCTV cameras, and traffic
 */
 
+// --- Frontend Type Contracts --------------------------------------------------
 export type DamageType = 'pothole' | 'crack' | 'trench' | 'subsidence';
 export type DamageSeverity = 'ringan' | 'sedang' | 'berat';
 export type JurisdictionType = 
@@ -57,3 +53,4 @@ export interface TrafficSegment {
   speedKmh: number;
   coordinates: [number, number][]; // [lng, lat]
 }
+// --- end of Frontend Type Contracts -------------------------------------------

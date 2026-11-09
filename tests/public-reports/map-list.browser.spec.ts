@@ -1,19 +1,19 @@
-/* Exercise public map/list states using isolated responses.
-Todo:
--> verify selection, failure states, keyboard and responsive bounds
+/* Todo:
+-> verify public map states, selection, keyboard, and responsive bounds
 */
 import { test, expect, Page } from '@playwright/test';
 import { snapshot, style } from './fixtures';
 import { mapHandle, mapState, ready } from '../helpers/map';
 
 test.beforeEach(async ({ page }) => {
+  await page.route('**/api/community/capabilities', route => route.fulfill({ json: { reports: true, write: true, login: true, reason: null } }));
   await page.route('**/api/community/reports*', route => route.fulfill({ json: { reports: [], nextCursor: null } }));
 });
 
 async function prepare(page: Page, data: unknown = snapshot) {
   await page.route('**/api/public-reports', route => route.fulfill({ json: data }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/');
+  await page.goto('/peta');
   await expect(page.getByRole('heading', { name: '3 laporan', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Mode 3D', exact: true })).toBeVisible();
   await ready(page);
@@ -43,6 +43,7 @@ test('marker opens the matching report and a filter removes hidden selections', 
   await prepare(page);
   await page.getByRole('button', { name: 'Buka laporan TEST-B', exact: true }).click();
   await expect(page.locator('.lj-detail h2')).toHaveText('TEST-B');
+  await page.getByRole('button', { name: 'Kembali ke daftar', exact: true }).click();
   await page.getByRole('button', { name: 'Pembangunan', exact: true }).click();
   await expect(page.locator('.lj-detail')).toHaveCount(0);
   await expect(page.locator('.lj-marker')).toHaveCount(0);
@@ -82,7 +83,7 @@ test('refresh failure preserves the last successful timestamp and reports', asyn
 test('initial failure is distinct from empty and retry can recover', async ({ page }) => {
   await page.route('**/api/public-reports', route => route.fulfill({ status: 503 }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/');
+  await page.goto('/peta');
   await expect(page.getByRole('alert')).toContainText('Laporan belum dapat dimuat');
   await expect(page.locator('.lj-report-row')).toHaveCount(0);
   await expect(page.getByText('Belum ada laporan yang sesuai')).toHaveCount(0);
@@ -96,7 +97,7 @@ test('initial failure is distinct from empty and retry can recover', async ({ pa
 test('unavailable map keeps the report details usable', async ({ page }) => {
   await page.route('**/api/public-reports', route => route.fulfill({ json: snapshot }));
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
-  await page.goto('/');
+  await page.goto('/peta');
   await expect(page.getByText('Peta belum tersedia sepenuhnya.', { exact: false })).toBeVisible();
   await expand(page);
   await page.locator('[data-report-id="test-a"]').click();
@@ -161,7 +162,7 @@ test('loading waits for actual data, including data arriving after the map', asy
   const gate = new Promise<void>(resolve => { release = resolve; });
   await page.route('**/api/public-reports', async route => { await gate; await route.fulfill({ json: snapshot }); });
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/');
+  await page.goto('/peta');
   await expect(page.getByText('Memuat laporan dari CRM Jakarta…')).toBeVisible();
   await expect(page.locator('.lj-report-row')).toHaveCount(0);
   await ready(page);
@@ -220,4 +221,48 @@ test('rapid mode changes cancel old camera transitions and reuse the canvas', as
   expect(await map.evaluate(instance => ({ maxPitch: instance.getMaxPitch(), rotate: instance.dragRotate.isEnabled(), touchPitch: instance.touchPitch.isEnabled() })))
     .toEqual({ maxPitch: 0, rotate: false, touchPitch: false });
   await map.dispose();
+});
+
+
+test('disabled citizen service keeps CRM readable and prevents unavailable login', async ({ page }) => {
+  await page.route('**/api/community/capabilities', route => route.fulfill({ json: { reports: false, write: false, login: false, reason: 'disabled' } }));
+  await prepare(page);
+  await expect(page.getByRole('button', { name: 'Tambah laporan', exact: true })).toBeDisabled();
+  await expand(page);
+  await page.locator('[data-report-id="test-b"]').click();
+  await expect(page.locator('.lj-detail h2')).toHaveText('TEST-B');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.locator('.lj-map-canvas canvas')).toHaveCount(1);
+});
+
+test('email unavailable does not prevent reading citizen and CRM reports', async ({ page }) => {
+  await page.route('**/api/community/capabilities', route => route.fulfill({ json: { reports: true, write: true, login: false, reason: 'email_unconfigured' } }));
+  await prepare(page);
+  await expect(page.getByRole('button', { name: 'Tambah laporan', exact: true })).toBeDisabled();
+  await expect(page.locator('.lj-report-row')).toHaveCount(3);
+});
+
+
+test('invalid write origin keeps an existing account read-only', async ({ page }) => {
+  await page.addInitScript(() => sessionStorage.setItem('lj-session', 'a'.repeat(43)));
+  await page.route('**/api/community/auth/session', route => route.fulfill({ json: { user: { id: '11111111-1111-4111-8111-111111111111', email: 'session-fixture@example.test' } } }));
+  await page.route('**/api/community/capabilities', route => route.fulfill({ json: { reports: true, write: false, login: false, reason: 'origin_unconfigured' } }));
+  await prepare(page);
+  await expect(page.getByRole('button', { name: 'Tambah laporan', exact: true })).toBeDisabled();
+  await expect(page.locator('.lj-account-row').getByRole('button', { name: 'Laporan sendiri', exact: true })).toBeVisible();
+  await expect(page.locator('.lj-report-row')).toHaveCount(3);
+});
+
+test('main refresh can recover a failed capability check', async ({ page }) => {
+  let attempts = 0, available = false;
+  await page.route('**/api/community/capabilities', route => {
+    attempts++;
+    return !available ? route.fulfill({ status: 503 }) : route.fulfill({ json: { reports: true, write: true, login: true, reason: null } });
+  });
+  await prepare(page);
+  await expect(page.getByRole('button', { name: 'Tambah laporan', exact: true })).toBeDisabled();
+  const initialRequests = attempts; available = true;
+  await page.getByRole('button', { name: 'Perbarui laporan', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Tambah laporan', exact: true })).toBeEnabled();
+  expect(attempts).toBeGreaterThan(initialRequests);
 });

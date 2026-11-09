@@ -94,6 +94,26 @@ export class DamageLayer implements maplibregl.CustomLayerInterface {
     this.materials.add(material);
   }
 
+  // Keep all cavity fragments while limiting the surrounding depth plane's screen area.
+  private restrictDrawing(canvas: HTMLCanvasElement) {
+    const e = this.camera.projectionMatrix.elements, radius = this.options.widthM / 2;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const x of [-radius, radius]) for (const y of [-radius, radius]) for (const z of [-this.options.depthM, 0]) {
+      const w = e[3] * x + e[7] * y + e[11] * z + e[15];
+      const px = (e[0] * x + e[4] * y + e[8] * z + e[12]) / w;
+      const py = (e[1] * x + e[5] * y + e[9] * z + e[13]) / w;
+      if (w <= 0 || ![w, px, py].every(Number.isFinite)) return;
+      minX = Math.min(minX, px); maxX = Math.max(maxX, px);
+      minY = Math.min(minY, py); maxY = Math.max(maxY, py);
+    }
+    const x = Math.max(0, Math.floor((minX + 1) * canvas.width / 2) - 2);
+    const y = Math.max(0, Math.floor((minY + 1) * canvas.height / 2) - 2);
+    const right = Math.min(canvas.width, Math.ceil((maxX + 1) * canvas.width / 2) + 2);
+    const top = Math.min(canvas.height, Math.ceil((maxY + 1) * canvas.height / 2) + 2);
+    this.renderer!.setScissor(x, y, Math.max(0, right - x), Math.max(0, top - y));
+    this.renderer!.setScissorTest(true);
+  }
+
   render: maplibregl.CustomLayerInterface['render'] = (gl, matrix) => {
     if (!this.renderer || !this.map) return;
     this.camera.projectionMatrix.fromArray(matrix).multiply(this.transform);
@@ -102,7 +122,9 @@ export class DamageLayer implements maplibregl.CustomLayerInterface {
     this.projectedAnchorCss = [(projected.x + 1) / 2 * canvas.clientWidth, (1 - projected.y) / 2 * canvas.clientHeight];
     if (this.options.verifyDepth) this.depthRangeBefore = Array.from(gl.getParameter(gl.DEPTH_RANGE) as Float32Array);
     this.renderer.resetState();
-    this.renderer.render(this.scene, this.camera);
+    this.restrictDrawing(canvas);
+    try { this.renderer.render(this.scene, this.camera); }
+    finally { this.renderer.setScissorTest(false); }
     if (this.options.verifyDepth) this.depthRangeAfter = Array.from(gl.getParameter(gl.DEPTH_RANGE) as Float32Array);
     this.renderCount++;
   };

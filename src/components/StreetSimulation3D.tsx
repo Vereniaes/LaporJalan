@@ -1,13 +1,7 @@
-/*
-file ini buat mode game simulasi fisik jalanan berlubang 3d (pothole drive simulator)
-user bisa mengemudikan kendaraan survei jalan melewati lubang dan merasakan guncangan suspensi benturan
-Todo:
--> render jalan aspal fisik dengan cekungan kawah 3d (deformed road mesh)
--> render kendaraan mobil survei pu lengkap dengan 4 roda dan suspensi per
--> kalkulasi elevasi jalan dinamis per roda (raycast suspension)
--> efek camera trauma shake saat ban menghantam lubang dalam
--> hud game: speedometer, g-force meter, status suspensi, tombol gas/rem/kemudi
--> kontrol ganda: keyboard wasd / panah di pc + virtual joystick di hp
+/* Todo:
+-> render 3D physics drive simulation for road surface inspection
+-> calculate dynamic wheel elevation, suspension response, and camera trauma shake
+-> provide responsive driving controls (keyboard and virtual touch buttons)
 */
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -15,6 +9,7 @@ import * as THREE from 'three';
 import { X, Navigation, AlertTriangle, RefreshCw, Car, Gauge, Activity, Volume2, ShieldAlert } from 'lucide-react';
 import { DamageReport } from '../types';
 
+// --- Street Simulation Component ----------------------------------------------
 interface StreetSimulation3DProps {
   report: DamageReport;
   onClose: () => void;
@@ -682,3 +677,4 @@ export const StreetSimulation3D: React.FC<StreetSimulation3DProps> = ({ report, 
     </div>
   );
 };
+// --- end of Street Simulation Component ---------------------------------------

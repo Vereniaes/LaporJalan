@@ -1,20 +1,29 @@
-/* 
-file ini buat styling dasar website lapor jalan
-semua font sama reset style peta ditaruh disini biar rapi
-Todo:
--> load tailwind utilities
--> bikin peta maplibre full screen tanpa ada jeda putih
--> sembunyiin scrollbar jelek di browser
+/* Todo:
+-> load Tailwind design tokens and base utilities
+-> configure root typography and viewport bounds
 */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* --- brand tokens (rebrand Miko, from design refrences/rebrand-miko/css/tokens.css) --- */
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('/fonts/plus-jakarta-sans-latin-wght.woff2') format('woff2'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IBM Plex Mono'; src: url('/fonts/ibm-plex-mono-latin-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
 :root {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --asphalt: #1D2023;
+  --concrete: #F2F3F4; /* grey on purpose - a warm tint read as cream */
+  --paper: #FFFFFF;
+  --muted: #5E6166;
+  --line: #E2E4E7; /* hairlines only, too light for text or input borders */
+  --sign-green: #0E7A4B;
+  --marking-yellow: #F6C318; /* the one accent - main action only */
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: var(--font-sans);
   color-scheme: light;
 }
+/* --- end of brand tokens --- */
 
 body {
   margin: 0;
@@ -128,3 +137,20 @@ button:focus-visible, [role=button]:focus-visible, input:focus-visible {
   *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }
 
+/* Keep the optional photo review readable inside the existing owner form. */
+.lj-photo-analysis { display: grid; gap: 12px; margin-block: 10px; }
+.lj-photo-analysis h4 { font-size: 14px; font-weight: 650; }
+.lj-photo-analysis > p { margin: 0; }
+.lj-photo-analysis > button { justify-self: start; min-height: 44px; text-align: left; }
+.lj-photo-analysis summary { min-height: 44px; padding-block: 10px; cursor: pointer; color: var(--lj-brand); }
+.lj-photo-analysis details p, .lj-photo-analysis details li { overflow-wrap: anywhere; }
+.lj-photo-analysis ul { padding-left: 18px; list-style: disc; }
+.lj-photo-analysis .lj-analysis-evidence { display: grid; grid-template-columns: 128px minmax(0, 1fr); column-gap: 12px; align-items: start; }
+.lj-analysis-evidence > div { grid-row: span 2; }
+.lj-photo-analysis .lj-analysis-evidence .lj-attachments figure { margin-top: 0; }
+.lj-photo-analysis .lj-analysis-evidence .lj-attachments img { height: 128px; max-height: none; object-fit: contain; }
+.lj-photo-analysis .lj-analysis-evidence[data-expanded="true"] { grid-template-columns: 1fr; }
+.lj-analysis-evidence[data-expanded="true"] > div { grid-row: auto; }
+.lj-photo-analysis .lj-analysis-evidence[data-expanded="true"] .lj-attachments img { height: auto; max-height: 420px; }
+.lj-analysis-evidence > button { justify-self: start; min-height: 44px; text-align: left; }
+.lj-analysis-evidence > .lj-form-note { margin: 0; padding: 0; border: 0; font-size: 12px; line-height: 1.5; }

@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/peta", "destination": "/index.html" },
+    { "source": "/peta/", "destination": "/index.html" }
+  ]
+}

@@ -3,7 +3,7 @@ Todo:
 -> release object URLs and avoid autoplay
 */
 import { useEffect, useState } from 'react';
-import { Media, mediaUrl } from './community';
+import { Media, mediaUrl, privateMedia } from './community';
 
 export function MediaPicker({ files, onChange, disabled }: { files: File[]; onChange: (files: File[]) => void; disabled?: boolean }) {
   const [error, setError] = useState('');
@@ -18,7 +18,9 @@ export function MediaPicker({ files, onChange, disabled }: { files: File[]; onCh
       }
       setError(''); onChange([...files, ...picked]);
     }} /></label>
-    <small>Maksimum 3 lampiran, masing-masing 10 MB. Hindari wajah, nomor telepon, dan data pribadi.</small>
+    <small>Maksimum 3 berkas, 10 MB per berkas. Video hingga 2 menit; resolusi dapat disesuaikan.</small>
+    <small>Foto dan video diproses ulang sebelum ditampilkan. Periksa isi lampiran; wajah atau informasi yang terlihat tidak disamarkan otomatis.</small>
+    <small>Video dapat diperkecil. Suara tetap disertakan dan perlu diperiksa sebelum publikasi.</small>
     {error && <p className="lj-form-error" role="alert">{error}</p>}
     {files.map((file, index) => <figure key={`${index}-${file.name}`}>
       {file.type.startsWith('image/') ? <img src={previews[index]} alt={`Pratinjau ${file.name}`} /> : <video src={previews[index]} controls preload="metadata" />}
@@ -26,11 +28,22 @@ export function MediaPicker({ files, onChange, disabled }: { files: File[]; onCh
     </figure>)}
   </div>;
 }
-export function ReportMedia({ reportId, media }: { reportId: string; media: Media[] }) {
-  const [failed, setFailed] = useState<string[]>([]);
-  return <div className="lj-attachments">{media.map((file, index) => <figure key={file.id}>
-    {failed.includes(file.id) ? <p>Lampiran belum dapat dimuat.</p> : file.mime.startsWith('image/')
-      ? <img src={mediaUrl(reportId, file.id)} alt={`Bukti laporan ${index + 1}`} loading="lazy" onError={() => setFailed(rows => [...rows, file.id])} />
-      : <video src={mediaUrl(reportId, file.id)} controls preload="metadata" onError={() => setFailed(rows => [...rows, file.id])} />}
-  </figure>)}</div>;
+function Attachment({ reportId, file, index, privateAccess }: { reportId: string; file: Media; index: number; privateAccess: boolean }) {
+  const [url, setUrl] = useState(''), [failed, setFailed] = useState(false), [retry, setRetry] = useState(0);
+  useEffect(() => {
+    const controller = new AbortController(); let objectUrl = '';
+    setFailed(false); setUrl('');
+    if (privateAccess) privateMedia(reportId, file.id, controller.signal).then(blob => {
+      if (!controller.signal.aborted) { objectUrl = URL.createObjectURL(blob); setUrl(objectUrl); }
+    }).catch(() => { if (!controller.signal.aborted) setFailed(true); });
+    else setUrl(mediaUrl(reportId, file.id));
+    return () => { controller.abort(); if (objectUrl) URL.revokeObjectURL(objectUrl); };
+  }, [reportId, file.id, privateAccess, retry]);
+  return <figure>{failed ? <p>Lampiran belum dapat dimuat. <button className="lj-text-action" onClick={() => setRetry(value => value + 1)}>Coba lagi</button></p>
+    : !url ? <p role="status">Memuat lampiran…</p> : file.mime.startsWith('image/')
+      ? <img src={url} alt={`Bukti laporan ${index + 1}`} loading="lazy" onError={() => setFailed(true)} />
+      : <video src={url} controls preload="metadata" onError={() => setFailed(true)} />}</figure>;
+}
+export function ReportMedia({ reportId, media, privateAccess = false }: { reportId: string; media: Media[]; privateAccess?: boolean }) {
+  return <div className="lj-attachments">{media.map((file, index) => <Attachment key={file.id} reportId={reportId} file={file} index={index} privateAccess={privateAccess} />)}</div>;
 }

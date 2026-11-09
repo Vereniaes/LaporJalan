@@ -1,10 +1,6 @@
-/*
-file ini komponen utama (orchestrator) aplikasi LaporJalan
-nyatuin peta 3d maplibre, daftar laporan, modal foto kamera ai, sama inspeksi 3d
-Todo:
--> handle state laporan jalan, kamera cctv, sama filter tab
--> tombol kamera melayang buat lapor instan 1-snap
--> buka tutup modal penampil 3d potongan melintang
+/* Todo:
+-> orchestrate MapLibre 3D map, report list panel, and modal overlays
+-> manage report selection, camera viewport, and filter state
 */
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
@@ -20,6 +16,8 @@ import { MascotBanner } from './components/MascotBanner';
 import { CompareModal } from './components/CompareModal';
 
 import { FloodMonitorCard } from './components/FloodMonitorCard';
+
+// --- Workspace Component ------------------------------------------------------
 import { 
   Camera, 
   Search, 
@@ -473,3 +471,4 @@ export const App: React.FC = () => {
   );
 };
 export default App;
+// --- end of Workspace Component -----------------------------------------------

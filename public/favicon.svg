@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#0b5b70"/><g fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M22 8H12a4 4 0 0 0 0 8h8a4 4 0 0 1 0 8H10"/><circle cx="23" cy="8" r="3" fill="#0b5b70"/><circle cx="9" cy="24" r="3" fill="#0b5b70"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><title>LaporJalan</title>
+<rect width="24" height="24" rx="5" fill="#F4F2EC"/><g transform="translate(1.2 .6) scale(.9)"><defs><mask id="fv-m" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/><path d="M5.6 15.1C9.4 12.9 11.9 10.1 14.6 4.4l2.1.9c-2 5.3-4.3 9.2-7.2 12.6Z" fill="#000"/></mask></defs>
+<path d="M12 22.5c-.38 0-.74-.18-.97-.48C7.4 17.3 4 13.7 4 10a8 8 0 0 1 16 0c0 3.7-3.4 7.3-7.03 12.02-.23.3-.59.48-.97.48Z" fill="#0E7A4B" mask="url(#fv-m)"/>
+<path d="M8.15 16.05C11.1 13.4 13.1 10.6 15.65 4.85" fill="none" stroke="#0E7A4B" stroke-width="1" stroke-linecap="round" stroke-dasharray="1.5 1.7"/></g>
+</svg>

@@ -1,12 +1,7 @@
-/*
-file ini buat peta 3d maplibre di browser
-lengkap sama gedung timbul, kerucut cctv segitiga, garis macet, marker lubang, dan bercakan aspal fisik 3d
-Todo:
--> pasang maplibre peta dengan kemiringan pitch 52-74 derajat
--> render bercakan kerusakan jalan langsung di atas aspal (decals polygon)
--> keep navigation and inspection camera modes consistent
--> mode inspeksi lapangan 3d (street level view) putar orbit 360 derajat
--> gambar poligon kerucut pandang (frustum) cctv ke jalanan
+/* Todo:
+-> render MapLibre 3D WebGL map engine with building extrusions
+-> overlay road damage decals, CCTV sight frustums, and traffic line segments
+-> synchronize camera poses between 2D navigation and 3D street inspection
 */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -22,6 +17,7 @@ import { CameraMode, cameraPose, inspectionZoom } from '../map/camera';
 import { isMapCoordinate } from '../map/coordinates';
 import { manageCloseZoomLabels } from '../map/closeZoomLabels';
 
+// --- Map3D Component ----------------------------------------------------------
 interface Map3DProps {
   reports: DamageReport[];
   cctvList: CctvCamera[];
@@ -866,3 +862,4 @@ export const Map3D: React.FC<Map3DProps> = ({
     </div>
   );
 };
+// --- end of Map3D Component ---------------------------------------------------

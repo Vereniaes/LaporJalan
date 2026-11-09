@@ -4,9 +4,9 @@ Todo:
 */
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
-import { errorMessage, postJson } from './community';
+import { errorMessage, LoginIntent, postJson } from './community';
 
-export function EmailLogin({ link, onExchange, onClose }: { link: string; onExchange: (token: string) => Promise<void>; onClose: () => void }) {
+export function EmailLogin({ link, returnTo, onExchange, onClose }: { link: string; returnTo: LoginIntent; onExchange: (token: string) => Promise<void>; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [email, setEmail] = useState(''), [busy, setBusy] = useState(false), [message, setMessage] = useState(''), [error, setError] = useState('');
   useEffect(() => { dialog.current?.showModal(); }, []);
@@ -14,7 +14,7 @@ export function EmailLogin({ link, onExchange, onClose }: { link: string; onExch
     event.preventDefault(); setBusy(true); setError(''); setMessage('');
     try {
       if (link) { await onExchange(link); onClose(); }
-      else { const result = await postJson<{ message: string }>('/auth/link', { email }); setMessage(result.message); }
+      else { const result = await postJson<{ message: string }>('/auth/link', { email, returnTo }); setMessage(result.message); }
     } catch (error) { setError(errorMessage(error)); }
     finally { setBusy(false); }
   }

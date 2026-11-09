@@ -1,14 +1,13 @@
-/*
-file ini buat mode komparasi sebelum vs sesudah perbaikan jalan
-Todo:
--> slider interaktif sebelum vs sesudah tambal aspal
--> komparasi tanggal lapor vs tanggal selesai perbaikan
--> kartu audit mutu bina marga (material, ketebalan overlay cm)
+/* Todo:
+-> render interactive split-slider comparing before and after repair images
+-> display repair metadata (contractor, overlay thickness, timeline)
 */
 
 import React, { useState } from 'react';
 import { useModalDialog } from './useModalDialog';
 import { X, CheckCircle2, AlertTriangle, ArrowLeftRight, Clock, ShieldCheck, HardHat } from 'lucide-react';
+
+// --- Compare Modal Component --------------------------------------------------
 
 interface CompareItem {
   id: string;
@@ -231,3 +230,4 @@ export const CompareModal: React.FC<CompareModalProps> = ({ onClose }) => {
     </dialog>
   );
 };
+// --- end of Compare Modal Component -------------------------------------------

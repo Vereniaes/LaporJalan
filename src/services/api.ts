@@ -1,10 +1,7 @@
-/*
-file ini client api buat nyambungin frontend ke backend laporjalan-be
-kalo server backend cloud run / localhost nyala, fetch dari api
-kalo server mati atau offline, otomatis fallback ke data lokal
-Todo:
--> fetch /api/reports
--> post /api/reports buat kirim laporan baru
+/* Todo:
+-> query backend REST endpoints with offline fallback
+-> submit damage reports to backend
+-> query address suggestions from autocomplete proxy
 */
 
 import { DamageReport } from '../types.js';
@@ -12,7 +9,11 @@ import { INITIAL_REPORTS } from './mockData.js';
 
 const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:5000';
 
-// helper fetch laporan jalan dengan fallback lokal --------------------------------------------------------------------------
+// --- Legacy Client API --------------------------------------------------------
+
+// Purpose : Fetch reports from backend API with fallback to initial mock dataset
+// Output  : Promise<DamageReport[]>
+// Why/Note: Bypasses server errors gracefully when offline or in preview mode
 export async function fetchReports(): Promise<DamageReport[]> {
   try {
     const res = await fetch(`${API_BASE_URL}/api/reports`, { method: 'GET' });
@@ -24,9 +25,10 @@ export async function fetchReports(): Promise<DamageReport[]> {
     return INITIAL_REPORTS;
   }
 }
-// end of helper ------------------------------------------------------------------
 
-// helper kirim laporan baru ke backend --------------------------------------------------------------------------
+// Purpose : Submit new damage report to backend API
+// Input   : report (DamageReport)
+// Output  : Promise<boolean> (true if successfully persisted on server)
 export async function submitReportToBackend(report: DamageReport): Promise<boolean> {
   try {
     const res = await fetch(`${API_BASE_URL}/api/reports`, {
@@ -40,9 +42,10 @@ export async function submitReportToBackend(report: DamageReport): Promise<boole
     return false;
   }
 }
-// end of helper ------------------------------------------------------------------
 
-// helper cari alamat autocomplete via google places / nominatim --------------------------------------------------------------------------
+// Purpose : Fetch address autocomplete predictions from places endpoint
+// Input   : input (string)
+// Output  : Promise<any[]>
 export async function searchPlacesApi(input: string): Promise<any[]> {
   if (!input || input.trim().length < 2) return [];
   try {
@@ -54,4 +57,4 @@ export async function searchPlacesApi(input: string): Promise<any[]> {
     return [];
   }
 }
-// end of helper ------------------------------------------------------------------
+// --- end of Legacy Client API -------------------------------------------------

@@ -1,0 +1,414 @@
+{
+ "note": "CONTOH DESAIN, bukan laporan nyata. Laporan warga di layanan LaporJalan belum diaktifkan (API /api/community/reports, 9 Nov 2026). Satu contoh per jenis kondisi, untuk memperlihatkan tampilan titik, ruas, dan area di 2D dan 3D. Geometri diambil dari jalan OpenStreetMap (OpenFreeMap, lapisan transportation_name); area = garis jalan itu diberi lebar. Nama jalan hanya catatan asal geometri, tidak ditampilkan.",
+ "reports": [
+  {
+   "id": "contoh-01",
+   "code": "LJ-CONTOH-01",
+   "origin": "community",
+   "contoh": true,
+   "category": "road",
+   "sourceCategory": "Jalan",
+   "title": "Lubang tertutup genangan",
+   "createdAt": "2026-11-09T00:20:00.000Z",
+   "status": "reported",
+   "reporterName": "Nama tampilan",
+   "photo": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Jalan_rusak_berlubang_-_IMG20260420173247.jpg/500px-Jalan_rusak_berlubang_-_IMG20260420173247.jpg",
+    "width": 500,
+    "height": 375,
+    "credit": "Foto contoh: YT Arty, Wikimedia Commons, CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Jalan_rusak_berlubang_-_IMG20260420173247.jpg"
+   },
+   "condition": {
+    "kind": "pothole",
+    "observedAt": "2026-11-09T00:10:00.000Z",
+    "access": "unknown",
+    "geometry": {
+     "type": "Point",
+     "road": "-",
+     "coordinates": [
+      106.8386,
+      -6.1916
+     ]
+    },
+    "dimensions": {
+     "method": "estimated"
+    }
+   },
+   "lng": 106.8386,
+   "lat": -6.1916
+  },
+  {
+   "id": "contoh-02",
+   "code": "LJ-CONTOH-02",
+   "origin": "community",
+   "contoh": true,
+   "category": "construction",
+   "sourceCategory": "Pembangunan",
+   "title": "Galian kabel di satu lajur",
+   "createdAt": "2026-11-07T08:10:00.000Z",
+   "status": "work_observed",
+   "reporterName": "",
+   "photo": null,
+   "condition": {
+    "kind": "excavation",
+    "observedAt": "2026-11-07T08:00:00.000Z",
+    "access": "unknown",
+    "geometry": {
+     "type": "LineString",
+     "road": "Jalan Bulungan",
+     "coordinates": [
+      [
+       106.7961042,
+       -6.2403136
+      ],
+      [
+       106.7961001,
+       -6.2414683
+      ],
+      [
+       106.7961109,
+       -6.2419322
+      ],
+      [
+       106.7961323,
+       -6.2419802
+      ],
+      [
+       106.7961488,
+       -6.2421969
+      ]
+     ]
+    }
+   },
+   "lng": 106.7961042,
+   "lat": -6.2403136
+  },
+  {
+   "id": "contoh-03",
+   "code": "LJ-CONTOH-03",
+   "origin": "community",
+   "contoh": true,
+   "category": "road",
+   "sourceCategory": "Jalan",
+   "title": "Retak dan lubang berderet di lajur kiri",
+   "createdAt": "2026-11-08T23:05:00.000Z",
+   "status": "reported",
+   "reporterName": "",
+   "photo": null,
+   "condition": {
+    "kind": "crack",
+    "observedAt": "2026-11-08T22:50:00.000Z",
+    "access": "unknown",
+    "geometry": {
+     "type": "LineString",
+     "road": "Jalan Tomang Raya",
+     "coordinates": [
+      [
+       106.8064064,
+       -6.172898
+      ],
+      [
+       106.8057668,
+       -6.173345
+      ],
+      [
+       106.804533,
+       -6.1742623
+      ],
+      [
+       106.8042433,
+       -6.1744436
+      ],
+      [
+       106.8040416,
+       -6.1745532
+      ]
+     ]
+    }
+   },
+   "lng": 106.8064064,
+   "lat": -6.172898
+  },
+  {
+   "id": "contoh-04",
+   "code": "LJ-CONTOH-04",
+   "origin": "community",
+   "contoh": true,
+   "category": "road",
+   "sourceCategory": "Jalan",
+   "title": "Aspal amblas di sebagian lajur",
+   "createdAt": "2026-11-08T10:30:00.000Z",
+   "status": "unchanged",
+   "reporterName": "",
+   "photo": null,
+   "condition": {
+    "kind": "subsidence",
+    "observedAt": "2026-11-08T10:15:00.000Z",
+    "access": "unknown",
+    "geometry": {
+     "type": "Polygon",
+     "road": "Jalan Brawijaya Raya",
+     "coordinates": [
+      [
+       [
+        106.8077152,
+        -6.2499571
+       ],
+       [
+        106.8078092,
+        -6.2498785
+       ],
+       [
+        106.8078414,
+        -6.2498447
+       ],
+       [
+        106.8078703,
+        -6.2497517
+       ],
+       [
+        106.8078695,
+        -6.2497504
+       ],
+       [
+        106.8079685,
+        -6.2497596
+       ],
+       [
+        106.8079657,
+        -6.2497799
+       ],
+       [
+        106.8079302,
+        -6.2498895
+       ],
+       [
+        106.8078766,
+        -6.2499517
+       ],
+       [
+        106.807779,
+        -6.2500335
+       ],
+       [
+        106.8077152,
+        -6.2499571
+       ]
+      ]
+     ]
+    }
+   },
+   "lng": 106.8077152,
+   "lat": -6.2499571
+  },
+  {
+   "id": "contoh-05",
+   "code": "LJ-CONTOH-05",
+   "origin": "community",
+   "contoh": true,
+   "category": "road",
+   "sourceCategory": "Jalan",
+   "title": "Ruas ditutup, belum ada keterangan",
+   "createdAt": "2026-11-07T09:00:00.000Z",
+   "status": "unchanged",
+   "reporterName": "",
+   "photo": null,
+   "condition": {
+    "kind": "closure",
+    "observedAt": "2026-11-07T08:40:00.000Z",
+    "access": "closed",
+    "geometry": {
+     "type": "LineString",
+     "road": "Jalan Tanah Abang II",
+     "coordinates": [
+      [
+       106.8200357,
+       -6.1757739
+      ],
+      [
+       106.8192959,
+       -6.1756863
+      ],
+      [
+       106.8186862,
+       -6.1756355
+      ]
+     ]
+    }
+   },
+   "lng": 106.8200357,
+   "lat": -6.1757739
+  },
+  {
+   "id": "contoh-06",
+   "code": "LJ-CONTOH-06",
+   "origin": "community",
+   "contoh": true,
+   "category": "construction",
+   "sourceCategory": "Pembangunan",
+   "title": "Pekerjaan trotoar dan bahu jalan",
+   "createdAt": "2026-11-08T02:00:00.000Z",
+   "status": "work_observed",
+   "reporterName": "",
+   "photo": null,
+   "condition": {
+    "kind": "construction",
+    "observedAt": "2026-11-08T01:45:00.000Z",
+    "access": "unknown",
+    "geometry": {
+     "type": "Polygon",
+     "road": "Jalan Barito",
+     "coordinates": [
+      [
+       [
+        106.7929767,
+        -6.2421218
+       ],
+       [
+        106.7929942,
+        -6.242309
+       ],
+       [
+        106.7930599,
+        -6.2427426
+       ],
+       [
+        106.7929527,
+        -6.2427588
+       ],
+       [
+        106.7928868,
+        -6.2423234
+       ],
+       [
+        106.7928687,
+        -6.242132
+       ],
+       [
+        106.7929767,
+        -6.2421218
+       ]
+      ]
+     ]
+    }
+   },
+   "lng": 106.7929767,
+   "lat": -6.2421218
+  },
+  {
+   "id": "contoh-07",
+   "code": "LJ-CONTOH-07",
+   "origin": "community",
+   "contoh": true,
+   "category": "drain",
+   "sourceCategory": "Saluran",
+   "title": "Saluran tersumbat, air meluap ke jalan",
+   "createdAt": "2026-11-09T01:10:00.000Z",
+   "status": "reported",
+   "reporterName": "",
+   "photo": null,
+   "condition": {
+    "kind": "blocked_drain",
+    "observedAt": "2026-11-09T00:55:00.000Z",
+    "access": "unknown",
+    "geometry": {
+     "type": "LineString",
+     "road": "Jalan Kramat Pela",
+     "coordinates": [
+      [
+       106.7959933,
+       -6.2494179
+      ],
+      [
+       106.7959768,
+       -6.2494565
+      ],
+      [
+       106.7958802,
+       -6.2495632
+      ],
+      [
+       106.7958266,
+       -6.2495951
+      ],
+      [
+       106.795392,
+       -6.2499844
+      ],
+      [
+       106.7952955,
+       -6.2500591
+      ],
+      [
+       106.7951667,
+       -6.2501231
+      ],
+      [
+       106.7950929,
+       -6.25014
+      ]
+     ]
+    }
+   },
+   "lng": 106.7959933,
+   "lat": -6.2494179
+  },
+  {
+   "id": "contoh-08",
+   "code": "LJ-CONTOH-08",
+   "origin": "community",
+   "contoh": true,
+   "category": "burning",
+   "sourceCategory": "Pembakaran",
+   "title": "Pembakaran sampah di tepi jalan",
+   "createdAt": "2026-11-08T11:20:00.000Z",
+   "status": "resolved_observed",
+   "reporterName": "",
+   "photo": null,
+   "condition": {
+    "kind": "burning",
+    "observedAt": "2026-11-08T11:05:00.000Z",
+    "access": "unknown",
+    "geometry": {
+     "type": "Point",
+     "road": "Jalan Hang Tuah",
+     "coordinates": [
+      106.7975837,
+      -6.2293785
+     ]
+    }
+   },
+   "lng": 106.7975837,
+   "lat": -6.2293785
+  },
+  {
+   "id": "contoh-09",
+   "code": "LJ-CONTOH-09",
+   "origin": "community",
+   "contoh": true,
+   "category": "road",
+   "sourceCategory": "Jalan",
+   "title": "Tutup saluran bergeser",
+   "createdAt": "2026-11-08T14:40:00.000Z",
+   "status": "reported",
+   "reporterName": "",
+   "photo": null,
+   "condition": {
+    "kind": "other",
+    "observedAt": "2026-11-08T14:30:00.000Z",
+    "access": "unknown",
+    "geometry": {
+     "type": "Point",
+     "road": "Jalan Musi",
+     "coordinates": [
+      106.8097827,
+      -6.175612
+     ]
+    }
+   },
+   "lng": 106.8097827,
+   "lat": -6.175612
+  }
+ ]
+}

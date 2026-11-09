@@ -1,13 +1,16 @@
-/* Citizen forms and history within the public map panel.
-Todo:
+/* Todo:
+-> style citizen forms and history in the public panel
 -> keep touch targets, focus and mobile reading space usable
 */
 .lj-primary, .lj-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 10px 15px; border-radius: 6px; font-weight: 600; font-size: 14px !important; }
-.lj-primary { color: white; background: var(--lj-teal); border: 1px solid var(--lj-teal); }
-.lj-secondary { border: 1px solid #b7cbce; color: var(--lj-teal); background: white; }
+.lj-primary { color: var(--lj-ink); background: var(--marking-yellow); border: 1px solid var(--marking-yellow); }
+.lj-secondary { border: 1px solid var(--lj-ink); color: var(--lj-ink); background: var(--paper); }
+.lj-app .lj-primary:disabled { background: var(--lj-line); border-color: var(--lj-line); color: var(--lj-muted); opacity: 1; } /* accent only on actions that work */
 .lj-add-report { white-space: nowrap; }
+/* one yellow action at a time: while a report is open, the panel action keeps the accent */
+.lj-reading-detail .lj-add-report:not(:disabled) { background: var(--paper); border-color: var(--lj-ink); color: var(--lj-ink); }
 .lj-account-row { display: flex; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid var(--lj-line); }
-.lj-account-row button, .lj-text-action, .lj-load-more { color: var(--lj-teal); min-height: 44px; font-size: 13px !important; text-decoration: underline; }
+.lj-account-row button, .lj-text-action, .lj-load-more { color: var(--lj-brand); min-height: 44px; font-size: 13px !important; text-decoration: underline; }
 .lj-load-more { width: 100%; }
 .lj-community-warning { font-size: 12px; padding: 10px 24px; color: #664515; background: #fff4df; }
 .lj-community-warning button { display: block; min-height: 36px; text-decoration: underline; }
@@ -22,40 +25,40 @@ Todo:
 .lj-form p { color: var(--lj-muted); }
 .lj-form label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
 .lj-form label > span, .lj-form small { color: var(--lj-muted); font-weight: 400; font-size: 12px; }
-.lj-form input:not([type=checkbox]), .lj-form textarea, .lj-form select { border: 1px solid #b8c8c9; background: white; color: var(--lj-ink); border-radius: 5px; padding: 10px; min-height: 44px; width: 100%; min-width: 0; font: inherit; font-weight: 400; }
+.lj-form input:not([type=checkbox]), .lj-form textarea, .lj-form select { border: 1px solid var(--lj-muted); background: var(--paper); color: var(--lj-ink); border-radius: 5px; padding: 10px; min-height: 44px; width: 100%; min-width: 0; font: inherit; font-weight: 400; }
 .lj-form textarea { resize: vertical; }
 .lj-form input[type=file] { font-size: 12px; }
-.lj-form input:focus-visible, .lj-form textarea:focus-visible, .lj-form select:focus-visible { outline: 3px solid #137a92; outline-offset: 2px; }
+.lj-form input:focus-visible, .lj-form textarea:focus-visible, .lj-form select:focus-visible { outline: 3px solid var(--lj-brand); outline-offset: 2px; }
 .lj-coordinate-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .lj-form-actions { display: flex; justify-content: flex-end; gap: 10px; }
 .lj-form .lj-checkbox { flex-direction: row; align-items: flex-start; gap: 10px; font-weight: 400; line-height: 1.6; }
-.lj-checkbox input { width: 20px; height: 20px; margin-top: 3px; flex-shrink: 0; accent-color: var(--lj-teal); }
+.lj-checkbox input { width: 20px; height: 20px; margin-top: 3px; flex-shrink: 0; accent-color: var(--lj-brand); }
 .lj-steps { display: flex; list-style: none; gap: 5px; font-size: 12px; margin: 16px 0 24px; }
-.lj-steps li { border-bottom: 3px solid #dce5e2; padding: 7px 3px; flex: 1; color: var(--lj-muted); }
-.lj-steps [aria-current=step] { border-color: var(--lj-teal); color: var(--lj-teal); font-weight: 650; }
-.lj-review { background: #f5f7f5; border: 1px solid var(--lj-line); padding: 14px; border-radius: 6px; overflow-wrap: anywhere; }
+.lj-steps li { border-bottom: 3px solid var(--lj-line); padding: 7px 3px; flex: 1; color: var(--lj-muted); }
+.lj-steps [aria-current=step] { border-color: var(--lj-brand); color: var(--lj-brand); font-weight: 650; }
+.lj-review { background: var(--concrete); border: 1px solid var(--lj-line); padding: 14px; border-radius: 6px; overflow-wrap: anywhere; }
 .lj-review > p, .lj-description { white-space: pre-wrap; margin: 10px 0 16px; overflow-wrap: anywhere; }
 .lj-review dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px 12px; font-size: 12px; }
 .lj-review dt { color: var(--lj-muted); }
-.lj-form-note { border-left: 3px solid var(--lj-teal); padding: 4px 12px; }
+.lj-form-note { border-left: 3px solid var(--lj-brand); padding: 4px 12px; }
 .lj-form .lj-form-error, .lj-form-error { color: #8a3620; background: #fff0e8; padding: 12px; border-radius: 4px; font-size: 13px; }
 .lj-form .lj-form-success, .lj-form-success { color: #265a44; background: #edf7ef; padding: 12px; border-radius: 4px; font-size: 13px; }
 .lj-media-picker figure, .lj-attachments figure { margin-top: 12px; border: 1px solid var(--lj-line); border-radius: 6px; overflow: hidden; }
-.lj-media-picker img, .lj-media-picker video, .lj-attachments img, .lj-attachments video { display: block; width: 100%; max-height: 300px; object-fit: contain; background: #f0f3f0; }
+.lj-media-picker img, .lj-media-picker video, .lj-attachments img, .lj-attachments video { display: block; width: 100%; max-height: 300px; object-fit: contain; background: var(--concrete); }
 .lj-media-picker figcaption { font-size: 12px; padding: 8px; overflow-wrap: anywhere; }
-.lj-media-picker figcaption button { display: block; min-height: 36px; color: var(--lj-teal); text-decoration: underline; }
+.lj-media-picker figcaption button { display: block; min-height: 36px; color: var(--lj-brand); text-decoration: underline; }
 .lj-attachments figure > p { padding: 16px; font-size: 13px; }
 .lj-history-heading { display: flex; align-items: center; justify-content: space-between; margin: 22px 0 12px; }
 .lj-history-heading h3 { font-weight: 650; font-size: 17px; }
-.lj-history-heading button { width: 44px; height: 44px; display: grid; place-items: center; color: var(--lj-teal); }
-.lj-timeline { margin: 0 0 18px 7px; list-style: none; border-left: 2px solid #cdded9; }
+.lj-history-heading button { width: 44px; height: 44px; display: grid; place-items: center; color: var(--lj-brand); }
+.lj-timeline { margin: 0 0 18px 7px; list-style: none; border-left: 2px solid var(--lj-line); }
 .lj-timeline li { padding: 0 0 22px 19px; position: relative; font-size: 14px; }
-.lj-timeline li::before { content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border: 2px solid white; border-radius: 50%; background: var(--lj-teal); }
+.lj-timeline li::before { content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border: 2px solid white; border-radius: 50%; background: var(--lj-brand); }
 .lj-timeline li > p { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 7px; }
 .lj-timeline .lj-entry-meta { color: var(--lj-muted); font-size: 11px; margin-top: 3px; }
 .lj-update-form { border-top: 1px solid var(--lj-line); padding-top: 18px; }
-.lj-login { --lj-ink: #142b3a; --lj-muted: #55646d; --lj-teal: #0b5b70; color: var(--lj-ink); width: min(440px, calc(100vw - 28px)); max-height: calc(100dvh - 40px); border: 1px solid #d3dfdd; border-radius: 12px; padding: 28px; margin: auto; font: 15px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-.lj-login::backdrop { background: #102f3b70; }
+.lj-login { color: var(--lj-ink); width: min(440px, calc(100vw - 28px)); max-height: calc(100dvh - 40px); border: 1px solid var(--lj-line); border-radius: 12px; padding: 28px; margin: auto; font: 15px/1.5 var(--font-sans); }
+.lj-login::backdrop { background: rgb(29 32 35 / .45); }
 .lj-login > p { color: var(--lj-muted); margin: 10px 0 20px; }
 .lj-dialog-close { float: right; display: grid; place-items: center; width: 44px; height: 44px; margin: -15px -15px 0 10px; }
 @media (max-width: 1100px) { .lj-header { gap: 14px; } .lj-header > .lj-source-link { display: none; } .lj-region { display: none; } }
@@ -68,9 +71,87 @@ Todo:
   .lj-form input:not([type=checkbox]), .lj-form textarea, .lj-form select { font-size: 16px; }
   .lj-community-warning { padding: 8px 18px; }
 }
-@media (max-width: 350px) { .lj-brand strong { font-size: 18px; } .lj-logo { width: 28px; } .lj-add-report { padding: 8px; } .lj-add-report svg { display: none; } }
+@media (max-width: 350px) { .lj-brand img { height: 26px; } .lj-add-report { padding: 8px; } .lj-add-report svg { display: none; } }
 
 .lj-detail > .lj-back, .lj-composer > .lj-back { position: sticky; top: 0; z-index: 1; background: white; }
 @media (max-width: 800px) {
   .lj-app:has(.lj-composer) .lj-source-footer p, .lj-app:has(.lj-detail) .lj-source-footer p { display: none; }
 }
+.lj-detail-tabs { display: flex; border-bottom: 1px solid var(--lj-line); margin: 18px 0; gap: 20px; }
+.lj-detail-tabs button { min-height: 44px; color: var(--lj-muted); padding: 8px 2px; font-size: 14px; border-bottom: 3px solid transparent; }
+.lj-detail-tabs button[aria-selected=true] { color: var(--lj-brand); border-color: var(--lj-brand); font-weight: 650; }
+.lj-detail [role=tabpanel][hidden] { display: none; }
+.lj-history-title, .lj-publication-controls h3 { font-size: 15px; font-weight: 650; }
+.lj-publication-controls { border-top: 1px solid var(--lj-line); margin-top: 22px; padding-top: 18px; }
+.lj-owner-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.lj-publication-controls details { margin-top: 12px; font-size: 13px; }
+.lj-publication-controls summary { cursor: pointer; min-height: 44px; display: list-item; padding: 10px 0; color: var(--lj-brand); }
+.lj-publication-note { font-size: 13px; padding: 10px 12px; margin: 12px 0; color: #664515; background: #fff4df; border-radius: 5px; }
+.lj-media-management { display: flex; align-items: center; gap: 12px; justify-content: space-between; border-top: 1px solid var(--lj-line); }
+.lj-name-preview { font-size: 13px; }
+.lj-login .lj-form { margin-top: 16px; }
+.lj-login p { overflow-wrap: anywhere; }
+.lj-account-row { gap: 12px; flex-wrap: wrap; }
+.lj-detail-body > .lj-primary, .lj-detail-body > .lj-secondary { margin-top: 16px; }
+@media (max-width: 800px) {
+  .lj-reading-detail .lj-header { min-height: 68px; flex-wrap: nowrap; padding-top: 10px; padding-bottom: 10px; }
+  .lj-reading-detail .lj-search, .lj-reading-detail .lj-region, .lj-reading-detail .lj-brand small { display: none; }
+  .lj-reading-detail .lj-add-report { margin-left: auto; }
+  .lj-reading-detail.lj-expanded .lj-map { height: 158px; min-height: 158px; }
+  .lj-reading-detail .lj-detail-body { padding-top: 14px; }
+  .lj-reading-detail .lj-detail-body h2 { font-size: 22px; line-height: 1.25; }
+  .lj-reading-detail .lj-detail-date { font-size: 12px; }
+  .lj-reading-detail .lj-detail-tabs { margin: 12px 0; }
+  .lj-reading-detail .lj-source-footer p { display: none; }
+  .lj-reading-detail .lj-media-empty { min-height: 100px; margin: 12px 0; }
+  .lj-reading-detail .lj-attachments figure:first-child { margin-top: 0; }
+  .lj-reading-detail .lj-attachments img, .lj-reading-detail .lj-attachments video { max-height: 220px; }
+}
+/* --- phone detail map with room (owner choice, 9 Nov) --- */
+/* 158 px left about 40 px visible between the tool row and the attribution; phones up to 650 px tall keep 158 px */
+@media (max-width: 800px) and (min-height: 651px) {
+  .lj-reading-detail.lj-expanded .lj-map { height: min(40dvh, 340px); }
+  .lj-reading-detail.lj-expanded .lj-map-tools { flex-direction: column; }
+  .lj-reading-detail.lj-expanded .lj-map-tools button + button { border-left: 0; border-top: 1px solid var(--lj-line); }
+}
+/* --- end of phone detail map --- */
+@media (max-width: 360px) {
+  .lj-reading-detail .lj-brand img { height: 26px; }
+  .lj-reading-detail .lj-add-report { font-size: 12px !important; padding: 8px; gap: 4px; }
+  .lj-reading-detail .lj-header { gap: 6px; padding-left: 12px; padding-right: 12px; }
+}
+.lj-form[hidden] { display: none; }
+.lj-condition-fields { padding: 15px; border: 1px solid var(--lj-line); border-radius: 6px; margin-top: 4px; }
+.lj-condition-fields legend { font-weight: 650; font-size: 14px; padding: 0 5px; }
+.lj-condition-fields legend span { font-weight: 400; color: var(--lj-muted); font-size: 12px; }
+.lj-dimension-fields { border-top: 1px solid var(--lj-line); padding-top: 4px; }
+.lj-dimension-fields summary { cursor: pointer; min-height: 44px; padding: 10px 0; font-weight: 600; color: var(--lj-brand); }
+.lj-dimension-fields > p { margin-bottom: 12px; font-size: 12px; }
+.lj-dimension-fields > label { margin-bottom: 12px; }
+.lj-dimension-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.lj-dimension-grid label { font-size: 12px; }
+.lj-condition-summary { background: var(--concrete); border-left: 3px solid var(--lj-brand); padding: 12px 14px; margin: 14px 0; font-size: 12px; overflow-wrap: anywhere; }
+.lj-condition-summary h3 { font-size: 15px; font-weight: 650; margin-bottom: 4px; }
+.lj-condition-summary p + p { margin-top: 5px; }
+.lj-row-condition { font-size: 11px; color: var(--lj-muted); margin-top: 5px; line-height: 1.5; }
+.lj-stale-condition { display: inline-block; color: #744916; background: #fff1d2; border: 1px solid #e5d1a5; border-radius: 4px; padding: 2px 5px; margin: 4px 0 0 6px; font-size: 11px; font-weight: 600; }
+@media (max-width: 360px) {
+  .lj-condition-fields { padding: 12px; }
+  .lj-dimension-grid { grid-template-columns: 1fr; }
+}
+
+/* --- mobile report space --- */
+@media (max-width: 800px) {
+  .lj-composing .lj-header { min-height: 68px; flex-wrap: nowrap; padding-block: 10px; }
+  .lj-composing .lj-search, .lj-composing .lj-panel-toggle { display: none; }
+  .lj-composing .lj-panel { margin-top: 0; border-radius: 0; max-height: none; }
+  .lj-composing:not(.lj-drawing) .lj-map { flex: none; height: 180px; min-height: 180px; }
+  .lj-composing:not(.lj-drawing):has(.lj-composer[data-step="1"]) .lj-map,
+  .lj-composing:not(.lj-drawing):has(.lj-composer[data-step="2"]) .lj-map { display: none; }
+  .lj-composing .lj-source-footer { display: none; } /* it covered the Kirim bar; the source note is in the Tinjau step */
+  .lj-composer .lj-form-actions { position: sticky; bottom: -18px; margin: 8px -18px -18px; padding: 12px 18px max(12px, env(safe-area-inset-bottom)); border-top: 1px solid var(--lj-line); background: white; z-index: 1; }
+}
+@media (max-height: 650px) and (max-width: 800px) {
+  .lj-composing:not(.lj-drawing) .lj-map { height: 135px; min-height: 135px; }
+}
+/* --- end of mobile report space --- */

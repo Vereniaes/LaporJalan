@@ -1,12 +1,7 @@
-/*
-file ini buat popup modal ambil foto jalan pake kamera hp atau upload
-langsung dianalisis otomatis pake olah citra (image processing) di sisi browser
-Todo:
--> buka input kamera atau file picker foto jalan
--> trigger analisa deteksi tekstur dan kontur cekungan
--> gambar kotak bounding box di atas foto
--> auto-tagging instansi wewenang jalan (nasional/provinsi/kota)
--> simpan laporan baru ke state
+/* Todo:
+-> capture or upload road condition image
+-> run in-browser edge detection and bounding box extraction
+-> resolve juridical jurisdiction and commit report to state
 */
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -15,6 +10,7 @@ import { DamageReport, JurisdictionType } from '../types';
 import { detectRoadDamage, DetectionResult } from '../services/imageDetection';
 import { Camera, Upload, X, CheckCircle2, Sparkles, AlertTriangle, MapPin } from 'lucide-react';
 
+// --- Camera Report Modal Component --------------------------------------------
 interface CameraReportModalProps {
   onClose: () => void;
   onSubmitReport: (newReport: DamageReport) => void;
@@ -340,3 +336,4 @@ export const CameraReportModal: React.FC<CameraReportModalProps> = ({ onClose, o
     </dialog>
   );
 };
+// --- end of Camera Report Modal Component -------------------------------------

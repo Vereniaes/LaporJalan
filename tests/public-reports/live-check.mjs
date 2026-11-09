@@ -1,6 +1,5 @@
-/* Capture the real source and visible UI without replacing network responses.
-Todo:
--> record live checks separately from deterministic tests
+/* Todo:
+-> capture real source and visible UI separately from deterministic tests
 */
 import { chromium, expect } from '@playwright/test';
 import fs from 'node:fs/promises';
@@ -25,7 +24,7 @@ try {
     const page = await browser.newPage({ viewport, locale: 'id-ID', timezoneId: 'Asia/Jakarta', reducedMotion: 'reduce' });
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    await page.goto('http://127.0.0.1:3004');
+    await page.goto('http://127.0.0.1:3004/peta');
     await expect(page.locator('.lj-loading')).toHaveCount(0, { timeout: 20_000 });
     await expect(page.getByRole('alert')).toHaveCount(0);
     await expect(page.locator('.lj-report-row').first()).toBeVisible();

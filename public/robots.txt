@@ -1,0 +1,5 @@
+# Robots.txt for LaporJalan
+User-agent: *
+Allow: /
+
+Sitemap: https://lapor-jalan-two.vercel.app/sitemap.xml
