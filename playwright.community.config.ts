@@ -17,5 +17,5 @@ export default defineConfig({
     { name: 'desktop', testMatch: /.*\.(browser|integration)\.spec\.ts/, use: { viewport: { width: 1440, height: 900 } } },
     { name: 'mobile', testMatch: /.*\.(browser|integration)\.spec\.ts/, use: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } },
   ],
-  webServer: { command: 'npm run dev -- --host 127.0.0.1 --port 3005 --strictPort', url: 'http://127.0.0.1:3005', reuseExistingServer: true },
+  webServer: { command: 'npm run dev -- --host 127.0.0.1 --port 3005 --strictPort', url: 'http://127.0.0.1:3005', reuseExistingServer: true, env: { VITE_API_URL: 'http://127.0.0.1:5005' } },
 });

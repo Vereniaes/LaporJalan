@@ -28,7 +28,6 @@ import './home.css';
 // --- small parts ---
 
 const openReport = (report: PublicReport) => location.assign(`/peta?laporan=${encodeURIComponent(report.id)}`);
-const Avail = ({ on }: { on: boolean }) => <span className={`avail ${on ? 'on' : 'off'}`}>{on ? 'Aktif' : 'Belum aktif'}</span>;
 const EASE_OUT = [.23, 1, .32, 1] as const;
 
 // one moment per row: 'before' -> 'after' when the row is in view; children with the same labels follow it
@@ -50,7 +49,7 @@ function Step({ n, title, on, text, href, go, miko, caption, children }: { n: nu
     <Node on={on} pin={n === 3} />
     <div className="step-text">
       <p className="step-n mono" aria-hidden="true">{String(n).padStart(2, '0')} / 04</p>
-      <div className="step-head"><h3>{title}</h3><Avail on={on} /></div>
+      <div className="step-head"><h3>{title}</h3></div>
       <p>{text}</p>
       <a className="text-link" href={href}>{go}<ArrowRight /></a>
     </div>

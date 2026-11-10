@@ -50,7 +50,6 @@ test('no live numbers are shown when the public reports API fails', async ({ pag
 test('unavailable service hides reporting, marks citizen features not active, keeps the map open', async ({ page }) => {
   await page.route('**/api/community/capabilities', route => route.fulfill({ status: 503, json: { message: 'Laporan warga belum diaktifkan.' } }));
   await page.goto('/');
-  await expect(page.locator('.home .flow .avail.off')).toHaveCount(2);
   await expect(page.getByRole('link', { name: 'Laporkan jalan', exact: true })).toHaveCount(0);
   await page.locator('.home .hero').getByRole('link', { name: 'Buka peta' }).click();
   await expect(page.locator('.lj-report-row')).toHaveCount(3);
@@ -73,7 +72,6 @@ test('legacy root report links and email confirmation links bypass the landing',
 
 test('landing report intent continues through existing email confirmation to the form', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.home .flow .avail.off')).toHaveCount(0);
   await page.getByRole('link', { name: 'Laporkan jalan', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   expect(new URL(page.url()).searchParams.has('buat')).toBe(false);
@@ -126,11 +124,13 @@ test('with reporting off the hero leads with the map and the flow says which ste
   await page.route('**/api/community/capabilities', route => route.fulfill({ status: 503, json: { message: 'Laporan warga belum diaktifkan.' } }));
   await page.goto('/');
   await expect(page.locator('.home .hero .actions a').first()).toHaveText('Buka peta');
-  // no links to account forms that cannot work
-  await expect(page.locator('.home .site-head').getByRole('link', { name: 'Masuk', exact: true })).toHaveCount(0);
-  await expect(page.locator('.home .foot-nav a')).toHaveText(['Beranda', 'Peta laporan']);
-  await expect(page.locator('.home .flow .step').nth(2).locator('.avail')).toHaveText('Belum aktif');
+  // the account links stay even when the service is off; the forms there explain why
+  await expect(page.locator('.home .site-head').getByRole('link', { name: 'Masuk', exact: true })).toHaveAttribute('href', '/masuk');
+  await expect(page.locator('.home .foot-nav a')).toHaveText(['Beranda', 'Peta laporan', 'Daftar', 'Masuk']);
   await expect(page.locator('.home .flow .step').nth(2).getByRole('link', { name: 'Buka peta' })).toHaveAttribute('href', '/peta');
+  await page.locator('.home .site-head').getByRole('link', { name: 'Daftar', exact: true }).click();
+  await expect(page.getByRole('status').filter({ hasText: 'Kesiapan laporan warga belum dapat diperiksa.' })).toBeVisible(); // the check itself failed (503)
+  await expect(page.getByRole('button', { name: 'Daftar', exact: true })).toBeDisabled();
 });
 
 test('the report drop ends with the pin placed and the stretch drawn, also with reduced motion', async ({ page }) => {

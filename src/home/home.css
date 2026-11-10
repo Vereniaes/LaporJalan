@@ -99,13 +99,6 @@ html:has(.home) { scroll-padding-top: 24px; }
 /* --- sections --- */
 .home .faq-sec { padding-block: clamp(32px, 6vh, 64px); }
 .home .sec-head { display: grid; gap: 10px; max-width: 640px; margin-bottom: 32px; }
-/* availability: a glyph + a word, never colour alone */
-.home .avail { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px 0 8px; border-radius: 8px; flex: none; background: var(--concrete); font-size: .75rem; font-weight: 700; white-space: nowrap; line-height: 1; }
-.home .avail::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
-.home .avail.on { color: var(--sign-green); }
-.home .avail.on::before { background: currentColor; }
-.home .avail.off { color: var(--muted); }
-.home .avail.off::before { box-shadow: inset 0 0 0 1.5px currentColor; }
 /* --- end of sections --- */
 
 /* --- the flow: four alternating rows, text beside a labelled sample of the app --- */
