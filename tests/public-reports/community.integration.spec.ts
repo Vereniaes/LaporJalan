@@ -444,7 +444,14 @@ test('daftar (also /regis) opens the account page: a report made beside the map 
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Daftar akun.');
   await page.getByLabel('Email', { exact: true }).fill(email);
   await page.getByLabel('Nama tampilan (opsional)', { exact: true }).fill('Warga Uji');
-  await page.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
+  const passwordInput = page.getByLabel('Kata sandi', { exact: true });
+  await passwordInput.fill('kata-sandi-uji');
+  await expect(passwordInput).toHaveAttribute('type', 'password');
+  await page.getByRole('button', { name: 'Tampilkan kata sandi' }).click();
+  await expect(passwordInput).toHaveAttribute('type', 'text');
+  await page.getByRole('button', { name: 'Sembunyikan kata sandi' }).click();
+  await expect(passwordInput).toHaveAttribute('type', 'password');
+  await expect(page.locator('.lj-form-note')).toHaveCount(0);
   await page.getByRole('button', { name: 'Daftar', exact: true }).click();
   await expect(page).toHaveURL(/\/akun$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Warga Uji');

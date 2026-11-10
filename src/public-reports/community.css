@@ -28,6 +28,11 @@
 .lj-form textarea { resize: vertical; }
 .lj-form input[type=file] { font-size: 12px; }
 .lj-form input:focus-visible, .lj-form textarea:focus-visible, .lj-form select:focus-visible { outline: 3px solid var(--lj-brand); outline-offset: 2px; }
+.lj-password-field { position: relative; display: flex; align-items: center; width: 100%; }
+.lj-password-field input { padding-right: 44px; }
+.lj-password-toggle { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0; border: none; background: transparent; color: var(--lj-muted); cursor: pointer; border-radius: 8px; transition: color 0.15s ease, background-color 0.15s ease; }
+.lj-password-toggle:hover { color: var(--lj-ink); background: rgba(0, 0, 0, 0.05); }
+.lj-password-toggle:focus-visible { outline: 2px solid var(--lj-brand); outline-offset: 1px; }
 .lj-coordinate-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .lj-form-actions { display: flex; justify-content: flex-end; gap: 10px; }
 .lj-form .lj-checkbox { flex-direction: row; align-items: flex-start; gap: 10px; font-weight: 400; line-height: 1.6; }
