@@ -10,6 +10,7 @@ import { MediaPicker, ReportMedia } from './ReportMedia';
 import { ConditionFields, ConditionSummary } from './ConditionFields';
 import { ConditionGeometry, GeometryDrawingStarter, RoadCondition, useConditionClock } from './condition';
 import { PhotoAnalysis } from './PhotoAnalysis';
+import { SkeletonBlock } from '../components/Skeleton';
 import { statusClass } from './statusTone';
 import { type AnalysisJob, type KindImport, conditionAnalysisReview, suggestedKind } from './analysis';
 
@@ -106,7 +107,7 @@ export function CitizenDetail({ summary, user, loginAvailable = true, writeAvail
       {error && <p className="lj-form-error" role="alert">{error}</p>}
       {conflict && <button className="lj-text-action" disabled={busy} onClick={() => { publicationId.current = crypto.randomUUID(); requestId.current = crypto.randomUUID(); setConflict(false); setRefresh(value => value + 1); }}>Muat versi terbaru; isian tetap disimpan</button>}
       {saved && <p className="lj-form-success" role="status">Perubahan tersimpan.</p>}
-      {!report && !error && <p role="status">Memuat laporan…</p>}
+      {!report && !error && <SkeletonBlock label="Memuat laporan…" />}
       <div id="citizen-summary" role="tabpanel" aria-labelledby="citizen-summary-tab" hidden={tab !== 'summary'}>
         {report && <>
           {report.media.length ? <ReportMedia reportId={report.id} media={report.media} privateAccess={privateAccess} /> : <div className="lj-media-empty"><strong>Tanpa lampiran</strong><span>Laporan tetap dapat dibaca melalui uraian.</span></div>}

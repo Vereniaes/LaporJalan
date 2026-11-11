@@ -22,6 +22,7 @@ import { MapSketch, type DrawingRequest } from './MapSketch';
 import { configurePublicCamera, publicCameraSnapshot, usePublicInspection, PUBLIC_MAP_STYLE } from './usePublicInspection';
 import { themeBasemap, buildingColor } from '../map/basemap';
 import { useTheme } from './theme';
+import { cameraButton, NO_CAMERAS, type CctvLocation } from '../cctv/cameras';
 import './map-inspection.css';
 
 export interface MapProps {
@@ -43,6 +44,10 @@ export interface MapProps {
   minimal?: boolean;     // landing hero: no tools, area search, key or legend
   popups?: { report: PublicReport; pinned: boolean; content: ReactNode }[]; // report cards on their pins: the pinned one and a hover preview
   onHover?: (report: PublicReport | null, leaving?: PublicReport) => void; // pointer or keyboard focus on a single pin; leaving names the pin that let go
+  cameras?: CctvLocation[];        // Opal CCTV: camera places, shown while the layer is on
+  activeCamera?: string | null;    // the place whose player is open
+  onCamera?: (location: CctvLocation) => void;
+  cameraCard?: ReactNode;          // the player card, drawn over the map
 }
 // saver mode moves the camera at once, like reduced motion
 const duration = () => matchMedia('(prefers-reduced-motion: reduce)').matches || mapTier() !== 'full' ? 0 : 350;
@@ -89,10 +94,11 @@ export function PublicMap(props: MapProps) {
 }
 // --- end of device choice ---
 
-function GlMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingComplete, onDrawingCancel, draftGeometry, inspecting=false, onExitInspection, cooperative = false, minimal = false, popups = [], onHover, saver, autoSaver }: MapProps & { saver: boolean; autoSaver: boolean }) {
+function GlMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingComplete, onDrawingCancel, draftGeometry, inspecting=false, onExitInspection, cooperative = false, minimal = false, popups = [], onHover, cameras = NO_CAMERAS, activeCamera = null, onCamera, cameraCard, saver, autoSaver }: MapProps & { saver: boolean; autoSaver: boolean }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<LibreMap>();
-  const markers = useRef<Marker[]>([]);
+  const markers = useRef<Marker[]>([]), cameraMarkers = useRef<Marker[]>([]);
+  const onCameraRef = useRef(onCamera); onCameraRef.current = onCamera;
   const draftMarker = useRef<Marker>();
   const [mode, setMode] = useState<CameraMode>('2d');
   const appliedMode = useRef<CameraMode>('2d');
@@ -298,8 +304,38 @@ function GlMap({ reports, selected, onSelect, onArea, picking = false, selection
     drawMarkers();
   }, [selected?.id, ready,epoch,mode==='inspect']);
 
+  // --- camera markers (Opal CCTV): their own set, under the report pins; hidden while drawing or inspecting ---
+  useEffect(() => {
+    const instance = map.current;
+    cameraMarkers.current.forEach(marker => marker.remove());
+    cameraMarkers.current = [];
+    if (!instance || !ready || drawing || mode === 'inspect') return;
+    cameraMarkers.current = cameras.map(location => {
+      const button = cameraButton(location, location.id === activeCamera), label = button.getAttribute('aria-label')!;
+      button.onclick = () => onCameraRef.current?.(location);
+      const marker = new maplibregl.Marker({ element: button }).setLngLat([location.lng, location.lat]).addTo(instance);
+      button.setAttribute('aria-label', label);
+      return marker;
+    });
+  }, [cameras, activeCamera, ready, epoch, mode, drawing?.id]);
+  // the camera layer just came on: show every camera place
+  const cameraCount = cameras.length;
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance || !ready || !cameraCount) return;
+    const bounds = new maplibregl.LngLatBounds();
+    cameras.forEach(location => bounds.extend([location.lng, location.lat]));
+    instance.fitBounds(bounds, { padding: 80, maxZoom: 14, duration: duration() });
+  }, [cameraCount, ready]);
+  useEffect(() => {
+    const instance = map.current, location = cameras.find(item => item.id === activeCamera);
+    if (instance && ready && location) instance.easeTo({ center: [location.lng, location.lat], zoom: Math.max(instance.getZoom(), 15), duration: duration() });
+  }, [activeCamera, ready]);
+  // --- end of camera markers ---
+
   return <section className="lj-map" aria-label="Peta laporan">
     <div ref={container} className="lj-map-canvas" />
+    {cameraCard}
     {ready && <MapSketch map={map.current} epoch={epoch} drawing={drawing} preview={draftGeometry} onComplete={onDrawingComplete} onCancel={onDrawingCancel} />}
     {ready && map.current && !drawing && !inspection.active && mode !== 'inspect' && popups.map(popup =>
       <MapPopup key={`${popup.pinned ? 'pinned' : 'preview'}-${popup.report.id}`} map={map.current!} report={popup.report} pinned={popup.pinned}>{popup.content}</MapPopup>)}

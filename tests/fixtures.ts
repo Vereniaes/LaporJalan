@@ -1,6 +1,6 @@
 // Fixed inputs are synthetic; no claim of a surveyed road or measured CCTV stream.
 export const fixture = {
-  id: 'oyenza-parity-fixture-v1', time: '2026-10-16T00:00:00.000Z', seed: 1,
+  id: 'laporjalan-fixture-v1', time: '2026-10-16T00:00:00.000Z', seed: 1,
   report: {
     id: 'fixture-pothole-052-0075', type: 'pothole', title: 'Fixture pothole 52 cm',
     severity: 'berat', depthCm: 7.5, widthCm: 52, lat: -6.1965, lng: 106.8232,

@@ -11,5 +11,5 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: `${output}/results.json` }]],
   webServer: { command: 'npm run dev -- --host 127.0.0.1 --port 3005 --strictPort',
     url: 'http://127.0.0.1:3005', reuseExistingServer: false,
-    env: { VITE_API_URL: 'http://127.0.0.1:5005' } },
+    env: { VITE_API_URL: 'http://127.0.0.1:5005', VITE_GOOGLE_MAPS_API_KEY: '' } }, // never the owner's Google key from .env.local
 });

@@ -1,0 +1,21 @@
+/* Todo:
+-> grey shapes in the place of content that is loading; a light sweep runs across them (transform only)
+-> reduced motion: still shapes, no sweep, Miko does not bob
+*/
+.sk { display: grid; gap: 10px; padding: 4px 0; }
+.sk-status { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 13px; font-weight: 600; color: var(--ink-muted, #5b6470); }
+.sk-status img { width: 28px; height: 28px; animation: sk-bob 1.2s cubic-bezier(.45, 0, .55, 1) infinite; }
+.sk-row { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: var(--r-md, 16px); background: var(--surface-soft, #F3F4F6); }
+.sk-box { position: relative; display: block; overflow: hidden; border-radius: 8px; background: var(--surface-sunk, #ECEEF1); }
+.sk-box::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .6), transparent); animation: sk-sweep 1.4s cubic-bezier(.4, 0, .2, 1) infinite; }
+.sk-thumb { flex: none; width: 56px; height: 56px; border-radius: 12px; }
+.sk-lines { display: grid; flex: 1; gap: 8px; }
+.sk-line { height: 12px; }
+.sk-line.is-short { width: 38%; }
+.sk-title { width: 60%; height: 22px; }
+.sk-media { height: 160px; border-radius: 12px; }
+.sk-page { max-width: 960px; margin: 0 auto; padding: 32px 16px; }
+.lj-theme-dark .sk-box::after { background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .08), transparent); }
+@keyframes sk-sweep { to { transform: translateX(100%); } }
+@keyframes sk-bob { 50% { transform: translateY(-3px); } }
+@media (prefers-reduced-motion: reduce) { .sk-box::after, .sk-status img { animation: none; } }

@@ -121,13 +121,13 @@ test('M03 camera B remains current after camera A late image error', async ({ pa
   pending.release();
   await failed;
   await ready(page);
-  await expect(page.locator('.cctv-oyenza-popup')).toHaveCount(1);
+  await expect(page.locator('.cctv-map-popup')).toHaveCount(1);
   await expect(popup.getByRole('img', { name: `Gambar contoh untuk ${b.name}`, exact: true })).toHaveAttribute('src', b.snapshotUrl);
   await expect(popup.getByRole('img', { name: `Gambar contoh untuk ${b.name}`, exact: true })).toHaveJSProperty('naturalWidth', 640);
   await expect(popup.getByRole('status')).toHaveCount(0);
   const map = await mapHandle(page);
   const error = await map.evaluate((map, camera) => {
-    const tip = document.querySelector('.cctv-oyenza-popup')!.getBoundingClientRect();
+    const tip = document.querySelector('.cctv-map-popup')!.getBoundingClientRect();
     const origin = map.getContainer().getBoundingClientRect();
     const anchor = map.project([camera.lng, camera.lat]);
     return Math.hypot((tip.left + tip.right) / 2 - origin.left - anchor.x,

@@ -4,6 +4,7 @@
     -> /regis is an older name for /daftar
 */
 import { lazy, Suspense, useEffect } from 'react';
+import { PageSkeleton } from './components/Skeleton';
 
 // --- page entry ---
 const HomePage = lazy(() => import('./home/HomePage'));
@@ -35,7 +36,7 @@ export function App() {
     window.addEventListener('hashchange', openEmail);
     return () => window.removeEventListener('hashchange', openEmail);
   }, []);
-  return <Suspense fallback={<p className="page-loading" role="status">Memuat halaman…</p>}><Page /></Suspense>;
+  return <Suspense fallback={<PageSkeleton />}><Page /></Suspense>;
 }
 export default App;
 // --- end of page entry ---

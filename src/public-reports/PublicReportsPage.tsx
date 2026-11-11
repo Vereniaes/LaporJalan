@@ -2,10 +2,12 @@
 -> show the public map, reports, and source status
 -> keep filters, selection and the mobile panel in sync
 */
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDown, CircleUserRound, ClipboardList, Construction, Flame, List, LogOut, Moon, Play, Plus, RefreshCw, Route, Search, Sun, Waves, X } from 'lucide-react';
 import { filterReports, MapArea, PublicReport, ReportCategory, reportDate } from './data';
 import { PublicMap } from './PublicMap';
+import { useCameras } from '../cctv/cameras';
+import { CctvPlayer } from '../cctv/CctvPlayer';
 import { usePublicReports } from './usePublicReports';
 import { api, capabilityMessage, CATEGORY_LABELS, CitizenReport, errorMessage, isReportId, mediaUrl, useCapabilities, useCitizenReports, useEmailSession } from './community';
 import { EmailLogin } from './EmailLogin';
@@ -18,10 +20,20 @@ import { swatchStyle } from './conditionFeatures';
 import { closureNeedsUpdate, ConditionGeometry, conditionLabel, conditionSize, useConditionClock } from './condition';
 import { MikoMotion } from '../home/MikoMotion';
 import { MikoFlight } from './MikoFlight';
+import { SkeletonRows } from '../components/Skeleton';
+import { useLoadMore, useWindowed } from '../components/useLoadMore';
+import { PanelTabs, readTab, writeTab, type PanelTab } from './PanelTabs';
+import { PetaHome } from './PetaHome';
+import { RoutePanel } from '../route/RoutePanel';
+import { GOOGLE_KEY } from '../route/google';
+import { useRoutePlanner } from '../route/useRoutePlanner';
+// the Google map loads only when the Rute tab opens with a key
+const GoogleRouteMap = lazy(() => import('../route/GoogleRouteMap').then(module => ({ default: module.GoogleRouteMap })));
 import { ThemeContext, useThemeChoice } from './theme';
 import './public-reports.css';
 import './community.css';
 import './cute.css';
+import './panel-tabs.css';
 
 const categories = [
   { id: 'all', label: 'Semua', icon: List },
@@ -47,7 +59,7 @@ export function PublicReportsPage() {
   const reportIntent = useRef(new URLSearchParams(location.search).get('buat') === '1');
   const [draftGeometry, setDraftGeometry] = useState<ConditionGeometry | null>(null), [inspectingId, setInspectingId] = useState<string | null>(null);
   const drawingExpanded = useRef(false), conditionNow = useConditionClock();
-  // owner, 11 Nov: Oyenza-like and cute, Miko on the page, dark mode (device first, the header button decides after)
+  // owner, 11 Nov: soft card tokens and cute, Miko on the page, dark mode (device first, the header button decides after)
   const { theme, toggle: toggleTheme } = useThemeChoice();
   const [flights, setFlights] = useState(0), [toast, setToast] = useState('');
   const fly = () => setFlights(value => value + 1);
@@ -68,6 +80,13 @@ export function PublicReportsPage() {
   const [linkedReport, setLinkedReport] = useState<CitizenReport | null>(null), [linkError, setLinkError] = useState('');
   const linkedUser = useRef('');
   const [expanded, setExpanded] = useState(false);
+  // panel view (owner, 11 Nov): Peta (now: new reports + Opal features) | Laporan (the list) | Rute
+  const [tab, setTab] = useState<PanelTab>(readTab), [cctvOn, setCctvOn] = useState(false), [cameraId, setCameraId] = useState<string | null>(null);
+  // Opal CCTV: the camera file loads the first time the layer is switched on; one player at a time
+  const cctv = useCameras(cctvOn), camera = cctvOn ? cctv.data?.locations.find(place => place.id === cameraId) : undefined;
+  const routing = tab === 'rute' && Boolean(GOOGLE_KEY);
+  const toggleCctv = () => setCctvOn(on => { if (on) setCameraId(null); return !on; });
+  const changeTab = (next: PanelTab) => { setTab(next); writeTab(next); if (next === 'laporan' && matchMedia('(max-width: 800px)').matches) setExpanded(true); };
   // the report card on the map: a hover/focus preview, else the pinned (selected) report
   const [hovered, setHovered] = useState<PublicReport | null>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
@@ -80,7 +99,19 @@ export function PublicReportsPage() {
     return reports.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   }, [snapshot, community.reports, linkedReport, mine, session.user?.id]);
   const filtered = useMemo(() => filterReports(rows, category, query, area), [rows, category, query, area]);
-  // Miko flies over the map while reports load and after "Cari di area ini"
+  // Rute: one trip shared by the panel and the Google map; reports on the way come from every report, not the list's filter
+  const planner = useRoutePlanner(rows);
+  // the main list has not arrived yet: grey rows below whatever is already shown (citizen reports can come first)
+  const firstLoad = !error && (mine ? community.loading && !filtered.length : !snapshot && (loading || community.loading));
+  // searching, a category or "Laporan sendiri" is a request for the list
+  useEffect(() => { if (query || category !== 'all' || mine) { setTab('laporan'); writeTab('laporan'); } }, [query, category, mine]);
+  // live: a quiet refresh every minute while the page is visible (no loading line, no flight)
+  useEffect(() => {
+    const tick = () => { if (document.visibilityState === 'visible' && !composing) { void refresh(true); void community.poll(); } };
+    const timer = window.setInterval(tick, 60_000);
+    return () => window.clearInterval(timer);
+  }, [composing, refresh, community.poll]);
+  // Opal flies over the map while reports load and after "Cari di area ini"
   useEffect(() => { if (loading) fly(); }, [loading]);
   useEffect(() => { if (area) fly(); }, [area]);
   useEffect(() => {
@@ -89,6 +120,16 @@ export function PublicReportsPage() {
     return () => window.clearTimeout(timer);
   }, [toast]);
   const selectedRow = filtered.find(report => report.id === selectedId);
+  // the list draws 30 rows, then 30 more as its end comes near (3.148 rows at once was > 30.000 DOM nodes)
+  // a selected report further down (a shared link, a pin) is drawn first instead of drawing every row above it
+  const listKey = `${category}|${query}|${mine}|${area ? Object.values(area).join(',') : ''}`;
+  const listWindow = useWindowed(filtered, 30, listKey);
+  // a new filter starts at the top of the list (else the end is still in reach and the next 30 load at once)
+  useEffect(() => { reportList.current?.scrollTo({ top: 0 }); }, [listKey]);
+  const listRows = selectedRow && !listWindow.visible.includes(selectedRow) ? [selectedRow, ...listWindow.visible] : listWindow.visible;
+  // when the drawn rows run out, the next page of citizen reports loads by itself
+  const moreRows = () => { if (listWindow.hasMore) listWindow.more(); else if (community.cursor && !community.loading) void community.more(); };
+  const listEnd = useLoadMore<HTMLButtonElement>(moreRows, tab === 'laporan' && (listWindow.hasMore || Boolean(community.cursor && !community.loading)), listWindow.count);
   const selected = selectedRow ? (linkedReport?.id === selectedId ? linkedReport : selectedRow) : (session.user && linkedUser.current === session.user.id && linkedReport?.id === selectedId && linkedReport.visibility && linkedReport.visibility !== 'public' ? linkedReport : null);
   const unsupported = category !== 'all' && category !== 'road';
   // drawing takes the whole map; the panel returns to its earlier size afterwards
@@ -192,7 +233,7 @@ export function PublicReportsPage() {
   const preview = hovered && hovered.id !== selected?.id ? hovered : null;
   const cards = composing ? [] : [selected, preview].filter((report): report is PublicReport => Boolean(report));
 
-  return <ThemeContext.Provider value={theme}><div className={`lj-app lj-theme-${theme}${expanded ? ' lj-expanded' : ''}${composing ? ' lj-composing' : ''}${drawing ? ' lj-drawing' : ''}${selected && !composing ? ' lj-card-open' : ''}${inspectingId && inspectingId === selectedId ? ' lj-inspecting' : ''}`}>
+  return <ThemeContext.Provider value={theme}><div className={`lj-app lj-theme-${theme}${expanded ? ' lj-expanded' : ''}${composing ? ' lj-composing' : ''}${drawing ? ' lj-drawing' : ''}${selected && !composing ? ' lj-card-open' : ''}${inspectingId && inspectingId === selectedId ? ' lj-inspecting' : ''}${routing ? ' lj-routing' : ''}`}>
     <a className="lj-skip" href="#report-panel">Ke daftar laporan</a>
     {loginOpen && <EmailLogin link={loginLink} returnTo={loginIntent} emailLink={Boolean(capabilities?.emailLink)} onClose={() => { setLoginOpen(false); setLoginLink(''); }}
       onExchange={async link => continueIntent(await session.exchange(link))}
@@ -222,11 +263,15 @@ export function PublicReportsPage() {
     </header>
 
     <main className="lj-workspace">
+      {/* Rute with a key: Google's map takes the map area; the main map stays mounted underneath, hidden, so it keeps its view */}
+      {routing && <Suspense fallback={<section className="lj-map lj-google-map"><div className="lj-map-notice" role="status">Memuat peta Google…</div></section>}><GoogleRouteMap planner={planner} /></Suspense>}
       <PublicMap reports={filtered} selected={composing ? null : selected} onSelect={select} onArea={setArea} selectionLocked={pendingUpdate || composing} picking={picking && !drawing} draftLocation={draftLocation} onLocation={setDraftLocation}
         drawing={drawing ? { id: drawing.id, mode: drawing.mode } : null} onDrawingComplete={finishDrawing} onDrawingCancel={cancelDrawing} draftGeometry={draftGeometry}
         inspecting={Boolean(inspectingId && inspectingId === selectedId)} onExitInspection={() => setInspectingId(null)}
         // Why/Note: a pin or row only clears its own preview (a pin losing focus to the card must not erase the row now hovered)
         onHover={(report, leaving) => setHovered(current => report ?? (leaving && current?.id !== leaving.id ? current : null))}
+        cameras={cctvOn ? cctv.data?.locations : undefined} activeCamera={camera?.id ?? null} onCamera={place => setCameraId(place.id)}
+        cameraCard={camera && cctv.data && !composing ? <CctvPlayer location={camera} source={cctv.data.source} onClose={() => setCameraId(null)} /> : null}
         popups={cards.map(card => ({ report: card, pinned: card === selected, content: <ReportPopup report={card} pinned={card === selected} user={session.user} onClose={closeDetail}
           onInspect={card === selected && card.condition ? () => { setDrawing(null); setInspectingId(card.id); } : undefined} /> }))} />
       {/* the form is a centred popup over the page (owner, 10 Nov): the point is picked on the form's own map; the big map only returns for drawing */}
@@ -240,7 +285,13 @@ export function PublicReportsPage() {
         <button className="lj-panel-toggle" aria-expanded={expanded} onClick={() => setExpanded(value => !value)}>
           {expanded ? <><ArrowDown size={16} /> Lihat peta</> : <><List size={16} /> Perluas daftar</>}
         </button>
-        <div className="lj-panel-intro">
+        <PanelTabs tab={tab} onChange={changeTab} disabled={composing || pendingUpdate} />
+        <div id="lj-tab-panel" className="lj-tab-panel" role="tabpanel" aria-labelledby={`lj-tab-${tab}`}>
+        {tab === 'peta' && <><h1 className="lj-visually-hidden">Peta laporan jalan</h1>
+          <PetaHome rows={rows} loading={firstLoad} cctvOn={cctvOn} onSelect={select} onShowAll={() => changeTab('laporan')} onRoute={() => changeTab('rute')} onCctv={toggleCctv}
+            cameras={{ places: cctv.data?.locations ?? null, loading: cctv.loading, failed: cctv.failed, active: camera?.id ?? null, onOpen: place => setCameraId(place.id) }} /></>}
+        {tab === 'rute' && <RoutePanel planner={planner} onOpen={report => { changeTab('laporan'); select(report); }} />}
+        {tab === 'laporan' && <><div className="lj-panel-intro">
           <MikoMotion anim="look" className="lj-intro-miko" src="/home/miko/look-192.webp" />
           <h1 ref={listHeading} tabIndex={-1}>Jalan di sekitar{(snapshot || community.reports.length > 0) && <span className="lj-count">{filtered.length.toLocaleString('id-ID')}</span>}</h1>
           <button className="lj-refresh" aria-label="Perbarui laporan" disabled={loading || community.loading || capabilitiesLoading || pendingUpdate} onClick={() => { void refresh(); community.refresh(); refreshCapabilities(); }}>
@@ -250,7 +301,7 @@ export function PublicReportsPage() {
         <nav className="lj-categories" aria-label="Kategori laporan">
           {categories.map(({ id, label, icon: Icon }) => <button key={id} className={`chip-${id}`} aria-pressed={category === id}
             disabled={pendingUpdate} onClick={() => setCategory(id)}><Icon size={16} aria-hidden="true" />{label}</button>)}
-        </nav>
+        </nav></>}
 
         {accountError && <p className="lj-form-error" role="alert">{accountError}</p>}
         {session.expired && <p className="lj-form-error" role="status">Sesi berakhir. Masuk kembali untuk mengelola laporan.</p>}
@@ -262,16 +313,17 @@ export function PublicReportsPage() {
           <span>{snapshot ? `Menampilkan data yang diambil ${reportDate(snapshot.source.retrievedAt)} WIB.` : 'Sumber sedang tidak tersedia. Silakan coba kembali.'}</span>
           <button onClick={() => void refresh()} disabled={loading}>Coba lagi</button>
         </div>}
-        {community.loading && <p className="lj-loading" role="status"><img src="/home/miko/fly-192.webp" width="28" height="28" alt="" />Memuat laporan warga…</p>}
-        {loading && !mine && <p className="lj-loading" role="status"><img src="/home/miko/fly-192.webp" width="28" height="28" alt="" />{snapshot ? 'Memperbarui laporan…' : 'Memuat laporan…'}</p>}
+        {/* first load: grey rows in the list (below); later refreshes keep the list and show a small line */}
+        {!firstLoad && community.loading && <p className="lj-loading" role="status"><img src="/home/miko/fly-192.webp" width="28" height="28" alt="" />Memuat laporan warga…</p>}
+        {!firstLoad && loading && !mine && <p className="lj-loading" role="status"><img src="/home/miko/fly-192.webp" width="28" height="28" alt="" />{snapshot ? 'Memperbarui laporan…' : 'Memuat laporan…'}</p>}
 
         {selectedId && !selected && <div className="lj-link-status" role="status"><span>{linkError || 'Memuat laporan…'}</span><button onClick={closeDetail}>Tutup</button></div>}
 
-        <div className="lj-list-section">
+        {tab === 'laporan' && <div className="lj-list-section">
           <p className="lj-visually-hidden" aria-live="polite">{snapshot || community.reports.length ? `${filtered.length} laporan${area ? ' di area ini' : ''}` : ''}</p>
           {area && <div className="lj-area-filter">Area peta dipilih<button onClick={() => setArea(null)}><X size={14} /> Hapus area</button></div>}
         <div ref={reportList} className="lj-report-list" aria-label="Daftar laporan">
-            {filtered.map(report => {
+            {listRows.map(report => {
               const citizen = report.origin === 'community' ? report as CitizenReport : null;
               const photo = citizen && (!citizen.visibility || citizen.visibility === 'public') && report.media?.[0]?.mime.startsWith('image/') ? mediaUrl(report.id, report.media[0].id) : '';
               const CategoryIcon = categories.find(row => row.id === report.category)?.icon ?? Route;
@@ -292,7 +344,9 @@ export function PublicReportsPage() {
                 </span>
               </button>;
             })}
-            {community.cursor && <button className="lj-load-more" disabled={community.loading} onClick={() => void community.more()}>Muat laporan warga berikutnya</button>}
+            {firstLoad && <SkeletonRows count={filtered.length ? 3 : 6} label={mine ? 'Memuat laporan sendiri…' : 'Memuat laporan…'} />}
+            {listWindow.hasMore ? <button ref={listEnd} className="lj-load-more" onClick={moreRows}>Tampilkan laporan berikutnya ({listWindow.count.toLocaleString('id-ID')} dari {filtered.length.toLocaleString('id-ID')})</button>
+              : community.cursor && <button ref={listEnd} className="lj-load-more" disabled={community.loading} onClick={moreRows}>{community.loading ? 'Memuat laporan warga…' : 'Muat laporan warga berikutnya'}</button>}
             {!loading && !error && !community.loading && !community.error && !filtered.length && <div className="lj-empty" role="status">
               <MikoMotion anim="peek-puddle" className="lj-empty-miko" src="/home/miko/peek-puddle-512.webp" loading="lazy" />
               <h3>{'Belum ada laporan yang sesuai'}</h3>
@@ -300,8 +354,8 @@ export function PublicReportsPage() {
               <button onClick={() => { setMine(false); setQuery(''); setCategory('all'); setArea(null); }}>Lihat semua laporan</button>
             </div>}
           </div>
+        </div>}
         </div>
-
       </section>
     </main>
   </div></ThemeContext.Provider>;

@@ -36,7 +36,7 @@ test('software graphics start in saver mode: no 3D, the toggle says so, and the 
 test('without WebGL the raster map shows the same pins and opens the report card', async ({ page }) => {
   const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
   await prepare(page, { webgl: false });
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   await expect(page.locator('.lj-lite-map .leaflet-container')).toBeVisible();
   await expect(page.locator('.lj-map-key')).toContainText('Peta ringan');
   await expect(page.getByRole('button', { name: 'Mode 3D', exact: true })).toHaveCount(0);

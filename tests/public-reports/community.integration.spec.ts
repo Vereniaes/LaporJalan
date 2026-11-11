@@ -50,7 +50,7 @@ test('email login, map report, attachment and owner update survive reload', asyn
   const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
   await page.route('**/api/public-reports', route => route.fulfill({ json: snapshot }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/peta'); await ready(page);
+  await page.goto('/peta?tab=laporan'); await ready(page);
   await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.getByLabel('Email', { exact: true }).fill(`browser-${info.project.name}@example.test`);
@@ -119,7 +119,7 @@ test('email login, map report, attachment and owner update survive reload', asyn
 test('failed submission retains inputs and retries once without duplicate reports', async ({ page }) => {
   await page.route('**/api/public-reports', route => route.fulfill({ json: snapshot }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   await page.getByLabel('Email', { exact: true }).fill(`retry-${randomUUID()}@example.test`);
   await page.getByRole('button', { name: 'Kirim tautan masuk' }).click();
@@ -162,7 +162,7 @@ async function reportFields(page: Page, title: string, image = false) {
 
 test('management email opened in another tab preserves intent and private name preference', async ({ page, context }, info) => {
   test.setTimeout(60_000);
-  await publicFixture(page); await page.goto('/peta');
+  await publicFixture(page); await page.goto('/peta?tab=laporan');
   const expand = page.getByRole('button', { name: 'Perluas daftar', exact: true });
   if (await expand.isVisible()) await expand.click();
   await page.locator('.lj-header .lj-account-row').getByRole('button', { name: 'Masuk', exact: true }).click(); // in the header since 10 Nov
@@ -184,7 +184,7 @@ test('management email opened in another tab preserves intent and private name p
   await tab.getByRole('dialog').getByRole('textbox', { name: 'Nama tampilan (opsional)', exact: true }).fill('Nama Pilihan Uji');
   await tab.getByRole('button', { name: 'Simpan nama pilihan', exact: true }).click();
   await expect(tab.getByRole('dialog')).toHaveCount(0);
-  await tab.goto('/peta');
+  await tab.goto('/peta?tab=laporan');
   await tab.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   await reportFields(tab, `Anonim opt-in - ${info.project.name}`);
   await expect(tab.getByLabel('Tampilkan nama pada laporan ini.', { exact: true })).not.toBeChecked();
@@ -198,7 +198,7 @@ test('management email opened in another tab preserves intent and private name p
 
 test('named history, deep link, withdrawal and restoration keep private access separate', async ({ page, browser }, info) => {
   test.setTimeout(90_000);
-  await publicFixture(page); await page.goto('/peta');
+  await publicFixture(page); await page.goto('/peta?tab=laporan');
   await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   await page.getByLabel('Email', { exact: true }).fill(`identity-${randomUUID()}@example.test`);
   await page.getByRole('button', { name: 'Kirim tautan masuk', exact: true }).click();
@@ -280,7 +280,7 @@ test('named history, deep link, withdrawal and restoration keep private access s
 
 test('expired owner session preserves note and file through login and retry', async ({ page }, info) => {
   test.setTimeout(60_000);
-  await publicFixture(page); await page.goto('/peta');
+  await publicFixture(page); await page.goto('/peta?tab=laporan');
   const email = `expiry-${randomUUID()}@example.test`, title = `Draft sesi habis - ${info.project.name}`;
   await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   await page.getByLabel('Email', { exact: true }).fill(email);
@@ -317,7 +317,7 @@ test('expired owner session preserves note and file through login and retry', as
 
 
 async function conditionLogin(page: Page, email: string) {
-  await publicFixture(page); await page.goto('/peta');
+  await publicFixture(page); await page.goto('/peta?tab=laporan');
   await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   await page.getByLabel('Email', { exact: true }).fill(email);
   await page.getByRole('button', { name: 'Kirim tautan masuk', exact: true }).click();
@@ -494,7 +494,7 @@ test('masuk: a wrong password keeps the form, the right one goes on to lanjut; t
   await expect(page).toHaveURL(/\/peta$/);
   // a signed-out visitor on the map: Tambah laporan signs in with the password inside the dialog
   await page.evaluate(() => sessionStorage.clear());
-  await page.goto('/peta'); await ready(page);
+  await page.goto('/peta?tab=laporan'); await ready(page);
   await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   const dialog = page.getByRole('dialog');
   await expect(dialog.getByRole('heading', { name: 'Masuk', exact: true })).toBeVisible();
@@ -555,12 +555,14 @@ test('an admin handles an imported report: status, unit and moderation reach the
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Penanganan laporan.');
   await page.getByLabel('Cari', { exact: true }).fill(code);
   await page.locator('.admin-queue li button').filter({ hasText: code }).click();
-  await expect(page.locator('.admin-detail h2')).toHaveText(code);
-  await page.getByLabel('Status', { exact: true }).selectOption('diproses');
+  await expect(page.locator('.admin-detail')).toContainText(code); // imported reports show a readable title; the code stays in the meta line
+  await page.getByRole('tab', { name: 'Status', exact: true }).click(); // the panel opens on Detail
+  await page.getByRole('combobox', { name: 'Status', exact: true }).selectOption('diproses'); // the Status tab panel shares the name
   await page.getByLabel(/^Catatan/).fill('Diteruskan ke suku dinas terkait.');
   await page.getByRole('button', { name: 'Simpan status', exact: true }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Status penanganan disimpan.' })).toBeVisible();
-  await page.getByLabel('Unit', { exact: true }).fill('SUDIN BINA MARGA UJI');
+  await page.getByRole('tab', { name: 'Unit', exact: true }).click(); // one action per tab (owner, 11 Nov)
+  await page.getByRole('combobox', { name: 'Unit', exact: true }).fill('SUDIN BINA MARGA UJI'); // the Unit tab panel shares the name
   await page.getByRole('button', { name: 'Tugaskan', exact: true }).click();
   await expect(page.locator('.admin-facts')).toContainText('SUDIN BINA MARGA UJI');
   await expect(page.locator('.admin-queue li button').filter({ hasText: code })).toContainText('Diproses');
@@ -578,6 +580,7 @@ test('an admin handles an imported report: status, unit and moderation reach the
   await page.goto('/admin');
   await page.getByLabel('Cari', { exact: true }).fill(code);
   await page.locator('.admin-queue li button').filter({ hasText: code }).click();
+  await page.getByRole('tab', { name: 'Moderasi', exact: true }).click();
   await page.getByRole('button', { name: 'Sembunyikan dari publik', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Tampilkan kembali', exact: true })).toBeVisible();
   expect((await (await nativeFetch(`http://127.0.0.1:5005/api/public-reports/${id}`)).status)).toBe(404);

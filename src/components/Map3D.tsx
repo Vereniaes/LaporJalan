@@ -425,7 +425,7 @@ export const Map3D: React.FC<Map3DProps> = ({
     }
   }, [reports, styleRevision, isStreetInspectActive, selectedReport]);
 
-  // popup tertambat langsung di atas marker cctv ala transit.oyenza.com/cctv
+  // popup tertambat langsung di atas marker cctv di peta
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
@@ -444,7 +444,7 @@ export const Map3D: React.FC<Map3DProps> = ({
         anchor: 'bottom',
         offset: [0, -28],
         maxWidth: 'none',
-        className: 'cctv-oyenza-popup'
+        className: 'cctv-map-popup'
       })
         .setLngLat([selectedCctv.lng, selectedCctv.lat])
         .setDOMContent(container)
@@ -688,7 +688,7 @@ export const Map3D: React.FC<Map3DProps> = ({
     };
   }, [isOrbiting, isStreetInspectActive, stopMotion, selectedReport]);
 
-  // helper toggle perspektif 3d / 2d ala oyenza --------------------------------------------------------------------------
+  // helper toggle perspektif 3d / 2d --------------------------------------------------------------------------
   // input param : status 3d boolean
   // output : transisi kemiringan kamera 56 deg dan rotasi isometrik
   const handleToggle3D = () => {
@@ -709,7 +709,7 @@ export const Map3D: React.FC<Map3DProps> = ({
     <div className="relative w-full h-full">
       <div ref={mapContainer} className="w-full h-full" />
 
-      {/* tombol kontrol kamera peta 3d ala oyenza */}
+      {/* tombol kontrol kamera peta 3d */}
       <div className="map-controls absolute top-4 right-4 z-20 flex flex-col items-end space-y-2">
         <button
           id="b-3d"

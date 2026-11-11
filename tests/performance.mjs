@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outputName = process.env.PERFORMANCE_RUN_ID || 'performance-2026-10-16';
 if (!/^performance-[a-z0-9-]+$/.test(outputName)) throw new Error('Invalid performance run id');
-const output = path.join(root, 'knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness', outputName);
+const output = path.join(root, 'test-results/performance', outputName);
 const manifestPath = path.join(output, 'manifest.json');
 const settings = { samples: 3, sampleMs: 30000, warmupMs: 5000, dpr: 1, threshold: 1.20,
   viewports: [{ width: 1440, height: 900 }, { width: 390, height: 844 }],
@@ -38,7 +38,8 @@ async function prepare() {
   catch (error) { if (error.code !== 'ENOENT') throw error; }
   const temp = await mkdtemp(path.join(tmpdir(), 'laporjalan-performance-'));
   const sources = {};
-  for (const [name, source, port] of [['baseline', path.join(root,'knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/before'),3004], ['candidate',root,3005]]) {
+  const baselineSource = process.env.PERF_BASELINE_DIR ? path.resolve(root, process.env.PERF_BASELINE_DIR) : path.join(root, 'test-results/performance/before');
+  for (const [name, source, port] of [['baseline', baselineSource, 3004], ['candidate', root, 3005]]) {
     const target = path.join(temp,name);
     await mkdir(target);
     for (const file of ['src','index.html','package.json','package-lock.json','vite.config.ts','tsconfig.json','tsconfig.node.json','tailwind.config.js','postcss.config.js']) {

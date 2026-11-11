@@ -24,7 +24,7 @@ async function setup(page: Page) {
     ? { reports: true, write: true, login: true, reason: null }
     : route.request().url().includes('/reports/') ? report : { reports: [report], nextCursor: null } }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   await expect(page.locator('.lj-report-row')).toHaveCount(1);
   await ready(page);
   await page.locator('.lj-report-row').click();

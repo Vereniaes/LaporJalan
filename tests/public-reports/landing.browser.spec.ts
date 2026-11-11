@@ -53,6 +53,7 @@ test('unavailable service hides reporting, marks citizen features not active, ke
   await page.goto('/');
   await expect(page.getByRole('link', { name: 'Laporkan jalan', exact: true })).toHaveCount(0);
   await page.locator('.home .hero').getByRole('link', { name: 'Buka peta' }).click();
+  await page.getByRole('tab', { name: 'Laporan', exact: true }).click(); // /peta opens on the Peta tab; the list is the Laporan tab
   await expect(page.locator('.lj-report-row')).toHaveCount(3);
 });
 
@@ -87,7 +88,7 @@ test('report intent waits for a stored session instead of opening an unnecessary
   let release!: () => void;
   const gate = new Promise<void>(resolve => { release = resolve; });
   await page.route('**/api/community/auth/session', async route => { await gate; await route.fulfill({ json: { user } }); });
-  await page.goto('/peta?buat=1');
+  await page.goto('/peta?buat=1&tab=laporan');
   await expect(page.locator('.lj-report-row')).toHaveCount(3);
   await expect(page.getByRole('dialog')).toHaveCount(0);
   release();
@@ -246,7 +247,7 @@ test('the report form is a centred popup with its own point map; drawing hands t
 
 test('the map header holds the account links beside Tambah laporan; no region label, no category disclaimer', async ({ page }) => {
   await page.addInitScript(() => sessionStorage.setItem('lj-session', 'landing-fixture-session'));
-  await page.goto('/peta'); await ready(page);
+  await page.goto('/peta?tab=laporan'); await ready(page);
   const header = page.locator('.lj-header');
   await expect(header.locator('.lj-account-row').getByRole('button', { name: 'Laporan sendiri', exact: true })).toBeVisible();
   // icon buttons; Akun and Halaman akun are one link now (owner, 10 Nov)

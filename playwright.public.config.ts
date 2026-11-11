@@ -4,6 +4,7 @@ Todo:
 */
 import { defineConfig } from '@playwright/test';
 const output = 'test-results/public-map-list';
+// tests never use the owner's Google key from .env.local: Rute shows its no-key state (playwright.route.config.ts fakes Google)
 export default defineConfig({
   testDir: './tests/public-reports', timeout: 30_000, retries: 0, workers: 1,
   outputDir: `${output}/artifacts`,
@@ -17,5 +18,5 @@ export default defineConfig({
     { name: 'desktop', testMatch: /.*\.browser\.spec\.ts/, use: { viewport: { width: 1440, height: 900 } } },
     { name: 'mobile', testMatch: /.*\.browser\.spec\.ts/, use: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } },
   ],
-  webServer: { command: 'npm run dev -- --host 127.0.0.1 --port 3004 --strictPort', url: 'http://127.0.0.1:3004', reuseExistingServer: true },
+  webServer: { command: 'npm run dev -- --host 127.0.0.1 --port 3004 --strictPort', url: 'http://127.0.0.1:3004', reuseExistingServer: true, env: { VITE_GOOGLE_MAPS_API_KEY: '' } },
 });

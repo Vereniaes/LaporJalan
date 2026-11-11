@@ -1,0 +1,181 @@
+/* Todo:
+-> Peta | Laporan | Rute (owner, 11 Nov): segmented tabs, Opal's greeting, feature cards, "Baru masuk", the Rute fallback
+-> tokens only (DESIGN.md "Opal lembut"); motion on transform/opacity, hover gated, reduced motion still
+*/
+.lj-tab-panel { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+
+/* --- tabs: a soft track, the open one a white pill with the brand's green ring --- */
+.lj-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin: 16px 16px 6px; padding: 4px; border-radius: var(--r-md); background: var(--surface-sunk); flex-shrink: 0; }
+.lj-tabs button { min-height: 42px; border-radius: var(--r-sm); font-size: .9375rem; font-weight: 600; color: var(--ink-muted); }
+.lj-tabs button[aria-selected=true] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-soft), inset 0 0 0 2px var(--sign-green); }
+.lj-tabs button:disabled { opacity: .55; }
+@media (hover: hover) and (pointer: fine) { .lj-tabs button[aria-selected=false]:not(:disabled):hover { color: var(--ink); } }
+
+/* --- Peta tab --- */
+.lj-peta-home { display: grid; gap: 14px; padding: 10px 16px 20px; overflow-y: auto; overscroll-behavior: contain; }
+.lj-greeting { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 10px; }
+.lj-greeting-opal { width: 76px; height: 76px; }
+.lj-greeting-opal img { width: 100%; height: 100%; object-fit: contain; }
+.lj-greeting-bubble { position: relative; display: grid; gap: 2px; margin: 0; padding: 12px 14px; border-radius: var(--r-md); background: var(--surface-soft); }
+.lj-greeting-bubble::before { content: ''; position: absolute; left: -6px; top: 50%; width: 12px; height: 12px; background: inherit; transform: translateY(-50%) rotate(45deg); border-radius: 2px; }
+.lj-greeting-bubble strong { font-size: .9375rem; font-weight: 700; text-wrap: balance; }
+.lj-greeting-bubble span { font-size: .8125rem; color: var(--ink-muted); }
+
+.lj-features { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.lj-feature { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; align-items: center; gap: 14px; width: 100%; padding: 12px 14px 12px 12px; border-radius: var(--r-lg); background: var(--surface-soft); text-align: left; color: inherit; transition: transform var(--dur-press, 140ms) var(--ease-out); }
+.lj-feature-pose { width: 64px; height: 64px; border-radius: var(--r-md); background: var(--surface); object-fit: contain; }
+.lj-feature-copy { display: grid; gap: 3px; min-width: 0; }
+.lj-feature-name { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 1rem; font-weight: 700; }
+.lj-feature-line { font-size: .8125rem; color: var(--ink-muted); }
+.lj-feature-go { color: var(--ink-muted); }
+.lj-feature[aria-pressed=true] { box-shadow: inset 0 0 0 2px var(--sign-green); background: var(--green-50); }
+button.lj-feature:active { transform: scale(.98); }
+@media (hover: hover) and (pointer: fine) { button.lj-feature:hover { box-shadow: var(--shadow-soft); } button.lj-feature[aria-pressed=true]:hover { box-shadow: inset 0 0 0 2px var(--sign-green), var(--shadow-soft); } }
+
+/* availability: a word with a glyph on a pastel pill (never colour alone) */
+.lj-badge { display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px; border-radius: var(--r-pill); font-size: 11.5px; font-weight: 600; line-height: 1.5; }
+.lj-badge i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.lj-badge.is-live { background: var(--green-50); color: var(--green-700); }
+/* the live dot breathes 3 times (4.8 s), then rests: nothing loops for good (WCAG 2.2.2), and a looping animation kept slow devices repainting */
+.lj-badge.is-live i { animation: lj-breathe 1.6s cubic-bezier(.45, 0, .55, 1) 3; }
+.lj-badge.is-baru { background: var(--blue-50); color: var(--blue-700); }
+.lj-badge.is-segera { background: var(--surface-sunk); color: var(--ink-muted); }
+
+/* --- Baru masuk --- */
+.lj-feed { display: grid; gap: 8px; }
+.lj-feed-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.lj-feed-head h2 { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 700; }
+.lj-feed-head span { font-size: .75rem; color: var(--ink-muted); }
+.lj-live-dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--sign-green); }
+.lj-live-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--sign-green); opacity: 0; animation: lj-ping 1.8s cubic-bezier(.23, 1, .32, 1) 2; }
+.lj-feed ol { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.lj-feed-row { display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: center; gap: 10px; width: 100%; padding: 9px 10px; border-radius: var(--r-md); background: var(--surface); box-shadow: inset 0 0 0 1px var(--surface-sunk); text-align: left; color: inherit; animation: lj-arrive var(--dur-ui) var(--ease-out); }
+.lj-feed-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--surface-sunk); color: var(--ink-muted); }
+.lj-feed-copy { display: grid; gap: 2px; min-width: 0; }
+.lj-feed-copy strong { overflow: hidden; font-size: .875rem; text-overflow: ellipsis; white-space: nowrap; }
+.lj-feed-copy > span { display: flex; align-items: center; gap: 8px; font-size: .75rem; color: var(--ink-muted); }
+.lj-feed-empty { font-size: .875rem; color: var(--ink-muted); }
+.lj-feed-all { justify-self: start; display: inline-flex; align-items: center; gap: 4px; }
+@media (hover: hover) and (pointer: fine) { .lj-feed-row:hover { background: var(--surface-soft); } }
+
+@keyframes lj-breathe { 50% { opacity: .35; } }
+@keyframes lj-ping { from { transform: scale(1); opacity: .7; } 70%, 100% { transform: scale(2.4); opacity: 0; } }
+@keyframes lj-arrive { from { opacity: 0; transform: translateY(8px); } }
+
+/* --- Rute --- */
+.lj-route { display: grid; gap: 12px; padding: 10px 16px 20px; overflow-y: auto; }
+.lj-route-title { font-size: 1.375rem; font-weight: 700; letter-spacing: -.02em; }
+.lj-route-lead { font-size: .875rem; color: var(--ink-muted); }
+.lj-route-off { display: grid; gap: 10px; padding: 16px; border-radius: var(--r-lg); background: var(--surface-soft); }
+.lj-route-off img { width: 64px; height: 64px; border-radius: var(--r-md); background: var(--surface); object-fit: contain; }
+.lj-route-off p { display: grid; gap: 2px; margin: 0; }
+.lj-route-off p span { font-size: .8125rem; color: var(--ink-muted); }
+.lj-route-off label { font-size: .8125rem; font-weight: 600; }
+.lj-route-link-row { display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 12px; border-radius: var(--r-md); background: var(--surface); color: var(--ink-muted); }
+.lj-route-link-row input { flex: 1; min-width: 0; border: 0; background: none; font: inherit; color: var(--ink); outline: none; }
+.lj-route-link-row:focus-within { box-shadow: inset 0 0 0 2px var(--sign-green); }
+.lj-route-off .lj-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+.lj-route-off .lj-primary.is-disabled { opacity: .5; pointer-events: none; }
+
+@media (max-width: 800px) {
+  .lj-tabs { margin: 0 12px 6px; }
+  .lj-peta-home, .lj-route { padding-inline: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lj-badge.is-live i, .lj-live-dot::after, .lj-feed-row { animation: none; }
+}
+
+/* --- Opal CCTV: camera markers, the list in the Peta tab, the player card over the map --- */
+.lj-cam-marker { position: relative; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; background: none; cursor: pointer; }
+.lj-cam-marker > span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--ink); color: var(--surface); box-shadow: 0 0 0 2.5px var(--surface), var(--shadow-soft); transition: transform var(--dur-press, 140ms) var(--ease-out); }
+.lj-cam-marker svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.lj-cam-marker b { position: absolute; top: 0; right: 0; min-width: 17px; height: 17px; padding: 0 4px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink); font-size: 10.5px; line-height: 17px; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.lj-cam-marker.is-active > span { background: var(--sign-green); color: var(--on-accent); transform: scale(1.12); }
+.lj-cam-marker:active > span { transform: scale(.94); }
+@media (hover: hover) and (pointer: fine) { .lj-cam-marker:hover > span { transform: translateY(-2px); } }
+
+.lj-cams { display: grid; gap: 8px; }
+.lj-cams-search { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; border-radius: var(--r-md); background: var(--surface); box-shadow: inset 0 0 0 1px var(--surface-sunk); color: var(--ink-muted); }
+.lj-cams-search:focus-within { box-shadow: inset 0 0 0 2px var(--sign-green); }
+.lj-cams-search input { flex: 1; min-width: 0; border: 0; background: none; font: inherit; font-size: .9375rem; color: var(--ink); outline: none; }
+.lj-cams ol { display: grid; gap: 6px; max-height: 300px; margin: 0; padding: 0; overflow-y: auto; list-style: none; }
+.lj-cam-row { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; align-items: center; gap: 10px; width: 100%; padding: 9px 10px; border-radius: var(--r-md); background: var(--surface); box-shadow: inset 0 0 0 1px var(--surface-sunk); text-align: left; color: inherit; }
+.lj-cam-row[aria-pressed=true] { box-shadow: inset 0 0 0 2px var(--sign-green); background: var(--green-50); }
+.lj-cam-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--ink); color: var(--surface); }
+@media (hover: hover) and (pointer: fine) { .lj-cam-row:hover { background: var(--surface-soft); } }
+
+.lj-cctv { position: absolute; z-index: 6; left: 18px; top: 18px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: min(380px, calc(100% - 96px)); padding: 12px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-soft), 0 12px 32px rgb(0 0 0 / .16); animation: lj-arrive var(--dur-ui) var(--ease-out); }
+.lj-cctv-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 8px; }
+.lj-cctv-head h2 { overflow: hidden; font-size: .9375rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.lj-cctv-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: var(--r-sm); color: var(--ink-muted); }
+@media (hover: hover) and (pointer: fine) { .lj-cctv-icon:hover { background: var(--surface-sunk); color: var(--ink); } }
+.lj-cctv-frame { position: relative; overflow: hidden; aspect-ratio: 16 / 9; border-radius: var(--r-md); background: #101315; }
+.lj-cctv-frame video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.lj-cctv-frame:fullscreen { border-radius: 0; }
+.lj-cctv-cover { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 6px; padding: 16px; color: #e8ecee; font-size: .875rem; text-align: center; }
+.lj-cctv-cover img { width: 56px; height: 56px; }
+.lj-cctv-cover.is-error span { font-size: .8125rem; color: #c3cacd; }
+.lj-cctv-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 4px; }
+.lj-cctv-actions button, .lj-cctv-actions a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: var(--r-sm); background: #2a3034; color: #fff; font-size: .8125rem; font-weight: 600; text-decoration: none; }
+.lj-cctv-icon:disabled { opacity: .4; }
+.lj-cctv-streams { display: flex; flex-wrap: wrap; gap: 6px; }
+.lj-cctv-streams button { min-height: 34px; padding: 0 12px; border-radius: var(--r-sm); background: var(--surface-sunk); color: var(--ink-muted); font-size: .8125rem; font-weight: 600; }
+.lj-cctv-streams button[aria-pressed=true] { background: var(--surface); color: var(--ink); box-shadow: inset 0 0 0 2px var(--sign-green); }
+.lj-cctv-meta { display: flex; justify-content: space-between; gap: 10px; font-size: .8125rem; font-weight: 600; }
+.lj-cctv-meta span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lj-cctv-meta time { flex-shrink: 0; color: var(--ink-muted); font-weight: 500; font-variant-numeric: tabular-nums; }
+.lj-cctv-source { font-size: .75rem; color: var(--ink-muted); }
+.lj-cctv-source a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+@media (max-width: 800px) {
+  .lj-cctv { left: 12px; right: 68px; top: 12px; width: auto; padding: 10px; gap: 6px; }
+  .lj-cctv-streams { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .lj-cctv-streams button { flex-shrink: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lj-cctv { animation: none; }
+  .lj-cam-marker > span { transition: none; }
+}
+
+/* --- Rute with Google: the form, the answer, the Google map in the map area --- */
+.lj-routing .lj-workspace > .lj-map:not(.lj-google-map) { display: none; }
+.lj-google-map .lj-map-canvas { background: var(--surface-sunk); }
+.lj-route-form { display: grid; gap: 10px; }
+.lj-place { position: relative; display: grid; gap: 4px; }
+.lj-place label { font-size: .8125rem; font-weight: 600; }
+.lj-place .lj-route-link-row { background: var(--surface-sunk); }
+.lj-place-hint { color: var(--ink-muted); }
+.lj-place-list { position: absolute; z-index: 5; left: 0; right: 0; top: 100%; display: grid; margin: 4px 0 0; padding: 4px; list-style: none; border-radius: var(--r-md); background: var(--surface); box-shadow: var(--shadow-soft), 0 10px 28px rgb(0 0 0 / .14); }
+.lj-place-list li { display: grid; gap: 1px; padding: 9px 10px; border-radius: var(--r-sm); cursor: pointer; }
+.lj-place-list li strong { font-size: .9rem; }
+.lj-place-list li span { font-size: .75rem; color: var(--ink-muted); }
+.lj-place-list li[aria-selected=true] { background: var(--green-50); }
+@media (hover: hover) and (pointer: fine) { .lj-place-list li:hover { background: var(--surface-soft); } }
+.lj-route-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: var(--r-md); background: var(--surface-sunk); }
+.lj-route-modes button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; border-radius: var(--r-sm); font-weight: 600; color: var(--ink-muted); }
+.lj-route-modes button[aria-pressed=true] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-soft), inset 0 0 0 2px var(--sign-green); }
+.lj-route-note { font-size: .75rem; color: var(--ink-muted); }
+.lj-route-go { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; }
+.lj-route-error { padding: 10px 12px; border-radius: var(--r-md); background: var(--surface-soft); font-size: .875rem; }
+.lj-route-result { display: grid; gap: 12px; }
+.lj-route-options { display: grid; gap: 6px; }
+.lj-route-options button { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; min-height: 44px; padding: 8px 12px; border-radius: var(--r-md); background: var(--surface-soft); text-align: left; }
+.lj-route-options button span { overflow: hidden; font-size: .75rem; color: var(--ink-muted); text-overflow: ellipsis; white-space: nowrap; }
+.lj-route-options button[aria-checked=true] { background: var(--green-50); box-shadow: inset 0 0 0 2px var(--sign-green); }
+.lj-route-eta { display: grid; gap: 2px; padding: 14px 16px; border-radius: var(--r-lg); background: var(--surface-soft); }
+.lj-route-eta h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.lj-route-eta p { font-size: .875rem; color: var(--ink-muted); }
+.lj-route-eta p strong { color: var(--ink); }
+.lj-route-eta .is-slow { color: var(--ink); font-weight: 600; }
+.lj-route-reports { display: grid; gap: 8px; }
+.lj-route-reports h3 { font-size: 1rem; font-weight: 700; }
+.lj-route-counts { font-size: .8125rem; color: var(--ink-muted); }
+.lj-route-reports ol { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.lj-route-report { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 10px; width: 100%; padding: 9px 10px; border-radius: var(--r-md); background: var(--surface); box-shadow: inset 0 0 0 1px var(--surface-sunk); text-align: left; color: inherit; }
+.lj-route-report[aria-pressed=true] { background: var(--green-50); box-shadow: inset 0 0 0 2px var(--sign-green); }
+.lj-route-along { font-size: .8125rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.lj-route-open { display: inline-flex; align-items: center; gap: 4px; margin: 4px 0 0 74px; }
+.lj-route-empty { display: flex; align-items: center; gap: 10px; font-size: .875rem; color: var(--ink-muted); }
+.lj-route-source { font-size: .75rem; color: var(--ink-muted); }
+.lj-route-end { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--surface); font-size: .8125rem; font-weight: 700; box-shadow: 0 0 0 3px var(--surface); }
+@media (hover: hover) and (pointer: fine) { .lj-route-report:hover { background: var(--surface-soft); } }

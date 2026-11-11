@@ -120,6 +120,17 @@ export function useCitizenReports(mine: boolean, user: User | null, enabled = tr
       .finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => { controller.abort(); generation.current++; };
   }, [mine, user?.id, revision, enabled]);
+  // quiet refresh for the live feed: the first page's reports (new or updated) go to the top, nothing flashes
+  const poll = useCallback(async () => {
+    if (!enabled || loading) return;
+    const active = generation.current;
+    try {
+      const result = await api<{ reports: CitizenReport[]; nextCursor: string | null }>(`/reports${mine ? '?mine=true' : ''}`);
+      if (active !== generation.current) return;
+      const fresh = new Set(result.reports.map(row => row.id));
+      setReports(rows => [...result.reports, ...rows.filter(row => !fresh.has(row.id))]);
+    } catch { /* the next poll tries again; the list stays */ }
+  }, [enabled, loading, mine]);
   async function more() {
     if (!cursor || loading) return;
     const active = generation.current;
@@ -131,7 +142,7 @@ export function useCitizenReports(mine: boolean, user: User | null, enabled = tr
     } catch (error) { if (active === generation.current) setError(errorMessage(error)); }
     finally { if (active === generation.current) setLoading(false); }
   }
-  return { reports: scope.current === `${mine}:${user?.id ?? ''}` ? reports : EMPTY_REPORTS, cursor, error, loading, refresh, merge, more };
+  return { reports: scope.current === `${mine}:${user?.id ?? ''}` ? reports : EMPTY_REPORTS, cursor, error, loading, refresh, merge, more, poll };
 }
 export const mediaUrl = (reportId: string, mediaId: string) => `${API_BASE}/api/community/reports/${encodeURIComponent(reportId)}/media/${encodeURIComponent(mediaId)}`;
 export async function privateMedia(reportId: string, mediaId: string, signal: AbortSignal) {

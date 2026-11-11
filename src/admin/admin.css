@@ -1,5 +1,5 @@
 /* Todo:
--> /admin on the landing's tokens: summary chips, filters, the queue on the left and the detail panel on the right (Oyenza radii)
+-> /admin on the landing's tokens: summary chips, filters, the queue on the left and the detail panel on the right (rounded tokens)
 -> design system "Miko lembut" (DESIGN.md): soft grey cards and chips, sunk inputs, pastel handling badges, no hairlines
 */
 .home .admin { padding-block: clamp(16px, 4vh, 40px) clamp(48px, 8vh, 96px); }
@@ -20,8 +20,11 @@
 .home .admin-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 20px; align-items: start; }
 .home .admin-queue, .home .admin-panel { border-radius: var(--r-lg); background: var(--surface-soft); padding: 18px; }
 .home .admin-queue h2 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
-.home .admin-queue ol { display: grid; gap: 8px; }
-.home .admin-queue li button { width: 100%; text-align: left; display: grid; gap: 4px; padding: 12px 14px; border-radius: var(--r-md); background: var(--surface); }
+/* the queue scrolls inside its own column (owner, 11 Nov: the page no longer runs 50 rows down) */
+.home .admin-queue { position: sticky; top: 16px; display: flex; flex-direction: column; max-height: calc(100dvh - 32px); }
+.home .admin-queue ol { display: grid; align-content: start; gap: 6px; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 2px; margin: -2px; transition: opacity var(--dur-ui, .2s) var(--ease-out, ease-out); }
+.home .admin-queue ol.is-refreshing { opacity: .55; }
+.home .admin-queue li button { width: 100%; text-align: left; display: grid; gap: 2px; padding: 10px 12px; border-radius: var(--r-md); background: var(--surface); }
 .home .admin-queue li button[aria-pressed=true] { box-shadow: inset 0 0 0 2px var(--sign-green); background: var(--green-50); }
 @media (hover: hover) and (pointer: fine) { .home .admin-queue li button:not([aria-pressed=true]):hover { box-shadow: var(--shadow-soft); } }
 .home .admin-row-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
@@ -33,23 +36,31 @@
 .home .admin-state.is-diproses { background: var(--blue-50); color: var(--blue-700); }
 .home .admin-state.is-selesai { background: var(--green-50); color: var(--green-700); }
 .home .admin-state.is-ditolak, .home .admin-state.is-hidden, .home .admin-state.is-duplicate { background: var(--pink-50); color: var(--pink-700); }
-.home .admin-pages { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; font-size: .8125rem; color: var(--ink-muted); }
-.home .admin-pages .btn { min-height: 40px; padding: 8px 14px; font-size: .875rem; background: var(--surface); } /* secondary on the soft card */
+.home .admin-more { width: 100%; min-height: 40px; margin-top: 10px; padding: 8px 14px; font-size: .875rem; background: var(--surface); } /* added by scroll; also a button for keyboards */
 .home .admin-empty { color: var(--ink-muted); font-size: .9375rem; }
 .home .admin-panel { position: sticky; top: 16px; max-height: calc(100dvh - 32px); overflow: auto; }
 .home .admin-detail { display: grid; gap: 14px; }
 .home .admin-detail h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -.02em; overflow-wrap: anywhere; }
 .home .admin-map { border-radius: var(--r-md); overflow: hidden; background: var(--surface-sunk); }
-.home .admin-map .lj-map { height: 220px; }
+
 .home .admin-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; }
 .home .admin-facts dt { font-size: .75rem; color: var(--ink-muted); }
 .home .admin-facts dd { font-size: .9375rem; font-weight: 600; overflow-wrap: anywhere; }
-.home .admin-description { white-space: pre-line; overflow-wrap: anywhere; }
+.home .admin-description { white-space: pre-line; overflow-wrap: anywhere; font-size: .9375rem; line-height: 1.55; }
+.home .admin-about { display: grid; gap: 12px; font-size: .9375rem; }
+.home .admin-label { display: block; font-size: .75rem; font-weight: 400; color: var(--ink-muted); }
 .home .admin-action { padding: 14px; border-radius: var(--r-md); background: var(--surface); }
 .home .admin-action h3, .home .admin-history-title { font-size: 1rem; font-weight: 700; }
 .home .admin-action .lj-primary, .home .admin-action .lj-secondary { justify-self: start; }
+.home .admin-map .lj-map { height: 180px; }
+/* action tabs: same soft chips as the summary; the open tab is white with a green ring */
+.home .admin-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px; border-radius: var(--r-md); background: var(--surface-sunk); }
+.home .admin-tabs button { flex: 1; min-height: 40px; padding: 0 12px; border-radius: var(--r-sm); font-size: .875rem; font-weight: 600; color: var(--ink-muted); }
+.home .admin-tabs button[aria-selected=true] { background: var(--surface); color: var(--sign-green); box-shadow: var(--shadow-soft), inset 0 0 0 1.5px var(--sign-green); }
+@media (hover: hover) and (pointer: fine) { .home .admin-tabs button[aria-selected=false]:hover { color: var(--ink); } }
 @media (max-width: 899px) {
   .home .admin-grid { grid-template-columns: minmax(0, 1fr); }
   .home .admin-panel { position: static; max-height: none; }
+  .home .admin-queue { position: static; max-height: 60dvh; }
 }
 @media (max-width: 599px) { .home .admin-filters, .home .admin-facts { grid-template-columns: minmax(0, 1fr); } }

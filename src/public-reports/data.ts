@@ -56,7 +56,9 @@ export function parseSnapshot(value: unknown): PublicReportsSnapshot {
     ids.add(row.id);
     return { id: row.id, code: row.code, lng: row.lng as number, lat: row.lat as number,
       category: row.category as ReportCategory, sourceCategory: row.sourceCategory,
-      createdAt: row.createdAt, sourceStatus: row.sourceStatus as string | null };
+      createdAt: row.createdAt, sourceStatus: row.sourceStatus as string | null,
+      // imported reports get a readable title from the server ("Jalan rusak di Jl. ..."); the code stays the fallback
+      ...(text(row.title, 200) ? { title: row.title } : {}) };
   });
   return { reports, source: { name: source.name, url: source.url, retrievedAt: source.retrievedAt,
     dateStart: source.dateStart, dateEnd: source.dateEnd } };

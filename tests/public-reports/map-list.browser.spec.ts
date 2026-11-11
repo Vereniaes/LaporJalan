@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
 async function prepare(page: Page, data: unknown = snapshot) {
   await page.route('**/api/public-reports', route => route.fulfill({ json: data }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   // one title with the count as a badge (owner, 11 Nov); the count is also announced
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Jalan di sekitar3');
   await expect(page.locator('.lj-panel-intro .lj-count')).toHaveText('3');
@@ -130,7 +130,7 @@ test('refresh failure preserves the last successful timestamp and reports', asyn
 test('initial failure is distinct from empty and retry can recover', async ({ page }) => {
   await page.route('**/api/public-reports', route => route.fulfill({ status: 503 }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   await expect(page.getByRole('alert')).toContainText('Laporan belum dapat dimuat');
   await expect(page.locator('.lj-report-row')).toHaveCount(0);
   await expect(page.getByText('Belum ada laporan yang sesuai')).toHaveCount(0);
@@ -144,7 +144,7 @@ test('initial failure is distinct from empty and retry can recover', async ({ pa
 test('unavailable map keeps the report details usable', async ({ page }) => {
   await page.route('**/api/public-reports', route => route.fulfill({ json: snapshot }));
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   await expect(page.getByText('Peta belum tersedia sepenuhnya.', { exact: false })).toBeVisible();
   await expand(page);
   await page.locator('[data-report-id="test-a"]').click();
@@ -213,7 +213,7 @@ test('loading waits for actual data, including data arriving after the map', asy
   const gate = new Promise<void>(resolve => { release = resolve; });
   await page.route('**/api/public-reports', async route => { await gate; await route.fulfill({ json: snapshot }); });
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   await expect(page.getByText('Memuat laporan…')).toBeVisible();
   await expect(page.locator('.lj-report-row')).toHaveCount(0);
   await ready(page);

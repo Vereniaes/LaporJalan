@@ -4,12 +4,14 @@
     -> panel: report, small map, source history, and the four actions (status + note, unit, moderation, duplicate)
     -> only accounts with the admin role; others see why, never the data
 */
-import { FormEvent, useEffect, useState, type ReactNode } from 'react';
+import { FormEvent, useEffect, useRef, useState, type ReactNode } from 'react';
 import { MotionConfig } from 'motion/react';
 import { api, CATEGORY_LABELS, errorMessage, useEmailSession, writeJson } from '../public-reports/community';
 import { PublicMap } from '../public-reports/PublicMap';
 import { reportDate, type ReportCategory } from '../public-reports/data';
 import { SiteFooter, SiteHeader } from '../home/SiteChrome';
+import { SkeletonBlock, SkeletonRows } from '../components/Skeleton';
+import { useLoadMore } from '../components/useLoadMore';
 import '../public-reports/public-reports.css';
 import '../public-reports/community.css';
 import '../home/home.css';
@@ -51,18 +53,30 @@ export default function AdminPage() {
     if (!units.length) api<{ units: string[] }>('/admin/units').then(result => setUnits(result.units)).catch(() => {});
   }, [admin, revision]);
   // the queue follows the filters (search waits for the typing to pause)
+  // pages of 50 are added as the queue's end comes near (owner, 12 Nov); after an action every page already shown is fetched again, so the place is kept
+  const shownPages = useRef(0), lastRevision = useRef(revision);
   useEffect(() => {
     if (!admin) return;
+    const revisit = revision !== lastRevision.current; lastRevision.current = revision;
+    const append = filters.page > 0 && !revisit;
+    const pages = revisit ? Array.from({ length: Math.max(1, shownPages.current) }, (_, page) => page) : [filters.page];
     const controller = new AbortController();
     const timer = setTimeout(() => {
       setLoading(true); setError('');
-      api<{ total: number; reports: QueueRow[] }>(`/admin/reports?${query(filters)}`, { signal: controller.signal })
-        .then(result => { setRows(result.reports); setTotal(result.total); })
+      Promise.all(pages.map(page => api<{ total: number; reports: QueueRow[] }>(`/admin/reports?${query({ ...filters, page })}`, { signal: controller.signal })))
+        .then(results => {
+          const fresh = results.flatMap(result => result.reports);
+          setRows(current => append ? [...current, ...fresh.filter(row => !current.some(old => old.kind === row.kind && old.id === row.id))] : fresh);
+          setTotal(results[results.length - 1].total);
+          shownPages.current = append ? filters.page + 1 : pages.length;
+        })
         .catch(failure => { if (!controller.signal.aborted) setError(errorMessage(failure)); })
         .finally(() => { if (!controller.signal.aborted) setLoading(false); });
     }, filters.q ? 250 : 0);
     return () => { clearTimeout(timer); controller.abort(); };
   }, [admin, filters, revision]);
+  const hasMore = rows.length < total;
+  const queueEnd = useLoadMore<HTMLButtonElement>(() => { if (!loading && hasMore) setFilters(current => ({ ...current, page: Math.ceil(rows.length / 50) })); }, admin && hasMore && !loading, rows.length);
   useEffect(() => {
     if (!admin || !selected) { setDetail(null); return; }
     const controller = new AbortController();
@@ -78,7 +92,7 @@ export default function AdminPage() {
     <SiteFooter user={session.user} canLogin />
   </div></MotionConfig>;
 
-  if (session.loading) return shell(<p role="status">Memuat akun…</p>);
+  if (session.loading) return shell(<SkeletonBlock label="Memuat akun…" media={false} />);
   if (!session.user) return shell(<section className="admin-gate"><h1 className="h2">Admin.</h1><p>Masuk dengan akun admin untuk menangani laporan.</p><a className="btn btn-primary" href="/masuk?lanjut=%2Fadmin">Masuk</a></section>);
   if (!admin) return shell(<section className="admin-gate"><h1 className="h2">Khusus admin.</h1><p>Akun ini tidak memiliki peran admin. Peran diberikan oleh pengelola server.</p><a className="btn btn-quiet" href="/akun">Ke akun saya</a></section>);
 
@@ -101,8 +115,10 @@ export default function AdminPage() {
     {error && <p className="lj-form-error" role="alert">{error}</p>}
     <div className="admin-grid">
       <section className="admin-queue" aria-labelledby="t-queue">
-        <h2 id="t-queue" aria-live="polite">{loading ? 'Memuat…' : `${total} laporan`}</h2>
-        <ol>{rows.map(row => <li key={`${row.kind}:${row.id}`}>
+        <h2 id="t-queue" aria-live="polite">{loading ? 'Memuat antrean…' : `${total} laporan`}</h2>
+        {loading && !rows.length && <SkeletonRows count={8} label="Memuat antrean…" thumb={false} />}
+        {/* the queue scrolls inside its own column; a refresh keeps the rows and dims them */}
+        <ol className={loading ? 'is-refreshing' : undefined}>{rows.map(row => <li key={`${row.kind}:${row.id}`}>
           <button aria-pressed={selected?.id === row.id} onClick={() => setSelected({ kind: row.kind, id: row.id })}>
             <span className="admin-row-top"><strong>{row.title}</strong><span className={`admin-state is-${row.handling?.duplicateOf ? 'duplicate' : row.handling?.hidden ? 'hidden' : row.handling?.status ?? 'new'}`}>{handlingLabel(row.handling)}</span></span>
             <span className="admin-row-meta">{row.code !== row.title ? `${row.code} · ` : ''}{row.categoryLabel} · {row.kind === 'warga' ? 'Warga' : 'Impor'} · {reportDate(row.createdAt)}</span>
@@ -110,15 +126,12 @@ export default function AdminPage() {
           </button>
         </li>)}</ol>
         {!loading && !rows.length && <p className="admin-empty">Tidak ada laporan pada saringan ini.</p>}
-        <div className="admin-pages">
-          <button className="btn btn-quiet" disabled={filters.page === 0} onClick={() => setFilters(current => ({ ...current, page: current.page - 1 }))}>Sebelumnya</button>
-          <span>Halaman {filters.page + 1} dari {Math.max(1, Math.ceil(total / 50))}</span>
-          <button className="btn btn-quiet" disabled={(filters.page + 1) * 50 >= total} onClick={() => setFilters(current => ({ ...current, page: current.page + 1 }))}>Berikutnya</button>
-        </div>
+        {hasMore && <button ref={queueEnd} className="btn btn-quiet admin-more" disabled={loading} onClick={() => setFilters(current => ({ ...current, page: Math.ceil(rows.length / 50) }))}>
+          {loading ? 'Memuat…' : `Tampilkan berikutnya (${rows.length.toLocaleString('id-ID')} dari ${total.toLocaleString('id-ID')})`}</button>}
       </section>
       <section className="admin-panel" aria-label="Detail laporan">
         {!selected ? <p className="admin-empty">Pilih laporan dari antrean untuk menanganinya.</p>
-          : !detail ? <p role="status">Memuat laporan…</p>
+          : !detail ? <SkeletonBlock label="Memuat laporan…" />
           : <AdminDetail key={detail.id} detail={detail} units={units} onChanged={() => setRevision(value => value + 1)} />}
       </section>
     </div>
@@ -126,11 +139,13 @@ export default function AdminPage() {
 }
 
 // --- detail + actions ---
+const TABS = ['Detail', 'Status', 'Unit', 'Moderasi', 'Duplikat', 'Riwayat'] as const;
 function AdminDetail({ detail, units, onChanged }: { detail: Detail; units: string[]; onChanged: () => void }) {
   const handling = detail.handling;
   const [status, setStatus] = useState<Status>(handling?.status ?? 'diterima'), [note, setNote] = useState('');
   const [unit, setUnit] = useState(handling?.unit ?? ''), [reason, setReason] = useState(''), [primary, setPrimary] = useState('');
   const [busy, setBusy] = useState(false), [error, setError] = useState(''), [saved, setSaved] = useState('');
+  const [tab, setTab] = useState<typeof TABS[number]>('Detail'); // read the report first, then act
   async function act(event: FormEvent | null, body: Record<string, string>, done: string) {
     event?.preventDefault();
     setBusy(true); setError(''); setSaved('');
@@ -143,19 +158,31 @@ function AdminDetail({ detail, units, onChanged }: { detail: Detail; units: stri
     <p className="lj-eyebrow">{detail.kind === 'warga' ? 'LAPORAN WARGA' : 'DATA IMPOR'} · {CATEGORY_LABELS[detail.category].toUpperCase()}</p>
     <h2>{detail.title}</h2>
     <p className="admin-row-meta">{detail.code} · Dibuat {reportDate(detail.createdAt)} WIB</p>
-    <div className="admin-map"><PublicMap reports={[mapReport]} selected={mapReport} onSelect={() => {}} onArea={() => {}} cooperative minimal /></div>
     <dl className="admin-facts">
       <div><dt>Status sumber</dt><dd>{detail.sourceStatus}</dd></div>
       <div><dt>Penanganan</dt><dd>{handling?.duplicateOf ? `Duplikat ${handling.duplicateOf.code}` : handling?.hidden ? 'Disembunyikan' : handling?.status ? STATUSES[handling.status] : 'Belum ditangani'}</dd></div>
       <div><dt>Unit</dt><dd>{handling?.unit ?? detail.unit ?? 'Belum ada'}</dd></div>
       {area && <div><dt>Kelurahan</dt><dd>{area}</dd></div>}
-      {detail.address && <div><dt>Lokasi</dt><dd>{detail.address}</dd></div>}
     </dl>
-    {detail.description && <p className="admin-description">{detail.description}</p>}
     {error && <p className="lj-form-error" role="alert">{error}</p>}
     {saved && <p className="lj-form-success" role="status">{saved}</p>}
 
-    <form className="lj-form admin-action" onSubmit={event => act(event, { action: 'status', status, note }, 'Status penanganan disimpan.')}>
+    {/* owner, 11 Nov: one action at a time in tabs instead of four forms and two histories in one long column */}
+    <div className="admin-tabs" role="tablist" aria-label="Tindakan laporan" onKeyDown={event => {
+      const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      const next = TABS[(TABS.indexOf(tab) + step + TABS.length) % TABS.length];
+      setTab(next); document.getElementById(`admin-tab-${next}`)?.focus();
+    }}>
+      {TABS.map(name => <button key={name} id={`admin-tab-${name}`} role="tab" aria-selected={tab === name} aria-controls="admin-tab-panel" tabIndex={tab === name ? 0 : -1} onClick={() => setTab(name)}>{name}</button>)}
+    </div>
+    <div id="admin-tab-panel" role="tabpanel" aria-labelledby={`admin-tab-${tab}`}>
+    {tab === 'Detail' && <div className="admin-action admin-about">
+      <div className="admin-map"><PublicMap reports={[mapReport]} selected={mapReport} onSelect={() => {}} onArea={() => {}} cooperative minimal /></div>
+      {detail.address && <p><span className="admin-label">Lokasi</span>{detail.address}</p>}
+      {detail.description && <p className="admin-description"><span className="admin-label">Isi laporan</span>{detail.description}</p>}
+    </div>}
+    {tab === 'Status' && <form className="lj-form admin-action" onSubmit={event => act(event, { action: 'status', status, note }, 'Status penanganan disimpan.')}>
       <h3>Status penanganan</h3>
       {/* Why/Note: labels point at their fields, so a select's name is not read together with its current option */}
       <label htmlFor="admin-status">Status</label>
@@ -163,27 +190,28 @@ function AdminDetail({ detail, units, onChanged }: { detail: Detail; units: stri
       <label htmlFor="admin-note">Catatan <span>(tampil publik sebagai Pengelola LaporJalan)</span></label>
       <textarea id="admin-note" rows={3} maxLength={1000} value={note} onChange={event => setNote(event.target.value)} />
       <button className="lj-primary" disabled={busy}>Simpan status</button>
-    </form>
-    <form className="lj-form admin-action" onSubmit={event => act(event, { action: 'assign', unit }, 'Unit ditugaskan.')}>
+    </form>}
+    {tab === 'Unit' && <form className="lj-form admin-action" onSubmit={event => act(event, { action: 'assign', unit }, 'Unit ditugaskan.')}>
       <h3>Tugaskan ke unit/SKPD</h3>
       <label htmlFor="admin-unit">Unit</label>
       <input id="admin-unit" list="admin-units" required maxLength={160} value={unit} onChange={event => setUnit(event.target.value)} />
       <datalist id="admin-units">{units.map(name => <option key={name} value={name} />)}</datalist>
       <button className="lj-secondary" disabled={busy}>Tugaskan</button>
-    </form>
-    <form className="lj-form admin-action" onSubmit={event => act(event, { action: handling?.hidden ? 'show' : 'hide', note: reason }, handling?.hidden ? 'Laporan ditampilkan kembali.' : 'Laporan disembunyikan dari publik.')}>
+    </form>}
+    {tab === 'Moderasi' && <form className="lj-form admin-action" onSubmit={event => act(event, { action: handling?.hidden ? 'show' : 'hide', note: reason }, handling?.hidden ? 'Laporan ditampilkan kembali.' : 'Laporan disembunyikan dari publik.')}>
       <h3>Moderasi</h3>
       <label htmlFor="admin-reason">Alasan <span>(internal)</span></label>
       <input id="admin-reason" maxLength={1000} value={reason} onChange={event => setReason(event.target.value)} />
       <button className="lj-secondary" disabled={busy}>{handling?.hidden ? 'Tampilkan kembali' : 'Sembunyikan dari publik'}</button>
-    </form>
-    <form className="lj-form admin-action" onSubmit={event => act(event, handling?.duplicateOf ? { action: 'unduplicate' } : { action: 'duplicate', duplicateOf: primary }, handling?.duplicateOf ? 'Tanda duplikat dibatalkan.' : 'Ditandai sebagai duplikat.')}>
+    </form>}
+    {tab === 'Duplikat' && <form className="lj-form admin-action" onSubmit={event => act(event, handling?.duplicateOf ? { action: 'unduplicate' } : { action: 'duplicate', duplicateOf: primary }, handling?.duplicateOf ? 'Tanda duplikat dibatalkan.' : 'Ditandai sebagai duplikat.')}>
       <h3>Duplikat</h3>
       {handling?.duplicateOf ? <p>Duplikat dari <strong>{handling.duplicateOf.code}</strong>; tidak tampil di peta.</p>
         : <><label htmlFor="admin-primary">Kode laporan utama</label><input id="admin-primary" required placeholder="LJ-…" value={primary} onChange={event => setPrimary(event.target.value)} /></>}
       <button className="lj-secondary" disabled={busy}>{handling?.duplicateOf ? 'Batalkan duplikat' : 'Tandai duplikat'}</button>
-    </form>
+    </form>}
 
+    {tab === 'Riwayat' && <div className="admin-action">
     <h3 className="admin-history-title">Riwayat penanganan</h3>
     {handling?.history.length ? <ol className="lj-popup-history">{[...handling.history].reverse().map(entry => <li key={entry.id}>
       <time dateTime={entry.at}>{reportDate(entry.at)} WIB</time>
@@ -194,6 +222,8 @@ function AdminDetail({ detail, units, onChanged }: { detail: Detail; units: stri
     {detail.sourceHistory.length ? <ol className="lj-popup-history">{detail.sourceHistory.map((entry, index) => <li key={index}>
       <time dateTime={entry.at}>{reportDate(entry.at)} WIB</time><strong>{entry.status}{entry.unit ? ` (${entry.unit})` : ''}</strong>{entry.note && <p>{entry.note}</p>}
     </li>)}</ol> : <p className="admin-empty">Riwayat sumber belum tersedia.</p>}
+    </div>}
+    </div>
   </article>;
 }
 // --- end of detail + actions ---

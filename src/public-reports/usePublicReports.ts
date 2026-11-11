@@ -10,21 +10,22 @@ export function usePublicReports() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const current = useRef<AbortController>();
-  const refresh = useCallback(async () => {
+  // quiet = the live feed's poll: no loading state, and a failed poll keeps the last data without an error
+  const refresh = useCallback(async (quiet = false) => {
+    if (quiet && current.current) return; // a request is already on its way
     current.current?.abort();
     const controller = new AbortController();
     current.current = controller;
-    setLoading(true);
-    setError(false);
+    if (!quiet) { setLoading(true); setError(false); }
     const timeout = window.setTimeout(() => controller.abort(), 15_000);
     try {
       const result = await fetchPublicReports(controller.signal);
-      if (current.current === controller) setSnapshot(result);
+      if (current.current === controller) { setSnapshot(result); if (quiet) setError(false); }
     } catch {
-      if (current.current === controller) setError(true);
+      if (current.current === controller && !quiet) setError(true);
     } finally {
       window.clearTimeout(timeout);
-      if (current.current === controller) setLoading(false);
+      if (current.current === controller) { if (!quiet) setLoading(false); current.current = undefined; }
     }
   }, []);
   useEffect(() => {

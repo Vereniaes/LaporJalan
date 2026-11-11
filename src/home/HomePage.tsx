@@ -168,12 +168,12 @@ export default function HomePage() {
         </div>
         <Road>
           <Step n={1} title="Lihat peta" on href="/peta" go="Buka peta" miko="phone"
-            text="Laporan jalan rusak tampil di satu peta, tanpa login. Titik yang berdekatan menjadi satu kumpulan. Cari kode atau status, saring kategori, atau nyalakan 3D untuk mengenali gedung.">
-            <span className="mini-search"><Search /><span>Cari kode atau status</span></span>
+            text="Laporan jalan rusak tampil di satu peta, tanpa login. Titik yang berdekatan menjadi satu kumpulan. Cari judul atau status, saring kategori, atau nyalakan 3D untuk mengenali gedung.">
+            <span className="mini-search"><Search /><span>Cari judul atau status</span></span>
             <span className="mini-row"><span className="mini-chip on"><Route />Jalan</span><span className="mini-chip">Area ini</span><span className="mini-chip">3D</span></span>
             {latest.length > 0 && <span className="mini-list">{latest.map(row => <span key={row.id} className="mini-report">
               <span className="lj-marker"><span><Route /></span></span>
-              <span><strong className="mono">{row.code}</strong><span className={statusClass(row.sourceStatus)}>{row.sourceStatus ?? 'Status belum tersedia'}</span></span>
+              <span>{row.title ? <strong>{row.title}</strong> : <strong className="mono">{row.code}</strong>}<span className={statusClass(row.sourceStatus)}>{row.sourceStatus ?? 'Status belum tersedia'}</span></span>
             </span>)}</span>}
             <span className="mini-row">
               <span className="lj-marker is-cluster"><span>12</span></span>

@@ -15,7 +15,7 @@ async function setup(page:Page,report:CitizenReport=cavity,real=false,motion:'re
  await page.route('**/api/public-reports',r=>r.fulfill({json:{...snapshot,reports:[]}}));
  await page.route('**/api/community/**',r=>r.fulfill({json:r.request().url().endsWith('/capabilities')?{reports:true,write:true,login:true,reason:null}:r.request().url().includes('/reports/')?report:{reports:[report],nextCursor:null}}));
  if(!real)await page.route('https://tiles.openfreemap.org/**',r=>r.fulfill({json:style}));
- await page.goto('/peta');await expect(page.locator('.lj-report-row')).toHaveCount(1);
+ await page.goto('/peta?tab=laporan');await expect(page.locator('.lj-report-row')).toHaveCount(1);
  await expect(page.getByRole('button',{name:'Mode 3D',exact:true})).toBeVisible();await ready(page);
  await page.locator('.lj-report-row').click();await expect(page.getByRole('button',{name:'Lihat ilustrasi 3D',exact:true})).toBeVisible();await ready(page);
 }

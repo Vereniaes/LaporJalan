@@ -17,11 +17,13 @@ import { AccountProfile } from '../public-reports/AccountProfile';
 import { CitizenDetail } from '../public-reports/CitizenDetail';
 import { EmailLogin } from '../public-reports/EmailLogin';
 import { useDrawing } from '../public-reports/useDrawing';
+import { useLoadMore } from '../components/useLoadMore';
 import { capabilityMessage, errorMessage, useCapabilities, useCitizenReports, useEmailSession, type CitizenReport, type User } from '../public-reports/community';
 import type { ConditionGeometry } from '../public-reports/condition';
 import { reportDate } from '../public-reports/data';
 import { statusClass } from '../public-reports/statusTone';
 import { SiteFooter, SiteHeader } from '../home/SiteChrome';
+import { PageSkeleton, SkeletonRows } from '../components/Skeleton';
 import '../public-reports/public-reports.css';
 import '../public-reports/community.css';
 import '../home/home.css';
@@ -61,6 +63,8 @@ export default function AccountPage() {
     return () => window.removeEventListener('hashchange', readLink);
   }, []);
   const mine = useCitizenReports(true, session.user ?? known, Boolean((session.user ?? known) && capabilities?.reports));
+  // the next page of my reports loads by itself as the list's end comes near; the button stays for keyboards
+  const mineEnd = useLoadMore<HTMLButtonElement>(() => { if (!mine.loading) void mine.more(); }, Boolean(mine.cursor) && !mine.loading, mine.reports.length);
   const [nameOpen, setNameOpen] = useState(false), [accountError, setAccountError] = useState('');
   // the form's draft on the map
   const [picking, setPicking] = useState(false), [draftLocation, setDraftLocation] = useState<ReportLocation | null>(null);
@@ -90,7 +94,7 @@ export default function AccountPage() {
   const user = session.user ?? known;
   const login = loginOpen && <EmailLogin link={loginLink} returnTo="mine" emailLink={Boolean(capabilities?.emailLink)} onClose={() => { setLoginOpen(false); setLoginLink(''); }}
     onExchange={async link => { await session.exchange(link); }} onSignIn={session.signIn} />;
-  if (!user) return <div className="home">{login}<p className="page-loading" role="status">Memuat akun…</p></div>;
+  if (!user) return <div className="home">{login}<PageSkeleton label="Memuat akun…" /></div>;
   const write = Boolean(capabilities?.write), notice = capabilityMessage(capabilities);
   return <MotionConfig reducedMotion="user"><div className="home">
     <a className="skip" href="#isi">Ke isi halaman</a>
@@ -140,7 +144,7 @@ export default function AccountPage() {
             {mine.reports.length > 0 && <p className="account-counts">{statusCounts(mine.reports).map(([label, count]) => <span key={label} className={statusClass(label)}>{label} {count}</span>)}</p>}
           </div>
           {mine.error && <div className="lj-community-warning" role="status"><span>{mine.error}</span><button className="lj-text-action" onClick={mine.refresh}>Coba lagi</button></div>}
-          {mine.loading && !mine.reports.length && <p role="status">Memuat laporan…</p>}
+          {mine.loading && !mine.reports.length && <SkeletonRows count={3} thumb={false} />}
           {!mine.loading && !mine.error && !mine.reports.length && <p className="account-empty"><img src="/home/miko/clipboard-512.webp" width="512" height="512" alt="" loading="lazy" decoding="async" />Belum ada laporan. Tandai lokasi pada peta, lalu isi form Buat laporan.</p>}
           <ol className="my-reports">
             {mine.reports.map(report => <li key={report.id}>
@@ -155,7 +159,7 @@ export default function AccountPage() {
               </button>
             </li>)}
           </ol>
-          {mine.cursor && <button className="lj-load-more" disabled={mine.loading} onClick={() => void mine.more()}>{mine.loading ? 'Memuat…' : 'Muat laporan lainnya'}</button>}
+          {mine.cursor && <button ref={mineEnd} className="lj-load-more" disabled={mine.loading} onClick={() => void mine.more()}>{mine.loading ? 'Memuat…' : 'Muat laporan lainnya'}</button>}
         </section>
       </div>
     </main>

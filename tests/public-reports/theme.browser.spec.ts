@@ -51,7 +51,7 @@ test('the page follows a dark device, the button switches and is remembered, and
 });
 
 test('Miko looks around beside the title and flies over the map while reports load', async ({ page }) => {
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   await expect(page.locator('.lj-panel-intro .lj-intro-miko .miko-still')).toHaveAttribute('src', '/home/miko/look-192.webp');
   await expect(page.locator('.lj-intro-miko')).toHaveAttribute('aria-hidden', 'true');
   await ready(page);
@@ -65,7 +65,7 @@ test('Miko looks around beside the title and flies over the map while reports lo
 
 test('with reduced motion Miko stays still and never flies', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/peta');
+  await page.goto('/peta?tab=laporan');
   await ready(page);
   await page.getByRole('button', { name: 'Perbarui laporan' }).click();
   await page.waitForTimeout(800);

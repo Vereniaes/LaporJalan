@@ -75,7 +75,7 @@ test('M03 popup anchor tracks pan zoom and resize within two CSS pixels', async 
           const popup = hook.memoizedState?.current;
           if (typeof popup?.getLngLat === 'function' && typeof popup.getElement === 'function'
             && typeof popup.isOpen === 'function' && popup.isOpen()
-            && popup.getElement().classList.contains('cctv-oyenza-popup')) {
+            && popup.getElement().classList.contains('cctv-map-popup')) {
             const point = map.project(popup.getLngLat());
             const box = popup.getElement().getBoundingClientRect();
             const origin = container.getBoundingClientRect();

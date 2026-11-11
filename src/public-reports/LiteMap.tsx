@@ -10,16 +10,17 @@ import { LocateFixed, Minus, Plus } from 'lucide-react';
 import { conditionFootprints } from './conditionFeatures';
 import { groupReports, pinButton } from '../map/markers';
 import type { MapProps } from './PublicMap';
+import { cameraButton, NO_CAMERAS } from '../cctv/cameras';
 
 // OpenStreetMap standard raster tiles: no key, attribution required; the tile policy allows light use, which a fallback is
 // Why/Note: CARTO basemaps answered "API KEY REQUIRED" (checked 10 Nov 2026)
 export const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 export const ATTRIBUTION = '© kontributor <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
-export function LiteMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingCancel, cooperative = false, minimal = false, popups = [] }: MapProps) {
+export function LiteMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingCancel, cooperative = false, minimal = false, popups = [], cameras = NO_CAMERAS, activeCamera = null, onCamera, cameraCard }: MapProps) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<L.Map>();
-  const pins = useRef<L.LayerGroup>(), shapes = useRef<L.GeoJSON>(), draft = useRef<L.CircleMarker>();
+  const pins = useRef<L.LayerGroup>(), cams = useRef<L.LayerGroup>(), shapes = useRef<L.GeoJSON>(), draft = useRef<L.CircleMarker>();
   const props = useRef({ reports, selected, onSelect, picking, selectionLocked, onLocation });
   props.current = { reports, selected, onSelect, picking, selectionLocked, onLocation };
   const [moved, setMoved] = useState(false), [drawingNote, setDrawingNote] = useState(false);
@@ -54,6 +55,7 @@ export function LiteMap({ reports, selected, onSelect, onArea, picking = false, 
     instance.attributionControl.setPrefix(false);
     L.tileLayer(TILES, { maxZoom: 19, attribution: ATTRIBUTION }).addTo(instance);
     shapes.current = L.geoJSON(undefined, { interactive: false, style: feature => ({ color: feature?.properties?.color ?? '#1D2023', weight: 6, opacity: .9, fillOpacity: .35 }) }).addTo(instance);
+    cams.current = L.layerGroup().addTo(instance);
     pins.current = L.layerGroup().addTo(instance);
     instance.on('moveend zoomend', () => { drawPins(); setMoved(true); });
     instance.on('click', event => { if (props.current.picking) props.current.onLocation?.({ lng: event.latlng.lng, lat: event.latlng.lat }); });
@@ -97,12 +99,34 @@ export function LiteMap({ reports, selected, onSelect, onArea, picking = false, 
     }
   }, [draftLocation, picking]);
 
+  // Opal CCTV: camera places on their own layer, under the report pins
+  const onCameraRef = useRef(onCamera); onCameraRef.current = onCamera;
+  useEffect(() => {
+    const layer = cams.current;
+    if (!layer) return;
+    layer.clearLayers();
+    for (const location of cameras) {
+      const button = cameraButton(location, location.id === activeCamera);
+      button.onclick = event => { L.DomEvent.stopPropagation(event); onCameraRef.current?.(location); };
+      L.marker([location.lat, location.lng], { icon: L.divIcon({ html: button, className: 'lj-lite-pin', iconSize: [40, 40] }), keyboard: false }).addTo(layer);
+    }
+  }, [cameras, activeCamera]);
+  useEffect(() => {
+    const instance = map.current;
+    if (instance && cameras.length) instance.fitBounds(L.latLngBounds(cameras.map(item => [item.lat, item.lng] as [number, number])), { padding: [60, 60], maxZoom: 14, animate: false });
+  }, [cameras.length]);
+  useEffect(() => {
+    const instance = map.current, location = cameras.find(item => item.id === activeCamera);
+    if (instance && location) instance.setView([location.lat, location.lng], Math.max(instance.getZoom(), 15), { animate: false });
+  }, [activeCamera]);
+
   // drawing a stretch or an area needs the WebGL map: say so and hand the form back
   useEffect(() => { if (drawing) { setDrawingNote(true); onDrawingCancel?.(); } }, [drawing?.id]);
 
   const pinned = popups.filter(popup => popup.pinned);
   return <section className="lj-map lj-lite-map" aria-label="Peta laporan">
     <div ref={container} className="lj-map-canvas" />
+    {cameraCard}
     {pinned.map(popup => <div key={popup.report.id} className="lj-popup lj-popup-fallback is-pinned">{popup.content}</div>)}
     {drawingNote && <div className="lj-map-notice" role="status">Menggambar ruas atau area belum bisa di peta ringan. Pilih bentuk Titik, atau buka di perangkat yang mendukung WebGL.
       <button onClick={() => setDrawingNote(false)}>Tutup</button></div>}

@@ -16,6 +16,6 @@ export default defineConfig(community, {
   webServer: {
     command: `node node_modules/vite/bin/vite.js --host 127.0.0.1 --port ${port} --strictPort`,
     url: origin, reuseExistingServer: false,
-    env: { VITE_API_URL: 'http://127.0.0.1:5005' },
+    env: { VITE_API_URL: 'http://127.0.0.1:5005', VITE_GOOGLE_MAPS_API_KEY: '' }, // never the owner's Google key from .env.local
   },
 });

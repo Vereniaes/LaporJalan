@@ -32,7 +32,7 @@
 :root {
   /* surfaces: soft fills instead of hairline borders */
   --surface: #FFFFFF;
-  --surface-soft: #F3F4F6; /* cards (Oyenza-style grey fill); ink 14.9:1, muted 5.6:1 on it */
+  --surface-soft: #F3F4F6; /* cards (soft grey fill); ink 14.9:1, muted 5.6:1 on it */
   --surface-sunk: #ECEEF1; /* tracks, inactive chips */
   --line-strong: #80868D; /* input edges only: 3.3:1 on --surface-soft, 3.7:1 on white (WCAG 1.4.11) */
   --ink: #1D2023;
@@ -100,15 +100,15 @@ body {
   outline: none;
 }
 
-/* styling popup cctv mengambang tertambat di peta ala oyenza */
-.cctv-oyenza-popup .maplibregl-popup-content {
+/* styling popup cctv mengambang tertambat di peta */
+.cctv-map-popup .maplibregl-popup-content {
   padding: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 1rem !important;
 }
 
-.cctv-oyenza-popup .maplibregl-popup-tip {
+.cctv-map-popup .maplibregl-popup-tip {
   border-top-color: #020617 !important;
 }
 
