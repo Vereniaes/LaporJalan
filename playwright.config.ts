@@ -1,7 +1,7 @@
 import { defineConfig } from '@playwright/test';
 
 // Run pure helpers separately from browser behavior at fixed viewports.
-const output = process.env.PW_OUTPUT || 'knowledge/oyenza-agent-pack/runs/oyenza-parity-2026-10-16/harness/latest';
+const output = process.env.PW_OUTPUT || 'test-results/oyenza-parity';
 export default defineConfig({
   testDir: './tests', timeout: 45000, retries: 0, workers: 1,
   outputDir: `${output}/artifacts`,

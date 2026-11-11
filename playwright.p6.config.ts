@@ -4,7 +4,7 @@ Todo:
 */
 import { defineConfig } from '@playwright/test';
 import community from './playwright.community.config';
-const output = process.env.P6_OUTPUT || 'knowledge/crm-3d-plan-2026-10-28/implementation-p6/runs/checks';
+const output = process.env.P6_OUTPUT || 'test-results/p6-checks';
 const port = Number(process.env.P6_PORT || 3016);
 const origin = `http://127.0.0.1:${port}`;
 process.env.P6_APP_ORIGIN = origin;

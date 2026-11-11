@@ -3,7 +3,7 @@ Todo:
 -> preserve deterministic browser evidence for desktop and mobile
 */
 import { defineConfig } from '@playwright/test';
-const output = 'knowledge/rebranding-2026-10-17/runs/map-list-2026-10-17/checks';
+const output = 'test-results/public-map-list';
 export default defineConfig({
   testDir: './tests/public-reports', timeout: 30_000, retries: 0, workers: 1,
   outputDir: `${output}/artifacts`,

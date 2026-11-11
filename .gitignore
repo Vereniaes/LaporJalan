@@ -1,4 +1,8 @@
-# Logs
+# Todo:
+# -> ignore build outputs, env files, agent skills, and local knowledge/test artifacts
+# -> keep .env.example tracked as environment template
+
+# --- Logs & Build Outputs -----------------------------------------------------
 logs
 *.log
 npm-debug.log*
@@ -10,17 +14,38 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+coverage/
+.vercel/
+
+# --- Environment Files (CRITICAL: Never commit secrets) -----------------------
 *.local
 .env
 .env.*
+*.env
 !.env.example
+!.env.*.example
 
-# Generated test evidence stays local; selected evidence and summaries remain tracked.
-knowledge/**/runs/**/artifacts/
+# --- Non-App Workspace & Agent Files (Must stay outside project repo) ---------
+.agents/
+.claude/
+skills-lock.json
+.mcp.json
+knowledge/
+docs/
+DESIGN.md
+uploads/
+tmp/
+scratch/
+TASK_PLAN.md
+CLAUDE.md
+guardrails.md
+*.local.md
+
+# --- Test Artifacts -----------------------------------------------------------
 /test-results/
 /playwright-report/
 
-# Editor directories and files
+# --- OS & Editor Files --------------------------------------------------------
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -30,3 +55,4 @@ knowledge/**/runs/**/artifacts/
 *.njsproj
 *.sln
 *.sw?
+# --- end of gitignore ---------------------------------------------------------

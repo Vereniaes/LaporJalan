@@ -4,7 +4,7 @@ Todo:
 */
 import { defineConfig } from '@playwright/test';
 import base from './playwright.community.config';
-const output = 'knowledge/crm-3d-plan-2026-10-28/implementation-p012/runs/checks';
+const output = 'test-results/crm-p012';
 export default defineConfig({
   ...base,
   outputDir: `${output}/artifacts`,

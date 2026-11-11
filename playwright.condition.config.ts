@@ -4,5 +4,5 @@ Todo:
 */
 import { defineConfig } from '@playwright/test';
 import base from './playwright.crm.config';
-const output='knowledge/crm-3d-plan-2026-10-28/implementation-p34/runs/checks';
+const output = 'test-results/condition-p34';
 export default defineConfig({...base,outputDir:`${output}/artifacts`,reporter:[['list'],['json',{outputFile:`${output}/results.json`}]]});
