@@ -30,12 +30,12 @@ const PATHS: Record<string, string> = { road: 'm8 4-2 16M16 4l2 16M12 5v3m0 3v3m
   drain: 'M3 7c3-4 6 4 9 0s6 4 9 0M3 12c3-4 6 4 9 0s6 4 9 0M3 17c3-4 6 4 9 0s6 4 9 0',
   burning: 'M12 3c1 5 7 5 7 11a7 7 0 0 1-14 0c0-3 2-5 4-7 0 3 1 4 3 5 2-3 1-6 0-9Z' };
 
-// the pin button: a count for a group, the condition or category glyph for one report
+// the pin button: a count for a group, the condition or category glyph for one report, ringed in its category colour
 export function pinButton(group: PublicReport[], selected: boolean, disabled: boolean) {
   const row = group[0], isGroup = group.length > 1;
   const button = document.createElement('button');
   button.type = 'button';
-  button.className = `lj-marker${isGroup ? ' is-cluster' : ''}${selected ? ' is-selected' : ''}`;
+  button.className = `lj-marker${isGroup ? ' is-cluster' : ` cat-${row.category}`}${selected ? ' is-selected' : ''}`; // cat-* colours the ring (public-reports.css)
   button.dataset.reportIds = group.map(item => item.id).join(',');
   button.innerHTML = isGroup ? `<span>${group.length}</span>` : `<span><svg viewBox="0 0 24 24" aria-hidden="true">${(row.condition && conditionGlyph(row.condition.kind)) ?? `<path d="${PATHS[row.category] ?? PATHS.road}"/>`}</svg></span>`;
   button.disabled = disabled;

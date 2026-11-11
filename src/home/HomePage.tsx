@@ -19,7 +19,9 @@ import { OBSERVATIONS, useCapabilities, useEmailSession } from '../public-report
 import { CONDITION_LABELS } from '../public-reports/condition';
 import { swatchStyle } from '../public-reports/conditionFeatures';
 import { reportDate, type PublicReport } from '../public-reports/data';
+import { statusClass } from '../public-reports/statusTone';
 import { SiteFooter, SiteHeader } from './SiteChrome';
+import { hasMikoAnim, MikoMotion } from './MikoMotion';
 import { useMapMode } from '../map/capability';
 import '../public-reports/public-reports.css';
 import '../public-reports/community.css';
@@ -43,12 +45,11 @@ function Node({ on, pin }: { on: boolean; pin: boolean }) {
 }
 
 // one row of the flow: text on one side, a sample of the app's own screen on the other
-function Step({ n, title, on, text, href, go, miko, caption, children }: { n: number; title: string; on: boolean; text: string; href: string; go: string; miko: string; caption?: string; children: ReactNode }) {
+function Step({ n, title, on, text, href, go, miko, children }: { n: number; title: string; on: boolean; text: string; href: string; go: string; miko: string; children: ReactNode }) {
   const still = useReducedMotion();
   return <motion.li className="step" variants={ROW} initial={still ? false : 'before'} whileInView="after" viewport={{ once: true, amount: .45 }}>
     <Node on={on} pin={n === 3} />
     <div className="step-text">
-      <p className="step-n mono" aria-hidden="true">{String(n).padStart(2, '0')} / 04</p>
       <div className="step-head"><h3>{title}</h3></div>
       <p>{text}</p>
       <a className="text-link" href={href}>{go}<ArrowRight /></a>
@@ -56,9 +57,9 @@ function Step({ n, title, on, text, href, go, miko, caption, children }: { n: nu
     <figure className="step-demo">
       <div className="screen demo" aria-hidden="true">
         {children}
-        <img className="step-miko" src={`/home/miko/${miko}-512.webp`} width="512" height="512" alt="" loading="lazy" decoding="async" />
+        {hasMikoAnim(miko) ? <MikoMotion anim={miko} className="step-miko" src={`/home/miko/${miko}-512.webp`} loading="lazy" />
+          : <img className="step-miko" src={`/home/miko/${miko}-512.webp`} width="512" height="512" alt="" loading="lazy" decoding="async" />}
       </div>
-      {caption && <figcaption>{caption}</figcaption>}
     </figure>
   </motion.li>;
 }
@@ -155,7 +156,8 @@ export default function HomePage() {
                 <div className="map-still-bar"><span>Perangkat ini memakai mode hemat.</span><button className="btn btn-quiet" onClick={() => setLiveMap(true)}>Muat peta interaktif</button></div>
               </div>}
           </div>
-          <img className="hero-miko" src="/home/miko/point-512.webp" srcSet="/home/miko/point-512.webp 512w, /home/miko/point-1024.webp 1024w" sizes="(min-width: 700px) 150px, 96px" width="512" height="512" alt="" decoding="async" />
+          {/* Miko greets: the waving loop starts from the standing pose (owner, 10 Nov) */}
+          <MikoMotion anim="wave" className="hero-miko" src="/home/miko/stand-512.webp" srcSet="/home/miko/stand-512.webp 512w, /home/miko/stand-1024.webp 1024w" sizes="(min-width: 700px) 150px, 96px" />
         </motion.div>
       </section>
 
@@ -165,13 +167,13 @@ export default function HomePage() {
           <h2 className="h2" id="t-alur">Dari peta sampai pembaruan.</h2>
         </div>
         <Road>
-          <Step n={1} title="Lihat peta" on href="/peta" go="Buka peta" miko="phone" caption={latest.length ? undefined : 'Contoh tampilan alat peta.'}
+          <Step n={1} title="Lihat peta" on href="/peta" go="Buka peta" miko="phone"
             text="Laporan jalan rusak tampil di satu peta, tanpa login. Titik yang berdekatan menjadi satu kumpulan. Cari kode atau status, saring kategori, atau nyalakan 3D untuk mengenali gedung.">
             <span className="mini-search"><Search /><span>Cari kode atau status</span></span>
             <span className="mini-row"><span className="mini-chip on"><Route />Jalan</span><span className="mini-chip">Area ini</span><span className="mini-chip">3D</span></span>
             {latest.length > 0 && <span className="mini-list">{latest.map(row => <span key={row.id} className="mini-report">
               <span className="lj-marker"><span><Route /></span></span>
-              <span><strong className="mono">{row.code}</strong><span className="lj-status">{row.sourceStatus ?? 'Status belum tersedia'}</span></span>
+              <span><strong className="mono">{row.code}</strong><span className={statusClass(row.sourceStatus)}>{row.sourceStatus ?? 'Status belum tersedia'}</span></span>
             </span>)}</span>}
             <span className="mini-row">
               <span className="lj-marker is-cluster"><span>12</span></span>
@@ -179,23 +181,23 @@ export default function HomePage() {
               <span className="lj-marker"><span><Construction /></span></span>
             </span>
           </Step>
-          <Step n={2} title="Buka laporan" on href="/peta" go="Lihat laporan" miko="clipboard" caption={statusCounts.length ? undefined : 'Contoh tampilan detail laporan.'}
+          <Step n={2} title="Buka laporan" on href="/peta" go="Lihat laporan" miko="clipboard"
             text="Setiap laporan memuat waktu dan statusnya. Laporan warga berbentuk ruas dapat ditelusuri dengan Lihat ilustrasi 3D: kamera menyusuri ruas dari ujung ke ujung.">
             <span className="lj-eyebrow">LAPORAN JALAN</span>
             {latest[0] && <span className="mini-title"><strong className="mono">{latest[0].code}</strong><span>Dibuat {reportDate(latest[0].createdAt)} WIB</span></span>}
             {/* the four biggest statuses; the rest as one count, so the sample stays a sample */}
-            {statusCounts.length > 0 && <span className="mini-row">{statusCounts.slice(0, 4).map(([status, count]) => <span key={status} className="lj-status">{status} {count}</span>)}
+            {statusCounts.length > 0 && <span className="mini-row">{statusCounts.slice(0, 4).map(([status, count]) => <span key={status} className={statusClass(status)}>{status} {count}</span>)}
               {statusCounts.length > 4 && <span className="mini-more">+{statusCounts.length - 4} status lain</span>}</span>}
             <span className="mini-row"><span className="mini-chip on">Ringkasan</span><span className="mini-chip">Riwayat</span></span>
             <span className="mini-button">Lihat ilustrasi 3D</span>
           </Step>
-          <Step n={3} title="Laporkan" on={canReport} href={reportHref} go={canReport ? 'Mulai lapor' : 'Buka peta'} miko="pin" caption="Contoh tampilan form laporan."
+          <Step n={3} title="Laporkan" on={canReport} href={reportHref} go={canReport ? 'Mulai lapor' : 'Buka peta'} miko="pin"
             text="Masuk ke akun, lalu isi tiga langkah: Lokasi, Kondisi, Tinjau. Tandai titik, ruas, atau area, pilih jenis kondisi, dan lampirkan foto atau video bila ada. Tandai dari tempat aman, bukan dari tengah lajur.">
             <ol className="lj-steps">{['Lokasi', 'Kondisi', 'Tinjau'].map((label, index) => <li key={label} aria-current={index === 1 ? 'step' : undefined}>{index + 1}. {label}</li>)}</ol>
             <MiniMap />
             <span className="mini-row">{(['pothole', 'excavation', 'crack'] as const).map((kind, i) => <span key={kind} className={`mini-chip${i === 1 ? ' on' : ''}`}><span className="lj-swatch" style={swatchStyle(kind)} />{CONDITION_LABELS[kind]}</span>)}</span>
           </Step>
-          <Step n={4} title="Pantau pembaruan" on={citizen} href="/peta" go="Buka peta" miko="peek-puddle" caption="Contoh riwayat. Isi laporan sungguhan ditulis pelapor."
+          <Step n={4} title="Pantau pembaruan" on={citizen} href="/peta" go="Buka peta" miko="peek-puddle"
             text="Pelapor mencatat perkembangan pada laporan yang sama: belum berubah, terlihat dikerjakan, atau terlihat selesai. Nama tampilan bersifat pilihan, email tetap privat, dan laporan dapat ditarik dari publik.">
             <ol className="lj-timeline">{[OBSERVATIONS.resolved_observed, OBSERVATIONS.work_observed, 'Laporan dibuat'].map(label => <li key={label}><strong>{label}</strong><p className="lj-entry-meta">Pelapor · warga LaporJalan</p></li>)}</ol>
             <span className="mini-row"><span className="mini-link">Ubah nama publik</span><span className="mini-link">Tarik laporan</span></span>

@@ -15,7 +15,11 @@ async function prepare(page: Page, data: unknown = snapshot) {
   await page.route('**/api/public-reports', route => route.fulfill({ json: data }));
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
   await page.goto('/peta');
-  await expect(page.getByRole('heading', { name: '3 laporan', exact: true })).toBeVisible();
+  // one title with the count as a badge (owner, 11 Nov); the count is also announced
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Jalan di sekitar3');
+  await expect(page.locator('.lj-panel-intro .lj-count')).toHaveText('3');
+  await expect(page.getByText('3 laporan', { exact: true })).toHaveCount(1);
+  if (process.env.LJ_SHOT) { const expand = page.getByRole('button', { name: 'Perluas daftar' }); if (await expand.isVisible()) await expand.click(); await page.screenshot({ path: `/tmp/panel-${test.info().project.name}.png` }); }
   await expect(page.getByRole('button', { name: 'Mode 3D', exact: true })).toBeVisible();
   await ready(page);
 }

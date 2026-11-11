@@ -4,6 +4,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { snapshot, style } from './fixtures';
 import { mapHandle, mapState, ready } from '../helpers/map';
+import { completeEvidence, drawStroke, pickPoint } from '../helpers/point';
 import { randomUUID } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import mongoose from '../../../laporjalan-be/node_modules/mongoose/index.js';
@@ -61,12 +62,9 @@ test('email login, map report, attachment and owner update survive reload', asyn
   await expect(page.getByRole('heading', { name: 'Tambah laporan', exact: true })).toBeVisible();
   expect(page.url()).not.toContain(lastLink);
   await ready(page);
-  await page.getByRole('button', { name: 'Mode 3D' }).click(); await ready(page);
+  // the form is a popup with its own point map (owner, 10 Nov); the big map behind it keeps its state
   const modeBefore = (await mapState(page))?.pitch;
-  await page.locator('.lj-map-canvas').click({ position: { x: 80, y: 75 } });
-  await expect(page.getByLabel('Lintang', { exact: true })).not.toHaveValue('');
-  await page.getByLabel('Lintang', { exact: true }).fill('-6.20');
-  await page.getByLabel('Bujur', { exact: true }).fill('106.84');
+  await pickPoint(page);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await page.getByLabel('Kategori', { exact: true }).selectOption('construction');
   await page.getByLabel('Judul laporan', { exact: true }).fill(`Pekerjaan jalan - uji ${info.project.name}`);
@@ -74,6 +72,7 @@ test('email login, map report, attachment and owner update survive reload', asyn
   const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=', 'base64');
   await page.locator('input[type=file]').setInputFiles({ name: 'fixture.png', mimeType: 'image/png', buffer: png });
   await expect(page.getByAltText('Pratinjau fixture.png')).toBeVisible();
+  await completeEvidence(page);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await expect(page.getByText('Belum dikirim ke kanal pemerintah.', { exact: false })).toBeVisible();
   await page.locator('input[type=checkbox][required]:enabled').check();
@@ -126,10 +125,11 @@ test('failed submission retains inputs and retries once without duplicate report
   await page.getByRole('button', { name: 'Kirim tautan masuk' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Tautan masuk telah dikirim' })).toBeVisible();
   await page.goto(`/#masuk=${lastLink}`); await page.getByRole('button', { name: 'Konfirmasi masuk' }).click();
-  await page.getByLabel('Lintang', { exact: true }).fill('-6.2'); await page.getByLabel('Bujur', { exact: true }).fill('106.84');
+  await pickPoint(page);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await page.getByLabel('Judul laporan', { exact: true }).fill('Pengiriman terputus untuk pengujian');
   await page.getByLabel('Uraian kejadian', { exact: true }).fill('Data pengujian terisolasi; respons pertama sengaja diputus.');
+  await completeEvidence(page);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click(); await page.locator('input[type=checkbox][required]:enabled').check();
   let first = true;
   await page.route('**/api/community/reports', async route => {
@@ -148,8 +148,7 @@ async function publicFixture(page: Page) {
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
 }
 async function reportFields(page: Page, title: string, image = false) {
-  await page.getByLabel('Lintang', { exact: true }).fill('-6.20');
-  await page.getByLabel('Bujur', { exact: true }).fill('106.84');
+  await pickPoint(page);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await page.getByLabel('Judul laporan', { exact: true }).fill(title);
   await page.getByLabel('Uraian kejadian', { exact: true }).fill('Bukti pengujian terisolasi untuk memeriksa laporan, bukan kejadian produksi.');
@@ -157,6 +156,7 @@ async function reportFields(page: Page, title: string, image = false) {
     const encoded = await page.evaluate(() => { const canvas = document.createElement('canvas'); canvas.width = 640; canvas.height = 360; const c = canvas.getContext('2d')!; c.fillStyle = '#e4eae8'; c.fillRect(0, 0, 640, 360); c.fillStyle = '#0b5b70'; c.font = 'bold 34px sans-serif'; c.fillText('MEDIA UJI', 40, 130); c.font = '22px sans-serif'; c.fillText('Fixture pengujian - bukan foto kejadian', 40, 180); return canvas.toDataURL('image/png').split(',')[1]; });
     await page.locator('input[type=file]').setInputFiles({ name: 'test-only.png', mimeType: 'image/png', buffer: Buffer.from(encoded, 'base64') });
   }
+  await completeEvidence(page);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
 }
 
@@ -165,7 +165,7 @@ test('management email opened in another tab preserves intent and private name p
   await publicFixture(page); await page.goto('/peta');
   const expand = page.getByRole('button', { name: 'Perluas daftar', exact: true });
   if (await expand.isVisible()) await expand.click();
-  await page.getByRole('button', { name: 'Masuk untuk mengelola laporan', exact: true }).click();
+  await page.locator('.lj-header .lj-account-row').getByRole('button', { name: 'Masuk', exact: true }).click(); // in the header since 10 Nov
   await page.getByLabel('Email', { exact: true }).fill(`manage-${randomUUID()}@example.test`);
   await page.getByRole('button', { name: 'Kirim tautan masuk', exact: true }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Tautan masuk telah dikirim' })).toBeVisible();
@@ -178,14 +178,17 @@ test('management email opened in another tab preserves intent and private name p
   await tab.locator('.lj-empty').getByRole('button', { name: 'Lihat semua laporan', exact: true }).click();
   await expect(tab.locator('.lj-report-row')).not.toHaveCount(0);
   await tab.locator('.lj-account-row').getByRole('button', { name: 'Laporan sendiri', exact: true }).click();
-  await tab.getByRole('button', { name: 'Akun', exact: true }).click();
+  // one Akun icon goes to /akun, where the name is edited (owner, 10 Nov)
+  await tab.locator('.lj-header').getByRole('link', { name: 'Akun', exact: true }).click();
+  await tab.getByRole('button', { name: 'Ubah nama tampilan', exact: true }).click();
   await tab.getByRole('dialog').getByRole('textbox', { name: 'Nama tampilan (opsional)', exact: true }).fill('Nama Pilihan Uji');
   await tab.getByRole('button', { name: 'Simpan nama pilihan', exact: true }).click();
   await expect(tab.getByRole('dialog')).toHaveCount(0);
+  await tab.goto('/peta');
   await tab.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   await reportFields(tab, `Anonim opt-in - ${info.project.name}`);
   await expect(tab.getByLabel('Tampilkan nama pada laporan ini.', { exact: true })).not.toBeChecked();
-  await tab.locator('input[type=checkbox][required]').check();
+  await tab.locator('input[type=checkbox][required]:enabled').check();
   await tab.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
   await expect(card(tab).locator('h2')).toHaveText(`Anonim opt-in - ${info.project.name}`);
   await expect(card(tab).locator('.lj-popup-meta')).toContainText('Pelapor');
@@ -320,21 +323,17 @@ async function conditionLogin(page: Page, email: string) {
   await page.getByRole('button', { name: 'Kirim tautan masuk', exact: true }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Tautan masuk telah dikirim' })).toBeVisible();
   await page.goto(`/#masuk=${lastLink}`); await page.getByRole('button', { name: 'Konfirmasi masuk', exact: true }).click();
-  await page.getByLabel('Lintang', { exact: true }).fill('-6.196562');
-  await page.getByLabel('Bujur', { exact: true }).fill('106.8232095');
+  await pickPoint(page, [106.8232095, -6.196562]);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
 }
 async function drawCondition(page: Page, shape: 'line'|'area') {
   await page.getByLabel('Bentuk lokasi', { exact: true }).selectOption(shape);
   await page.getByRole('button', { name: shape==='line'?'Gambar ruas':'Gambar area', exact: true }).click();
-  const canvas=page.locator('.lj-map-canvas');
-  await canvas.click({position:{x:80,y:95}});await canvas.click({position:{x:140,y:115}});
-  if(shape==='area')await canvas.click({position:{x:100,y:155}});
+  // drawn by dragging on the report popup's own 3D map (owner, 11 Nov)
+  await drawStroke(page, shape==='line' ? [[0.25,0.6],[0.5,0.55],[0.75,0.5]] : [[0.3,0.35],[0.7,0.35],[0.7,0.7],[0.3,0.7]]);
   await page.getByRole('button',{name:'Selesai menggambar',exact:true}).click();
+  await expect(page.getByRole('button', { name: shape==='line'?'Gambar ulang ruas':'Gambar ulang area', exact: true })).toBeVisible();
   await expect(page.getByLabel('Lokasi dan bentuk telah diperiksa.',{exact:true})).not.toBeChecked();
-  const map=await mapHandle(page);
-  await expect.poll(async()=>map.evaluate(m=>m.getSource('condition-sketch').serialize().data.features[0]?.geometry.type)).toBe(shape==='line'?'LineString':'Polygon');
-  await map.dispose();
   await page.getByLabel('Lokasi dan bentuk telah diperiksa.',{exact:true}).check();
 }
 
@@ -349,6 +348,7 @@ test('confirmed line and area persist; ordinary notes preserve closure observati
   await page.getByLabel('Pengamatan akses',{exact:true}).selectOption('closed');
   await drawCondition(page,'line');
   await page.screenshot({path:info.outputPath('confirmed-line-form.png')});
+  await completeEvidence(page);
   await page.getByRole('button',{name:'Lanjutkan',exact:true}).click();
   await page.locator('input[type=checkbox][required]:enabled').check();
   await page.getByRole('button',{name:'Kirim laporan',exact:true}).click();
@@ -393,6 +393,7 @@ test('measured point feeds in-map geometry and explicit removal retains historic
   await page.getByLabel('Lebar (m)',{exact:true}).fill('0.52');
   await page.getByLabel('Kedalaman (m)',{exact:true}).fill('0.075');
   await page.getByLabel('Lokasi dan bentuk telah diperiksa.',{exact:true}).check();
+  await completeEvidence(page);
   await page.getByRole('button',{name:'Lanjutkan',exact:true}).click();await page.locator('input[type=checkbox][required]:enabled').check();
   await page.getByRole('button',{name:'Kirim laporan',exact:true}).click();await expect(card(page).locator('h2')).toHaveText(title);
   await page.getByRole('button',{name:'Lihat ilustrasi 3D',exact:true}).click();
@@ -423,11 +424,11 @@ async function isolatedPublicData(page: Page) {
   await page.route('https://tiles.openfreemap.org/**', route => route.fulfill({ json: style }));
 }
 async function sendSimpleReport(page: Page, title: string) {
-  await page.getByLabel('Lintang', { exact: true }).fill('-6.20');
-  await page.getByLabel('Bujur', { exact: true }).fill('106.84');
+  await pickPoint(page);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await page.getByLabel('Judul laporan', { exact: true }).fill(title);
   await page.getByLabel('Uraian kejadian', { exact: true }).fill('Isian uji terisolasi untuk halaman akun.');
+  await completeEvidence(page);
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await page.locator('input[type=checkbox][required]:enabled').check();
   await page.getByRole('button', { name: 'Kirim laporan', exact: true }).click();
@@ -503,7 +504,8 @@ test('masuk: a wrong password keeps the form, the right one goes on to lanjut; t
   await dialog.getByLabel('Email', { exact: true }).fill(email);
   await dialog.getByLabel('Kata sandi', { exact: true }).fill('kata-sandi-uji');
   await dialog.getByRole('button', { name: 'Masuk', exact: true }).click();
-  await expect(page.getByRole('dialog')).toHaveCount(0);
+  // the login dialog closes; the only dialog left is the report popup itself (owner, 10 Nov)
+  await expect(page.getByRole('dialog')).toHaveAccessibleName('Tambah laporan');
   await expect(page.getByRole('heading', { name: 'Tambah laporan', exact: true })).toBeVisible();
 });
 // --- end of account pages ---

@@ -4,6 +4,7 @@
     -> these flows are copied from the 3D landing tests (now tests/archive/landing-3d.spec.archived.ts)
 */
 import { test, expect, type Page } from '@playwright/test';
+import { completeEvidence, drawStroke, pickPoint } from '../helpers/point';
 import { snapshot, style } from './fixtures';
 import { ready } from '../helpers/map';
 
@@ -78,7 +79,7 @@ test('landing report intent continues through existing email confirmation to the
   await page.goto('/#masuk=landing-fixture-link');
   await page.getByRole('button', { name: 'Konfirmasi masuk', exact: true }).click();
   await expect(page.locator('.lj-composer')).toBeVisible();
-  await expect(page.getByLabel('Lintang', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Konfirmasi titik ini', exact: true })).toBeVisible();
 });
 
 test('report intent waits for a stored session instead of opening an unnecessary login', async ({ page }) => {
@@ -91,7 +92,7 @@ test('report intent waits for a stored session instead of opening an unnecessary
   await expect(page.getByRole('dialog')).toHaveCount(0);
   release();
   await expect(page.locator('.lj-composer')).toBeVisible();
-  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.getByRole('dialog')).toHaveAccessibleName('Tambah laporan'); // the form itself, no login dialog
 });
 
 test('a restored owner can report when delivery of new login emails is unavailable', async ({ page }) => {
@@ -100,7 +101,7 @@ test('a restored owner can report when delivery of new login emails is unavailab
   await page.goto('/');
   await page.getByRole('link', { name: 'Laporkan jalan', exact: true }).click();
   await expect(page.locator('.lj-composer')).toBeVisible();
-  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.getByRole('dialog')).toHaveAccessibleName('Tambah laporan'); // the form itself, no login dialog
 });
 
 test('the flow tells four steps in order and reporting leads the hero when it is on', async ({ page }, info) => {
@@ -111,12 +112,14 @@ test('the flow tells four steps in order and reporting leads the hero when it is
   await expect(hero.first()).toHaveClass(/btn-primary/);
   // the account pages are reachable from the header and the footer while sign-in is available
   const head = page.locator('.home .site-head');
+  // one yellow Masuk in the header (owner, 10 Nov); Daftar is on /masuk and in the footer
   await expect(head.getByRole('link', { name: 'Masuk', exact: true })).toHaveAttribute('href', '/masuk');
-  await expect(head.getByRole('link', { name: 'Daftar', exact: true })).toHaveAttribute('href', '/daftar');
+  await expect(head.getByRole('link', { name: 'Masuk', exact: true })).toHaveClass(/btn-primary/);
+  await expect(head.getByRole('link', { name: 'Daftar', exact: true })).toHaveCount(0);
   // phones hide the section nav; Peta stays in the hero and the footer there
   if (info.project.name === 'desktop') await expect(head.getByRole('link', { name: 'Peta', exact: true })).toHaveAttribute('href', '/peta');
   await expect(page.locator('.home .foot-nav a')).toHaveText(['Beranda', 'Peta laporan', 'Daftar', 'Masuk']);
-  await expect(page.locator('.home .btn-primary')).toHaveCount(2); // hero + closing card, never in the header
+  await expect(page.locator('.home .btn-primary')).toHaveCount(3); // header Masuk + hero + closing card
   await expect(page.locator('.home .flow .step').nth(2).getByRole('link', { name: 'Mulai lapor' })).toHaveAttribute('href', '/peta?buat=1');
 });
 
@@ -128,7 +131,9 @@ test('with reporting off the hero leads with the map and the flow says which ste
   await expect(page.locator('.home .site-head').getByRole('link', { name: 'Masuk', exact: true })).toHaveAttribute('href', '/masuk');
   await expect(page.locator('.home .foot-nav a')).toHaveText(['Beranda', 'Peta laporan', 'Daftar', 'Masuk']);
   await expect(page.locator('.home .flow .step').nth(2).getByRole('link', { name: 'Buka peta' })).toHaveAttribute('href', '/peta');
-  await page.locator('.home .site-head').getByRole('link', { name: 'Daftar', exact: true }).click();
+  await page.locator('.home .site-head').getByRole('link', { name: 'Masuk', exact: true }).click();
+  await page.locator('.auth-switch').getByRole('link', { name: 'Daftar', exact: true }).click(); // "Belum punya akun? Daftar" on /masuk
+  await expect(page).toHaveURL(/\/daftar$/);
   await expect(page.getByRole('status').filter({ hasText: 'Kesiapan laporan warga belum dapat diperiksa.' })).toBeVisible(); // the check itself failed (503)
   await expect(page.getByRole('button', { name: 'Daftar', exact: true })).toBeDisabled();
 });
@@ -175,24 +180,85 @@ test('FAQ opens with the keyboard, one answer at a time, and survives rapid clic
 // --- end of landing ---
 
 // --- reporting space on the map page ---
-test('mobile reporting keeps actions visible and drawing restores the same map', async ({ page }, info) => {
-  test.skip(info.project.name !== 'mobile', 'Mobile reporting layout');
+test('the report form is a centred popup with its own point map; drawing hands the big map back', async ({ page }, info) => {
   await page.addInitScript(() => sessionStorage.setItem('lj-session', 'landing-fixture-session'));
+  await page.route('https://tile.openstreetmap.org/**', route => route.fulfill({ status: 404 }));
   await page.goto('/peta?buat=1'); await ready(page);
-  await expect(page.locator('.lj-composer')).toBeVisible();
-  await page.getByLabel('Lintang', { exact: true }).fill('-6.2'); await page.getByLabel('Bujur', { exact: true }).fill('106.84');
+  // a popup in the middle of the screen on desktop and phones (owner, 10 Nov), not a panel or a bottom sheet
+  const card = page.getByRole('dialog', { name: 'Tambah laporan' });
+  await expect(card.locator('.lj-composer')).toBeVisible();
+  const box = (await card.boundingBox())!, view = page.viewportSize()!;
+  expect(Math.abs(box.x + box.width / 2 - view.width / 2)).toBeLessThan(2);
+  expect(box.y).toBeGreaterThan(0); expect(box.y + box.height).toBeLessThan(view.height);
+  await expect(page.locator('.lj-panel')).toHaveAttribute('inert', '');
+  // no coordinate fields: the point is picked on the form's map and confirmed
+  await expect(page.getByLabel('Lintang', { exact: true })).toHaveCount(0);
+  // every field is required (owner, 10 Nov): the landmark, a confirmed point, then a photo/video and a condition
+  await expect(page.getByLabel('Alamat atau patokan', { exact: true })).toHaveAttribute('required', '');
+  // required fields carry a red asterisk, not words (owner, 10 Nov); the mark stays out of the accessible name
+  await expect(page.locator('label[for=report-address] .lj-req')).toHaveCount(1);
+  expect(await page.locator('label[for=report-address] .lj-req').evaluate(element => getComputedStyle(element, '::after').color)).toBe('rgb(180, 35, 24)');
+  // Lanjutkan with nothing filled: both fields turn red with their own message, focus lands on the first (owner, 10 Nov)
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
-  await expect(page.locator('.lj-map')).toBeHidden();
-  await expect(page.locator('.lj-search')).toBeHidden();
+  await expect(page.getByRole('button', { name: 'Konfirmasi titik ini', exact: true })).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByLabel('Alamat atau patokan', { exact: true })).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.locator('#report-address-error')).toHaveText('Isi alamat atau patokan.');
+  await expect(page.getByRole('button', { name: 'Konfirmasi titik ini', exact: true })).toBeFocused();
+  await expect(page.getByRole('alert')).toContainText('Lengkapi 2 isian bertanda merah.');
+  if (process.env.LJ_SHOT) await page.screenshot({ path: `/tmp/compose-invalid-${info.project.name}.png` });
+  await page.getByLabel('Alamat atau patokan', { exact: true }).fill('ab');
+  await expect(page.locator('#report-address-error')).toHaveText('Minimal 3 karakter.'); // updates while typing once shown
+  await expect(page.locator('.lj-compose-card')).not.toContainText('wajib');
+  await page.getByLabel('Alamat atau patokan', { exact: true }).fill('Depan halte uji');
+  await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('Konfirmasi titik ini');
+  await pickPoint(page);
+  if (process.env.LJ_SHOT) await page.screenshot({ path: `/tmp/compose-${info.project.name}.png` });
+  await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
+  await expect(page.locator('.lj-condition-fields legend')).toHaveText('Kondisi dan bentuk');
+  await page.getByLabel('Judul laporan', { exact: true }).fill('Lubang uji wajib isi');
+  await page.getByLabel('Uraian kejadian', { exact: true }).fill('Isian uji untuk memeriksa kolom wajib.');
+  await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
+  await expect(page.getByRole('alert')).toHaveText('Lengkapi 2 isian bertanda merah.'); // media + condition
+  await expect(page.locator('#report-media-error')).toBeVisible();
+  await expect(page.locator('#report-media')).toHaveAttribute('aria-invalid', 'true');
+  await completeEvidence(page, { condition: false });
+  await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('Pilih jenis kondisi');
   await expect(page.getByRole('button', { name: 'Lanjutkan', exact: true })).toBeInViewport();
-  const canvas = await page.locator('.lj-map-canvas canvas').elementHandle();
   await page.getByLabel('Jenis kondisi', { exact: true }).selectOption('pothole');
   await page.getByLabel('Bentuk lokasi', { exact: true }).selectOption('line');
   await page.getByRole('button', { name: 'Gambar ruas', exact: true }).click();
-  await expect(page.locator('.lj-map')).toBeVisible();
-  await expect(page.locator('.lj-map-drawing')).toBeVisible();
-  expect(await canvas!.evaluate(element => element.isConnected)).toBe(true);
-  await page.getByRole('button', { name: 'Batal menggambar', exact: true }).click();
-  await expect(page.locator('.lj-map')).toBeHidden();
+  // drawn inside the popup, on its own tilted 3D map, by dragging (owner, 11 Nov)
+  const drawer = card.locator('.lj-shape-drawer');
+  await expect(drawer).toBeVisible(); await expect(card).toBeVisible();
+  expect(await drawer.evaluate(element => element.querySelector('.maplibregl-canvas') !== null)).toBe(true);
+  await drawStroke(page, [[0.2, 0.62], [0.45, 0.56], [0.7, 0.5], [0.82, 0.46]]);
+  await expect(drawer.locator('.lj-shape-hint')).not.toContainText(' 0/63 titik');
+  if (process.env.LJ_SHOT) await page.screenshot({ path: `/tmp/compose-draw-${info.project.name}.png` });
+  await page.getByRole('button', { name: 'Selesai menggambar', exact: true }).click();
+  await expect(drawer).toHaveCount(0);
+  await expect(card).toContainText('Bentuk telah digambar oleh pelapor.');
+  await expect(page.getByRole('button', { name: 'Gambar ulang ruas', exact: true })).toBeVisible();
+  await expect(page.getByLabel('Bentuk lokasi', { exact: true })).toHaveValue('line'); // the form kept its state
 });
 // --- end of reporting space on the map page ---
+
+test('the map header holds the account links beside Tambah laporan; no region label, no category disclaimer', async ({ page }) => {
+  await page.addInitScript(() => sessionStorage.setItem('lj-session', 'landing-fixture-session'));
+  await page.goto('/peta'); await ready(page);
+  const header = page.locator('.lj-header');
+  await expect(header.locator('.lj-account-row').getByRole('button', { name: 'Laporan sendiri', exact: true })).toBeVisible();
+  // icon buttons; Akun and Halaman akun are one link now (owner, 10 Nov)
+  await expect(header.getByRole('link', { name: 'Akun', exact: true })).toHaveAttribute('href', '/akun');
+  await expect(header.getByRole('link', { name: 'Halaman akun', exact: true })).toHaveCount(0);
+  await expect(header.locator('.lj-account-row .lj-icon-button:not(.lj-theme-toggle)')).toHaveCount(3);
+  await expect(header.getByRole('button', { name: 'Mode gelap', exact: true })).toBeVisible(); // dark mode (owner, 11 Nov)
+  await expect(header.getByRole('button', { name: 'Laporan sendiri', exact: true })).toHaveAttribute('title', 'Laporan sendiri');
+  await expect(header.getByRole('button', { name: 'Keluar', exact: true })).toBeVisible();
+  await expect(header).not.toContainText('Jakarta');
+  await expect(page.locator('.lj-panel .lj-account-row')).toHaveCount(0);
+  await expect(page.locator('.lj-source-footer')).toHaveCount(0); // no footer (owner, 11 Nov)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  if (process.env.LJ_SHOT) await page.screenshot({ path: `/tmp/header-${test.info().project.name}.png`, clip: { x: 0, y: 0, width: page.viewportSize()!.width, height: 200 } });
+});

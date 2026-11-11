@@ -25,6 +25,46 @@
 }
 /* --- end of brand tokens --- */
 
+/* --- design system "Miko lembut" (owner, 10 Nov; rules in DESIGN.md) ---
+   pastels come from Miko's own materials, sampled in OKLCH from public/home/miko/point-1024.webp (median of non-neutral pixels):
+   cap green #3D764D (H151), vest yellow #EAC24E (H90), felt brown #66412A (H52), cheek pink #E09990 (H27).
+   -50 = badge/card tint (L .965), -100 = hover/selected tint (L .92), -700 = text on either (L .42; 7.5:1 on -50, 8.2:1+ on white) */
+:root {
+  /* surfaces: soft fills instead of hairline borders */
+  --surface: #FFFFFF;
+  --surface-soft: #F3F4F6; /* cards (Oyenza-style grey fill); ink 14.9:1, muted 5.6:1 on it */
+  --surface-sunk: #ECEEF1; /* tracks, inactive chips */
+  --line-strong: #80868D; /* input edges only: 3.3:1 on --surface-soft, 3.7:1 on white (WCAG 1.4.11) */
+  --ink: #1D2023;
+  --ink-muted: #5E6166;
+  /* Miko pastels */
+  --green-50: #E3FBE8;  --green-100: #C8F1D1;  --green-700: #275936;
+  --yellow-50: #FDF3D9; --yellow-100: #F4E4B8; --yellow-700: #644800;
+  --brown-50: #FFEEDE;  --brown-100: #FFDAC1;  --brown-700: #664430;
+  --pink-50: #FFEBE7;   --pink-100: #FFD6CF;   --pink-700: #723B35;
+  --blue-50: #E6F1FA;   --blue-700: #1F4F73;   /* water / flood, matches the condition colour #2B6C99 */
+  /* radius: inner = outer - padding */
+  --r-xs: 8px; --r-sm: 12px; --r-md: 16px; --r-lg: 22px; --r-xl: 28px; --r-pill: 999px; /* pill: badges only */
+  /* soft shadows, no 1px ring */
+  --shadow-soft: 0 1px 2px rgb(29 32 35 / .04), 0 8px 24px -14px rgb(29 32 35 / .18);
+  --shadow-float: 0 2px 6px rgb(29 32 35 / .06), 0 14px 32px -16px rgb(29 32 35 / .28);
+  --shadow-pop: 0 4px 12px rgb(29 32 35 / .08), 0 28px 56px -20px rgb(29 32 35 / .38);
+  --focus-ring: 0 0 0 2px var(--surface), 0 0 0 4px var(--sign-green);
+  /* motion */
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ease-swap: cubic-bezier(.77, 0, .175, 1);
+  --ease-pop: cubic-bezier(.34, 1.56, .64, 1); /* Miko only: a small friendly overshoot */
+  --dur-press: 120ms;
+  --dur-ui: 220ms;
+}
+/* status badges (src/public-reports/statusTone.ts): pastel -50 ground, -700 text; shared by every page */
+.lj-status.tone-yellow { background: var(--yellow-50); color: var(--yellow-700); }
+.lj-status.tone-blue { background: var(--blue-50); color: var(--blue-700); }
+.lj-status.tone-green { background: var(--green-50); color: var(--green-700); }
+.lj-status.tone-pink { background: var(--pink-50); color: var(--pink-700); }
+.lj-status.tone-neutral { background: var(--surface-sunk); color: var(--ink-muted); }
+/* --- end of design system --- */
+
 body {
   margin: 0;
   padding: 0;
@@ -154,3 +194,34 @@ button:focus-visible, [role=button]:focus-visible, input:focus-visible {
 .lj-photo-analysis .lj-analysis-evidence[data-expanded="true"] .lj-attachments img { height: auto; max-height: 420px; }
 .lj-analysis-evidence > button { justify-self: start; min-height: 44px; text-align: left; }
 .lj-analysis-evidence > .lj-form-note { margin: 0; padding: 0; border: 0; font-size: 12px; line-height: 1.5; }
+
+/* --- accents that never flip, and the error red (owner, 11 Nov: dark mode on /peta) --- */
+:root {
+  --on-accent: #1D2023;   /* text on the yellow action: 11.9:1, both themes */
+  --danger: #B42318;      /* 6.6:1 on white, 6.1:1 on --surface-soft */
+  --danger-50: #FFF7F6;
+}
+/* --- dark theme: the /peta root gets .lj-theme-dark (theme.ts) ---
+   ink #EEF1F5 on --surface 15.5:1, muted #A7AFBA on --surface-soft 7.0:1, green #5FD394 on --surface 9.1:1,
+   pastel -700 text on its own -50 fill >= 7:1; yellow action keeps dark text (--on-accent) */
+.lj-theme-dark {
+  color-scheme: dark;
+  --asphalt: #EEF1F5; --ink: #EEF1F5;
+  --concrete: #12161B; --paper: #1A1F26;
+  --muted: #A7AFBA; --ink-muted: #A7AFBA;
+  --line: #2C333C; --line-strong: #6E7783;
+  --sign-green: #5FD394;
+  --surface: #1A1F26; --surface-soft: #232A32; --surface-sunk: #2C343E;
+  --green-50: #173A28;  --green-100: #1E4A33;  --green-700: #9BE7B6;
+  --yellow-50: #3A3116; --yellow-100: #4A3E1B; --yellow-700: #F5D77E;
+  --brown-50: #3A2A1F;  --brown-100: #4A3627;  --brown-700: #F1C6A6;
+  --pink-50: #3D2327;   --pink-100: #4E2D32;   --pink-700: #FFB4A9;
+  --blue-50: #16304A;   --blue-700: #A6D0F2;
+  --danger: #FF8E80; --danger-50: #3A1D1D;
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / .35), 0 8px 24px -14px rgb(0 0 0 / .7);
+  --shadow-float: 0 2px 6px rgb(0 0 0 / .4), 0 14px 32px -16px rgb(0 0 0 / .8);
+  --shadow-pop: 0 4px 12px rgb(0 0 0 / .45), 0 28px 56px -20px rgb(0 0 0 / .85);
+  /* chained at :root, so they are computed there: restate them here */
+  --focus-ring: 0 0 0 2px var(--surface), 0 0 0 4px var(--sign-green);
+  --lj-ink: var(--asphalt); --lj-muted: var(--muted); --lj-brand: var(--sign-green); --lj-line: var(--line); --lj-float: var(--shadow-float);
+}

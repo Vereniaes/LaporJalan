@@ -20,6 +20,7 @@ import { useDrawing } from '../public-reports/useDrawing';
 import { capabilityMessage, errorMessage, useCapabilities, useCitizenReports, useEmailSession, type CitizenReport, type User } from '../public-reports/community';
 import type { ConditionGeometry } from '../public-reports/condition';
 import { reportDate } from '../public-reports/data';
+import { statusClass } from '../public-reports/statusTone';
 import { SiteFooter, SiteHeader } from '../home/SiteChrome';
 import '../public-reports/public-reports.css';
 import '../public-reports/community.css';
@@ -136,18 +137,18 @@ export default function AccountPage() {
         <section className="account-reports" aria-labelledby="t-mine">
           <div className="account-reports-head">
             <h2 id="t-mine">Laporanku</h2>
-            {mine.reports.length > 0 && <p className="account-counts">{statusCounts(mine.reports).map(([label, count]) => <span key={label} className="lj-status">{label} {count}</span>)}</p>}
+            {mine.reports.length > 0 && <p className="account-counts">{statusCounts(mine.reports).map(([label, count]) => <span key={label} className={statusClass(label)}>{label} {count}</span>)}</p>}
           </div>
           {mine.error && <div className="lj-community-warning" role="status"><span>{mine.error}</span><button className="lj-text-action" onClick={mine.refresh}>Coba lagi</button></div>}
           {mine.loading && !mine.reports.length && <p role="status">Memuat laporan…</p>}
-          {!mine.loading && !mine.error && !mine.reports.length && <p className="account-empty">Belum ada laporan. Tandai lokasi pada peta, lalu isi form Buat laporan.</p>}
+          {!mine.loading && !mine.error && !mine.reports.length && <p className="account-empty"><img src="/home/miko/clipboard-512.webp" width="512" height="512" alt="" loading="lazy" decoding="async" />Belum ada laporan. Tandai lokasi pada peta, lalu isi form Buat laporan.</p>}
           <ol className="my-reports">
             {mine.reports.map(report => <li key={report.id}>
               <button className={report.id === managingId ? 'is-managed' : ''} aria-pressed={report.id === managingId} onClick={() => manage(report.id)}>
                 <span className="my-title">{report.title}</span>
                 <span className="my-meta mono">{report.code} · {reportDate(report.createdAt)} WIB</span>
                 <span className="my-badges">
-                  <span className="lj-status">{report.sourceStatus || 'Dilaporkan'}</span>
+                  <span className={statusClass(report.sourceStatus || 'Dilaporkan')}>{report.sourceStatus || 'Dilaporkan'}</span>
                   <span className={`my-visibility is-${report.visibility ?? 'public'}`}>{VISIBILITY[report.visibility ?? 'public']}</span>
                 </span>
                 <span className="my-open">Perbarui atau kelola<ArrowRight aria-hidden="true" /></span>

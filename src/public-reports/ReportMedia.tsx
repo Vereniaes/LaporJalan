@@ -4,13 +4,15 @@ Todo:
 */
 import { useEffect, useState } from 'react';
 import { Media, mediaUrl, privateMedia } from './community';
+import { FieldError, Req } from './Req';
 
-export function MediaPicker({ files, onChange, disabled }: { files: File[]; onChange: (files: File[]) => void; disabled?: boolean }) {
+// required: a new report needs at least one photo or video (owner, 10 Nov); updates keep it optional
+export function MediaPicker({ files, onChange, disabled, required = false, invalid }: { files: File[]; onChange: (files: File[]) => void; disabled?: boolean; required?: boolean; invalid?: string }) {
   const [error, setError] = useState('');
   const [previews, setPreviews] = useState<string[]>([]);
   useEffect(() => { const urls = files.map(file => URL.createObjectURL(file)); setPreviews(urls); return () => urls.forEach(url => URL.revokeObjectURL(url)); }, [files]);
   return <div className="lj-media-picker">
-    <label>Foto atau video <span>(opsional)</span><input type="file" multiple disabled={disabled} accept="image/jpeg,image/png,image/webp,video/mp4,video/webm" onChange={event => {
+    <label><span className="lj-label-text">Foto atau video{required ? <Req /> : <span className="lj-optional"> (opsional)</span>}</span><input id="report-media" aria-required={required || undefined} aria-invalid={invalid ? true : undefined} aria-describedby={invalid ? 'report-media-error' : undefined} type="file" multiple disabled={disabled} accept="image/jpeg,image/png,image/webp,video/mp4,video/webm" onChange={event => {
       const picked = [...(event.target.files ?? [])];
       event.target.value = '';
       if (picked.length + files.length > 3 || picked.some(file => file.size > 10 * 1024 * 1024 || !['image/jpeg', 'image/png', 'image/webp', 'video/mp4', 'video/webm'].includes(file.type))) {
@@ -18,6 +20,7 @@ export function MediaPicker({ files, onChange, disabled }: { files: File[]; onCh
       }
       setError(''); onChange([...files, ...picked]);
     }} /></label>
+    <FieldError id="report-media-error" message={invalid} />
     <small>Maksimum 3 berkas, 10 MB per berkas. Video hingga 2 menit; resolusi dapat disesuaikan.</small>
     <small>Foto dan video diproses ulang sebelum ditampilkan. Periksa isi lampiran; wajah atau informasi yang terlihat tidak disamarkan otomatis.</small>
     <small>Video dapat diperkecil. Suara tetap disertakan dan perlu diperiksa sebelum publikasi.</small>

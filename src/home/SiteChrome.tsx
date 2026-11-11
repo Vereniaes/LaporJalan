@@ -1,6 +1,6 @@
 /* Todo:
 -> one header and footer for the landing and the account pages (Miko rebrand)
--> account links follow the session: Masuk + Daftar before sign-in, Akun saya after
+-> account links follow the session: one yellow Masuk button before sign-in (owner, 10 Nov; Daftar sits on /masuk and in the footer), Akun saya after
     -> always shown (owner, 10 Nov: they vanished while the backend was down); /masuk and /daftar explain when the service is off
 */
 import type { User } from '../public-reports/community';
@@ -18,7 +18,7 @@ export function SiteHeader({ user, sections = false }: { user: User | null; canL
     <div className="head-account">
       {user?.role === 'admin' && <a className="head-link" href="/admin">Admin</a>}
       {user ? <a className="btn btn-quiet head-cta" href="/akun">Akun saya</a>
-        : <><a className="head-link" href="/masuk">Masuk</a><a className="btn btn-quiet head-cta" href="/daftar">Daftar</a></>}
+        : <a className="btn btn-primary head-cta" href="/masuk">Masuk</a>}
     </div>
   </header>;
 }

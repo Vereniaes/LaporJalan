@@ -20,6 +20,8 @@ import { ConditionLegend } from './ConditionLegend';
 import { conditionLabel, closureNeedsUpdate, type ConditionGeometry } from './condition';
 import { MapSketch, type DrawingRequest } from './MapSketch';
 import { configurePublicCamera, publicCameraSnapshot, usePublicInspection, PUBLIC_MAP_STYLE } from './usePublicInspection';
+import { themeBasemap, buildingColor } from '../map/basemap';
+import { useTheme } from './theme';
 import './map-inspection.css';
 
 export interface MapProps {
@@ -102,6 +104,8 @@ function GlMap({ reports, selected, onSelect, onArea, picking = false, selection
   const [failed, setFailed] = useState(false);
   const [moved, setMoved] = useState(false);
   const [epoch,setEpoch] = useState(0);
+  // dark mode (owner, 11 Nov): the basemap and 3D buildings follow the page theme; light outside /peta
+  const theme = useTheme(), themeRef = useRef(theme); themeRef.current = theme;
   const inspection=usePublicInspection(map,epoch,selected,inspecting,mode,setMode,onExitInspection);
 
   // map markers (group nearby visible points; selected reports remain separate) --------------------------
@@ -155,6 +159,13 @@ function GlMap({ reports, selected, onSelect, onArea, picking = false, selection
   }
   // --- end of frame watch ---
 
+  useEffect(() => {
+    const instance = map.current;
+    if (!ready || !instance?.isStyleLoaded()) return;
+    themeBasemap(instance, theme);
+    if (instance.getLayer('public-buildings-3d')) instance.setPaintProperty('public-buildings-3d', 'fill-extrusion-color', buildingColor(theme));
+  }, [theme, ready]);
+
   function fitReports() {
     const instance = map.current;
     if (!instance || !props.current.reports.length) return;
@@ -188,13 +199,14 @@ function GlMap({ reports, selected, onSelect, onArea, picking = false, selection
     const timeout = window.setTimeout(() => { if (!disposed && !instance.isStyleLoaded()) setFailed(true); }, 15_000);
     instance.on('style.load', () => {
       window.clearTimeout(timeout);
+      themeBasemap(instance, themeRef.current);
       if (!saver && instance.getSource('openmaptiles') && !instance.getLayer('public-buildings-3d')) { // saver mode: no 3D buildings
         const label = instance.getStyle().layers.find(layer => layer.type === 'symbol')?.id;
         instance.addLayer({ id: 'public-buildings-3d', type: 'fill-extrusion', source: 'openmaptiles',
           'source-layer': 'building', minzoom: 14.5,
           filter: ['all', ['!=', ['get', 'hide_3d'], true], ['has', 'render_height']],
           layout: { visibility: 'none' },
-          paint: { 'fill-extrusion-color': '#cbd3cc', 'fill-extrusion-opacity': 0.9,
+          paint: { 'fill-extrusion-color': buildingColor(themeRef.current), 'fill-extrusion-opacity': 0.9,
             'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 14.5, 0, 15.5, ['max', 0, ['to-number', ['get', 'render_height'], 0]]],
             'fill-extrusion-base': ['max', 0, ['to-number', ['get', 'render_min_height'], 0]],
             'fill-extrusion-vertical-gradient': true },

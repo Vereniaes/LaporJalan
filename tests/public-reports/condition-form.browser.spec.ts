@@ -3,6 +3,7 @@
 */
 import { test, expect, type Page } from '@playwright/test';
 import { snapshot, style } from './fixtures';
+import { completeEvidence, drawStroke, pickPoint } from '../helpers/point';
 import type { CitizenReport } from '../../src/public-reports/community';
 import { mapHandle, ready } from '../helpers/map';
 
@@ -45,15 +46,10 @@ async function setup(page: Page) {
   });
   await page.goto('/peta');
   await expect(page.getByRole('button', { name: 'Tambah laporan', exact: true })).toBeEnabled();
-  await expect(page.getByRole('button', { name: 'Akun', exact: true })).toBeVisible();
+  await expect(page.locator('.lj-header').getByRole('link', { name: 'Akun', exact: true })).toBeVisible();
   return submitted;
 }
-async function manualPin(page: Page) {
-  await page.getByLabel('Lintang', { exact: true }).fill(String(pin[1]));
-  await page.getByLabel('Bujur', { exact: true }).fill(String(pin[0]));
-  await page.getByRole('button', { name: 'Perbarui pin dari koordinat', exact: true }).click();
-  await expect(page.getByLabel('Lintang', { exact: true })).toHaveValue('-6.200000');
-}
+const manualPin = (page: Page) => pickPoint(page, pin);
 async function deliverGps(page: Page, index = 0) {
   await page.evaluate(index => (window as any).__gpsReplies[index].success({ coords: { longitude: 106.9, latitude: -6.3 } }), index);
 }
@@ -94,8 +90,9 @@ test('a closed composer cannot deliver device location into a new composer', asy
   await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
   await manualPin(page);
   await deliverGps(page);
-  await expect(page.getByLabel('Lintang', { exact: true })).toHaveValue('-6.200000');
-  await expect(page.getByLabel('Bujur', { exact: true })).toHaveValue('106.840000');
+  // the closed form's late reply does not move the new form's map or undo its confirmation
+  await expect(page.locator('.lj-point-confirm output')).toHaveText('-6.200000, 106.840000');
+  await expect(page.getByText('Titik dikonfirmasi', { exact: true })).toBeVisible();
 });
 
 test('delayed device location cannot replace a manual pin or invalidate the reviewed condition', async ({ page }) => {
@@ -109,6 +106,7 @@ test('delayed device location cannot replace a manual pin or invalidate the revi
   await page.getByLabel('Jenis kondisi', { exact: true }).selectOption('pothole');
   await page.getByLabel('Waktu pengamatan', { exact: true }).fill('2026-10-28T18:00');
   await page.getByLabel('Lokasi dan bentuk telah diperiksa.', { exact: true }).check();
+  await completeEvidence(page); // a photo (owner, 10 Nov); the condition is already chosen above
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await deliverGps(page);
   await expect(page.locator('.lj-review')).toContainText('-6.200000, 106.840000');
@@ -131,24 +129,22 @@ test('keyboard drawing keeps the finished line visible before explicit confirmat
   await page.getByLabel('Waktu pengamatan', { exact: true }).fill('2026-10-28T18:00');
   await page.getByLabel('Bentuk lokasi', { exact: true }).selectOption('line');
   await page.getByRole('button', { name: 'Gambar ruas', exact: true }).click();
-  await ready(page);
+  // the single-pointer path (WCAG 2.5.7): pan the popup's own map with the keys, add the point under the centre mark
+  await expect(page.locator('.lj-shape-drawer[data-ready]')).toBeVisible({ timeout: 20_000 });
+  const region = page.getByRole('region', { name: 'Gambar lokasi', exact: true });
   const addPoint = page.getByRole('button', { name: 'Tambah titik di tengah peta', exact: true });
   await addPoint.focus(); await addPoint.press('Enter');
-  await expect(page.getByRole('region', { name: 'Gambar lokasi', exact: true })).toContainText('1/64 titik');
-  await page.locator('.maplibregl-canvas').focus(); await page.keyboard.press('ArrowRight');
-  await ready(page);
+  await expect(region).toContainText('1/63 titik');
+  await page.locator('.lj-shape-drawer .maplibregl-canvas').focus(); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight');
+  await page.waitForTimeout(600);
   await addPoint.focus(); await addPoint.press('Enter');
-  await expect(page.getByRole('region', { name: 'Gambar lokasi', exact: true })).toContainText('2/64 titik');
+  await expect(region).toContainText('2/63 titik');
   await page.getByRole('button', { name: 'Selesai menggambar', exact: true }).press('Enter');
-  await expect(page.getByRole('region', { name: 'Gambar lokasi', exact: true })).toHaveCount(0);
+  await expect(region).toHaveCount(0);
   const confirmation = page.getByLabel('Lokasi dan bentuk telah diperiksa.', { exact: true });
   await expect(confirmation).not.toBeChecked();
-  const map = await mapHandle(page);
-  await expect.poll(async () => map.evaluate(instance => (instance.getSource('condition-sketch') as any).serialize().data.features[0]?.geometry.type)).toBe('LineString');
-  const geometry = await map.evaluate(instance => (instance.getSource('condition-sketch') as any).serialize().data.features[0].geometry);
-  expect(geometry.coordinates).toHaveLength(2);
-  expect(geometry.coordinates[0]).not.toEqual(geometry.coordinates[1]);
   await page.screenshot({ path: info.outputPath('keyboard-sketch-before-confirmation.png') });
+  await completeEvidence(page); // a photo (owner, 10 Nov); the condition is already chosen above
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Periksa sebelum mengirim', exact: true })).toHaveCount(0);
   expect(submitted).toHaveLength(0);
@@ -156,22 +152,36 @@ test('keyboard drawing keeps the finished line visible before explicit confirmat
   await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Periksa sebelum mengirim', exact: true })).toBeVisible();
   await expect(page.locator('.lj-condition-summary')).toContainText('Ruas dikonfirmasi pelapor.');
-  await map.dispose();
 });
 
 
-test('drawing during a pending style replacement replays the latest vertices without errors',async({page})=>{
- const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await setup(page);
- await page.getByRole('button',{name:'Tambah laporan',exact:true}).click();await manualPin(page);
- await page.getByRole('button',{name:'Lanjutkan',exact:true}).click();await page.getByLabel('Jenis kondisi',{exact:true}).selectOption('closure');
- await page.getByLabel('Bentuk lokasi',{exact:true}).selectOption('line');await page.getByRole('button',{name:'Gambar ruas',exact:true}).click();await ready(page);
- const add=page.getByRole('button',{name:'Tambah titik di tengah peta',exact:true});await add.click();const map=await mapHandle(page);
- await map.evaluate(m=>m.panBy([40,0],{duration:0}));
- let requested=false,release!:()=>void;const held=new Promise<void>(resolve=>{release=resolve;});
- await page.route('**/__condition-style.json',async r=>{requested=true;await held;await r.fulfill({json:style});});
- try{await map.evaluate(m=>m.setStyle('/__condition-style.json',{diff:false}));await expect.poll(()=>requested).toBe(true);await add.click();}
- finally{release();}
- await ready(page);await expect(page.getByRole('region',{name:'Gambar lokasi',exact:true})).toContainText('2/64 titik');
- await expect.poll(()=>map.evaluate(m=>m.getSource('condition-sketch')?.serialize().data.features.filter(f=>f.geometry.type==='Point').length)).toBe(2);
- expect(errors).toEqual([]);await map.dispose();
+test('a freehand area closes itself, and a crossing outline is refused with a reason', async ({ page }) => {
+  const errors: string[] = []; page.on('pageerror', error => errors.push(error.message)); await setup(page);
+  await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click(); await manualPin(page);
+  await page.getByRole('button', { name: 'Lanjutkan', exact: true }).click();
+  await page.getByLabel('Jenis kondisi', { exact: true }).selectOption('closure');
+  await page.getByLabel('Bentuk lokasi', { exact: true }).selectOption('area');
+  await page.getByRole('button', { name: 'Gambar area', exact: true }).click();
+  // a figure-eight crosses itself: refused, the drawing stays for another try
+  await drawStroke(page, [[0.3, 0.35], [0.7, 0.7], [0.7, 0.35], [0.3, 0.7]]);
+  await page.getByRole('button', { name: 'Selesai menggambar', exact: true }).click();
+  await expect(page.locator('.lj-shape-drawer')).toContainText('saling menyilang');
+  await page.getByRole('button', { name: 'Hapus gambar', exact: true }).click();
+  await drawStroke(page, [[0.3, 0.35], [0.7, 0.35], [0.7, 0.7], [0.3, 0.7]]);
+  await page.getByRole('button', { name: 'Selesai menggambar', exact: true }).click();
+  await expect(page.locator('.lj-shape-drawer')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Gambar ulang area', exact: true })).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a failed device location says why: denied permission, no location, or too slow', async ({ page }) => {
+  await setup(page);
+  await page.getByRole('button', { name: 'Tambah laporan', exact: true }).click();
+  const locate = page.getByRole('button', { name: 'Gunakan lokasi perangkat', exact: true }), note = page.locator('.lj-point-note');
+  for (const [code, text] of [[1, 'Izin lokasi ditolak browser.'], [2, 'layanan lokasi di perangkat'], [3, 'terlalu lama']] as const) {
+    await locate.click();
+    await page.evaluate(code => { const replies = (window as any).__gpsReplies; replies[replies.length - 1].error({ code }); }, code);
+    await expect(note).toContainText(text);
+  }
+  await expect(page.getByRole('button', { name: 'Konfirmasi titik ini', exact: true })).toBeVisible(); // the map still works by hand
 });

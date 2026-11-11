@@ -10,6 +10,7 @@ import { MediaPicker, ReportMedia } from './ReportMedia';
 import { ConditionFields, ConditionSummary } from './ConditionFields';
 import { ConditionGeometry, GeometryDrawingStarter, RoadCondition, useConditionClock } from './condition';
 import { PhotoAnalysis } from './PhotoAnalysis';
+import { statusClass } from './statusTone';
 import { type AnalysisJob, type KindImport, conditionAnalysisReview, suggestedKind } from './analysis';
 
 type Publication = { reporterName?: string; nameConsent?: boolean; visibility?: 'public' | 'withdrawn'; withdrawMediaIds?: string[] };
@@ -96,7 +97,7 @@ export function CitizenDetail({ summary, user, loginAvailable = true, writeAvail
     <div className="lj-detail-body">
       <p className="lj-eyebrow">LAPORAN WARGA · LAPORJALAN</p><h2 ref={heading} tabIndex={-1}>{current.title}</h2>
       <p className="lj-detail-date">{current.code} · {actor}<br /><time dateTime={current.createdAt}>Dibuat {reportDate(current.createdAt)} WIB</time></p>
-      <span className="lj-status">{current.sourceStatus || 'Dilaporkan'} · Pengamatan pelapor</span>
+      <span className={statusClass(current.sourceStatus || 'Dilaporkan')}>{current.sourceStatus || 'Dilaporkan'} · Pengamatan pelapor</span>
       {privateAccess && <p className="lj-publication-note" role="status">{visibility === 'hidden' ? 'Disembunyikan oleh moderasi. Publikasi tidak dapat dipulihkan dari akun ini.' : 'Laporan ditarik dari publik. Hanya pemilik yang dapat mengelola laporan ini.'}</p>}
       <div className="lj-detail-tabs" role="tablist" aria-label="Isi laporan">
         <button role="tab" id="citizen-summary-tab" aria-controls="citizen-summary" aria-selected={tab === 'summary'} onClick={() => setTab('summary')}>Ringkasan</button>
@@ -138,7 +139,7 @@ export function CitizenDetail({ summary, user, loginAvailable = true, writeAvail
           {user && report?.canUpdate && report.visibility !== 'withdrawn' && report.visibility !== 'hidden' && <PhotoAnalysis key={`${user.id}:${report.id}`} report={report} ownerId={user.id} disabled={busy || !writeAvailable} selectedAnalysisId={analysisSelection?.analysisId}
             onUse={useAnalysis} onCorrect={job => { setAnalysisSelection(job); requestId.current = crypto.randomUUID(); }} onClear={() => { setAnalysisSelection(null); requestId.current = crypto.randomUUID(); }} onChanged={() => setRefresh(value => value + 1)} />}
           {analysisSelection && <button type="button" className="lj-text-action" disabled={busy} onClick={() => { setAnalysisSelection(null); requestId.current = crypto.randomUUID(); }}>Lanjutkan tanpa saran</button>}
-          <ConditionFields category={loadedReport.category} location={{ lng: loadedReport.lng, lat: loadedReport.lat }} initialCondition={loadedReport.condition} updating disabled={busy || !writeAvailable || !user || !report?.canUpdate} onDrawGeometry={onDrawGeometry} onGeometryPreview={onGeometryPreview} kindImport={kindImport} onKindImported={(id, applied) => { if (pendingImport.current?.id === id) { if (applied) setAnalysisSelection(pendingImport.current.job); pendingImport.current = null; } }} onChange={(value, valid) => { setConditionChange(value); setConditionValid(valid); requestId.current = crypto.randomUUID(); }} />
+          <ConditionFields inlineDrawing category={loadedReport.category} location={{ lng: loadedReport.lng, lat: loadedReport.lat }} initialCondition={loadedReport.condition} updating disabled={busy || !writeAvailable || !user || !report?.canUpdate} onDrawGeometry={onDrawGeometry} onGeometryPreview={onGeometryPreview} kindImport={kindImport} onKindImported={(id, applied) => { if (pendingImport.current?.id === id) { if (applied) setAnalysisSelection(pendingImport.current.job); pendingImport.current = null; } }} onChange={(value, valid) => { setConditionChange(value); setConditionValid(valid); requestId.current = crypto.randomUUID(); }} />
           <label className="lj-checkbox"><input required type="checkbox" checked={consent} onChange={event => setConsent(event.target.checked)} />Catatan dan lampiran boleh dipublikasikan. Lampiran telah diperiksa agar tidak memuat data pribadi.</label>
         </fieldset><div className="lj-form-actions"><button type="button" className="lj-secondary" disabled={busy} onClick={() => { if ((!note && !files.length && conditionChange === undefined) || confirm('Buang isian perkembangan?')) { setEditing(false); setNote(''); setFiles([]); setConditionChange(undefined); setConditionValid(true); setAnalysisSelection(null); setKindImport(null); } }}>Batal</button><button className="lj-primary" disabled={busy || !writeAvailable}>{busy ? 'Menyimpan…' : 'Simpan pembaruan'}</button></div>
       </form>}

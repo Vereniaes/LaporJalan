@@ -10,6 +10,7 @@ import { X } from 'lucide-react';
 import { api, CATEGORY_LABELS, mediaUrl, type CitizenReport, type User } from './community';
 import { closureNeedsUpdate, conditionLabel, conditionSize, useConditionClock } from './condition';
 import { useMapMode } from '../map/capability';
+import { statusClass } from './statusTone';
 import { fetchHandling, fetchReportDetail, reportDate, type PublicHandling, type PublicReport, type ReportDetail } from './data';
 
 // --- report popup ---
@@ -75,7 +76,7 @@ export function ReportPopup({ report, pinned, user, onClose, onInspect }: {
       {handling.history.find(entry => entry.note)?.note && <p>{handling.history.find(entry => entry.note)!.note}</p>}
     </div>}
     {detail ? <ReportTabs report={report} detail={detail} tab={tab} onTab={setTab} />
-      : <span className="lj-status">{report.sourceStatus ?? 'Status belum tersedia'}</span>}
+      : <span className={statusClass(report.sourceStatus)}>{report.sourceStatus ?? 'Status belum tersedia'}</span>}
     {report.condition && <p className="lj-popup-condition">{[conditionLabel(report.condition), size, 'pengamatan pelapor'].filter(Boolean).join(' · ')}
       {closureNeedsUpdate(report.condition, now) && <strong className="lj-stale-condition">Perlu pembaruan</strong>}</p>}
     {citizen.visibility === 'withdrawn' && <p className="lj-popup-note">Ditarik dari publik. Hanya pemilik yang melihat laporan ini.</p>}
@@ -108,7 +109,7 @@ function ReportTabs({ report, detail, tab, onTab }: { report: PublicReport; deta
     <div id={`${id}-report`} role="tabpanel" aria-labelledby={`${id}-report-tab`} hidden={tab !== 'report'} className="lj-popup-panel">
       <dl className="lj-popup-facts">
         <div><dt>Nomor laporan</dt><dd>{report.code}</dd></div>
-        <div><dt>Status</dt><dd><span className="lj-status">{detail.status}</span></dd></div>
+        <div><dt>Status</dt><dd><span className={statusClass(detail.status)}>{detail.status}</span></dd></div>
         <div><dt>Kategori</dt><dd>{CATEGORY_LABELS[report.category]}{detail.subcategory && detail.subcategory !== CATEGORY_LABELS[report.category] ? ` · ${detail.subcategory}` : ''}</dd></div>
         {detail.unit && <div><dt>SKPD/Wilayah</dt><dd>{detail.unit}</dd></div>}
         {area && <div><dt>Kelurahan</dt><dd>{area}</dd></div>}

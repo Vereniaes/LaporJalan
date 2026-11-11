@@ -13,8 +13,8 @@ import type { MapProps } from './PublicMap';
 
 // OpenStreetMap standard raster tiles: no key, attribution required; the tile policy allows light use, which a fallback is
 // Why/Note: CARTO basemaps answered "API KEY REQUIRED" (checked 10 Nov 2026)
-const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-const ATTRIBUTION = '© kontributor <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+export const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+export const ATTRIBUTION = '© kontributor <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
 export function LiteMap({ reports, selected, onSelect, onArea, picking = false, selectionLocked = false, draftLocation, onLocation, drawing, onDrawingCancel, cooperative = false, minimal = false, popups = [] }: MapProps) {
   const container = useRef<HTMLDivElement>(null);

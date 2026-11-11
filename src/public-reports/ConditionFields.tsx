@@ -7,6 +7,8 @@ import type { ReportCategory } from './data';
 import { reportDate } from './data';
 import { accessLabel, closureNeedsUpdate, conditionDimensionLabel, ConditionGeometry, ConditionKind, conditionLabel, conditionSize, CONDITION_KINDS, CONDITION_LABELS, GeometryDrawingStarter, RoadCondition } from './condition';
 import type { KindImport } from './analysis';
+import { FieldError, Req } from './Req';
+import { ShapeDrawer } from './ShapeDrawer';
 
 type Point = { lng: number; lat: number };
 type Fields = { kind: ConditionKind | ''; observedAt: string; geometry: ConditionGeometry | null; shape: 'point' | 'line' | 'area'; confirmed: boolean; method: '' | 'measured' | 'estimated'; tool: string; width: string; depth: string; length: string; access: 'unknown' | 'partial' | 'closed' };
@@ -16,8 +18,8 @@ function initialFields(condition?: RoadCondition | null): Fields {
     shape: condition?.geometry.type === 'Polygon' ? 'area' : condition?.geometry.type === 'LineString' ? 'line' : 'point', confirmed: false,
     method: condition?.dimensions?.method ?? '', tool: condition?.dimensions?.tool ?? '', width: condition?.dimensions?.widthM?.toString() ?? '', depth: condition?.dimensions?.depthM?.toString() ?? '', length: condition?.dimensions?.lengthM?.toString() ?? '', access: condition?.access ?? 'unknown' };
 }
-export function ConditionFields({ category, location, initialCondition, updating = false, disabled = false, onChange, onDrawGeometry, onGeometryPreview, kindImport, onKindImported }: {
-  category: ReportCategory; location: Point | null; initialCondition?: RoadCondition | null; updating?: boolean; disabled?: boolean;
+export function ConditionFields({ category, location, initialCondition, updating = false, required = false, showErrors = false, inlineDrawing = false, disabled = false, onChange, onDrawGeometry, onGeometryPreview, kindImport, onKindImported }: {
+  category: ReportCategory; location: Point | null; initialCondition?: RoadCondition | null; updating?: boolean; required?: boolean; showErrors?: boolean; inlineDrawing?: boolean; disabled?: boolean;
   onChange: (condition: RoadCondition | null | undefined, valid: boolean) => void; onDrawGeometry?: GeometryDrawingStarter; onGeometryPreview?: (geometry: ConditionGeometry | null) => void;
   kindImport?: KindImport | null; onKindImported?: (id: string, applied: boolean) => void;
 }) {
@@ -53,7 +55,8 @@ export function ConditionFields({ category, location, initialCondition, updating
   const dimensionsValid = !suppliedDimensions || (Boolean(fields.method) && (fields.method !== 'measured' || Boolean(fields.tool.trim())) && [fields.width, fields.depth, fields.length].every((value, index) => !value.trim() || (/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(value.trim()) && Number(value) <= 1000 && (index === 1 ? Number(value) >= 0 : Number(value) > 0))));
   const observedDate = fields.observedAt ? new Date(fields.observedAt) : null;
   const observedAt = observedDate && Number.isFinite(observedDate.getTime()) ? initialCondition && fields.observedAt === localDate(initialCondition.observedAt) ? initialCondition.observedAt : observedDate.toISOString() : '';
-  const valid = !enabled || !fields.kind || (Boolean(observedAt && geometry && fields.confirmed) && dimensionsValid && kinds.includes(fields.kind));
+  // required (a new report, owner 10 Nov): a kind must be chosen; dimensions stay optional
+  const valid = !enabled || (!fields.kind ? !required : Boolean(observedAt && geometry && fields.confirmed) && dimensionsValid && kinds.includes(fields.kind));
   const condition: RoadCondition | undefined = enabled && fields.kind && valid && geometry ? {
     kind: fields.kind, observedAt, geometry, locationConfirmed: true, source: 'reporter',
     ...(fields.kind === 'closure' ? { access: fields.access } : {}),
@@ -66,19 +69,29 @@ export function ConditionFields({ category, location, initialCondition, updating
   }, [serialized, valid, removed]);
   const serializedGeometry = JSON.stringify(enabled && fields.kind && kinds.includes(fields.kind) && !removed ? geometry : null);
   useEffect(() => { callbacks.current.onGeometryPreview?.(JSON.parse(serializedGeometry) as ConditionGeometry | null); }, [serializedGeometry]);
+  const [drawingHere, setDrawingHere] = useState<'line' | 'area' | null>(null);
   function draw(mode: 'line' | 'area') {
+    // the report popup draws on its own 3D map, inside the form (owner, 11 Nov)
+    if (inlineDrawing) { setDrawingHere(mode); return; }
     onDrawGeometry?.(mode, result => { if (mounted.current) { change({ geometry: result, shape: mode, confirmed: false }); setLocationNote('Bentuk selesai digambar. Tinjau pada peta, lalu konfirmasi.'); } });
   }
+  // inline errors after a failed Lanjutkan (showErrors): what is missing, under the field itself
+  const kindError = showErrors && enabled && required && !fields.kind ? 'Pilih jenis kondisi.' : undefined;
+  const timeError = showErrors && enabled && fields.kind && !observedAt ? 'Isi waktu pengamatan.' : undefined;
+  const confirmError = showErrors && enabled && fields.kind && observedAt && !fields.confirmed ? (geometry ? 'Centang setelah lokasi dan bentuk diperiksa.' : 'Gambar bentuknya dulu, lalu centang.') : undefined;
   return <fieldset className="lj-condition-fields" disabled={disabled}>
-    <legend>Kondisi dan bentuk <span>(opsional)</span></legend>
+    <legend>Kondisi dan bentuk {!required && <span>(opsional)</span>}</legend>
     {updating && <label className="lj-checkbox"><input type="checkbox" checked={enabled} onChange={event => { setEnabled(event.target.checked); setRemoved(false); change({ confirmed: false }); }} />Ubah kondisi dan bentuk</label>}
     {enabled && <>
-      <label htmlFor={`${fieldId}-kind`}>Jenis kondisi</label><select ref={kindField} id={`${fieldId}-kind`} value={fields.kind} onChange={event => change({ kind: event.target.value as Fields['kind'], confirmed: false })}><option value="">Belum ditentukan</option>{kinds.map(kind => <option key={kind} value={kind}>{CONDITION_LABELS[kind]}</option>)}</select>
+      <label htmlFor={`${fieldId}-kind`}><span className="lj-label-text">Jenis kondisi{required && <Req />}</span></label><select ref={kindField} id={`${fieldId}-kind`} aria-required={required || undefined} aria-invalid={kindError ? true : undefined} aria-describedby={kindError ? `${fieldId}-kind-error` : undefined} value={fields.kind} onChange={event => change({ kind: event.target.value as Fields['kind'], confirmed: false })}><option value="">Belum ditentukan</option>{kinds.map(kind => <option key={kind} value={kind}>{CONDITION_LABELS[kind]}</option>)}</select><FieldError id={`${fieldId}-kind-error`} message={kindError} />
       {fields.kind && <>
-        <label>Waktu pengamatan<input type="datetime-local" required value={fields.observedAt} onChange={event => change({ observedAt: event.target.value, confirmed: false })} /></label>
-        <label htmlFor={`${fieldId}-shape`}>Bentuk lokasi</label><select id={`${fieldId}-shape`} value={fields.shape} onChange={event => change({ shape: event.target.value as Fields['shape'], geometry: null, confirmed: false })}><option value="point">Titik</option><option value="line">Ruas</option><option value="area">Area</option></select>
+        <label><span className="lj-label-text">Waktu pengamatan<Req /></span><input type="datetime-local" required aria-invalid={timeError ? true : undefined} value={fields.observedAt} onChange={event => change({ observedAt: event.target.value, confirmed: false })} /></label><FieldError id={`${fieldId}-time-error`} message={timeError} />
+        <label htmlFor={`${fieldId}-shape`}><span className="lj-label-text">Bentuk lokasi<Req /></span></label><select id={`${fieldId}-shape`} value={fields.shape} onChange={event => change({ shape: event.target.value as Fields['shape'], geometry: null, confirmed: false })}><option value="point">Titik</option><option value="line">Ruas</option><option value="area">Area</option></select>
         {fields.shape === 'point' ? <p className="lj-form-note">{geometry?.type === 'Point' ? `Titik kondisi: ${geometry.coordinates[1].toFixed(6)}, ${geometry.coordinates[0].toFixed(6)}.` : 'Pilih lokasi terlebih dahulu.'}</p> : <>
-          <button className="lj-secondary" type="button" disabled={!onDrawGeometry || disabled} onClick={() => draw(fields.shape as 'line' | 'area')}>{fields.shape === 'line' ? 'Gambar ruas' : 'Gambar area'}</button>
+          {drawingHere === fields.shape && location ? <ShapeDrawer mode={drawingHere} anchor={[location.lng, location.lat]} initial={fields.geometry}
+            onDone={result => { change({ geometry: result, shape: drawingHere, confirmed: false }); setDrawingHere(null); setLocationNote('Bentuk selesai digambar. Periksa, lalu konfirmasi.'); }}
+            onCancel={() => setDrawingHere(null)} />
+          : <button className="lj-secondary" type="button" disabled={(!onDrawGeometry && !inlineDrawing) || disabled} onClick={() => draw(fields.shape as 'line' | 'area')}>{fields.shape === 'line' ? (fields.geometry ? 'Gambar ulang ruas' : 'Gambar ruas') : (fields.geometry ? 'Gambar ulang area' : 'Gambar area')}</button>}
           <p>{fields.geometry ? 'Bentuk telah digambar oleh pelapor.' : 'Bentuk belum digambar. Pilih titik pada peta lalu selesaikan gambar.'}</p>
         </>}
         {locationNote && <p role="status" className="lj-form-note">{locationNote}</p>}
@@ -89,7 +102,7 @@ export function ConditionFields({ category, location, initialCondition, updating
           <div className="lj-dimension-grid">{(['width', 'depth', 'length'] as const).map((key, index) => <label key={key}>{['Lebar (m)', 'Kedalaman (m)', 'Panjang (m)'][index]}<input type="number" inputMode="decimal" step="any" min={0} max={1000} value={fields[key]} onChange={event => change({ [key]: event.target.value, confirmed: false })} /></label>)}</div>
           {!dimensionsValid && <p className="lj-form-error">Isi metode dan dimensi yang valid. Pengukuran memerlukan nama alat; lebar dan panjang harus lebih dari nol.</p>}
         </details>
-        <label className="lj-checkbox"><input type="checkbox" required checked={fields.confirmed} disabled={!geometry || !observedAt || !dimensionsValid || disabled} onChange={event => change({ confirmed: event.target.checked })} />Lokasi dan bentuk telah diperiksa.</label>
+        <label className={`lj-checkbox${confirmError ? ' is-invalid' : ''}`}><input type="checkbox" required aria-invalid={confirmError ? true : undefined} checked={fields.confirmed} disabled={!geometry || !observedAt || !dimensionsValid || disabled} onChange={event => change({ confirmed: event.target.checked })} />Lokasi dan bentuk telah diperiksa.</label><FieldError id={`${fieldId}-confirm-error`} message={confirmError} />
         <p className="lj-form-note">{condition ? conditionDimensionLabel(condition) : 'Ilustrasi - ukuran belum diukur'}. Bentuk merupakan keterangan pelapor, bukan hasil survei atau verifikasi pemerintah.</p>
       </>}
     </>}

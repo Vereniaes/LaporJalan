@@ -62,7 +62,7 @@ async function open(page:Page,id:string){
  await page.addInitScript(token=>sessionStorage.setItem('lj-session',token),token);
  await page.route('**/api/public-reports',route=>route.fulfill({json:{...snapshot,reports:[]}}));
  await page.route('https://tiles.openfreemap.org/**',route=>route.fulfill({json:style}));
- await page.goto('/?laporan='+id);await expect(page.locator('.lj-detail h2')).toHaveText('Tinjauan foto - uji terisolasi');
+ await page.goto('/akun?laporan='+id);await expect(page.locator('.lj-detail h2')).toHaveText('Tinjauan foto - uji terisolasi');
  await page.getByRole('button',{name:'Tambah pembaruan',exact:true}).click();
 }
 async function finishFields(page:Page){

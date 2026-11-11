@@ -5,71 +5,69 @@
 
 /* --- page frame --- */
 /* index.css locks body for the full-screen map; the landing scrolls (same unlock the old landing used) */
-body:has(.home) { width: auto; height: auto; overflow: auto; background: var(--concrete); }
+body:has(.home) { width: auto; height: auto; overflow: auto; background: var(--surface); }
 html:has(.home) { scroll-padding-top: 24px; }
 .home {
   --step-display: clamp(2.5rem, 1.6rem + 4.2vw, 5.5rem);
   --step-h2: clamp(1.875rem, 1.4rem + 2.2vw, 3.25rem);
   --step-lead: clamp(1.125rem, 1.05rem + .35vw, 1.375rem);
   --step-body: clamp(1rem, .97rem + .15vw, 1.125rem);
-  --radius-button: 14px;
   --gutter: 16px;
   --content-max: 1200px;
-  --ease-out: cubic-bezier(.23, 1, .32, 1);
-  --ease-swap: cubic-bezier(.77, 0, .175, 1);
-  --dur-press: 120ms;
-  --dur-ui: 220ms;
-  --card-shadow: 0 0 0 1px var(--line), 0 1px 2px rgb(29 32 35 / .04), 0 12px 28px -20px rgb(29 32 35 / .25);
-  min-height: 100dvh; background: var(--concrete); color: var(--asphalt);
+  /* radii, shadows and motion come from the design system tokens in index.css */
+  min-height: 100dvh; background: var(--surface); color: var(--ink);
   font: 400 var(--step-body)/1.6 var(--font-sans); -webkit-font-smoothing: antialiased;
 }
 @media (min-width: 768px) { .home { --gutter: 32px; } }
 .home a { color: inherit; }
-.home :focus-visible { outline: 3px solid var(--sign-green); outline-offset: 3px; border-radius: 6px; }
+/* the --focus-ring look (2px green after a 2px gap) as an outline, so it follows each element's own radius */
+.home :focus-visible { outline: 2px solid var(--sign-green); outline-offset: 2px; }
 .home .wrap { width: min(100% - 2 * var(--gutter), var(--content-max)); margin-inline: auto; }
 .home section[id] { scroll-margin-top: 24px; }
-.home .skip { position: absolute; left: 16px; top: -100px; z-index: 50; background: var(--paper); padding: 12px 16px; border-radius: var(--radius-button); font-weight: 600; }
+.home .skip { position: absolute; left: 16px; top: -100px; z-index: 50; background: var(--surface); padding: 12px 16px; border-radius: var(--r-md); box-shadow: var(--shadow-float); font-weight: 600; }
 .home .skip:focus { top: 16px; }
 .home .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 /* --- end of page frame --- */
 
 /* --- type roles --- */
-.home .display { font-weight: 800; font-size: var(--step-display); line-height: .95; letter-spacing: -.035em; }
+.home .display { font-weight: 700; font-size: var(--step-display); line-height: .95; letter-spacing: -.02em; }
 .home .h2 { font-weight: 700; font-size: var(--step-h2); line-height: 1.02; letter-spacing: -.02em; }
 .home .lead { font-size: var(--step-lead); line-height: 1.45; }
 .home .display span { display: block; }
 /* hero entrance mask: the line's own box clips the rising text; the padding keeps descenders (g, j, y) */
 .home .display .line { overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
 .home .mono { font-family: var(--font-mono); font-weight: 500; font-size: .8125rem; font-variant-numeric: tabular-nums; }
-.home .kicker { font-size: .875rem; font-weight: 600; color: var(--muted); }
+.home .kicker { font-size: .875rem; font-weight: 600; color: var(--ink-muted); }
 @media (max-width: 599px) { .home .display, .home .h2 { text-wrap: balance; } }
 /* --- end of type roles --- */
 
-/* --- buttons: >= 48px tall, press 120 ms, the one yellow action --- */
+/* --- buttons: >= 48px tall, press 120 ms, the one yellow action; secondary is a soft fill, no border --- */
 .home .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 20px;
-  border-radius: var(--radius-button); border: 1.5px solid transparent; font-weight: 600; font-size: 1rem; line-height: 1.2; text-decoration: none;
+  border-radius: var(--r-md); border: 0; font-weight: 600; font-size: 1rem; line-height: 1.2; text-decoration: none;
   cursor: pointer; transition: transform var(--dur-press) var(--ease-out), opacity var(--dur-press) var(--ease-out);
 }
 .home .btn svg { width: 20px; height: 20px; flex: none; }
 .home .btn:active { transform: scale(.97); }
-.home .btn-primary { background: var(--marking-yellow); color: var(--asphalt); }
-.home .btn-quiet { background: transparent; color: var(--asphalt); border-color: var(--line); }
+.home .btn-primary { background: var(--marking-yellow); color: var(--ink); box-shadow: inset 0 1px 0 rgb(255 255 255 / .45); }
+.home .btn-quiet { background: var(--surface-soft); color: var(--ink); }
+.home .btn:disabled { opacity: .55; cursor: default; transform: none; }
 @media (hover: hover) and (pointer: fine) {
   .home .btn-primary:hover { opacity: .9; }
-  .home .btn-quiet:hover { border-color: var(--asphalt); }
+  .home .btn-quiet:not(:disabled):hover { background: var(--surface-sunk); }
 }
 .home .actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .home .btn { white-space: nowrap; } /* a label never breaks; the buttons wrap as a whole instead */
 /* --- end of buttons --- */
 
-/* --- header --- */
+/* --- header: green links, underlined only on hover/focus --- */
 .home .site-head { display: flex; align-items: center; gap: 16px; min-height: 80px; }
 .home .brand { display: flex; align-items: center; min-height: 44px; }
 .home .brand img { width: 150px; height: auto; }
 .home .site-nav { display: flex; gap: 2px; margin-left: auto; }
-.home .site-nav a, .home .head-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 12px; font-weight: 600; font-size: .9375rem; text-decoration: none; transition: background-color var(--dur-press) var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .home .site-nav a:hover, .home .head-link:hover { background: var(--paper); } }
+.home .site-nav a, .home .head-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: var(--r-sm); color: var(--sign-green); font-weight: 600; font-size: .9375rem; text-decoration: none; text-underline-offset: 4px; }
+.home :is(.site-nav a, .head-link, .foot-nav a, .text-link):focus-visible { text-decoration: underline; }
+@media (hover: hover) and (pointer: fine) { .home :is(.site-nav a, .head-link, .foot-nav a, .text-link):hover { text-decoration: underline; } }
 .home .head-account { display: flex; align-items: center; gap: 6px; }
 .home .head-cta { min-height: 44px; padding: 10px 18px; }
 /* --- end of header --- */
@@ -84,14 +82,13 @@ html:has(.home) { scroll-padding-top: 24px; }
 .home .hero-side { display: grid; gap: 20px; padding-bottom: 6px; }
 .home .hero-side .lead { max-width: 28ch; }
 .home .hero-app { grid-column: 1 / -1; position: relative; }
-.home .app-frame { border-radius: 20px; overflow: hidden; background: var(--paper); box-shadow: 0 0 0 1px var(--line), 0 2px 4px rgb(29 32 35 / .04), 0 32px 64px -32px rgb(29 32 35 / .35); }
+.home .app-frame { border-radius: var(--r-lg); overflow: hidden; background: var(--surface-soft); box-shadow: var(--shadow-soft); }
 .home .app-frame .lj-map { height: clamp(420px, 62vh, 640px); }
 /* saver mode: a still of the map with the way to the live one; same height, so nothing shifts when it loads */
 .home .map-still { position: relative; height: clamp(420px, 62vh, 640px); }
 .home .map-still img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .home .map-still-bar { position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
-  padding: 10px 10px 10px 16px; border-radius: 16px; background: var(--paper); box-shadow: var(--card-shadow); font-size: .9375rem; }
-.home .map-still-bar .btn { background: var(--paper); }
+  padding: 10px 10px 10px 16px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-float); font-size: .9375rem; }
 /* the one break: Miko stands on the map's top edge and points into it; never covers a control */
 .home .hero-miko { position: absolute; left: 44.5%; top: 0; width: min(150px, 15%); height: auto; translate: 0 -70%; pointer-events: none; }
 /* --- end of hero --- */
@@ -107,86 +104,83 @@ html:has(.home) { scroll-padding-top: 24px; }
 .home .flow-road { --rail-pad: 72px; --rail-x: 22px; --rail-w: 18px; position: relative; }
 .home .flow { display: grid; gap: clamp(56px, 10vh, 112px); padding-left: var(--rail-pad); }
 .home .road-rail { position: absolute; top: 0; bottom: 0; left: calc(var(--rail-x) - var(--rail-w) / 2); width: var(--rail-w); border-radius: var(--rail-w);
-  background: var(--asphalt); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 48px, #000 calc(100% - 96px), transparent); mask-image: linear-gradient(to bottom, transparent, #000 48px, #000 calc(100% - 96px), transparent); }
+  background: var(--ink); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 48px, #000 calc(100% - 96px), transparent); mask-image: linear-gradient(to bottom, transparent, #000 48px, #000 calc(100% - 96px), transparent); }
 .home .road-marking { position: absolute; inset: 0 auto 0 50%; width: 2px; margin-left: -1px; background: repeating-linear-gradient(to bottom, var(--marking-yellow) 0 14px, transparent 14px 28px); }
 .home .step { position: relative; }
 /* junction: centred on the road beside its row (phones: beside the step number) */
 .home .step-node { position: absolute; top: 50%; left: calc(var(--rail-x) - var(--rail-pad)); translate: -50% -50%; z-index: 1;
-  width: 26px; height: 26px; border-radius: 50%; background: var(--paper); box-shadow: 0 0 0 3px var(--asphalt); }
+  width: 26px; height: 26px; border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 3px var(--ink); }
 .home .step-node-fill { position: absolute; inset: 5px; border-radius: 50%; background: var(--sign-green); }
 .home .step-node.is-pin { width: 44px; height: 44px; background: none; box-shadow: none; }
 .home .step { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
 .home .step:nth-child(even) .step-text { order: 2; }
 .home .step-text { display: grid; gap: 14px; justify-items: start; max-width: 46ch; }
-.home .step-n { color: var(--muted); }
 .home .step-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.home .step h3 { font-size: clamp(1.625rem, 1.3rem + 1.1vw, 2.25rem); font-weight: 700; letter-spacing: -.025em; line-height: 1.05; }
-.home .step-text > p { color: var(--muted); text-wrap: pretty; }
+.home .step h3 { font-size: clamp(1.625rem, 1.3rem + 1.1vw, 2.25rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.05; }
+.home .step-text > p { color: var(--ink-muted); text-wrap: pretty; }
 .home .step-demo { display: grid; gap: 10px; margin: 0; }
-.home .step-demo figcaption { font-size: .8125rem; color: var(--muted); }
-.home .screen { position: relative; display: grid; gap: 14px; align-content: start; padding: 24px; border-radius: 22px; background: var(--paper); overflow: hidden; box-shadow: var(--card-shadow); }
+.home .screen { position: relative; display: grid; gap: 14px; align-content: start; padding: 24px; border-radius: var(--r-lg); background: var(--surface-soft); overflow: hidden; }
 /* Miko stands in the screen's corner; the last sample row keeps clear of him */
 .home .screen > :nth-last-child(2) { max-width: calc(100% - 104px); }
 .home .step-miko { position: absolute; right: -10px; bottom: -10px; width: 124px; height: auto; pointer-events: none; }
-/* sample parts: the map's own marks and the app's own classes, a little smaller margins */
+/* sample parts: the map's own marks and the app's own classes, a little smaller margins; white or sunk parts on the soft card, no hairlines */
 .home .demo .lj-status { margin-top: 0; }
 .home .screen .lj-steps { margin: 0; }
 .home .screen .lj-timeline { margin-bottom: 0; }
 .home .screen .lj-timeline li { padding-bottom: 14px; }
 .home .mini-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.home .mini-search { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 12px 0 10px; border-radius: 10px; background: var(--concrete); box-shadow: inset 0 0 0 1px var(--line); font-size: .875rem; color: var(--muted); }
+.home .mini-search { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 12px 0 10px; border-radius: var(--r-sm); background: var(--surface-sunk); font-size: .875rem; color: var(--ink-muted); }
 .home .mini-search svg, .home .mini-chip svg { width: 16px; height: 16px; flex: none; }
-.home .mini-chip { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); font-size: .8125rem; font-weight: 600; }
-.home .mini-chip.on { background: var(--sign-green); box-shadow: none; color: var(--paper); }
+.home .mini-chip { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: var(--r-sm); background: var(--surface-sunk); font-size: .8125rem; font-weight: 600; }
+.home .mini-chip.on { background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--sign-green); color: var(--sign-green); }
 .home .mini-chip .lj-swatch { width: 20px; }
-.home .mini-button { justify-self: start; display: inline-flex; align-items: center; height: 40px; padding: 0 14px; border-radius: 10px; box-shadow: inset 0 0 0 1.5px var(--asphalt); font-size: .875rem; font-weight: 600; }
-.home .mini-more { font-size: .8125rem; color: var(--muted); }
+.home .mini-button { justify-self: start; display: inline-flex; align-items: center; height: 40px; padding: 0 14px; border-radius: var(--r-md); background: var(--surface); font-size: .875rem; font-weight: 600; }
+.home .mini-more { font-size: .8125rem; color: var(--ink-muted); }
 .home .mini-link { font-size: .875rem; font-weight: 600; color: var(--sign-green); text-decoration: underline; text-underline-offset: 3px; }
 /* the mini map for the signature move: two streets, the reported stretch on the main one */
-.home .mini-map { position: relative; height: 150px; border-radius: 14px; background: var(--concrete); overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
-.home .road { position: absolute; background: var(--paper); box-shadow: 0 0 0 1px var(--line); }
+.home .mini-map { position: relative; height: 150px; border-radius: var(--r-md); background: var(--surface-sunk); overflow: hidden; }
+.home .road { position: absolute; background: var(--surface); }
 .home .road-h { left: 0; right: 0; top: 56%; height: 24px; }
 .home .road-v { top: 0; bottom: 0; left: 26%; width: 18px; }
 .home .ruas { position: absolute; top: calc(56% + 6px); left: 40%; width: 42%; height: 12px; border-radius: 3px; }
 /* the pin's centre sits on the road's centre line, at the start of the stretch */
 .home .mini-list { display: grid; gap: 8px; }
-.home .mini-report { display: flex; align-items: center; gap: 10px; padding: 8px 12px 8px 6px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); }
+.home .mini-report { display: flex; align-items: center; gap: 10px; padding: 8px 12px 8px 6px; border-radius: var(--r-md); background: var(--surface); }
 .home .mini-report > span:last-child { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-width: 0; }
 .home .mini-report .lj-marker { width: 36px; height: 36px; flex: none; }
 .home .mini-report .lj-marker > span { width: 30px; height: 30px; }
 .home .mini-report .lj-marker svg { width: 16px; height: 16px; }
 .home .mini-report strong, .home .mini-title strong { font-size: .8125rem; font-weight: 600; }
 .home .mini-title { display: grid; gap: 2px; }
-.home .mini-title span { font-size: .8125rem; color: var(--muted); }
+.home .mini-title span { font-size: .8125rem; color: var(--ink-muted); }
 .home .mini-map .lj-marker { position: absolute; left: calc(40% - 22px); top: calc(56% - 10px); }
 /* the row's own link (was in the removed data section) */
-.home .text-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; justify-self: start; color: var(--sign-green); font-weight: 600; text-underline-offset: 3px; }
+.home .text-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; justify-self: start; color: var(--sign-green); font-weight: 600; text-decoration: none; text-underline-offset: 4px; }
 .home .text-link svg { width: 18px; height: 18px; flex: none; }
 /* --- end of the flow --- */
 
-/* --- FAQ (exclusive <details>, works without JS) --- */
+/* --- FAQ (exclusive <details>, works without JS); each question is a soft card --- */
 .home .faq-sec { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 40px; align-items: start; }
-.home .faq details { border-bottom: 1px solid var(--line); }
-.home .faq details:first-child { border-top: 1px solid var(--line); }
+.home .faq { display: grid; gap: 8px; }
+.home .faq details { padding-inline: 20px; border-radius: var(--r-lg); background: var(--surface-soft); }
 .home .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 14px 0; font-size: 1.0625rem; font-weight: 600; line-height: 1.35; cursor: pointer; list-style: none; }
 .home .faq summary::-webkit-details-marker { display: none; }
-.home .faq summary svg { width: 20px; height: 20px; flex: none; color: var(--muted); transition: rotate var(--dur-ui) var(--ease-swap); }
+.home .faq summary svg { width: 20px; height: 20px; flex: none; color: var(--ink-muted); transition: rotate var(--dur-ui) var(--ease-swap); }
 .home .faq details[open] summary svg { rotate: 180deg; }
-.home .faq details p { max-width: 62ch; padding-bottom: 20px; color: var(--muted); }
+.home .faq details p { max-width: 62ch; padding-bottom: 20px; color: var(--ink-muted); }
 /* --- end of FAQ --- */
 
 /* --- close + footer --- */
 .home .close { padding-block: clamp(32px, 6vh, 64px) clamp(48px, 8vh, 96px); }
-.home .close-card { --pad: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; padding: var(--pad); border-radius: 28px; background: var(--paper); overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgb(29 32 35 / .04), 0 24px 48px -32px rgb(29 32 35 / .3); }
+.home .close-card { --pad: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; padding: var(--pad); border-radius: var(--r-xl); background: var(--surface-soft); overflow: hidden; }
 .home .close-text { display: grid; gap: 18px; justify-items: start; }
 .home .close-title { font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.25rem); line-height: .98; text-wrap: balance; }
-.home .close-text .lead { color: var(--muted); }
+.home .close-text .lead { color: var(--ink-muted); }
 .home .close-miko { width: 220px; height: auto; margin-bottom: calc(-1 * var(--pad) - 8px); }
-.home .site-foot { display: grid; gap: 8px; padding-block: 8px 56px; font-size: .875rem; color: var(--muted); }
+.home .site-foot { display: grid; gap: 8px; padding-block: 8px 56px; font-size: .875rem; color: var(--ink-muted); }
 .home .site-foot img { margin-bottom: 6px; }
-.home .site-foot a { color: var(--asphalt); text-decoration: underline; text-underline-offset: 3px; } /* Tailwind preflight removes link underlines */
 .home .foot-nav { display: flex; flex-wrap: wrap; gap: 0 20px; }
-.home .foot-nav a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+.home .foot-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--sign-green); font-weight: 600; text-decoration: none; text-underline-offset: 4px; }
 /* --- end of close + footer --- */
 
 /* --- widths --- */
@@ -222,3 +216,11 @@ html:has(.home) { scroll-padding-top: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { .home .faq summary svg { transition: none; } }
 /* --- end of widths --- */
+
+/* --- Miko motion (MikoMotion.tsx): the still keeps the slot; the loop lies on top only while it plays --- */
+.home .miko-motion { display: block; }
+.home .miko-motion .miko-still { display: block; width: 100%; height: auto; }
+.home .miko-motion .miko-anim { position: absolute; height: auto; max-width: none; opacity: 0; pointer-events: none; }
+.home .miko-motion.is-playing .miko-anim { opacity: 1; }
+.home .miko-motion.is-playing .miko-still { opacity: 0; }
+/* --- end of Miko motion --- */

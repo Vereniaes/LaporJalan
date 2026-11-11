@@ -1,14 +1,12 @@
 {
   "config": {
     "argv": [
-      "/home/vereniaes/.nvm/versions/node/v24.22.0/bin/node",
+      "/usr/bin/node",
       "/home/vereniaes/project/hackathon/LaporJalan/node_modules/.bin/playwright",
       "test",
       "-c",
       "playwright.community.config.ts",
-      "community.integration",
-      "-g",
-      "daftar \\(also"
+      "tests/public-reports/analysis.integration.spec.ts"
     ],
     "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.community.config.ts",
     "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests/public-reports",
@@ -109,13 +107,13 @@
   },
   "suites": [
     {
-      "title": "community.integration.spec.ts",
-      "file": "community.integration.spec.ts",
+      "title": "analysis.integration.spec.ts",
+      "file": "analysis.integration.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "daftar (also /regis) opens the account page: a report made beside the map is listed with its status",
+          "title": "real P6 confirmation preserves draft and writes exactly one private receipt",
           "ok": true,
           "tags": [],
           "tests": [
@@ -130,12 +128,56 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8404,
+                  "duration": 4225,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:623816) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-11T09:08:42.038Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "p6-real-storage",
+                      "contentType": "application/json",
+                      "body": "eyJ1cGRhdGVzIjoyLCJwcml2YXRlUmVjZWlwdHMiOjEsInJlYWxNb2RlbFJlcXVlc3RzIjowLCJzb3VyY2UiOiJjb250cm9sbGVkIGFkYXB0ZXIgb24gZGlzcG9zYWJsZSBNb25nbyJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d08942fe64ac1e3c936d-5dceaa72d0d8861e67bc",
+          "file": "analysis.integration.spec.ts",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "blurred completed result cannot overwrite a stored condition",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1971,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-10T02:29:51.592Z",
+                  "startTime": "2026-11-11T09:08:46.827Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -143,13 +185,81 @@
               "status": "expected"
             }
           ],
-          "id": "38273823794473f50b50-e76654197a2f4d9b700c",
-          "file": "community.integration.spec.ts",
-          "line": 438,
+          "id": "d08942fe64ac1e3c936d-1d71bd5b427a5c66d969",
+          "file": "analysis.integration.spec.ts",
+          "line": 94,
           "column": 1
         },
         {
-          "title": "daftar (also /regis) opens the account page: a report made beside the map is listed with its status",
+          "title": "source withdrawal wins over a stale confirmation draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2091,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T09:08:48.809Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d08942fe64ac1e3c936d-ee692ced3dc5cdf4fa35",
+          "file": "analysis.integration.spec.ts",
+          "line": 104,
+          "column": 1
+        },
+        {
+          "title": "model-off capability keeps manual updates available without creating jobs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2024,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T09:08:50.912Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d08942fe64ac1e3c936d-d27750e0b425dec687f4",
+          "file": "analysis.integration.spec.ts",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "real P6 confirmation preserves draft and writes exactly one private receipt",
           "ok": true,
           "tags": [],
           "tests": [
@@ -164,12 +274,56 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6306,
+                  "duration": 3096,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "(node:624093) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-11T09:08:53.622Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "p6-real-storage",
+                      "contentType": "application/json",
+                      "body": "eyJ1cGRhdGVzIjoyLCJwcml2YXRlUmVjZWlwdHMiOjEsInJlYWxNb2RlbFJlcXVlc3RzIjowLCJzb3VyY2UiOiJjb250cm9sbGVkIGFkYXB0ZXIgb24gZGlzcG9zYWJsZSBNb25nbyJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d08942fe64ac1e3c936d-efb1fd6da8aae6145a5f",
+          "file": "analysis.integration.spec.ts",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "blurred completed result cannot overwrite a stored condition",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1598,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-10T02:30:05.121Z",
+                  "startTime": "2026-11-11T09:08:57.218Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -177,9 +331,77 @@
               "status": "expected"
             }
           ],
-          "id": "38273823794473f50b50-fa069fea201aa5031a47",
-          "file": "community.integration.spec.ts",
-          "line": 438,
+          "id": "d08942fe64ac1e3c936d-649d7856cc08691e8a3a",
+          "file": "analysis.integration.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "source withdrawal wins over a stale confirmation draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1569,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T09:08:58.827Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d08942fe64ac1e3c936d-49bc1a699a74947a5fa8",
+          "file": "analysis.integration.spec.ts",
+          "line": 104,
+          "column": 1
+        },
+        {
+          "title": "model-off capability keeps manual updates available without creating jobs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1582,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T09:09:00.405Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d08942fe64ac1e3c936d-689c82b75cf3550c1568",
+          "file": "analysis.integration.spec.ts",
+          "line": 111,
           "column": 1
         }
       ]
@@ -187,9 +409,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-10T02:29:50.306Z",
-    "duration": 18965.141,
-    "expected": 2,
+    "startTime": "2026-11-11T09:08:40.579Z",
+    "duration": 21554.244,
+    "expected": 8,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

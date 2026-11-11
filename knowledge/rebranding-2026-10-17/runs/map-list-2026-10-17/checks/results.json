@@ -1,0 +1,321 @@
+{
+  "config": {
+    "argv": [
+      "/usr/bin/node",
+      "/home/vereniaes/project/hackathon/LaporJalan/node_modules/.bin/playwright",
+      "test",
+      "-c",
+      "playwright.public.config.ts",
+      "--project=desktop",
+      "tests/public-reports/condition-form.browser.spec.ts:158",
+      "tests/public-reports/condition.browser.spec.ts:142",
+      "tests/public-reports/landing.browser.spec.ts:85",
+      "tests/public-reports/landing.browser.spec.ts:107",
+      "tests/public-reports/landing.browser.spec.ts:183"
+    ],
+    "configFile": "/home/vereniaes/project/hackathon/LaporJalan/playwright.public.config.ts",
+    "rootDir": "/home/vereniaes/project/hackathon/LaporJalan/tests/public-reports",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/rebranding-2026-10-17/runs/map-list-2026-10-17/checks/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "unit",
+        "name": "unit",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests/public-reports",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/rebranding-2026-10-17/runs/map-list-2026-10-17/checks/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests/public-reports",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/vereniaes/project/hackathon/LaporJalan/knowledge/rebranding-2026-10-17/runs/map-list-2026-10-17/checks/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "/home/vereniaes/project/hackathon/LaporJalan/tests/public-reports",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.browser\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "knowledge/rebranding-2026-10-17/runs/map-list-2026-10-17/checks/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 3004 --strictPort",
+      "url": "http://127.0.0.1:3004",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "condition-form.browser.spec.ts",
+      "file": "condition-form.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a freehand area closes itself, and a crossing outline is refused with a reason",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22251,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T08:58:39.291Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7b23d01e97668dc7a6cf-777228e970b507658466",
+          "file": "condition-form.browser.spec.ts",
+          "line": 158,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "condition.browser.spec.ts",
+      "file": "condition.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "viewport resize keeps the inspection framed and a hidden-state event stops orbit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5268,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T08:59:04.130Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visibility-scope",
+                      "contentType": "text/plain",
+                      "body": "U3ludGhldGljIGRvY3VtZW50LmhpZGRlbiArIHZpc2liaWxpdHljaGFuZ2UgdmVyaWZpZXMgdGhlIGFwcCBzdG9wIGhhbmRsZXI7IHBoeXNpY2FsIHRhYiBzdXNwZW5zaW9uIGFuZCBPUyBHUFUgc2NoZWR1bGluZyBhcmUgbm90IGFzc2VydGVkLg=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "612fcbae502ef2cf93bf-da7af8e9af1e050d35be",
+          "file": "condition.browser.spec.ts",
+          "line": 142,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "landing.browser.spec.ts",
+      "file": "landing.browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "report intent waits for a stored session instead of opening an unnecessary login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3992,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T08:59:09.425Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbcce38352e35d84bda8-53cd9135987bd096479c",
+          "file": "landing.browser.spec.ts",
+          "line": 85,
+          "column": 1
+        },
+        {
+          "title": "the flow tells four steps in order and reporting leads the hero when it is on",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24199,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T08:59:13.434Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbcce38352e35d84bda8-fd149151ccc2fe02df5b",
+          "file": "landing.browser.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "the report form is a centred popup with its own point map; drawing hands the big map back",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27786,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-11T08:59:39.514Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbcce38352e35d84bda8-e4887a7e4af983fb53e6",
+          "file": "landing.browser.spec.ts",
+          "line": 183,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-11T08:58:38.595Z",
+    "duration": 86474.84700000001,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

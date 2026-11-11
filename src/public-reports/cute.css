@@ -1,0 +1,112 @@
+/* Cute map page (owner, 11 Nov: "kayak Oyenza, ada maskotnya, super cute, dark mode"; layout and typeface unchanged)
+Todo:
+-> Miko: looking around beside the title, peeking in the empty list, flying over the map, on the toast
+-> puffy felt-like thumbnails, category-coloured chips, pins as little speech bubbles, a soft press on every tap
+-> motion: transform and opacity only; press 120 ms, UI under 300 ms; hover only on fine pointers; reduced motion keeps fades
+*/
+
+/* --- Miko (MikoMotion: the still is the element, the clip lies on top while it plays) --- */
+.lj-app .miko-motion { position: relative; display: block; flex: none; }
+.lj-app .miko-motion .miko-still { display: block; width: 100%; height: auto; }
+.lj-app .miko-motion .miko-anim { position: absolute; height: auto; max-width: none; opacity: 0; pointer-events: none; }
+.lj-app .miko-motion.is-playing .miko-anim { opacity: 1; }
+.lj-app .miko-motion.is-playing .miko-still { opacity: 0; }
+.lj-intro-miko { width: 56px; margin: -6px -4px -6px -8px; }
+.lj-warning-miko { float: left; width: 48px; margin: 0 10px 4px 0; }
+.lj-empty { text-align: center; }
+.lj-empty .lj-empty-miko { width: 120px; height: auto; margin: 0 auto 12px; }
+
+/* --- title row: Miko, the title and its count, the refresh button --- */
+.lj-panel-intro { gap: 10px; }
+.lj-panel-intro h1 { margin-right: auto; }
+.lj-count { background: var(--yellow-50); color: var(--yellow-700); box-shadow: inset 0 -2px 0 var(--yellow-100); }
+
+/* --- category chips: each in its own colour (the pins and thumbnails use the same four) --- */
+.lj-categories { border-bottom: 0; padding-bottom: 12px; }
+.lj-categories button { --chip-50: var(--green-50); --chip-700: var(--green-700); border-radius: 14px; font-weight: 600; transition: transform var(--dur-press) var(--ease-out); }
+.lj-categories .chip-road { --chip-50: var(--brown-50); --chip-700: var(--brown-700); }
+.lj-categories .chip-construction { --chip-50: var(--yellow-50); --chip-700: var(--yellow-700); }
+.lj-categories .chip-drain { --chip-50: var(--blue-50); --chip-700: var(--blue-700); }
+.lj-categories .chip-burning { --chip-50: var(--pink-50); --chip-700: var(--pink-700); }
+.lj-categories button svg { color: var(--chip-700); }
+.lj-categories button[aria-pressed=true] { background: var(--chip-50); color: var(--chip-700); box-shadow: inset 0 0 0 2px var(--chip-700); }
+.lj-categories button:active:not(:disabled) { transform: scale(.96); }
+
+/* --- report cards: puffy picture, a soft lift on hover, a squish on press --- */
+.lj-report-list { gap: 10px; }
+.lj-report-row { border-radius: var(--r-xl); padding: 10px 14px 10px 10px; transition: transform var(--dur-press) var(--ease-out); }
+.lj-report-row:active { transform: scale(.98); }
+.lj-thumbnail { border-radius: 18px; box-shadow: inset 0 2px 0 rgb(255 255 255 / .22), inset 0 -5px 0 rgb(0 0 0 / .14); } /* 28 card - 10 padding */
+.lj-thumbnail img { border-radius: inherit; }
+.lj-thumbnail > svg { width: 30px; height: 30px; }
+@media (hover: hover) and (pointer: fine) {
+  .lj-report-row { transition: transform var(--dur-ui) var(--ease-out); }
+  .lj-report-row:hover { transform: translateY(-2px); background: var(--surface-soft); box-shadow: var(--shadow-soft); }
+}
+.lj-report-row.is-selected { box-shadow: inset 0 0 0 2.5px var(--sign-green); }
+.lj-status { padding: 3px 10px; }
+
+/* --- loading line: a little Miko instead of bare text --- */
+.lj-loading { display: flex; align-items: center; gap: 8px; width: fit-content; margin: 2px 16px 8px; padding: 4px 14px 4px 4px; border-radius: var(--r-md); background: var(--green-50); color: var(--green-700); font-weight: 600; }
+.lj-loading img { width: 28px; height: 28px; border-radius: 10px; background: var(--surface); }
+.lj-data-warning { margin: 0 16px 10px; border-radius: var(--r-lg); display: flow-root; }
+
+/* --- pins: a bubble with a little tail, ringed in the category colour --- */
+.lj-marker > span { position: relative; width: 34px; height: 34px; border-width: 2.5px; box-shadow: 0 2px 0 rgb(0 0 0 / .08), var(--shadow-soft); }
+.lj-marker:not(.is-cluster) > span::after { content: ''; position: absolute; left: 50%; bottom: -5px; width: 8px; height: 8px; background: var(--surface);
+  border-right: 2.5px solid var(--pin); border-bottom: 2.5px solid var(--pin); border-bottom-right-radius: 3px; transform: translateX(-50%) rotate(45deg); }
+.lj-marker.is-selected > span::after { border-color: var(--sign-green); border-width: 3px; }
+.lj-marker.cat-road { --pin: var(--brown-700); }
+.lj-marker.cat-construction { --pin: var(--yellow-700); }
+.lj-marker > span { transition: transform var(--dur-ui) var(--ease-out); }
+.lj-marker.is-selected > span { transform: scale(1.12); animation: lj-pin-pop 320ms var(--ease-pop); }
+.lj-marker.is-cluster > span { width: 38px; height: 38px; border: 3px solid var(--surface); box-shadow: 0 3px 0 rgb(0 0 0 / .12), var(--shadow-soft); }
+@media (hover: hover) and (pointer: fine) { .lj-marker:not(:disabled):hover > span { transform: translateY(-3px); } }
+.lj-marker:active:not(:disabled) > span { transform: scale(.94); transition-duration: var(--dur-press); }
+@keyframes lj-pin-pop { from { transform: scale(.9); } to { transform: scale(1.12); } }
+
+/* --- map controls and the header buttons: a soft press --- */
+.lj-area-button, .lj-refresh, .lj-header .lj-icon-button, .lj-primary { transition: transform var(--dur-press) var(--ease-out); }
+.lj-area-button:active, .lj-refresh:active:not(:disabled), .lj-header .lj-icon-button:active, .lj-primary:active:not(:disabled) { transform: scale(.96); }
+.lj-area-button:active { transform: translateX(-50%) scale(.96); }
+.lj-theme-toggle[aria-pressed=true] { box-shadow: none !important; background: var(--surface-soft) !important; color: var(--yellow-700) !important; }
+
+/* --- Miko flies across the map (MikoFlight): a transform path, the clip flaps in place --- */
+.lj-workspace { position: relative; }
+.lj-flight { grid-column: 2; grid-row: 1; align-self: start; position: relative; z-index: 3; height: 50%; overflow: hidden; pointer-events: none; container-type: inline-size; }
+.lj-flight-path { position: absolute; top: 18%; left: 0; width: 104px; animation: lj-fly-x 3s linear both; }
+.lj-flight-owl { display: block; width: 104px; height: 104px; animation: lj-fly-bob 700ms ease-in-out infinite alternate; filter: drop-shadow(0 10px 8px rgb(0 0 0 / .18)); }
+@keyframes lj-fly-x { from { transform: translateX(-120px); } to { transform: translateX(calc(100cqw + 24px)); } }
+@keyframes lj-fly-bob { from { transform: translateY(-10px) rotate(-3deg); } to { transform: translateY(10px) rotate(3deg); } }
+
+/* --- toast after a report is sent --- */
+.lj-toast-region { grid-column: 2; grid-row: 1; align-self: start; justify-self: center; z-index: 4; margin-top: 76px; pointer-events: none; }
+.lj-toast { display: flex; align-items: center; gap: 10px; padding: 6px 18px 6px 6px; border-radius: var(--r-lg); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); font-weight: 650; font-size: 14px; animation: lj-toast-in 260ms var(--ease-out) both; }
+.lj-toast img { width: 40px; height: 40px; border-radius: 14px; background: var(--green-50); } /* 22 card - 6 padding - 2 */
+@keyframes lj-toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 800px) {
+  .lj-intro-miko { width: 44px; }
+  .lj-flight { position: absolute; top: 0; left: 0; right: 0; height: 200px; }
+  .lj-toast-region { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); margin: 0; width: max-content; max-width: calc(100% - 24px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lj-report-row, .lj-categories button, .lj-marker > span { transition: none; }
+  .lj-marker.is-selected > span { animation: none; }
+  .lj-toast { animation-name: lj-toast-fade; }
+  .lj-report-row:active, .lj-categories button:active, .lj-marker:active > span { transform: none; }
+  @media (hover: hover) and (pointer: fine) { .lj-report-row:hover { transform: none; } }
+}
+@keyframes lj-toast-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- dark theme: map furniture that does not read our tokens --- */
+.lj-theme-dark { background: var(--concrete); }
+.lj-theme-dark .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.92) contrast(.9) saturate(.75); } /* raster OSM tiles have no dark style */
+.lj-theme-dark .leaflet-container { background: var(--concrete); }
+.lj-theme-dark .leaflet-control-attribution, .lj-theme-dark .maplibregl-ctrl-attrib { background: var(--surface) !important; color: var(--ink-muted); }
+.lj-theme-dark .leaflet-control-attribution a, .lj-theme-dark .maplibregl-ctrl-attrib a { color: var(--ink); }
+.lj-theme-dark .maplibregl-ctrl-attrib-button { filter: invert(1); }
+.lj-theme-dark .lj-compose-backdrop { background: rgb(0 0 0 / .6); }
+.lj-theme-dark .lj-login::backdrop { background: rgb(0 0 0 / .6); }
+.lj-theme-dark .lj-thumbnail.cat-road { background: #7A5C49; }
+.lj-theme-dark .lj-flight-owl { filter: drop-shadow(0 10px 8px rgb(0 0 0 / .45)); }

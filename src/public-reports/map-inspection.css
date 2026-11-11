@@ -1,10 +1,10 @@
 /* Keep sketch and inspection controls clear of map attribution. */
-.lj-map-drawing,.lj-inspection-controls { position:absolute;bottom:76px;left:18px;z-index:2;max-width:min(390px,calc(100% - 36px));padding:12px 14px;border:1px solid var(--lj-line);border-radius:7px;background:#fffffff5;color:var(--lj-ink);font-size:13px;box-shadow:0 2px 8px #142b3a12; }
+.lj-map-drawing,.lj-inspection-controls { position:absolute;bottom:76px;left:18px;z-index:2;max-width:min(390px,calc(100% - 36px));padding:12px 14px;border-radius:var(--r-lg);background:var(--surface);color:var(--lj-ink);font-size:13px;box-shadow:var(--shadow-float); }
 .lj-map-drawing strong,.lj-inspection-controls strong { display:block;font-weight:650; }
 .lj-map-drawing p,.lj-inspection-controls p { color:var(--lj-muted);margin-top:3px; }
 .lj-map-drawing > div,.lj-inspection-controls > div { display:flex;gap:12px;flex-wrap:wrap; }
 .lj-map-drawing button,.lj-inspection-controls button { min-height:44px;text-decoration:underline;color:var(--lj-brand); }
-.lj-inspection-error { position:absolute;top:75px;left:18px;right:75px;padding:10px 14px;border-radius:6px;background:#fff4df;color:#664515;font-size:13px; }
+.lj-inspection-error { position:absolute;top:75px;left:18px;right:75px;padding:10px 14px;border-radius:var(--r-md);background:var(--yellow-50);color:var(--yellow-700);font-size:13px;box-shadow:var(--shadow-float); }
 @media(max-width:800px) {
  .lj-drawing .lj-header { min-height:68px;flex-wrap:nowrap; }
  .lj-drawing .lj-search { display:none; }
